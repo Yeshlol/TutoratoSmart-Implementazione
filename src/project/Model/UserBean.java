@@ -1,11 +1,11 @@
-	package project.Model;
+package project.Model;
 
 import java.io.Serializable;
 
 public class UserBean implements Serializable {
 	private static final long serialVersionUID = 8664330832532346093L;
 		
-	String email, password, firstName, lastName, sex, telephoneNumber, registrationNumber;
+	protected String email, password, firstName, lastName, sex, telephoneNumber, registrationNumber;
 			
 	public UserBean() {
 		email = "";
@@ -84,6 +84,6 @@ public class UserBean implements Serializable {
 	@Override
 	public String toString() {
 		return firstName + " " + lastName + ", " + sex + ", Matricola: " + registrationNumber + 
-				", E-mail: " + email + ", Tel: " + telephoneNumber;
+				", E-mail: " + email + ", Tel: " + telephoneNumber + "\n";
 	}
 }
