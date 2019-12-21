@@ -62,7 +62,7 @@ public class RegisterBean implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Registro n° " + idRegister + ", Ore totali: " + totalHours + ", Ore convalidate: " 
+		return "Registro n " + idRegister + ", Ore totali: " + totalHours + ", Ore convalidate: " 
 				+ validatedHours + ", Completo al " + percentageComplete + "%, Stato: " + state + "\n";
 	}
 }

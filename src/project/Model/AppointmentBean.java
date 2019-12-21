@@ -53,6 +53,6 @@ public class AppointmentBean implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Appuntamento n° " + idAppointment + "\nDescrizione: " + details + "\nAssociato alla richiesta n° "+ requestId + " e al tutor " + tutor + "\n";
+		return "Appuntamento n " + idAppointment + "\nDescrizione: " + details + "\nAssociato alla richiesta n° "+ requestId + " e al tutor " + tutor + "\n";
 	}
 }

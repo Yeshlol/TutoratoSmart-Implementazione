@@ -34,6 +34,6 @@ public class Validates implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Il membro della Commissione di Tutorato (" + commissionMember + "), ha convalidato l'attivita' n° " + activityId + ".\n";
+		return "Il membro della Commissione di Tutorato (" + commissionMember + "), ha convalidato l'attivita' n " + activityId + ".\n";
 	}
 }

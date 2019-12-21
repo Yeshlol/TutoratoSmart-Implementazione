@@ -220,7 +220,7 @@ public class ActivityTutorDAO  {
 				
 				list.add(bean);
 			}			
-		}finally {
+		} finally {
 			try {
 				if(preparedStatement!=null)
 					preparedStatement.close();

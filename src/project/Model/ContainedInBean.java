@@ -33,6 +33,6 @@ public class ContainedInBean implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Appuntamento' n° " + appointmentId + " contenuto nell'attivita' n° " + activityId + ".\n";
+		return "Appuntamento n " + appointmentId + " contenuto nell'attivita' n " + activityId + ".\n";
 	}
 }

@@ -85,7 +85,7 @@ public class RequestBean implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Richiesta n° " + idRequest + ", " + state +", per il giorno " + requestDate + ", ore: " + requestTime/60 + ":" + requestTime%60 + 
+		return "Richiesta n " + idRequest + ", " + state +", per il giorno " + requestDate + ", ore: " + requestTime/60 + ":" + requestTime%60 + 
 				", durata stimata: " + duration + ", studente: " + student + ", commento: " + studentComment + "\n";
 	}
 }

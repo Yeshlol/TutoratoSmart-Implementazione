@@ -116,7 +116,7 @@ public class ActivityTutorBean implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Attività n° " + idActivity + ", email tutor: " + tutor + ", giorno: " + activityDate + ", orario inizio: " + 
+		return "Attivita' n " + idActivity + ", email tutor: " + tutor + ", giorno: " + activityDate + ", orario inizio: " + 
 				startTime/60 + ":" + startTime%60 + ", orario termine: " + finishTime/60 + ":" + finishTime%60 + 
 				", durata: " + hours + "h, categoria: " + category + ", " + state + ".\nDescrizione: " + details + "\n";
 	}

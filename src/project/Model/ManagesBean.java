@@ -34,6 +34,6 @@ public class ManagesBean implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Il tutor " + tutor + " ha gestito la richiesta n° " + requestId + ".\n";
+		return "Il tutor " + tutor + " ha gestito la richiesta n " + requestId + ".\n";
 	}
 }
