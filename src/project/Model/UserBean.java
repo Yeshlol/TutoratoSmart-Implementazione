@@ -5,11 +5,11 @@ import java.io.Serializable;
 public class UserBean implements Serializable {
 	private static final long serialVersionUID = 8664330832532346093L;
 		
-	protected String email, password, firstName, lastName, sex, telephoneNumber, registrationNumber;
+	protected String email, pwd, firstName, lastName, sex, telephoneNumber, registrationNumber;
 			
 	public UserBean() {
 		email = "";
-		password = "";
+		pwd = "";
 		firstName = "";
 		lastName = "";
 		sex = "";
@@ -27,12 +27,12 @@ public class UserBean implements Serializable {
 	}
 
 
-	public String getPassword() {
-		return password;
+	public String getPwd() {
+		return pwd;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPwd(String password) {
+		this.pwd = password;
 	}
 
 
