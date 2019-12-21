@@ -1,0 +1,206 @@
+package project.Model;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Collection;
+import java.util.LinkedList;
+
+import project.Control.DBConnection;
+import project.Utils.Utils;
+
+public class TutorDAO  {		
+	public TutorDAO() {
+		super();
+	}
+
+	
+	public TutorBean doRetrieveByMail(String mail) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		TutorBean bean = new TutorBean();
+		
+		String selectSql = "SELECT SQL_NO_CACHE * FROM TS_USER,TUTOR WHERE Email = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setString(1, mail);
+			
+			System.out.println("Tutor doRetrieveByMail: " + preparedStatement.toString());
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				bean.setEmail(rs.getString("Email"));
+				bean.setPwd(rs.getString("Pwd"));
+				bean.setFirstName(rs.getString("FirstName"));
+				bean.setLastName(rs.getString("LastName"));
+				bean.setTelephoneNumber(rs.getString("TelephoneNumber"));
+				bean.setSex(rs.getString("Sex"));
+				bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
+				bean.setState(rs.getString("State"));
+				bean.setStartDate(rs.getDate("StartDate"));
+				bean.setFinishDate(rs.getDate("FinishDate"));
+				bean.setCommissionMember(rs.getString("CommissionMember"));
+				bean.setRegisterId(rs.getInt("RegisterId"));
+				
+				System.out.println("Tutor Trovato con la email!");
+			}
+		} catch (SQLException e) {
+			System.out.println("Email non trovata!");
+			return null;
+		} finally {
+			try {
+				if(preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				connection.close();
+			}
+		}
+		return bean;
+	}
+	
+	
+	@SuppressWarnings("resource")
+	public synchronized void doSave(TutorBean bean) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		String insertSql = "INSERT INTO TS_USER(Email,Pwd,FirstName,LastName,TelephoneNumber,Sex,RegistrationNumber) VALUES (?,?,?,?,?,?,?)";
+		String insertSql2 = "INSERT INTO TUTOR (Email,State,StartDate,CommissionMember,RegisterId) VALUES (?,?,?,?,?,?)";
+		
+		try {
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(insertSql);
+			preparedStatement.setString(1, bean.getEmail());
+			preparedStatement.setString(2, Utils.sha256(bean.getPwd()));
+			preparedStatement.setString(3, bean.getFirstName());
+			preparedStatement.setString(4, bean.getLastName());
+			preparedStatement.setString(5, bean.getTelephoneNumber());
+			preparedStatement.setString(6, bean.getSex());
+			preparedStatement.setString(7, bean.getRegistrationNumber());
+			
+			System.out.println("User doSave: "+ preparedStatement.toString());
+			
+			preparedStatement.executeUpdate();
+			
+			preparedStatement = connection.prepareStatement(insertSql2);
+			preparedStatement.setString(1, bean.getEmail());
+			preparedStatement.setString(2, bean.getState());			
+			preparedStatement.setDate(3, bean.getStartDate());
+			preparedStatement.setString(4, bean.getCommissionMember());
+			preparedStatement.setInt(5, bean.getRegisterId());
+			
+			System.out.println("Tutor doSave: "+ preparedStatement.toString());
+			
+			preparedStatement.executeUpdate();
+			
+			connection.commit();
+		} finally {
+			try {
+				if(preparedStatement != null)
+					preparedStatement.close();				
+			} finally {
+				connection.close();
+			}
+		}	
+	}
+	
+	
+	public Collection<TutorBean> doRetrieveAllByDates(String order, Date startResearchDate, Date finishResearchDate) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		Collection<TutorBean> list = new LinkedList<TutorBean>();
+		
+		String selectSql = "SELECT SQL_NO_CACHE * FROM TUTOR WHERE FinishDate >= ? AND FinishDate <= ?";
+		
+		if(order!=null && !order.equals("")) {
+			selectSql +=" ORDER BY " + order;
+		}
+		
+		try {
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setDate(1, startResearchDate);
+			preparedStatement.setDate(2, finishResearchDate);
+			
+			System.out.println("Tutor doRetrieveAllByDates: " + preparedStatement.toString());
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()) {
+				TutorBean bean = new TutorBean();
+				bean.setEmail(rs.getString("Email"));
+				bean.setPwd(rs.getString("Pwd"));
+				bean.setFirstName(rs.getString("FirstName"));
+				bean.setLastName(rs.getString("LastName"));
+				bean.setTelephoneNumber(rs.getString("TelephoneNumber"));
+				bean.setSex(rs.getString("Sex"));
+				bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
+				bean.setState(rs.getString("State"));
+				bean.setStartDate(rs.getDate("StartDate"));
+				bean.setFinishDate(rs.getDate("FinishDate"));
+				bean.setCommissionMember(rs.getString("CommissionMember"));
+				bean.setRegisterId(rs.getInt("RegisterId"));
+				
+				list.add(bean);
+			}			
+		} finally {
+			try {
+				if(preparedStatement!=null)
+					preparedStatement.close();
+				}
+			finally {
+				connection.close();
+			}
+		}
+		return list;
+	}
+	
+	
+	public Collection<TutorBean> doRetrieveAllActive(String order) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		Collection<TutorBean> list = new LinkedList<TutorBean>();
+		
+		String selectSql = "SELECT SQL_NO_CACHE * FROM TUTOR WHERE State = 'Attivo'";
+		
+		if(order!=null && !order.equals("")) {
+			selectSql +=" ORDER BY " + order;
+		}
+		
+		try {
+			preparedStatement = connection.prepareStatement(selectSql);
+			
+			System.out.println("Tutor doRetrieveAllActive: " + preparedStatement.toString());
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()) {
+				TutorBean bean = new TutorBean();
+				bean.setEmail(rs.getString("Email"));
+				bean.setPwd(rs.getString("Pwd"));
+				bean.setFirstName(rs.getString("FirstName"));
+				bean.setLastName(rs.getString("LastName"));
+				bean.setTelephoneNumber(rs.getString("TelephoneNumber"));
+				bean.setSex(rs.getString("Sex"));
+				bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
+				bean.setState(rs.getString("State"));
+				bean.setStartDate(rs.getDate("StartDate"));
+				bean.setFinishDate(rs.getDate("FinishDate"));
+				bean.setCommissionMember(rs.getString("CommissionMember"));
+				bean.setRegisterId(rs.getInt("RegisterId"));
+				
+				list.add(bean);
+			}			
+		} finally {
+			try {
+				if(preparedStatement!=null)
+					preparedStatement.close();
+				}
+			finally {
+				connection.close();
+			}
+		}
+		return list;
+	}
+}

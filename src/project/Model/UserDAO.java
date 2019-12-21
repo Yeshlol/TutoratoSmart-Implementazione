@@ -26,7 +26,7 @@ public class UserDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, mail);
 			
-			System.out.println("doRetrieveByMail: " + preparedStatement.toString());
+			System.out.println("User doRetrieveByMail: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {

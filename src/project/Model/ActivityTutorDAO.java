@@ -27,7 +27,7 @@ public class ActivityTutorDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			
-			System.out.println("doRetrieveById: " + preparedStatement.toString());
+			System.out.println("ActivityTutor doRetrieveById: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
