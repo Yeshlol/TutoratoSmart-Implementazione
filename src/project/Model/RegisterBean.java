@@ -5,14 +5,15 @@ import java.io.Serializable;
 public class RegisterBean implements Serializable {
 	private static final long serialVersionUID = -479570144818932080L;
 	
-	private int idRegister, validatedHours, totalHours;
-	private float percentageComplete;
+	private int idRegister, totalHours;
+	private float percentageComplete, validatedHours;
 	private String state;
 	
 	public RegisterBean() {
 		idRegister = -1;
-		validatedHours = -1;
 		totalHours = -1;
+		percentageComplete = -1;
+		validatedHours = -1;		
 		state = "";
 	}
 
@@ -25,11 +26,11 @@ public class RegisterBean implements Serializable {
 	}
 
 	
-	public int getValidatedHours() {
+	public float getValidatedHours() {
 		return validatedHours;
 	}
 
-	public void setValidatedHours(int validatedHours) {
+	public void setValidatedHours(float validatedHours) {
 		this.validatedHours = validatedHours;
 	}
 

@@ -2,13 +2,13 @@ package project.Model;
 
 import java.io.Serializable;
 
-public class Validates implements Serializable {
+public class ValidatesBean implements Serializable {
 	private static final long serialVersionUID = -8762723026814198860L;
 	
 	private String commissionMember;
 	private int activityId;
 	
-	public Validates() {
+	public ValidatesBean() {
 		commissionMember = "";
 		activityId = -1;
 	}

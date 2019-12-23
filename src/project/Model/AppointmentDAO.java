@@ -57,16 +57,15 @@ public class AppointmentDAO  {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
-		String insertSql = "INSERT INTO APPOINTMENT(IdAppointment,Details,RequestId,Tutor)"
-						 + " VALUES (?,?,?,?)";
+		String insertSql = "INSERT INTO APPOINTMENT(Details,RequestId,Tutor)"
+						 + " VALUES (?,?,?)";
 		
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
-			preparedStatement.setInt(1, bean.getIdAppointment());
-			preparedStatement.setString(2, bean.getDetails());
-			preparedStatement.setInt(3, bean.getRequestId());
-			preparedStatement.setString(4, bean.getTutor());
+			preparedStatement.setString(1, bean.getDetails());
+			preparedStatement.setInt(2, bean.getRequestId());
+			preparedStatement.setString(3, bean.getTutor());
 			
 			System.out.println("Appointment doSave: "+ preparedStatement.toString());
 			
@@ -97,7 +96,7 @@ public class AppointmentDAO  {
 			preparedStatement.setString(1, bean.getDetails());
 			preparedStatement.setInt(2, bean.getIdAppointment());
 			
-			System.out.println("Appointment doUpdate: " + preparedStatement.toString());
+			System.out.println("Appointment doModify: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 			
 			connection.commit();

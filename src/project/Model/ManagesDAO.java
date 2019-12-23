@@ -9,33 +9,36 @@ import java.util.LinkedList;
 
 import project.Control.DBConnection;
 
-public class ContainedInDAO {
-	public ContainedInDAO() {
+public class ManagesDAO {
+	public ManagesDAO() {
 		super();
 	}
 
-	public  synchronized Collection<AppointmentBean> doRetrieveByActivityId(int id) throws SQLException {
-		Collection<AppointmentBean> list = new LinkedList<AppointmentBean>();
+	public  synchronized Collection<RequestBean> doRetrieveByTutor(String tutorMail) throws SQLException {
+		Collection<RequestBean> list = new LinkedList<RequestBean>();
 				
-		if(id > 0) {
+		if(tutorMail != null && !tutorMail.equals("")) {
 			Connection connection = DBConnection.getInstance().getConn();
 			PreparedStatement preparedStatement = null;
 			
-			String selectSql = "SELECT SQL_NO_CACHE * FROM CONTAINED_IN WHERE ActivityId = ?";
+			String selectSql = "SELECT SQL_NO_CACHE * FROM MANAGES,REQUEST WHERE Tutor = ?";
 			
 			try {
 				preparedStatement = connection.prepareStatement(selectSql);
-				preparedStatement.setInt(1, id);
+				preparedStatement.setString(1, tutorMail);
 				
-				System.out.println("Contained_In doRetrieveByActivityId: " + preparedStatement.toString());
+				System.out.println("Manages doRetrieveByTutor: " + preparedStatement.toString());
 				
 				ResultSet rs = preparedStatement.executeQuery();
 				while(rs.next()) {
-					AppointmentBean bean = new AppointmentBean();
-					bean.setIdAppointment(rs.getInt("IdAppointment"));
-					bean.setDetails(rs.getString("Details"));
-					bean.setRequestId(rs.getInt("RequestId"));
-					bean.setTutor(rs.getString("Tutor"));
+					RequestBean bean = new RequestBean();
+					bean.setIdRequest(rs.getInt("IdAppointment"));
+					bean.setRequestTime(rs.getInt("RequestTime"));
+					bean.setDuration(rs.getInt("Duration"));
+					bean.setState(rs.getString("State"));
+					bean.setStudentComment(rs.getString("StudentComment"));
+					bean.setRequestDate(rs.getDate("RequestDate"));
+					bean.setStudent(rs.getString("Student"));
 					
 					list.add(bean);
 				}	
@@ -53,19 +56,19 @@ public class ContainedInDAO {
 	}
 	
 
-	public synchronized void doSave(ContainedInBean bean) throws SQLException {
+	public synchronized void doSave(ManagesBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement=null;
 		
-		String insertSql = "INSERT INTO CONTAINED_IN(AppointmentId,ActivityId) VALUES (?,?)";
+		String insertSql = "INSERT INTO MANAGES(Tutor,RequestId) VALUES (?,?)";
 		try {			
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
 			
-			preparedStatement.setInt(1,bean.getAppointmentId());
-			preparedStatement.setInt(2,bean.getActivityId());
+			preparedStatement.setString(1,bean.getTutor());
+			preparedStatement.setInt(2,bean.getRequestId());
 						
-			System.out.println("Contained_In doSave: "+ preparedStatement.toString());
+			System.out.println("Manages doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			
@@ -81,21 +84,21 @@ public class ContainedInDAO {
 	}
 	
 
-	public boolean doDelete(ContainedInBean bean) throws SQLException {
+	public boolean doDelete(ManagesBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
-		String deleteSql = "DELETE FROM CONTAINED_IN WHERE AppointmentId = ? AND ActivityId = ?";
+		String deleteSql = "DELETE FROM MANAGES WHERE Tutor = ? AND RequestId = ?";
 		int result;
 		
 		try {
 			connection.setAutoCommit(false);
 			
 			preparedStatement = connection.prepareStatement(deleteSql);
-			preparedStatement.setInt(1,bean.getAppointmentId());
-			preparedStatement.setInt(2, bean.getActivityId());
+			preparedStatement.setString(1,bean.getTutor());
+			preparedStatement.setInt(2, bean.getRequestId());
 			
-			System.out.println("Contained_In doDelete: " + preparedStatement.toString());
+			System.out.println("Manages doDelete: " + preparedStatement.toString());
 			
 			result = preparedStatement.executeUpdate();
 			
@@ -109,6 +112,6 @@ public class ContainedInDAO {
 				connection.close();
 			}
 		}
-		return (result!=0);		
+		return (result!=0);
 	}	
 }

@@ -63,22 +63,21 @@ public class ActivityTutorDAO  {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
-		String insertSql = "INSERT INTO ACTIVITY_TUTOR(IdActivity,Category,ActivityDate,StartTime,FinishTime,Hours,State,Details,Tutor,RegisterId)"
-						 + " VALUES (?,?,?,?,?,?,?,?,?,?)";
+		String insertSql = "INSERT INTO ACTIVITY_TUTOR(Category,ActivityDate,StartTime,FinishTime,Hours,State,Details,Tutor,RegisterId)"
+						 + " VALUES (?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
-			preparedStatement.setInt(1, bean.getIdActivity());
-			preparedStatement.setString(2, bean.getCategory());
-			preparedStatement.setDate(3, bean.getActivityDate());
-			preparedStatement.setInt(4, bean.getStartTime());
-			preparedStatement.setInt(5, bean.getFinishTime());
-			preparedStatement.setFloat(6, bean.getHours());
-			preparedStatement.setString(7, bean.getState());
-			preparedStatement.setString(8, bean.getDetails());
-			preparedStatement.setString(9, bean.getTutor());
-			preparedStatement.setInt(10, bean.getRegisterId());
+			preparedStatement.setString(1, bean.getCategory());
+			preparedStatement.setDate(2, bean.getActivityDate());
+			preparedStatement.setInt(3, bean.getStartTime());
+			preparedStatement.setInt(4, bean.getFinishTime());
+			preparedStatement.setFloat(5, bean.getHours());
+			preparedStatement.setString(6, bean.getState());
+			preparedStatement.setString(7, bean.getDetails());
+			preparedStatement.setString(8, bean.getTutor());
+			preparedStatement.setInt(9, bean.getRegisterId());
 			
 			System.out.println("ActivityTutor doSave: "+ preparedStatement.toString());
 			
@@ -95,36 +94,7 @@ public class ActivityTutorDAO  {
 		}	
 	}
 	
-	
-	public synchronized void doValidate(ActivityTutorBean bean) throws SQLException {		
-		Connection connection = DBConnection.getInstance().getConn();
-		PreparedStatement preparedStatement = null;
 		
-		String updateSql = "UPDATE ACTIVITY_TUTOR SET State=? WHERE IdActivity = ?";
-		
-		try {
-			connection.setAutoCommit(false);
-			preparedStatement = connection.prepareStatement(updateSql);
-	
-			preparedStatement.setString(1, "Convalidata");
-			preparedStatement.setInt(2, bean.getIdActivity());
-			
-			System.out.println("ActivityTutor doValidate: " + preparedStatement.toString());
-			preparedStatement.executeUpdate();
-			
-			connection.commit();
-		}
-		finally {
-			try {
-				if(preparedStatement!=null)
-					preparedStatement.close();
-			} finally {
-				connection.close();
-			}
-		}		
-	}
-	
-	
 	public synchronized void doModify(ActivityTutorBean bean) throws SQLException {		
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
