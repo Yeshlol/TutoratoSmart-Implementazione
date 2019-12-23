@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import project.Control.DBConnection;
 import project.Utils.Utils;
 
-public class UserDAO  {		
+public class UserDAO  {
+
 	public UserDAO() {
 		super();
 	}
 
-	
 	public UserBean doRetrieveByMail(String mail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;

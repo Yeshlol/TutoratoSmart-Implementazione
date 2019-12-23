@@ -69,7 +69,7 @@ public class TutorDAO  {
 		PreparedStatement preparedStatement = null;
 		
 		String insertSql = "INSERT INTO TS_USER(Email,Pwd,FirstName,LastName,TelephoneNumber,Sex,RegistrationNumber) VALUES (?,?,?,?,?,?,?)";
-		String insertSql2 = "INSERT INTO TUTOR (Email,State,StartDate,CommissionMember,RegisterId) VALUES (?,?,?,?,?,?)";
+		String insertSql2 = "INSERT INTO TUTOR (Email,State,StartDate,CommissionMember,RegisterId) VALUES (?,?,?,?,?)";
 		
 		try {
 			connection.setAutoCommit(false);
