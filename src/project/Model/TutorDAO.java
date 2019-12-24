@@ -52,12 +52,8 @@ public class TutorDAO  {
 			System.out.println("Email non trovata!");
 			return null;
 		} finally {
-			try {
-				if(preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}
 		return bean;
 	}
@@ -99,12 +95,8 @@ public class TutorDAO  {
 			
 			connection.commit();
 		} finally {
-			try {
-				if(preparedStatement != null)
-					preparedStatement.close();				
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}	
 	}
 	
@@ -146,13 +138,8 @@ public class TutorDAO  {
 				list.add(bean);
 			}			
 		} finally {
-			try {
-				if(preparedStatement!=null)
-					preparedStatement.close();
-				}
-			finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}
 		return list;
 	}
@@ -193,13 +180,8 @@ public class TutorDAO  {
 				list.add(bean);
 			}			
 		} finally {
-			try {
-				if(preparedStatement!=null)
-					preparedStatement.close();
-				}
-			finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}
 		return list;
 	}

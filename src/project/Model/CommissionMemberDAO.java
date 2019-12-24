@@ -43,12 +43,8 @@ public class CommissionMemberDAO  {
 			System.out.println("Email non trovata!");
 			return null;
 		} finally {
-			try {
-				if(preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}
 		return bean;
 	}

@@ -41,15 +41,12 @@ public class UserDAO  {
 				System.out.println("Utente Trovato con la email!");
 			}
 		} catch (SQLException e) {
+			System.out.println(e.toString());
 			System.out.println("Email non trovata!");
 			return null;
 		} finally {
-			try {
-				if(preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}
 		return bean;
 	}
@@ -77,12 +74,8 @@ public class UserDAO  {
 			
 			connection.commit();
 		} finally {
-			try {
-				if(preparedStatement != null)
-					preparedStatement.close();				
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}	
 	}
 }

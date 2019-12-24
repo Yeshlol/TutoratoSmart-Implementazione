@@ -25,9 +25,8 @@ public class LoginServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String email = request.getParameter("Email");
-		String pwd = request.getParameter("pwd");
+		String email = request.getParameter("email");
+		String pwd = request.getParameter("password");
 
 		UserDAO userDAO = new UserDAO();
 		UserBean user = null;
@@ -40,12 +39,12 @@ public class LoginServlet extends HttpServlet {
 					pwd = Utils.sha256(pwd);
 					if (pwd.equals(user.getPwd())) {
 						session.setAttribute("user", user);
-					}else {
+					} else {
 						session.setAttribute("user", null);
 						response.sendRedirect("refuseLogin.jsp");
 						return;
 					}
-				}else {
+				} else {
 					session.setAttribute("user", null);
 					response.sendRedirect("refuseLogin.jsp");
 					return;
@@ -54,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 				return;
 			}
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Index");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 	}
 }

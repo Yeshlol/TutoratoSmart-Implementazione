@@ -43,13 +43,8 @@ public class ManagesDAO {
 					list.add(bean);
 				}	
 			} finally {
-				try {
-					if(preparedStatement!=null)
-						preparedStatement.close();
-					}
-				finally {
-					connection.close();
-				}
+				if(preparedStatement != null)
+					preparedStatement.close();
 			}
 		}
 		return list;
@@ -73,13 +68,9 @@ public class ManagesDAO {
 			preparedStatement.executeUpdate();
 			
 			connection.commit();
-		}finally {
-			try {
-				if(preparedStatement!=null)
-					preparedStatement.close();
-			}finally {
-				connection.close();
-			}
+		} finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}		
 	}
 	
@@ -104,13 +95,8 @@ public class ManagesDAO {
 			
 			connection.commit();
 		} finally {
-			try {
-				if(preparedStatement!=null) {
-					preparedStatement.close();
-				}
-			}finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}
 		return (result!=0);
 	}	

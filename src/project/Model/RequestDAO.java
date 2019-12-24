@@ -45,12 +45,8 @@ public class RequestDAO  {
 			System.out.println("Id non trovato!");
 			return null;
 		} finally {
-			try {
-				if(preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}
 		return bean;
 	}
@@ -79,12 +75,8 @@ public class RequestDAO  {
 			
 			connection.commit();
 		} finally {
-			try {
-				if(preparedStatement != null)
-					preparedStatement.close();				
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}	
 	}
 		
@@ -110,12 +102,8 @@ public class RequestDAO  {
 			connection.commit();
 		}
 		finally {
-			try {
-				if(preparedStatement!=null)
-					preparedStatement.close();
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}		
 	}
 	
@@ -139,12 +127,8 @@ public class RequestDAO  {
 			connection.commit();
 		}
 		finally {
-			try {
-				if(preparedStatement!=null)
-					preparedStatement.close();
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}		
 	}
 
@@ -166,14 +150,10 @@ public class RequestDAO  {
 			connection.commit();
 		}
 		finally {
-			try {
-				if(preparedStatement!=null) {
-					preparedStatement.close();
-				}				
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}
+		
 		return (result!=0);		
 	}
 
@@ -210,14 +190,10 @@ public class RequestDAO  {
 				list.add(bean);
 			}			
 		} finally {
-			try {
-				if(preparedStatement!=null)
-					preparedStatement.close();
-				}
-			finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}
+		
 		return list;
 	}
 }

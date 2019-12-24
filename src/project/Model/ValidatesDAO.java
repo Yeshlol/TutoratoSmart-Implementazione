@@ -46,13 +46,8 @@ public class ValidatesDAO {
 					list.add(bean);
 				}	
 			} finally {
-				try {
-					if(preparedStatement!=null)
-						preparedStatement.close();
-					}
-				finally {
-					connection.close();
-				}
+				if(preparedStatement != null)
+					preparedStatement.close();
 			}
 		}
 		return list;
@@ -86,13 +81,9 @@ public class ValidatesDAO {
 			preparedStatement.executeUpdate();
 			
 			connection.commit();
-		}finally {
-			try {
-				if(preparedStatement!=null)
-					preparedStatement.close();
-			}finally {
-				connection.close();
-			}
+		} finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}		
 	}
 }

@@ -48,12 +48,8 @@ public class StudentDAO  {
 			System.out.println("Email non trovata!");
 			return null;
 		} finally {
-			try {
-				if(preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}
 		return bean;
 	}
@@ -92,12 +88,8 @@ public class StudentDAO  {
 			
 			connection.commit();
 		} finally {
-			try {
-				if(preparedStatement != null)
-					preparedStatement.close();				
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}	
 	}
 	
@@ -136,14 +128,10 @@ public class StudentDAO  {
 				list.add(sbean);
 			}			
 		} finally {
-			try {
-				if(preparedStatement!=null)
-					preparedStatement.close();
-				}
-			finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}
+		
 		return list;
 	}
 }

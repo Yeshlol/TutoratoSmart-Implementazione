@@ -41,12 +41,8 @@ public class RegisterDAO  {
 			System.out.println("Id non trovato!");
 			return null;
 		} finally {
-			try {
-				if(preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}
 		return bean;
 	}
@@ -70,12 +66,8 @@ public class RegisterDAO  {
 			
 			connection.commit();
 		} finally {
-			try {
-				if(preparedStatement != null)
-					preparedStatement.close();				
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}	
 	}
 		
@@ -101,12 +93,8 @@ public class RegisterDAO  {
 			connection.commit();
 		}
 		finally {
-			try {
-				if(preparedStatement!=null)
-					preparedStatement.close();
-			} finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}		
 	}
 }

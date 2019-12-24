@@ -40,13 +40,8 @@ public class ContainedInDAO {
 					list.add(bean);
 				}	
 			} finally {
-				try {
-					if(preparedStatement!=null)
-						preparedStatement.close();
-					}
-				finally {
-					connection.close();
-				}
+				if(preparedStatement != null)
+					preparedStatement.close();
 			}
 		}
 		return list;
@@ -71,12 +66,8 @@ public class ContainedInDAO {
 			
 			connection.commit();
 		}finally {
-			try {
-				if(preparedStatement!=null)
-					preparedStatement.close();
-			}finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();
 		}		
 	}
 	
@@ -101,14 +92,10 @@ public class ContainedInDAO {
 			
 			connection.commit();
 		} finally {
-			try {
-				if(preparedStatement!=null) {
-					preparedStatement.close();
-				}
-			}finally {
-				connection.close();
-			}
+			if(preparedStatement != null)
+				preparedStatement.close();connection.close();
 		}
+		
 		return (result!=0);		
 	}	
 }

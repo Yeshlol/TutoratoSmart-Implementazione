@@ -24,7 +24,7 @@
 		<div id="loginFormPage">
 			<h2><%= (msg!=null && !msg.equals("")) ? msg : "Login" %></h2>
 			<form method="POST" action="<%= response.encodeURL("LoginServlet") %>">
-				<input id="email" type="email" name="email" placeholder="Email" maxlength="15"><br>
+				<input id="email" type="email" name="email" placeholder="Email" maxlength="45" size="30"><br>
 				<input id="password" type="password" name="password" placeholder="Password" maxlength="10">
 				<input id="login" type="submit" name="login" value="Login">			
 			</form>
