@@ -5,26 +5,27 @@ import java.io.Serializable;
 public class WorkDayBean implements Serializable {
 	private static final long serialVersionUID = -5695700794138372876L;
 	
-	private int idWorkDay, startTime, finishTime;
+	private int calendarId, startTime, finishTime;
 	private boolean isOpen;
-	private String workDayName, commissionMember;
+	private String workDayName;
 	
 	public WorkDayBean() {
-		idWorkDay = -1;
+		calendarId = -1;
 		startTime = -1;
 		finishTime = -1;
 		isOpen = false;
 		workDayName = "";
-		commissionMember = "";
 	}
 
-	public int getIdWorkDay() {
-		return idWorkDay;
+
+	public int getCalendarId() {
+		return calendarId;
 	}
 
-	public void setIdWorkDay(int idWorkDay) {
-		this.idWorkDay = idWorkDay;
+	public void setCalendarId(int calendarId) {
+		this.calendarId = calendarId;
 	}
+
 
 	public int getStartTime() {
 		return startTime;
@@ -57,19 +58,11 @@ public class WorkDayBean implements Serializable {
 	public void setWorkDayName(String workDayName) {
 		this.workDayName = workDayName;
 	}
-
-	public String getCommissionMember() {
-		return commissionMember;
-	}
-
-	public void setCommissionMember(String commissionMember) {
-		this.commissionMember = commissionMember;
-	}
 	
 	
 	@Override
 	public String toString() {
-		return "Giorno lavorativo n° " + idWorkDay + ", " + workDayName + ", orario inizio: " + 
+		return "Calendario numero " + calendarId + ", " + workDayName + ", orario inizio: " + 
 			startTime/60 + ":" + startTime%60 + ", orario termine: " + finishTime/60 + ":" + finishTime%60 + 
 			", " + isOpen + "\n";
 	}

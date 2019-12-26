@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
  <% 
@@ -17,7 +17,7 @@
 </head>
 
 <body>
-
+	<%@ include file="header.jsp" %>
 
 	<div id="content">
 	
@@ -31,6 +31,12 @@
 		</div>		
 	
 	</div>
-
+	
+	<%@ include file="footer.jsp" %>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="<%= request.getContextPath() %>/js/loginScript.js"></script>
+	<script src="<%= request.getContextPath() %>/js/validationScript.js"></script>
+	
 </body>
 </html>

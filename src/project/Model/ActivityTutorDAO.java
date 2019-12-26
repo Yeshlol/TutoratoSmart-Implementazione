@@ -104,7 +104,7 @@ public class ActivityTutorDAO  {
 			preparedStatement.setString(5, bean.getDetails());
 			preparedStatement.setInt(6, bean.getIdActivity());
 			
-			System.out.println("ActivityTutor doUpdate: " + preparedStatement.toString());
+			System.out.println("ActivityTutor doModify: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 			
 			connection.commit();

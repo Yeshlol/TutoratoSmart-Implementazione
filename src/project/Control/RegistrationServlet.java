@@ -14,11 +14,11 @@ import project.Model.StudentBean;
 import project.Model.StudentDAO;
 
 
-@WebServlet("/RegisterStudent")
-public class RegisterStudentServlet extends HttpServlet {
+@WebServlet("/Registration")
+public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public RegisterStudentServlet() {
+	public RegistrationServlet() {
         super();
     }
 	
