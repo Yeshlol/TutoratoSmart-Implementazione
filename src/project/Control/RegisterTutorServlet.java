@@ -34,17 +34,16 @@ public class RegisterTutorServlet extends HttpServlet {
 		TutorDAO tutorDAO = new TutorDAO();
 			
 		String email = request.getParameter("Email");					// Dati Tutor
-		String pwd = request.getParameter("Pwd");
+		String pwd = request.getParameter("Password");
 		String firstname = request.getParameter("FirstName");
 		String lastname = request.getParameter("LastName");
 		String telephoneNumber = request.getParameter("TelephoneNumber");
 		String sex = request.getParameter("Sex");
 		String registrationNumber = request.getParameter("RegistrationNumber");
-		String state = request.getParameter("State");
+		
+		
 		String startDate = request.getParameter("StartDate");
-		String finishDate = request.getParameter("FinishDate");
-		String commissionMember = request.getParameter("CommissionMember");
-		String registerId = request.getParameter("RegisterId");
+		int totalHours = Integer.parseInt(request.getParameter("TotalHours"));
 		
 		
 		TutorBean tutor = new TutorBean();
@@ -56,25 +55,17 @@ public class RegisterTutorServlet extends HttpServlet {
 		tutor.setTelephoneNumber(telephoneNumber);
 		tutor.setSex(sex);
 		tutor.setRegistrationNumber(registrationNumber);
-		tutor.setState(state);
+		
 		tutor.setStartDate(Date.valueOf(startDate));
-		tutor.setFinishDate(Date.valueOf(finishDate));
-		tutor.setCommissionMember(commissionMember);
-		tutor.setRegisterId(Integer.parseInt(registerId));
-		
-	/*	String role = request.getParameter("role");
-		if (role!= null && !role.equals("")) {
-			user.setRole(role);
-		}
-		*/
-		
+		tutor.setCommissionMember("d.molinaro@commissione.unicampania.it");
+				
 		try {
-			tutorDAO.doSave(tutor);
+			tutorDAO.doSave(tutor, totalHours);
 		} catch (SQLException e) {
-			response.sendRedirect("registerTutor.jsp");			// Errore nel salvare il nuovo utente
+			response.sendRedirect("registerTutor.jsp");			// Errore nel salvare il nuovo tutor
 			return;
 		}	
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Index");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 	}
 }

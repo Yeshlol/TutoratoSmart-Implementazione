@@ -60,15 +60,18 @@ public class TutorDAO  {
 	
 	
 	@SuppressWarnings("resource")
-	public synchronized void doSave(TutorBean bean) throws SQLException {
+	public synchronized void doSave(TutorBean bean, int totalHours) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
+		RegisterDAO registerDAO = new RegisterDAO();
+		
 		String insertSql = "INSERT INTO TS_USER(Email,Pwd,FirstName,LastName,TelephoneNumber,Sex,RegistrationNumber) VALUES (?,?,?,?,?,?,?)";
-		String insertSql2 = "INSERT INTO TUTOR (Email,State,StartDate,CommissionMember,RegisterId) VALUES (?,?,?,?,?)";
+		String insertSql2 = "INSERT INTO TUTOR (Email,StartDate,CommissionMember,RegisterId) VALUES (?,?,?,?)";
 		
 		try {
 			connection.setAutoCommit(false);
+						
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, bean.getEmail());
 			preparedStatement.setString(2, Utils.sha256(bean.getPwd()));
@@ -82,13 +85,14 @@ public class TutorDAO  {
 			
 			preparedStatement.executeUpdate();
 			
-			preparedStatement = connection.prepareStatement(insertSql2);
-			preparedStatement.setString(1, bean.getEmail());
-			preparedStatement.setString(2, bean.getState());			
-			preparedStatement.setDate(3, bean.getStartDate());
-			preparedStatement.setString(4, bean.getCommissionMember());
-			preparedStatement.setInt(5, bean.getRegisterId());
+			int idRegister = registerDAO.doSave(totalHours);
 			
+			preparedStatement = connection.prepareStatement(insertSql2);
+			preparedStatement.setString(1, bean.getEmail());			
+			preparedStatement.setDate(2, bean.getStartDate());
+			preparedStatement.setString(3, bean.getCommissionMember());
+			preparedStatement.setInt(4, idRegister);
+						
 			System.out.println("Tutor doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();

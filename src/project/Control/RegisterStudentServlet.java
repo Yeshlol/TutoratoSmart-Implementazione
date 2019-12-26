@@ -30,8 +30,8 @@ public class RegisterStudentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudentDAO studentDAO = new StudentDAO();
 		
-		String email = request.getParameter("Email");					// Dati Tutor
-		String pwd = request.getParameter("Pwd");
+		String email = request.getParameter("Email");					// Dati Studente
+		String pwd = request.getParameter("Password");
 		String firstname = request.getParameter("FirstName");
 		String lastname = request.getParameter("LastName");
 		String telephoneNumber = request.getParameter("TelephoneNumber");
@@ -49,20 +49,14 @@ public class RegisterStudentServlet extends HttpServlet {
 		student.setSex(sex);
 		student.setRegistrationNumber(registrationNumber);
 		student.setAcademicYear(Integer.parseInt(academicYear));
-		
-	/*	String role = request.getParameter("role");
-		if (role!= null && !role.equals("")) {
-			user.setRole(role);
-		}
-		*/
-		
+			
 		try {
 			studentDAO.doSave(student);
 		} catch (SQLException e) {
-			response.sendRedirect("registerStudent.jsp");			// Errore nel salvare il nuovo utente
+			response.sendRedirect("registerStudent.jsp");			// Errore nel salvare il nuovo studente
 			return;
 		}	
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Index");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 	}
 }

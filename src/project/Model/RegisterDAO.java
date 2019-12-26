@@ -48,27 +48,40 @@ public class RegisterDAO  {
 	}
 	
 	
-	public synchronized void doSave(RegisterBean bean) throws SQLException {
+	@SuppressWarnings("resource")
+	public synchronized int doSave(int totalHours) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
-		String insertSql = "INSERT INTO REGISTER(TotalHours)"
-						 + " VALUES (?)";
+		int idRegister = -1;
+		
+		String insertSql = "INSERT INTO REGISTER(TotalHours) VALUES (?)";
+		
+		String selectSql = "SELECT MAX(IdRegister) AS IdRegister FROM REGISTER";
 		
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
-			preparedStatement.setInt(1, bean.getTotalHours());
+			preparedStatement.setInt(1, totalHours);
 			
 			System.out.println("Register doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			
+			preparedStatement = connection.prepareStatement(selectSql);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				idRegister = rs.getInt("IdRegister");
+			}
+			
 			connection.commit();
 		} finally {
 			if(preparedStatement != null)
 				preparedStatement.close();
-		}	
+		}
+		
+		return idRegister;
 	}
 		
 	
