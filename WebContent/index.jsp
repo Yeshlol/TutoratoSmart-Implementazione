@@ -6,18 +6,18 @@
 <html>
 	
 <head>
-	<meta charset="UTF-8">
-	<title>Home Page</title>
+	<title>TutoratoSmart</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/csspage.css">
 </head>
 
 <body>
-	<div id="content">	
-
-		<div id="carouselSlideshow">
-			<img class="slides" id="logo"  src="img/LogoTutoratoSmart.png">	
-		</div>	
-		
-		<h1> Benvenuti in TutoratoSmart!</h1>			
-	</div>				
+<%@ include file="header.jsp" %>
+<%@ include file="content.jsp" %>
+<%@ include file="footer.jsp" %>			
 </body>
 </html>
