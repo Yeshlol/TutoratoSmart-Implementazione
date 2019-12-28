@@ -111,7 +111,7 @@ public class TutorDAO  {
 		
 		Collection<TutorBean> list = new LinkedList<TutorBean>();
 		
-		String selectSql = "SELECT SQL_NO_CACHE * FROM TUTOR WHERE FinishDate >= ? AND FinishDate <= ?";
+		String selectSql = "SELECT DISTINCT SQL_NO_CACHE * FROM TUTOR,TS_USER WHERE TUTOR.Email = TS_USER.Email && FinishDate >= ? AND FinishDate <= ?";
 		
 		if(order!=null && !order.equals("")) {
 			selectSql +=" ORDER BY " + order;
