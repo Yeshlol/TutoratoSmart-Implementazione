@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!-- Footer -->
 <link rel="stylesheet" href="css/csspage.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,7 +24,7 @@
       
       <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
       
-      <a href="index.jsp"><h4 style="color:white; padding-top:30px; padding-left:20px;">Università degli studi della Campania Luigi Vanvitelli.</h4></a>
+      <a href="index.jsp"><h4 style="color:white; padding-top:30px; padding-left:20px;">Universitï¿½ degli studi della Campania Luigi Vanvitelli.</h4></a>
       </div>
       
       <div class="col-md-2 col-lg-2 text-center mx-auto my-4" style="margin-left:450px;">
@@ -39,7 +42,7 @@
       
       </div>
       </div>
-  <div class="footer-copyright text-center py-3" style="color:white">© 2019 Copyright:
+  <div class="footer-copyright text-center py-3" style="color:white">2019 Copyright:
     <a href="index.jsp"> TutoratoSmart.com</a>
   </div>
   <!-- Copyright -->

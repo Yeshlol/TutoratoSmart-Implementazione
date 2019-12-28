@@ -7,16 +7,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Credenziali non Valide</title>
-    <!-- 	<link rel="stylesheet" href="css/layoutHome.css"> -->
+    
 </head>
 
 <body>
-	<!--   <%@ include file="header.jsp" %> -->
+	<%@ include file="/partials/header.jsp" %>
 	
 	<div id="content">
 		<h1>Credenziali NON valide! Torna alla homepage per riprovare!</h1>
 	</div>
 	
-	<!--  <%@ include file="footer.jsp" %> -->
+	<%@ include file="/partials/footer.jsp" %>
 </body>
 </html>

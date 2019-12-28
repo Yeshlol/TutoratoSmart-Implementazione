@@ -27,7 +27,9 @@ $("#loginFormPage form").submit(function(event){
 	
 	if(!validateEmail($("#loginFormPage #email"))){
 		valid = false;
-		errormsg+="\n-Formato email non valido";
+		$(".errorEmail").fadeIn(2000, function() {
+			$(".errorEmail").fadeOut(2000)
+		  })
 	}
 
 	if(!validatePassword($("#loginFormPage #password"))){
@@ -38,7 +40,6 @@ $("#loginFormPage form").submit(function(event){
 	if(valid)
 		$("#loginFormPage form").submit();
 	else{
-		alert(errormsg);
 		event.preventDefault();
 	}
 });

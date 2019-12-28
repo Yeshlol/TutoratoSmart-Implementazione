@@ -15,7 +15,7 @@ import project.Model.TutorBean;
 import project.Model.TutorDAO;
 
 
-@WebServlet("/Registration2")
+@WebServlet("/RegisterTutor")
 public class RegisterTutorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
