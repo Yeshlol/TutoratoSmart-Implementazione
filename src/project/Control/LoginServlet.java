@@ -38,22 +38,21 @@ public class LoginServlet extends HttpServlet {
 				if (user != null ) {
 					pwd = Utils.sha256(pwd);
 					if (pwd.equals(user.getPwd())) {
-						session.setAttribute("user", user);
-					} else {
-						session.setAttribute("user", null);
-						response.sendRedirect("refuseLogin.jsp");
-						return;
+						session.setAttribute("user", user);						
+					}
+					else {
+						session.setAttribute("user",null);
 					}
 				} else {
 					session.setAttribute("user", null);
-					response.sendRedirect("refuseLogin.jsp");
+					//response.sendRedirect("refuseLogin.jsp");
 					return;
 				}
 			} catch (SQLException e) {
 				return;
 			}
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/HomePage.jsp");
 		dispatcher.forward(request, response);
 	}
 }
