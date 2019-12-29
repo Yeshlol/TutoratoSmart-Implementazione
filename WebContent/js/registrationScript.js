@@ -1,40 +1,25 @@
-$(document).ready(function(){
-	$("#Email").trigger('keyup');
-});
-
-
-$("#Email").on('keyup',function(){
-	 if ($(this).val() == "" ){
-		 $(this).css("border","0");
-		 $("#mailLabel").html('');
-	}else
-	$.post("/TutoratoSmart/RegistrationServlet",{ 
+$("#Email").on('keyup', function() {
+	$.post("/TutoratoSmart/Registration",{ 
 		"mail":$(this).val(),
 		"ajax":"true"
-		  },
-		  function(data){
-			  var color;
+		},
+		function(data){			  
+			var color;
 			  
-			  if( validateEmail($("#mail"))&& data.disponibile ){
-				  color = "1px solid green";
-				  $("#mailLabel").html('Email non registrata').css("color","green");
-			  }
-			  else{
-				  $("#mailLabel").html('');
-				 color = "1px solid red";
-				 if(!data.disponibile)
-					 $("#mailLabel").html('Email già registrata').css("color","red");
-			  }			 
-			 
-			$("#mail").css("border",color);
+			if (validateEmail($("#Email")) && data.disponibile)
+				color = "1px solid green"; 
+			else
+				color = "1px solid red";
+						 
+			$("#Email").css("border",color);
 			emailDisp = data.disponibile;
-		  });
+		});
 });
 
 
 $("#Password").on('keyup',function(){
 	var color;
-	if( validatePassword($(this)))
+	if (validatePassword($(this)))
 		color = "1px solid green";
 	else
 		color = "1px solid red";
@@ -46,9 +31,23 @@ $("#Password").on('keyup',function(){
 });
 
 
-$("#FirstName").on(' keyup  ',function(){
+$("#VerifyPassword").on('keyup',function(){
 	var color;
-	if( validateName($(this)))
+	if (validatePassword($(this)) && checkPasswords($(this), $("#Password")))
+		color = "1px solid green";
+	else
+		color = "1px solid red";
+	
+	if ($(this).val() == "")
+		color = "0";
+	
+	$(this).css("border",color);
+});
+
+
+$("#FirstName").on('keyup',function(){
+	var color;
+	if (validateFirstName($(this)))
 		color = "1px solid green";
 	else
 		color = "1px solid red";
@@ -59,14 +58,14 @@ $("#FirstName").on(' keyup  ',function(){
 	$(this).css("border",color);
 });
 
-$("#LastName").on(' keyup  ',function(){
+$("#LastName").on('keyup ',function(){
 	var color;
-	if( validateSurname($(this)))
+	if (validateLastName($(this)))
 		color = "1px solid green";
 	else
 		color = "1px solid red";
 	
-	if ( $(this).val() == "")
+	if ($(this).val() == "")
 		color = "0";
 	
 	$(this).css("border",color);
@@ -75,12 +74,12 @@ $("#LastName").on(' keyup  ',function(){
 
 $("#TelephoneNumber").on('keyup',function(){
 	var color;
-	if( validatePhoneNumber($(this)))
+	if (validateTelephoneNumber($(this)))
 		color = "1px solid green";
 	else
 		color = "1px solid red";
 	
-	if ( $(this).val() == "")
+	if ($(this).val() == "")
 		color = "0";
 	
 	$(this).css("border",color);
@@ -89,13 +88,106 @@ $("#TelephoneNumber").on('keyup',function(){
 
 $("#RegistrationNumber").on('keyup',function(){
 	var color;
-	if( validateRegistrationNumber($(this)))
+	if (validateRegistrationNumber($(this)))
 		color = "1px solid green";
 	else
 		color = "1px solid red";
 	
-	if ( $(this).val() == "")
+	if ($(this).val() == "")
 		color = "0";
 	
 	$(this).css("border",color);
 });
+
+
+//Validazione Dati Registrazione
+function validateInputs(){
+	$("#errorDiv").html("");
+	
+	var valid = true;
+	var errorMessage = "";
+	
+	var email = $("#Email");
+	var password = $("#Password");
+	var verifyPassword = $("#VerifyPassword");
+	var firstName = $("#FirstName");
+	var lastName = $("#LastName");
+	var telephoneNumber = $("#TelephoneNumber");
+	var registrationNumber = $("#RegistrationNumber");
+	
+	if (email.val() == '') {
+		errorMessage += "<strong>Inserire l'indirizzo email</strong><br/>"
+		valid = false;
+	}
+	if (password.val() == '') {
+		errorMessage += "<strong>Inserire la password</strong><br/>"
+		valid = false;
+	}
+	if (verifyPassword.val() == '') {
+		errorMessage += "<strong>Confermare la password</strong><br/>"
+		valid = false;
+	}
+	if (firstName.val() == '') {
+		errorMessage += "<strong>Inserire il nome</strong><br/>"
+		valid = false;
+	}
+	if (lastName.val() == '') {
+		errorMessage += "<strong>Inserire il cognome</strong><br/>"
+		valid = false;
+	}
+	if (telephoneNumber.val() == '') {
+		errorMessage += "<strong>Inserire il numero di telefono</strong><br/>"
+		valid = false;
+	}
+	if (registrationNumber.val() == '') {
+		errorMessage += "<strong>Inserire la matricola</strong><br/>"
+		valid = false;
+	}
+	
+	if (email.val() != '' && !validateEmail(email)){
+		errorMessage += "<strong>Errore!</strong> Formato email non valido! (<i>Es: mariorossi@studenti.unicampania.it</i>)<br/>";
+		valid = false;
+	}
+	if (email.val() != '' && !emailDisp) {
+		errorMessage += "<strong>Errore!</strong> <i>Email già registrata!</i><br/>";	
+		valid = false;
+	}
+	if (password.val() != '' && !validatePassword(password)){
+		errorMessage += "<strong>Errore!</strong> La password non rispetta il formato! (<i>Lunghezza minima 8 caratteri, almeno un numero</i>)<br/>";
+		valid = false;
+	}
+	if (verifyPassword.val() != '' && !validatePassword(verifyPassword)){
+		errorMessage += "<strong>Errore!</strong> La password di conferma non rispetta il formato! (<i>Lunghezza minima 8 caratteri, almeno un numero</i>)<br/>";
+		valid = false;
+	}
+	if (password.val() != '' && verifyPassword.val() != '' && !checkPasswords(password, verifyPassword)){
+		errorMessage += "<strong>Errore!</strong> <i>Le due password inserite non coincidono!</i><br/>";
+		valid = false;
+	}	
+	if (firstName.val() != '' && !validateFirstName(firstName)){
+		errorMessage += "<strong>Errore!</strong> Nome non consentito! (<i>2-30 caratteri con iniziale maiuscola</i>)<br/>";
+		valid = false;
+	}
+	if (lastName.val() != '' && !validateLastName(lastName)){
+		errorMessage += "<strong>Errore!</strong> Cognome non consentito! (<i>2-30 caratteri con iniziale maiuscola</i>)<br/>";
+		valid = false;
+	}	
+	if (telephoneNumber.val() != '' && !validateTelephoneNumber(telephoneNumber)) {
+		errorMessage += "\n<strong>Errore!</strong> Il numero di telefono non rispetta il formato! (<i>Es: 3332211000</i>)<br/>";
+		valid = false;
+	}		
+	if (registrationNumber.val() != '' && !validateRegistrationNumber(registrationNumber)) {
+		errorMessage += "\n<strong>Errore!</strong> Il numero di matricola non rispetta il formato! (<i>Es: 0512102493</i>)<br/>";
+		valid = false;
+	}
+	
+	if (valid) {
+		$("#registerForm form").submit();
+	}	
+	else {
+		$("#errorDiv").append(errorMessage);
+		$("#errorDiv").fadeIn(500, function() {
+			$("#errorDiv").fadeOut(5000)
+		})
+	}
+}

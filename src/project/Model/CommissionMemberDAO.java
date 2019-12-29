@@ -28,19 +28,27 @@ public class CommissionMemberDAO  {
 			System.out.println("CommissionMember doRetrieveByMail: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
-			while(rs.next()) {
-				bean.setEmail(rs.getString("Email"));
-				bean.setPwd(rs.getString("Pwd"));
-				bean.setFirstName(rs.getString("FirstName"));
-				bean.setLastName(rs.getString("LastName"));
-				bean.setTelephoneNumber(rs.getString("TelephoneNumber"));
-				bean.setSex(rs.getString("Sex"));
-				bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
-				
-				System.out.println("Membro della Commissione Trovato con la email!");
-			}
+			if (rs.wasNull()) {
+				System.out.println("Errore esecuzione query!");
+	        } else {
+	        	int count = rs.last() ? rs.getRow() : 0;
+	            if (count == 1) {
+	            	bean.setEmail(rs.getString("Email"));
+					bean.setPwd(rs.getString("Pwd"));
+					bean.setRole(rs.getInt("UserRole"));
+					bean.setFirstName(rs.getString("FirstName"));
+					bean.setLastName(rs.getString("LastName"));
+					bean.setTelephoneNumber(rs.getString("TelephoneNumber"));
+					bean.setSex(rs.getString("Sex"));
+					bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
+					
+					System.out.println("Membro della Commissione trovato con la email!");
+	            }
+	            else
+	            	System.out.println("Membro della Commissione non trovato!");
+	        }
 		} catch (SQLException e) {
-			System.out.println("Email non trovata!");
+			System.out.println("Eccezione SQL: " + e.getMessage());
 			return null;
 		} finally {
 			if(preparedStatement != null)

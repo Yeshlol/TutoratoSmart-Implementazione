@@ -27,14 +27,16 @@ $("#loginFormPage form").submit(function(event){
 	
 	if(!validateEmail($("#loginFormPage #email"))){
 		valid = false;
-		$(".errorEmail").fadeIn(2000, function() {
-			$(".errorEmail").fadeOut(2000)
-		  })
+		$("#errorEmail").fadeIn(500, function() {
+			$("#errorEmail").fadeOut(4000)
+		 })
 	}
 
 	if(!validatePassword($("#loginFormPage #password"))){
 		valid = false;
-		errormsg+="\n-Formato password non valido";
+		$("#errorPassword").fadeIn(500, function() {
+			$("#errorPassword").fadeOut(4000)
+		 })
 	}
 
 	if(valid)

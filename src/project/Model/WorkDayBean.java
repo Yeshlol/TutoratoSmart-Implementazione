@@ -62,7 +62,18 @@ public class WorkDayBean implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Calendario numero " + calendarId + ", " + workDayName + ", orario inizio: " + 
+		String italianDay = null;
+		
+		switch (workDayName) {
+		case("Monday"): italianDay = "Lunedì"; break;
+		case("Tuesday"): italianDay = "Martedì"; break;
+		case("Wednsday"): italianDay = "Mercoledì"; break;
+		case("Thursday"): italianDay = "Giovedì"; break;
+		case("Friday"): italianDay = "Venerdì"; break;
+		case("Saturday"): italianDay = "Sabato";
+		}
+		
+		return italianDay + ", orario inizio: " + 
 			startTime/60 + ":" + startTime%60 + ", orario termine: " + finishTime/60 + ":" + finishTime%60 + 
 			", " + isOpen + "\n";
 	}

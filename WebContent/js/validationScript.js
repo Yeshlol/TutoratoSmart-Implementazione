@@ -1,7 +1,3 @@
-var usernameDisp = false;
-var emailDisp = false;
-
-
 function upperCaseF(a){
     setTimeout(function(){
         a.value = a.value.toUpperCase();
@@ -14,42 +10,8 @@ function lowerCaseF(a){
     }, 1);
 }
 
-function validateAddress(address) {
-	var addressFormat = /^[A-Za-z\s\.]{2,95},\s[0-9]{1,4}\/*[a-zA-Z]*$/;
-	
-	if (address.val().match(addressFormat))
-		return true;
-	else
-		return false;	
-}
-
-function validateCap(cap) {
-	var capFormat = /^[0-9]{5}$/;
-	
-	if (cap.val().match(capFormat))
-		return true;
-	else
-		return false;
-}
-
-function validateCity(city) {
-	var cityFormat = /^[A-Za-z\s]{2,45}$/;
-	
-	if (city.val().match(cityFormat))
-		return true
-	else 		
-		return false;
-}
-
-function validateDateOfBirth(date) {
-	var born = new Date(date.val());
-	var now = new Date();    
-    var age = Math.floor((now.getTime() - born.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
-    
-    if (age < 18 || date.val()=="" )    	
-    	return false;
-    else 
-    	return true;
+function checkPasswords(password, verifyPassword){
+	return password.val() == verifyPassword.val();
 }
 
 function validateEmail(email) {
@@ -61,22 +23,22 @@ function validateEmail(email) {
 		return false;
 }
 
-function validateFiscalCode(fiscalCode) {
-	var fiscalCodeFormat = /^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i;
+function validateFirstName(firstName) {
+	var firstNameFormat = /^[A-Z]{1}[a-zA-Z\s]{2,30}$/;
 	
-	if (fiscalCode.val().match(fiscalCodeFormat))
-		return true;
-	else 
-		return false;	
-}
-
-function validateName(name) {
-	var nameFormat = /^[A-Z]{1}[a-zA-Z\s]{2,20}$/;
-	
-	if (name.val().match(nameFormat))
+	if (firstName.val().match(firstNameFormat))
 		return true;
 	else 	
 		return false;
+}
+
+function validateLastName(lastName) {
+	var lastNameFormat = /^[A-Z]{1}[a-zA-Z\s]{2,30}$/;
+	
+	if (lastName.val().match(lastNameFormat))
+		return true;
+	else 		
+		return false;	
 }
 
 function validatePassword(password) {
@@ -88,46 +50,20 @@ function validatePassword(password) {
 		return false;	
 }
 
-function validatePhoneNumber(phone) {
-	var phoneFormat = /^(\d{0}|\d{3,4}\/\d{7,8})$/;
+function validateRegistrationNumber(registrationNumber) {
+	var registrationNumberFormat = /^\d{10}$/;
+	
+	if (registrationNumber.val().match(registrationNumberFormat))
+		return true;
+	else	
+		return false;
+}
+
+function validateTelephoneNumber(phone) {
+	var phoneFormat = /^\d{9,10}$/;
 	
 	if (phone.val().match(phoneFormat))
 		return true;
-	else 
-		return false;	
-}
-
-function validateProvince(province) {
-	var provinceFormat = /^[A-Z]{2}$/;
-	
-	if (province.val().match(provinceFormat))
-		return true;
 	else	
-		return false;
-}
-
-function validateRegistrationNumber(province) {
-	var provinceFormat = /^\d{10}$/;
-	
-	if (province.val().match(provinceFormat))
-		return true;
-	else	
-		return false;
-}
-
-function validateSurname(surname) {
-	var surnameFormat = /^[A-Z]{1}[a-zA-Z\s]{2,20}$/;
-	
-	if (surname.val().match(surnameFormat))
-		return true;
-	else 		
-		return false;	
-}
-
-function validateUsername(username) {
-	var usernameFormat = /^\w{3,14}$/;
-	if (username.val().match(usernameFormat))
-		return true;
-	else
 		return false;
 }

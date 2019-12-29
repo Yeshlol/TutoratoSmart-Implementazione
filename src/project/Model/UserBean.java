@@ -6,10 +6,12 @@ public class UserBean implements Serializable {
 	private static final long serialVersionUID = 8664330832532346093L;
 		
 	protected String email, pwd, firstName, lastName, sex, telephoneNumber, registrationNumber;
+	protected int role;
 			
 	public UserBean() {
 		email = "";
 		pwd = "";
+		role = -1;
 		firstName = "";
 		lastName = "";
 		sex = "";
@@ -34,7 +36,16 @@ public class UserBean implements Serializable {
 	public void setPwd(String password) {
 		this.pwd = password;
 	}
-
+	
+	
+	public int getRole() {
+		return role;
+	}
+	
+	public void setRole(int role) {
+		this.role = role;
+	}
+	
 
 	public String getFirstName() {
 		return firstName;

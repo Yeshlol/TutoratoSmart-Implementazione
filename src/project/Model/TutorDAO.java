@@ -32,24 +32,30 @@ public class TutorDAO  {
 			System.out.println("Tutor doRetrieveByMail: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
-			while(rs.next()) {
-				bean.setEmail(rs.getString("Email"));
-				bean.setPwd(rs.getString("Pwd"));
-				bean.setFirstName(rs.getString("FirstName"));
-				bean.setLastName(rs.getString("LastName"));
-				bean.setTelephoneNumber(rs.getString("TelephoneNumber"));
-				bean.setSex(rs.getString("Sex"));
-				bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
-				bean.setState(rs.getString("State"));
-				bean.setStartDate(rs.getDate("StartDate"));
-				bean.setFinishDate(rs.getDate("FinishDate"));
-				bean.setCommissionMember(rs.getString("CommissionMember"));
-				bean.setRegisterId(rs.getInt("RegisterId"));
-				
-				System.out.println("Tutor Trovato con la email!");
-			}
+			if (rs.wasNull()) {
+				System.out.println("Errore esecuzione query!");
+	        } else {
+	        	int count = rs.last() ? rs.getRow() : 0;
+	            if (count == 1) {
+	            	bean.setEmail(rs.getString("Email"));
+					bean.setPwd(rs.getString("Pwd"));
+					bean.setRole(rs.getInt("UserRole"));
+					bean.setFirstName(rs.getString("FirstName"));
+					bean.setLastName(rs.getString("LastName"));
+					bean.setTelephoneNumber(rs.getString("TelephoneNumber"));
+					bean.setSex(rs.getString("Sex"));
+					bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
+					bean.setState(rs.getString("State"));
+					bean.setStartDate(rs.getDate("StartDate"));
+					bean.setFinishDate(rs.getDate("FinishDate"));
+					bean.setCommissionMember(rs.getString("CommissionMember"));
+					bean.setRegisterId(rs.getInt("RegisterId"));
+					
+					System.out.println("Tutor Trovato con la email!");
+	            }
+	        }
 		} catch (SQLException e) {
-			System.out.println("Email non trovata!");
+			System.out.println("Utente non trovato!");
 			return null;
 		} finally {
 			if(preparedStatement != null)

@@ -11,7 +11,8 @@
 		<div id="registraUserForm">
 			<form method="POST" action="<%= response.encodeURL("RegisterStudent") %>">
 				<div id="datiStudentDiv">
-					<h1>Registrazione Studente</h1>				
+					<h1>Registrazione Studente</h1>
+					<input type="hidden" name="flag" value="1">				
 					<label for="Email">Email: </label>
 					<input id="Email" type="email" name="Email" placeholder="Email" maxlength="45" onkeydown="lowerCaseF(this)" required>
 					<label id="Email" for="Email"></label><br>

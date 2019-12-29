@@ -32,20 +32,28 @@ public class StudentDAO  {
 			System.out.println("Student doRetrieveByMail: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
-			while(rs.next()) {
-				bean.setEmail(rs.getString("Email"));
-				bean.setPwd(rs.getString("Pwd"));
-				bean.setFirstName(rs.getString("FirstName"));
-				bean.setLastName(rs.getString("LastName"));
-				bean.setTelephoneNumber(rs.getString("TelephoneNumber"));
-				bean.setSex(rs.getString("Sex"));
-				bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
-				bean.setAcademicYear(rs.getInt("AcademicYear"));
-				
-				System.out.println("Studente Trovato con la email!");
-			}
+			if (rs.wasNull()) {
+				System.out.println("Errore esecuzione query!");
+	        } else {
+	        	int count = rs.last() ? rs.getRow() : 0;
+	            if (count == 1) {
+	            	bean.setEmail(rs.getString("Email"));
+					bean.setPwd(rs.getString("Pwd"));
+					bean.setRole(rs.getInt("UserRole"));
+					bean.setFirstName(rs.getString("FirstName"));
+					bean.setLastName(rs.getString("LastName"));
+					bean.setTelephoneNumber(rs.getString("TelephoneNumber"));
+					bean.setSex(rs.getString("Sex"));
+					bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
+					bean.setAcademicYear(rs.getInt("AcademicYear"));
+					
+					System.out.println("Studente trovato con la email!");
+	            }
+	            else
+	            	System.out.println("Studente non trovato!");
+	        }
 		} catch (SQLException e) {
-			System.out.println("Email non trovata!");
+			System.out.println("Eccezione SQL: " + e.getMessage());
 			return null;
 		} finally {
 			if(preparedStatement != null)
@@ -60,7 +68,7 @@ public class StudentDAO  {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
-		String insertSql = "INSERT INTO TS_USER(Email,Pwd,FirstName,LastName,TelephoneNumber,Sex,RegistrationNumber) VALUES (?,?,?,?,?,?,?)";
+		String insertSql = "INSERT INTO TS_USER(Email,Pwd,UserRole,FirstName,LastName,TelephoneNumber,Sex,RegistrationNumber) VALUES (?,?,?,?,?,?,?,?)";
 		String insertSql2 = "INSERT INTO STUDENT (Email,AcademicYear) VALUES (?,?)";
 		
 		try {
@@ -68,11 +76,12 @@ public class StudentDAO  {
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, bean.getEmail());
 			preparedStatement.setString(2, Utils.sha256(bean.getPwd()));
-			preparedStatement.setString(3, bean.getFirstName());
-			preparedStatement.setString(4, bean.getLastName());
-			preparedStatement.setString(5, bean.getTelephoneNumber());
-			preparedStatement.setString(6, bean.getSex());
-			preparedStatement.setString(7, bean.getRegistrationNumber());
+			preparedStatement.setInt(3, 3);
+			preparedStatement.setString(4, bean.getFirstName());
+			preparedStatement.setString(5, bean.getLastName());
+			preparedStatement.setString(6, bean.getTelephoneNumber());
+			preparedStatement.setString(7, bean.getSex());
+			preparedStatement.setString(8, bean.getRegistrationNumber());
 			
 			System.out.println("User doSave: "+ preparedStatement.toString());
 			
@@ -87,6 +96,8 @@ public class StudentDAO  {
 			preparedStatement.executeUpdate();
 			
 			connection.commit();
+		} catch (SQLException e) {
+			System.out.println("Errore durante la registrazione dello studente!");
 		} finally {
 			if(preparedStatement != null)
 				preparedStatement.close();
@@ -118,6 +129,7 @@ public class StudentDAO  {
 				StudentBean sbean = new StudentBean();
 				sbean.setEmail(rs.getString("Email"));
 				sbean.setPwd(rs.getString("Pwd"));
+				sbean.setRole(rs.getInt("UserRole"));
 				sbean.setFirstName(rs.getString("FirstName"));
 				sbean.setLastName(rs.getString("LastName"));
 				sbean.setTelephoneNumber(rs.getString("TelephoneNumber"));

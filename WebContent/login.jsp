@@ -28,14 +28,19 @@
 							<div id="loginFormPage">
 							    <form method="POST" action="<%= response.encodeURL("LoginServlet") %>">
 								    <div class="form-group">
-									<input class="form-control" id="email" type="email" name="email" placeholder="Email" maxlength="45" required>
+									<input class="form-control" id="email" type="email" name="email" placeholder="Email" maxlength="45" onkeydown="lowerCaseF(this)" required>
 									</div>
-									<div class="alert errorEmail" role="alert" style="display:none;background-color: red;">
+									<div class="alert alert-warning" id="errorEmail" role="alert" style="display:none;">
 										<strong>Errore!</strong> Formato email non valido! (<i>Es: mariorossi@studenti.unicampania.it</i>)
 									</div>
+									
 									<div class="form-group">
 									<input class="form-control" id="password" type="password" name="password" placeholder="Password" maxlength="10" required>
 									</div>
+									<div class="alert alert-warning" id="errorPassword" role="alert" style="display:none;">
+										<strong>Errore!</strong> Formato password non valido!
+									</div>
+									
 									<div class="form-group">
 									<input class="form-control" id="login" type="submit" name="login" value="Login">
 									</div>	

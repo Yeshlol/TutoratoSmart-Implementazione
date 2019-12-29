@@ -29,20 +29,27 @@ public class UserDAO  {
 			System.out.println("User doRetrieveByMail: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
-			while(rs.next()) {
-				bean.setEmail(rs.getString("Email"));
-				bean.setPwd(rs.getString("Pwd"));
-				bean.setFirstName(rs.getString("FirstName"));
-				bean.setLastName(rs.getString("LastName"));
-				bean.setTelephoneNumber(rs.getString("TelephoneNumber"));
-				bean.setSex(rs.getString("Sex"));
-				bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
-				
-				System.out.println("Utente Trovato con la email!");
-			}
+			if (rs.wasNull()) {
+				System.out.println("Errore esecuzione query!");
+	        } else {
+	        	int count = rs.last() ? rs.getRow() : 0;
+	            if (count == 1) {
+	            	bean.setEmail(rs.getString("Email"));
+					bean.setPwd(rs.getString("Pwd"));
+					bean.setRole(rs.getInt("UserRole"));
+					bean.setFirstName(rs.getString("FirstName"));
+					bean.setLastName(rs.getString("LastName"));
+					bean.setTelephoneNumber(rs.getString("TelephoneNumber"));
+					bean.setSex(rs.getString("Sex"));
+					bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
+										
+					System.out.println("Utente trovato con la email!");
+	            }
+	            else
+	            	System.out.println("Utente non trovato!");
+	        }
 		} catch (SQLException e) {
-			System.out.println(e.toString());
-			System.out.println("Email non trovata!");
+			System.out.println("Eccezione SQL: " + e.getMessage());
 			return null;
 		} finally {
 			if(preparedStatement != null)
@@ -56,17 +63,18 @@ public class UserDAO  {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
-		String insertSql = "INSERT INTO TS_USER(Email,Pwd,FirstName,LastName,TelephoneNumber,Sex,RegistrationNumber) VALUES (?,?,?,?,?,?,?)";
+		String insertSql = "INSERT INTO TS_USER(Email,Pwd,UserRole,FirstName,LastName,TelephoneNumber,Sex,RegistrationNumber) VALUES (?,?,?,?,?,?,?,?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, bean.getEmail());
 			preparedStatement.setString(2, Utils.sha256(bean.getPwd()));
-			preparedStatement.setString(3, bean.getFirstName());
-			preparedStatement.setString(4, bean.getLastName());
-			preparedStatement.setString(5, bean.getTelephoneNumber());
-			preparedStatement.setString(6, bean.getSex());
-			preparedStatement.setString(7, bean.getRegistrationNumber());
+			preparedStatement.setInt(3, bean.getRole());
+			preparedStatement.setString(4, bean.getFirstName());
+			preparedStatement.setString(5, bean.getLastName());
+			preparedStatement.setString(6, bean.getTelephoneNumber());
+			preparedStatement.setString(7, bean.getSex());
+			preparedStatement.setString(8, bean.getRegistrationNumber());
 			
 			System.out.println("User doSave: "+ preparedStatement.toString());
 			
