@@ -56,8 +56,7 @@
 	<%@ include file="/partials/footer.jsp" %>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-	<script src="<%= request.getContextPath() %>/js/loginScript.js"></script>
 	<script src="<%= request.getContextPath() %>/js/validationScript.js"></script>
-	
+	<script src="<%= request.getContextPath() %>/js/loginScript.js"></script>	
 </body>
 </html>

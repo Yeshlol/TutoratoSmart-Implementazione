@@ -35,24 +35,26 @@ public class LoginServlet extends HttpServlet {
 		synchronized (session) {
 			try {
 				user = userDAO.doRetrieveByMail(email);
-				if (user != null ) {
+				if (user != null) {
 					pwd = Utils.sha256(pwd);
 					if (pwd.equals(user.getPwd())) {
-						session.setAttribute("user", user);						
+						System.out.println("PASSWORD CORRETTA!!!");
+						session.setAttribute("user", user);					
 					}
 					else {
-						session.setAttribute("user",null);
+						System.out.println("PASSWORD NON CORRETTA!!!");
+						session.setAttribute("user", null);
+						response.sendRedirect(request.getContextPath() + "/login.jsp");
 					}
 				} else {
+					System.out.println("USER NON TROVATO!!!");
 					session.setAttribute("user", null);
-					//response.sendRedirect("refuseLogin.jsp");
-					return;
+					response.sendRedirect(request.getContextPath() + "/login.jsp");
 				}
 			} catch (SQLException e) {
-				return;
 			}
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/HomePage.jsp");
-		dispatcher.forward(request, response);
+		
+		response.sendRedirect(request.getContextPath() + "/home.jsp");
 	}
 }

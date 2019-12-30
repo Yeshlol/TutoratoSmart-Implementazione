@@ -45,8 +45,10 @@ public class UserDAO  {
 										
 					System.out.println("Utente trovato con la email!");
 	            }
-	            else
+	            else {
 	            	System.out.println("Utente non trovato!");
+	            	return null;
+	            }
 	        }
 		} catch (SQLException e) {
 			System.out.println("Eccezione SQL: " + e.getMessage());

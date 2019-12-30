@@ -24,7 +24,7 @@
       
       <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
       
-      <a href="index.jsp"><h4 style="color:white; padding-top:30px; padding-left:20px;">Universit� degli studi della Campania Luigi Vanvitelli.</h4></a>
+      <a href="index.jsp"><h4 style="color:white; padding-top:30px; padding-left:20px;">Universit&agrave degli studi della Campania Luigi Vanvitelli.</h4></a>
       </div>
       
       <div class="col-md-2 col-lg-2 text-center mx-auto my-4" style="margin-left:450px;">
