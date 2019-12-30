@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -20,7 +20,6 @@
 	   <div class="container text-center">
 	   </div>
 	</div>
-	 
 	<% UserBean user = (UserBean) session.getAttribute("user"); %>
 	          
 	<%if(user != null) { %>               
@@ -43,9 +42,14 @@
 			          <span class="icon-bar"></span>
 			          <span class="icon-bar"></span>                        
 			        </button>
-			        <a class="navbar-brand" style="font-weight:bold;">Ciao, <%= user.getFirstName() %></a>
+			        <a class="navbar-brand" style="font-weight:bold;">Ciao, <%= user.getFirstName() %></a>		        
 				</div>
 			</div>
+			 <div class="nav navbar-nav navbar-right">
+			 <form method="POST" action="<%= response.encodeURL("LogoutServlet") %>">
+				    <input type="submit" value="Logout" style="margin-right:30px; margin-top:8px;">
+        			</form>
+        	  </div>
 		</nav>	 
 	<%} else { %>
 		<nav class="navbar navbar-inverse" style="background:#232F3E;">
@@ -56,7 +60,8 @@
 			          <span class="icon-bar"></span>
 			          <span class="icon-bar"></span>                        
 			        </button>
-			        <a class="navbar-brand" style="font-weight:bold;" href="<%= response.encodeURL(request.getContextPath() + "/login.jsp") %>">Effettua l'accesso</a>
+			        <a class="navbar-brand" style="font-weight:bold;" href="<%= response.encodeURL(request.getContextPath() + "/login.jsp") %>">Benvenuto in TutoratoSmart!</a>
+				    
 				</div>
 			</div>
 		</nav>

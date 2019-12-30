@@ -15,9 +15,10 @@ function checkPasswords(password, verifyPassword){
 }
 
 function validateEmail(email) {
-	var mailFormat = /^\w+([\.-]?\w+)*@studenti.unicampania.it$/;
+	var mailFormat1 = /^\w+([\.-]?\w+)*@studenti.unicampania.it$/;
+	var mailFormat2 = /^\w+([\.-]?\w+)*@commissione.unicampania.it$/;
 	
-	if (email.val().match(mailFormat))
+	if (email.val().match(mailFormat1) || email.val().match(mailFormat2))
 		return true;
 	else 
 		return false;
