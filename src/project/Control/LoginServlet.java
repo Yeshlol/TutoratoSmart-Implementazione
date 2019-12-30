@@ -38,8 +38,8 @@ public class LoginServlet extends HttpServlet {
 				if (user != null) {
 					pwd = Utils.sha256(pwd);
 					if (pwd.equals(user.getPwd())) {
-						System.out.println("PASSWORD CORRETTA!!!");
-						session.setAttribute("user", user);					
+						session.setAttribute("user", user);
+						response.sendRedirect(request.getContextPath() + "/home.jsp");
 					}
 					else {
 						System.out.println("PASSWORD NON CORRETTA!!!");
@@ -52,9 +52,9 @@ public class LoginServlet extends HttpServlet {
 					response.sendRedirect(request.getContextPath() + "/login.jsp");
 				}
 			} catch (SQLException e) {
+				System.out.println("Errore query sql!");
+				response.sendRedirect(request.getContextPath() + "/index.jsp");
 			}
 		}
-		
-		response.sendRedirect(request.getContextPath() + "/home.jsp");
 	}
 }
