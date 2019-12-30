@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>Registrazione Studente</title>
@@ -26,7 +28,6 @@
 								</div>
 								<div id="registerForm">
 									<form method="POST" action="<%= response.encodeURL("/TutoratoSmart/Registration") %>">
-										<input id="flag" name="flag" type="hidden" value="1">
 										<div class="alert alert-warning" id="errorDiv" role="alert" style="display:none;"></div>
 										
 										<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -79,15 +80,10 @@
 										</div>										
 										<div class="clearfix"></div>
 									</form>
-									<% 	String message = (String) session.getAttribute("Message");
-										System.out.println("Message: " + message);
-										if(message != null && message.equals("Registrazione effettuata!")) { %>
-											<div class="alert alert-success" role="alert">Registrazione completata con successo!</div>
-									<%} else if(message != null && message.equals("Registrazione fallita!")) { %>
-											<div class="alert alert-danger" role="alert"> Registrazione fallita!</div>
-									<% } else { %>
-											<div class="alert alert-danger" role="alert"> Prova!</div>
-									<% } %>
+									
+									<div class="alert alert-success" id="successDiv" role="alert" style="display:none;">Registrazione completata con successo!</div>
+									
+									<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;"> Registrazione fallita!</div>									
 								</div>
 		          			</div>
               			</div>

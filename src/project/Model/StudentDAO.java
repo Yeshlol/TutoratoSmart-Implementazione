@@ -96,8 +96,6 @@ public class StudentDAO  {
 			preparedStatement.executeUpdate();
 			
 			connection.commit();
-		} catch (SQLException e) {
-			System.out.println("Errore durante la registrazione dello studente!");
 		} finally {
 			if(preparedStatement != null)
 				preparedStatement.close();

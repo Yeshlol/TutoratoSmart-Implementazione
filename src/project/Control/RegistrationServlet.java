@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +35,7 @@ public class RegistrationServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean ajax = Boolean.parseBoolean(request.getParameter("ajax"));  // richieste ajax per validazione email
+		boolean ajax = Boolean.parseBoolean(request.getParameter("ajax"));  // Richieste ajax per validazione email
 				
 		if(ajax) {
 			try {
@@ -65,9 +64,7 @@ public class RegistrationServlet extends HttpServlet {
 				return;
 			}
 		}
-		
-		String message;												// Messaggio da visualizzare
-		
+				
 		String email = request.getParameter("Email");				// Dati Utente
 		String pwd = request.getParameter("Password");			
 		String firstname = request.getParameter("FirstName");
@@ -76,14 +73,15 @@ public class RegistrationServlet extends HttpServlet {
 		String sex = request.getParameter("Sex");
 		String registrationNumber = request.getParameter("RegistrationNumber");
 		
-		int flag = Integer.parseInt(request.getParameter("flag"));	// Hidden flag: 1 = registrazione studente, 2 = registrazione tutor.
+		int flag = Integer.parseInt(request.getParameter("flag"));	// Flag passato nello script ajax: 1 = registrazione studente, 2 = registrazione tutor.
 		
 		if (flag == 1) { 											// Registrazione nuovo Studente
-			StudentDAO studentDAO = new StudentDAO();						
+			JSONObject obj = new JSONObject();
+			StudentDAO studentDAO = new StudentDAO();
 			
 			String academicYear = request.getParameter("AcademicYear");	// Dati Studente
-						
-			StudentBean student = new StudentBean();
+			
+			StudentBean student = new StudentBean();				
 			
 			student.setEmail(email);
 			student.setPwd(pwd);
@@ -96,12 +94,23 @@ public class RegistrationServlet extends HttpServlet {
 				
 			try {
 				studentDAO.doSave(student);
-				message = "Registrazione effettuata!";
+				
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				
+				obj.put("result", 1);				
 			} catch (SQLException e) {
-				response.sendRedirect("registration.jsp");			// Errore nel salvare il nuovo studente
-				message = "Registrazione fallita!";
-				return;
+				try {
+					obj.put("result", 2);			// Errore nel salvare il nuovo studente
+				} catch (JSONException jsonexp) {	// Errore parser json					
+				}
+			} catch (JSONException jsonexp) {		// Errore parser json
 			}
+			finally {
+				response.getWriter().write(obj.toString());
+			}
+			
+			return;			
 		}
 		
 		else {														// Registrazione nuovo Tutor
@@ -124,17 +133,10 @@ public class RegistrationServlet extends HttpServlet {
 					
 			try {
 				tutorDAO.doSave(tutor, totalHours);
-				message = "Registrazione effettuata!";
 			} catch (SQLException e) {
 				response.sendRedirect("registerTutor.jsp");			// Errore nel salvare il nuovo tutor
-				message = "Registrazione fallita!";
 				return;
 			}
 		}
-		
-		request.setAttribute("Message", message);
-		System.out.println("Messagge fine servlet: " + message);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("registration.jsp");
-		dispatcher.forward(request, response);
 	}
 }

@@ -1,5 +1,5 @@
 $("#Email").on('keyup', function() {
-	$.post("/TutoratoSmart/Registration",{ 
+	$.post("/TutoratoSmart/Registration", { 
 		"mail":$(this).val(),
 		"ajax":"true"
 		},
@@ -181,9 +181,35 @@ function validateInputs(){
 		valid = false;
 	}
 	
-	if (valid) {
-		$("#registerForm form").submit();
-	}	
+	if (valid) {		
+		$.post("/TutoratoSmart/Registration", {
+			"flag":"1",
+			"AcademicYear":$("#AcademicYear").val(),
+			"Email":$("#Email").val(),
+			"RegistrationNumber":$("#RegistrationNumber").val(),
+			"Password":$("#Password").val(),
+			"FirstName":$("#FirstName").val(),
+			"LastName":$("#LastName").val(),
+			"Sex":$("input:radio[name='Sex']:checked").val(),
+			"TelephoneNumber":$("#TelephoneNumber").val(),
+			},
+			function(data){	  
+				if (data.result == 1) {
+					$("#successDiv").fadeIn(500, function() {
+						$("#successDiv").fadeOut(5000);
+						setTimeout(function() {
+							  window.location.href = "/TutoratoSmart/home.jsp";
+						}, 5000);
+					})
+				}
+				else {
+					$("#failureDiv").fadeIn(500, function() {
+						$("#failureDiv").fadeOut(5000)
+					})
+				}					 
+			});		
+	}
+	
 	else {
 		$("#errorDiv").append(errorMessage);
 		$("#errorDiv").fadeIn(500, function() {
