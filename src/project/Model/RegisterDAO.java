@@ -60,7 +60,6 @@ public class RegisterDAO  {
 		String selectSql = "SELECT MAX(IdRegister) AS IdRegister FROM REGISTER";
 		
 		try {
-			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setInt(1, totalHours);
 			
@@ -75,7 +74,7 @@ public class RegisterDAO  {
 				idRegister = rs.getInt("IdRegister");
 			}
 			
-			connection.commit();
+			System.out.println("IdRegister added: " + idRegister);
 		} finally {
 			if(preparedStatement != null)
 				preparedStatement.close();

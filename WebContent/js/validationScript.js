@@ -11,14 +11,17 @@ function lowerCaseF(a){
 }
 
 function checkPasswords(password, verifyPassword){
-	return password.val() == verifyPassword.val();
+	boolean = password.val() == verifyPassword.val()
+	
+	return boolean;
 }
 
 function validateEmail(email) {
 	var mailFormat1 = /^\w+([\.-]?\w+)*@studenti.unicampania.it$/;
 	var mailFormat2 = /^\w+([\.-]?\w+)*@commissione.unicampania.it$/;
+	var mailFormat3 = /^\w+([\.-]?\w+)*@unicampania.it$/;
 	
-	if (email.val().match(mailFormat1) || email.val().match(mailFormat2))
+	if (email.val().match(mailFormat1) || email.val().match(mailFormat2) || email.val().match(mailFormat3))
 		return true;
 	else 
 		return false;
@@ -52,7 +55,7 @@ function validatePassword(password) {
 }
 
 function validateRegistrationNumber(registrationNumber) {
-	var registrationNumberFormat = /^\d{10}$/;
+	var registrationNumberFormat = /^[AB]\d{5,9}$/;
 	
 	if (registrationNumber.val().match(registrationNumberFormat))
 		return true;

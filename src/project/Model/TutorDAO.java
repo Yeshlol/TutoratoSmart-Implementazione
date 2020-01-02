@@ -72,7 +72,7 @@ public class TutorDAO  {
 		
 		RegisterDAO registerDAO = new RegisterDAO();
 		
-		String insertSql = "INSERT INTO TS_USER(Email,Pwd,FirstName,LastName,TelephoneNumber,Sex,RegistrationNumber) VALUES (?,?,?,?,?,?,?)";
+		String insertSql = "INSERT INTO TS_USER(Email,Pwd,UserRole,FirstName,LastName,TelephoneNumber,Sex,RegistrationNumber) VALUES (?,?,?,?,?,?,?,?)";
 		String insertSql2 = "INSERT INTO TUTOR (Email,StartDate,CommissionMember,RegisterId) VALUES (?,?,?,?)";
 		
 		try {
@@ -81,11 +81,12 @@ public class TutorDAO  {
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, bean.getEmail());
 			preparedStatement.setString(2, Utils.sha256(bean.getPwd()));
-			preparedStatement.setString(3, bean.getFirstName());
-			preparedStatement.setString(4, bean.getLastName());
-			preparedStatement.setString(5, bean.getTelephoneNumber());
-			preparedStatement.setString(6, bean.getSex());
-			preparedStatement.setString(7, bean.getRegistrationNumber());
+			preparedStatement.setInt(3, 2);
+			preparedStatement.setString(4, bean.getFirstName());
+			preparedStatement.setString(5, bean.getLastName());
+			preparedStatement.setString(6, bean.getTelephoneNumber());
+			preparedStatement.setString(7, bean.getSex());
+			preparedStatement.setString(8, bean.getRegistrationNumber());
 			
 			System.out.println("User doSave: "+ preparedStatement.toString());
 			

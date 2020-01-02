@@ -29,11 +29,12 @@ public class RegistrationServlet extends HttpServlet {
         super();
     }
 	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("registerStudent.jsp");
 	}
 
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean ajax = Boolean.parseBoolean(request.getParameter("ajax"));  // Richieste ajax per validazione email
 				
@@ -74,9 +75,9 @@ public class RegistrationServlet extends HttpServlet {
 		String registrationNumber = request.getParameter("RegistrationNumber");
 		
 		int flag = Integer.parseInt(request.getParameter("flag"));	// Flag passato nello script ajax: 1 = registrazione studente, 2 = registrazione tutor.
+		JSONObject obj = new JSONObject();
 		
 		if (flag == 1) { 											// Registrazione nuovo Studente
-			JSONObject obj = new JSONObject();
 			StudentDAO studentDAO = new StudentDAO();
 			
 			String academicYear = request.getParameter("AcademicYear");	// Dati Studente
@@ -99,9 +100,9 @@ public class RegistrationServlet extends HttpServlet {
 				response.setCharacterEncoding("UTF-8");
 				
 				obj.put("result", 1);				
-			} catch (SQLException e) {
+			} catch (SQLException e) {				// Errore nel salvare il nuovo studente
 				try {
-					obj.put("result", 2);			// Errore nel salvare il nuovo studente
+					obj.put("result", 2);			
 				} catch (JSONException jsonexp) {	// Errore parser json					
 				}
 			} catch (JSONException jsonexp) {		// Errore parser json
@@ -113,7 +114,7 @@ public class RegistrationServlet extends HttpServlet {
 			return;			
 		}
 		
-		else {														// Registrazione nuovo Tutor
+		else if (flag == 2) {														// Registrazione nuovo Tutor
 			TutorDAO tutorDAO = new TutorDAO();
 							
 			String startDate = request.getParameter("StartDate");	// Dati Tutor
@@ -133,10 +134,23 @@ public class RegistrationServlet extends HttpServlet {
 					
 			try {
 				tutorDAO.doSave(tutor, totalHours);
-			} catch (SQLException e) {
-				response.sendRedirect("registerTutor.jsp");			// Errore nel salvare il nuovo tutor
-				return;
+				
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				
+				obj.put("result", 1);				
+			} catch (SQLException e) {				// Errore nel salvare il nuovo tutor
+				try {
+					obj.put("result", 2);			
+				} catch (JSONException jsonexp) {	// Errore parser json					
+				}
+			} catch (JSONException jsonexp) {		// Errore parser json
 			}
+			finally {
+				response.getWriter().write(obj.toString());
+			}
+			
+			return;
 		}
 	}
 }
