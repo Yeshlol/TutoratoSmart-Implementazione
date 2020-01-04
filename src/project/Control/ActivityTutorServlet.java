@@ -43,7 +43,7 @@ public class ActivityTutorServlet extends HttpServlet {
 			request.setAttribute("activitiesCollection", activitiesCollection);
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/tutor/activityTutor.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/tutor/register.jsp");
 		dispatcher.forward(request, response);	
 	}
 

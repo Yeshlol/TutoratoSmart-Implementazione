@@ -1,13 +1,14 @@
 package project.Model;
 
 public class CalendarEvent {
-	private String title, start, end, color, textColor, url;
+	private String title, start, end, color, textColor, url, description;
 	
 	public CalendarEvent() {
 		title = "";
 		start = "";
 		end = "";
 		url = "";
+		description = "";
 		color = "";
 		textColor = "";
 	}
@@ -60,8 +61,16 @@ public class CalendarEvent {
 		this.url = url;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public String toString() {
-		return "Evento: " + title + ", Start: " + start + "; End: " + end + "; URL: " + url;
+		return "Evento: " + title + ", Start: " + start + "; End: " + end + "; URL: " + url + "; Descrizione: " + description;
 	}
 }

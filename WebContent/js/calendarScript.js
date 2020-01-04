@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	    	      background: "red",
 	    	      border: "1px solid blue",
 	    	});
-	        $('#info').html(mouseEnterInfo.event.title);
+	        $('#info').html(mouseEnterInfo.event.extendedProps.description);
 	    },
 	    eventMouseLeave: function(mouseLeaveInfo) {
 	    	$('#info').html("");
@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 end: 'end',
                 id: 'id',
                 title: 'title',
+                description: 'description'
             },
             failure: function() {
 		      alert('there was an error while fetching events!');

@@ -17,7 +17,7 @@
    	<div class="form-general" style="margin-left:20px;margin-right:20px;">
    	<h3 align="center">Modifica Dati Attivit&aacute</h3>
    
-   	<form method="POST" action="<%= response.encodeURL("ModifyActivityServlet") %>">
+   	<form method="POST" action="<%= response.encodeURL("ModifyActivity") %>">
        
         <h3 align="center">Inserisci i campi che si desiderano modificare:</h3>  
          

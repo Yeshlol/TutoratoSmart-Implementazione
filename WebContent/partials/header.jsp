@@ -17,8 +17,8 @@
 </head>
 
 <body>
-	<div class="jumbotron" style="background-color:white; height:250px; padding-top: 0px; padding-bottom:0px;margin-left:0px;">
-	   <a href="<%=request.getContextPath() %>/index.jsp"><img src="<%=request.getContextPath() %>/img/LogoTutoratoSmart.png" style="padding-left:40%;"></a>
+	<div class="text-center">
+  		<a href="<%=request.getContextPath() %>/index.jsp"><img src="<%=request.getContextPath() %>/img/LogoTutoratoSmart.png"></a>
 	</div>
 	 
 	<% UserBean user = (UserBean) session.getAttribute("user"); %>
@@ -45,7 +45,7 @@
 	        <div class="collapse navbar-collapse" id="myNavbar">
         	<ul class="nav navbar-nav">
           		<li><a href="/TutoratoSmart/commission/tutorRegistration.jsp">Registra Tutor</a></li>
-          		<li><a  href="/TutoratoSmart/commission/tutorsList.jsp">Visualizza lista Tutor</a></li>
+          		<li><a  href="/TutoratoSmart/commission/searchTutors.jsp">Ricerca Tutor</a></li>
           	</ul>
           	</div>     
 		<% } else if(user.getRole()==2) { %>

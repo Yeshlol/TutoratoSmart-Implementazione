@@ -9,19 +9,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Visualizzazione lista tutor</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	
     <style>
     table,th,td{
     	border: 1px solid black;
     	border-collapse: collapse;
+    	text-align:center;
     }
-     th {
-     background-color:#4d94ff;
-     color: white;
+    th {
+    	background-color:#4d94ff;
+     	color: white;
     }
     th,td {
-    padding:8px;
-    text-align:left;
+    	padding:8px;
     }
     </style>   
 </head>
@@ -29,41 +29,24 @@
 <body>
 	<%@ include file="/partials/header.jsp" %>
     
-    <h1 style="margin-left:450px;">Visualizzazione lista tutor</h1>
+    <h1 align="center">Visualizzazione lista tutor</h1>
         
-	<%           
-     	Collection<TutorBean> tutorsCollection = (Collection<TutorBean>) request.getAttribute("tutorsCollection");     
-     
-     	if (tutorsCollection == null){
- 			response.sendRedirect(response.encodeRedirectURL("/TutoratoSmart/Tutors"));
- 			return;
- 		}       
-   	%>
-
-    <form method="POST" action="<%= response.encodeURL("/TutoratoSmart/Tutors") %>">
-    	<div style="margin-left:120px;">Inserisci la data iniziale di ricerca: <input type="date" id="startActivity" name="startActivity"></div><br><br>
-           
-        <div style="margin-left:120px;">Inserisci la data finale di ricerca: <input type="date" id="finishActivity" name="finishActivity"></div><br><br> 
-           
-        <input type="submit" style="margin-left:120px;">                         
-    </form>
-        
+	<% Collection<TutorBean> tutorsCollection = (Collection<TutorBean>) request.getAttribute("tutorsCollection"); %>
+          
 	<div id="content">
 		<br>
-		<br>
-		<br>
 		<div id="tutorsDiv">
-			<table style="width:70%; margin-left:120px;">
+			<table style="width:70%; margin: 0 auto">
 				<tr>					
        			<% if (tutorsCollection.isEmpty()) { %>
-					<th>Nessun Tutor Trovato!</th>
+					<th class="text-center">Nessun Tutor Trovato!</th>
 				<%  } else  { %>
-						<th>FirstName</th>
-		    			<th>LastName</th>
-		    			<th>Registration Number</th>
-		    			<th>Start Date</th>
-		    			<th>Finish Date</th>
-		    			<th>Email</th>
+						<th class="text-center">FirstName</th>
+		    			<th class="text-center">LastName</th>
+		    			<th class="text-center">Registration Number</th>
+		    			<th class="text-center">Start Date</th>
+		    			<th class="text-center">Finish Date</th>
+		    			<th class="text-center">Email</th>
 	    			</tr>
 					<% 	Iterator<?> it = tutorsCollection.iterator();
 					 	for(int i = 0 ; i < tutorsCollection.size() && it.hasNext(); i++){ 

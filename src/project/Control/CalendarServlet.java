@@ -106,7 +106,8 @@ public class CalendarServlet extends HttpServlet {
 						finishTime = finish / 60 + ":" + minutes;
 															
 					CalendarEvent ce = new CalendarEvent();
-	                ce.setTitle("Appuntamento con " + name);
+	                ce.setTitle("Appuntamento");
+	                ce.setDescription("Appuntamento con " + name);
 	                ce.setStart(bean.getRequestDate() + startTime);
 	                ce.setEnd(bean.getRequestDate() + finishTime);
 					ce.setUrl("/TutoratoSmart/ShowRequest?id=" + bean.getIdRequest());
