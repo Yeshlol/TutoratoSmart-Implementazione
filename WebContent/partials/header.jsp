@@ -23,20 +23,10 @@
 	 
 	<% UserBean user = (UserBean) session.getAttribute("user"); %>
 	          
-	<%if(user != null) { %>               
-		<% if (user.getRole()==1) { %>
-	        
-	           
-		<% } else if(user.getRole()==2) { %>
-	        
-	    
-		<% } else if(user.getRole()==3) { %>
-	      
-	      
-		<% } %>
-		
-		<nav class="navbar navbar-inverse" style="background:#232F3E;">
-			<div class="container-fluid" style="border-right:1px solid #bbb; float:left;">
+	<%if(user != null) { %> 
+	
+	<nav class="navbar navbar-inverse" style="background:#232F3E;">
+			<div class="container-fluid" style="border-right:1px solid #bbb;">
 				<div class="navbar-header">
 			        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 			          <span class="icon-bar"></span>
@@ -44,9 +34,38 @@
 			          <span class="icon-bar"></span>                        
 			        </button>
 			        <a class="navbar-brand" style="font-weight:bold;">Ciao, <%= user.getFirstName() %></a>
-				</div>
-			</div>
-		</nav>	 
+        		</div>
+        		<div class="nav navbar-nav navbar-right">
+			<form method="POST" action="LogoutServlet">
+			<button type="submit" class="btn btn-default btn-sm" style="margin-right:30px; margin-top:8px;"><span class="glyphicon glyphicon-log-out"></span> Log out</button>   		
+        		</form>
+				</div>	
+					
+		               
+		<% if (user.getRole()==1) { %>
+	        <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="/TutoratoSmart/commission/tutorRegistration.jsp">Registra Tutor</a></li>
+          <li><a  href="/TutoratoSmart/commission/tutorsList.jsp">Visualizza lista Tutor</a></li>
+          </ul>
+          </div>
+          
+          
+	           
+		<% } else if(user.getRole()==2) { %>
+	        <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="/TutoratoSmart/tutor/activityTutor.jsp">Registro Tutorato</a></li>
+          </ul>
+          </div>
+	    
+		<% } else if(user.getRole()==3) { %>
+	      
+	      
+		<% } %>
+		</div>
+	</nav>
+		 
 	<%} else { %>
 		<nav class="navbar navbar-inverse" style="background:#232F3E;">
 			<div class="container-fluid" style="border-right:1px solid #bbb; float:left;">
@@ -61,5 +80,7 @@
 			</div>
 		</nav>
 	<% } %>
+
+	
 </body>
      

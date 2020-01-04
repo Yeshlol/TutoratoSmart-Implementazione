@@ -17,6 +17,14 @@
     	border: 1px solid black;
     	border-collapse: collapse;
     }
+     th {
+     background-color:#4d94ff;
+     color: white;
+    }
+    th,td {
+    padding:8px;
+    text-align:left;
+    }
     </style>   
 </head>
 
