@@ -33,7 +33,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>                        
 		        </button>
-			    <a class="navbar-brand" style="font-weight:bold;">Ciao, <%= user.getFirstName() %></a>
+			    <a class="navbar-brand" >Ciao, <%= user.getFirstName() %></a>
         	</div>
         	<div class="nav navbar-nav navbar-right">
 				<form method="POST" action="LogoutServlet">
@@ -51,7 +51,8 @@
 		<% } else if(user.getRole()==2) { %>
 	        <div class="collapse navbar-collapse" id="myNavbar">
         	<ul class="nav navbar-nav">
-          		<li><a href="/TutoratoSmart/tutor/activityTutor.jsp">Registro Tutorato</a></li>
+          		<li><a href="/TutoratoSmart/tutor/register.jsp" style="font-weight:bold;">Registro Tutorato</a></li>
+          		<li><a href="/TutoratoSmart/tutor/calendar.jsp" style="font-weight:bold;">Calendario Appuntamenti</a></li>
           		</ul>
           	</div>
 	    <% } else if(user.getRole()==3) { %>

@@ -37,7 +37,7 @@ public class ActivityServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	    	     
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("/tutor/activity.jsp");
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("/tutor/activityInfo.jsp");
 	    dispatcher.forward(request, response); 
 	}
 
