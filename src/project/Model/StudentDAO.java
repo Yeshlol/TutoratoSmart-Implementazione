@@ -23,7 +23,7 @@ public class StudentDAO  {
 		
 		StudentBean bean = new StudentBean();
 		
-		String selectSql = "SELECT * FROM TS_USER,STUDENT WHERE Email = ?";
+		String selectSql = "SELECT * FROM TS_USER,STUDENT WHERE TS_USER.Email = ? AND TS_USER.Email = STUDENT.Email";
 		
 		try {
 			preparedStatement = connection.prepareStatement(selectSql);

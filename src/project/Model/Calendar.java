@@ -9,21 +9,16 @@ public class Calendar {
 	 * Variables.
 	 */
 	private static Calendar instance = null;
-	private Collection<WorkDayBean> workDays;
-	private Collection<ActivityTutorBean> activities;
+	private Collection<RequestBean> requests;
 
 	/**
 	 * Constructor.
 	 * @throws SQLException 
 	 */
-	public Calendar() throws SQLException {
-	    WorkDayDAO workDayDAO = new WorkDayDAO();
+	public Calendar() throws SQLException {	    
+	    RequestDAO activityTutorDAO = new RequestDAO();
 	    
-	    this.workDays = workDayDAO.doRetrieveAll();
-	    
-	    ActivityTutorDAO activityTutorDAO = new ActivityTutorDAO();
-	    
-	    this.activities = activityTutorDAO.doRetrieveAll();
+	    this.requests = activityTutorDAO.doRetrieveAll();
 	}
 	
 	/**
@@ -36,18 +31,11 @@ public class Calendar {
 	    }
 	    return instance;
 	}
-
-	/**
-	 * Returns the Collection<WorkDayBean> type object.
-	 */
-	public Collection<WorkDayBean> getWorkDays() {
-		return this.workDays;
-	}
 	
 	/**
 	 * Returns the Collection<WorkDayBean> type object.
 	 */
-	public Collection<ActivityTutorBean> getActivities() {
-		return this.activities;
+	public Collection<RequestBean> getRequests() {
+		return this.requests;
 	}	
 }

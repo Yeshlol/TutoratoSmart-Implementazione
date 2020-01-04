@@ -7,8 +7,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -20,7 +18,7 @@
 				<div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="content">
 						<div class="news-block-seven">
-							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 login-container" style="margin-left:350px; border: 2px solid #232F3E; border-radius:8px; margin-top:50px;">
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 login-container" style="margin-left:375px; border: 2px solid #232F3E; border-radius:8px; margin-top:50px;">
 								<div class="panel">
 									<h2 class="text-center">Login</h2>
 									<p class="text-center">Compilare email e password per accedere</p>

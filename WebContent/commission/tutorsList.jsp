@@ -10,8 +10,6 @@
 	<meta charset="UTF-8">
 	<title>Visualizzazione lista tutor</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/csspage.css">
     <style>
     table,th,td{
     	border: 1px solid black;

@@ -140,42 +140,6 @@ public class ActivityTutorDAO  {
 	}
 
 	
-	public Collection<ActivityTutorBean> doRetrieveAll() throws SQLException {
-		Connection connection = DBConnection.getInstance().getConn();
-		PreparedStatement preparedStatement = null;
-		
-		Collection<ActivityTutorBean> list = new LinkedList<ActivityTutorBean>();
-		
-		String selectSql = "SELECT * FROM ACTIVITY_TUTOR";
-				
-		try {
-			preparedStatement = connection.prepareStatement(selectSql);
-			
-			System.out.println("ActivityTutor doRetrieveAll: " + preparedStatement.toString());
-			ResultSet rs = preparedStatement.executeQuery();
-			while(rs.next()) {
-				ActivityTutorBean bean = new ActivityTutorBean();
-				bean.setIdActivity(rs.getInt("IdActivity"));
-				bean.setCategory(rs.getString("Category"));
-				bean.setActivityDate(rs.getDate("ActivityDate"));
-				bean.setStartTime(rs.getInt("StartTime"));
-				bean.setFinishTime(rs.getInt("FinishTime"));
-				bean.setHours(rs.getFloat("Hours"));
-				bean.setState(rs.getString("State"));
-				bean.setDetails(rs.getString("Details"));
-				bean.setTutor(rs.getString("Tutor"));
-				bean.setRegisterId(rs.getInt("RegisterId"));
-				
-				list.add(bean);
-			}			
-		} finally {
-			if(preparedStatement != null)
-				preparedStatement.close();
-		}
-		return list;
-	}
-	
-	
 	public Collection<ActivityTutorBean> doRetrieveAllByMail(String order, String tutorMail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;

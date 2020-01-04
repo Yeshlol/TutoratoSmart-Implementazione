@@ -5,9 +5,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <footer class="page-footer font-small mdb-color lighten-3 pt-4" style="margin-top:100px; background-color:#232F3E;">
 
-
-
-
 <!-- Copyright -->
 <div class="row">
 	<!-- Grid column -->
@@ -18,7 +15,7 @@
 	</div>
       
   	<div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
-    	<h4 style="color:white; padding-top:30px; padding-left:20px;"><a href="<%=request.getContextPath() %>/index.jsp">Universit&agrave degli studi della Campania Luigi Vanvitelli.</a></h4>
+    	<h4 style="color:white; padding-top:30px; padding-left:20px;"><a href="<%=request.getContextPath() %>/index.jsp">Universit&aacute degli studi della Campania Luigi Vanvitelli.</a></h4>
     </div>
       
     <div class="col-md-2 col-lg-2 text-center mx-auto my-4" style="margin-left:450px;">
@@ -38,5 +35,3 @@
 <!-- Copyright -->
 
 </footer>
-
-<!-- Footer -->

@@ -10,7 +10,7 @@
 							<div class="news-block-seven">
 
 								<div
-									class="col-lg-6 col-md-6 col-sm-12 col-xs-12 index-container" style="margin-left:350px; padding-top:50px; border: 2px solid #232F3E; border-radius:8px; margin-top:50px;">
+									class="col-lg-6 col-md-6 col-sm-12 col-xs-12 index-container" style="margin-left:375px; padding-top:50px; border: 2px solid #232F3E; border-radius:8px; margin-top:50px;">
 									<div class="panel">
 										<h2 class="text-center">Benvenuto</h2>
 										<p></p>

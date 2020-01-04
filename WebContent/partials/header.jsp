@@ -12,13 +12,13 @@
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/csspage.css">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/mycss.css">
 	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 	<div class="jumbotron" style="background-color:white; height:250px; padding-top: 0px; padding-bottom:0px;margin-left:0px;">
 	   <a href="<%=request.getContextPath() %>/index.jsp"><img src="<%=request.getContextPath() %>/img/LogoTutoratoSmart.png" style="padding-left:40%;"></a>
-	   <div class="container text-center">
-	   </div>
 	</div>
 	 
 	<% UserBean user = (UserBean) session.getAttribute("user"); %>
@@ -26,40 +26,35 @@
 	<%if(user != null) { %> 
 	
 	<nav class="navbar navbar-inverse" style="background:#232F3E;">
-			<div class="container-fluid" style="border-right:1px solid #bbb;">
-				<div class="navbar-header">
-			        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-			          <span class="icon-bar"></span>
-			          <span class="icon-bar"></span>
-			          <span class="icon-bar"></span>                        
-			        </button>
-			        <a class="navbar-brand" style="font-weight:bold;">Ciao, <%= user.getFirstName() %></a>
-        		</div>
-        		<div class="nav navbar-nav navbar-right">
-			<form method="POST" action="LogoutServlet">
-			<button type="submit" class="btn btn-default btn-sm" style="margin-right:30px; margin-top:8px;"><span class="glyphicon glyphicon-log-out"></span> Log out</button>   		
+		<div class="container-fluid" style="border-right:1px solid #bbb;">
+			<div class="navbar-header">
+		        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>                        
+		        </button>
+			    <a class="navbar-brand" style="font-weight:bold;">Ciao, <%= user.getFirstName() %></a>
+        	</div>
+        	<div class="nav navbar-nav navbar-right">
+				<form method="POST" action="LogoutServlet">
+					<button type="submit" class="btn btn-default btn-sm" style="margin-right:30px; margin-top:8px;"><span class="glyphicon glyphicon-log-out"></span> Log out</button>   		
         		</form>
-				</div>	
-					
+			</div>	
 		               
 		<% if (user.getRole()==1) { %>
 	        <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="/TutoratoSmart/commission/tutorRegistration.jsp">Registra Tutor</a></li>
-          <li><a  href="/TutoratoSmart/commission/tutorsList.jsp">Visualizza lista Tutor</a></li>
-          </ul>
-          </div>
-          
-          
-	           
+        	<ul class="nav navbar-nav">
+          		<li><a href="/TutoratoSmart/commission/tutorRegistration.jsp">Registra Tutor</a></li>
+          		<li><a  href="/TutoratoSmart/commission/tutorsList.jsp">Visualizza lista Tutor</a></li>
+          	</ul>
+          	</div>     
 		<% } else if(user.getRole()==2) { %>
 	        <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="/TutoratoSmart/tutor/activityTutor.jsp">Registro Tutorato</a></li>
-          </ul>
-          </div>
-	    
-		<% } else if(user.getRole()==3) { %>
+        	<ul class="nav navbar-nav">
+          		<li><a href="/TutoratoSmart/tutor/activityTutor.jsp">Registro Tutorato</a></li>
+          		</ul>
+          	</div>
+	    <% } else if(user.getRole()==3) { %>
 	      
 	      
 		<% } %>
@@ -75,12 +70,10 @@
 			          <span class="icon-bar"></span>
 			          <span class="icon-bar"></span>                        
 			        </button>
-			        <a class="navbar-brand" style="font-weight:bold;" href="<%= response.encodeURL(request.getContextPath() + "/TutoratoSmart/login.jsp") %>">Effettua l'accesso</a>
+			        <a class="navbar-brand" style="font-weight:bold;" href="<%= response.encodeURL(request.getContextPath() + "/login.jsp") %>">Effettua l'accesso</a>
 				</div>
 			</div>
 		</nav>
 	<% } %>
-
-	
 </body>
      

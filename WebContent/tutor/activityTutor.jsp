@@ -1,12 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<% Collection<ActivityTutorBean> activitiesCollection= (Collection<ActivityTutorBean>) request.getAttribute("activitiesCollection");  
+       
+    if (activitiesCollection == null){
+		response.sendRedirect(response.encodeRedirectURL("/TutoratoSmart/ActivityTutor"));
+		return;
+	} %>
+
 <!DOCTYPE html>
 <html>
+
 <%@ page import="java.util.*,project.Model.ActivityTutorBean" %>
+
 <head>
-<title>Registro Tutor</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/csspage.css"> 
-     <style>
+	<title>Registro Tutor</title>
+    <style>
     table,th,td{
     	border: 1px solid black;
     	border-collapse: collapse;
@@ -21,62 +30,48 @@
     }
     </style>   
 </head>
+
 <body>
+	<%@ include file="/partials/header.jsp" %>
 
- <%@ include file="/partials/header.jsp" %>
-
-  <h1 style="margin-left:550px;"> Registro Tutor</h1>
-
-  <%   Collection<ActivityTutorBean> activityCollection= (Collection<ActivityTutorBean>) request.getAttribute("activityCollection");  
-       
-  if (activityCollection == null){
-		response.sendRedirect(response.encodeRedirectURL("/TutoratoSmart/ActivityTutorServlet"));
-		return;
-	}        
-  %>
-  
-  
-      <div id="content">
+  	<h1 style="margin-left:550px;"> Registro Tutor</h1>
+	<div id="content">
 		<br>
 		<br>
 		<br>
-		<div id="tutorsDiv">
+		<div id="activityDiv">
 			<table style="width:70%; margin-left:200px;">
 				<tr>					
-       			<% if (activityCollection.isEmpty()) { %>
-					<th>Nessun'attività trovata!</th>
+       			<% if (activitiesCollection.isEmpty()) { %>
+					<th>Nessun'attivit&aacute trovata!</th>
 				<%  } else  { %>
-						<th>Categoria</th>
-		    			<th>Data</th>
-		    			<th>Stato</th>
-		    			
-	    			</tr>
-					<% 	Iterator<?> it = activityCollection.iterator();
-					 	for(int i = 0 ; i < activityCollection.size() && it.hasNext(); i++){ 
-				 			ActivityTutorBean bean = (ActivityTutorBean) it.next(); %>
+					<th>Categoria</th>
+		    		<th>Data</th>
+		    		<th>Stato</th>
+		    		<th>Dettagli</th>
+		    	</tr>
+				<% 	Iterator<?> it = activitiesCollection.iterator();
+				 	for(int i = 0 ; i < activitiesCollection.size() && it.hasNext(); i++){ 
+						ActivityTutorBean bean = (ActivityTutorBean) it.next(); %>
 			 			<tr>
 				 			<td><%= bean.getCategory() %></td>
-				 			<td><a href ="<%= response.encodeURL(request.getContextPath() + "/ActivityServlet?id=" + bean.getIdActivity()) %>"><%= bean.getActivityDate() %></a></td>
+				 			<td><%= bean.getActivityDate() %></td>
 				 			<td><%= bean.getState() %></td>
-				 			
+				 			<td><a href ="<%= response.encodeURL(request.getContextPath() + "/Activity?id=" + bean.getIdActivity()) %>">Mostra</a></td>
 				 		</tr>
-				 			
-					<%	} 
-				} %>
-						
+				<%	} 
+				} %>						
 			</table>
-			</div>
-			<br>
+		</div>
+		<br>
 			 			
 	 	<div>
-	 	<button type="submit" value="addActivity" style="margin-left:200px;">Aggiungi attività lavorativa al registro</button>	 	
-	 	<button type="submit" value="generaRegistro" style="margin-left:30px;">Genera registro tutorato</button>
+	 		<button type="submit" value="addActivity" style="margin-left:200px;">Aggiungi attivit&aacute lavorativa al registro</button>	 	
+	 		<button type="submit" value="generaRegistro" style="margin-left:30px;">Genera registro tutorato</button>
 	 	</div>	
 	</div>
-          
-
-
- <%@ include file="/partials/footer.jsp" %>
+    
+	<%@ include file="/partials/footer.jsp" %>
 
 </body>
 </html>

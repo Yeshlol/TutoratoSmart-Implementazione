@@ -196,4 +196,38 @@ public class RequestDAO  {
 		
 		return list;
 	}
+	
+	
+	public Collection<RequestBean> doRetrieveAll() throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		Collection<RequestBean> list = new LinkedList<RequestBean>();
+		
+		String selectSql = "SELECT * FROM REQUEST";
+				
+		try {
+			preparedStatement = connection.prepareStatement(selectSql);
+			
+			System.out.println("Request doRetrieveAll: " + preparedStatement.toString());
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()) {
+				RequestBean bean = new RequestBean();
+				bean.setIdRequest(rs.getInt("IdRequest"));
+				bean.setState(rs.getString("State"));
+				bean.setStudentComment(rs.getString("StudentComment"));
+				bean.setRequestDate(rs.getDate("RequestDate"));
+				bean.setRequestTime(rs.getInt("RequestTime"));
+				bean.setDuration(rs.getInt("Duration"));
+				bean.setState(rs.getString("State"));
+				bean.setStudent(rs.getString("Student"));
+				
+				list.add(bean);
+			}			
+		} finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}
+		return list;
+	}
 }
