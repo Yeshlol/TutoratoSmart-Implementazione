@@ -14,12 +14,13 @@ import project.Model.UserBean;
 import project.Model.UserDAO;
 import project.Utils.Utils;
 
-@WebServlet("/LoginServlet")
+@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 
 
@@ -36,18 +37,16 @@ public class LoginServlet extends HttpServlet {
 				user = userDAO.doRetrieveByMail(email);
 				if (user != null) {
 					pwd = Utils.sha256(pwd);
-					if (pwd.equals(user.getPwd())) {
+					if (pwd.equals(user.getPwd())) {					// Utente trovato, password corretta.
 						session.setAttribute("user", user);
 						response.sendRedirect(request.getContextPath() + "/home.jsp");
 					}
 					else {
-						System.out.println("PASSWORD NON CORRETTA!!!");
-						session.setAttribute("user", null);
+						session.setAttribute("user", null);				// Utente trovato, password non corretta.
 						response.sendRedirect(request.getContextPath() + "/login.jsp");
 					}
 				} else {
-					System.out.println("USER NON TROVATO!!!");
-					session.setAttribute("user", null);
+					session.setAttribute("user", null);					// Utente non trovato.
 					response.sendRedirect(request.getContextPath() + "/login.jsp");
 				}
 			} catch (SQLException e) {

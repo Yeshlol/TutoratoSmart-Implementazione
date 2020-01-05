@@ -23,7 +23,7 @@ public class TutorDAO  {
 		
 		TutorBean bean = new TutorBean();
 		
-		String selectSql = "SELECT SQL_NO_CACHE * FROM TS_USER,TUTOR WHERE Email = ?";
+		String selectSql = "SELECT SQL_NO_CACHE * FROM TS_USER,TUTOR WHERE TS_USER.Email = ? AND TS_USER.Email = TUTOR.Email";
 		
 		try {
 			preparedStatement = connection.prepareStatement(selectSql);

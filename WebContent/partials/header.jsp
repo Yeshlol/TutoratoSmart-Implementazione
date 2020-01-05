@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<% UserBean user = (UserBean) session.getAttribute("user"); %>
+
 <!DOCTYPE html>
 <html>
 
@@ -20,8 +22,6 @@
 	<div class="text-center">
   		<a href="<%=request.getContextPath() %>/index.jsp"><img src="<%=request.getContextPath() %>/img/LogoTutoratoSmart.png"></a>
 	</div>
-	 
-	<% UserBean user = (UserBean) session.getAttribute("user"); %>
 	          
 	<%if(user != null) { %> 
 	
@@ -36,8 +36,8 @@
 			    <a class="navbar-brand" >Ciao, <%= user.getFirstName() %></a>
         	</div>
         	<div class="nav navbar-nav navbar-right">
-				<form method="POST" action="LogoutServlet">
-					<button type="submit" class="btn btn-default btn-sm" style="margin-right:30px; margin-top:8px;"><span class="glyphicon glyphicon-log-out"></span> Log out</button>   		
+				<form method="POST" action="/TutoratoSmart/LogoutServlet">
+					<button type="submit" class="btn btn-default btn-sm" style="margin-right:30px; margin-top:8px;"><span class="glyphicon glyphicon-log-out"></span>Log out</button>   		
         		</form>
 			</div>	
 		               

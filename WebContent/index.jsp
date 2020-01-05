@@ -7,13 +7,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>TutoratoSmart</title>
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	</head>
+</head>
 
 <body>
 	<%@ include file="/partials/header.jsp" %>
-	
-	<%@ include file="/partials/content.jsp" %>
+		
+	<div class="content text-center" style="width: 40%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
+		<div class="panel">
+			<h2>Benvenuto in TutoratoSmart</h2>
+			<p>Effettua l'accesso oppure registrati alla piattaforma</p>
+		</div>
+		
+		<div class="container-fluid" style="margin: 25px;">
+			<form method="POST" action="<%= response.encodeURL("/TutoratoSmart/Registration") %>">
+				<div class="row row-space">
+					<div class="row">
+						<div style="margin-bottom: 25px;">	
+							<a href="login.jsp" class="btn btn-primary btn-md btn-block" role="button" aria-pressed="true">Accedi</a>
+						</div>
+						<div>	
+							<a href="registration.jsp" class="btn btn-primary btn-md btn-block" role="button" aria-pressed="true">Registrati</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 	
 	<%@ include file="/partials/footer.jsp" %>	
 </body>

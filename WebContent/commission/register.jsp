@@ -4,15 +4,22 @@
 <% Collection<ActivityTutorBean> activitiesCollection = (Collection<ActivityTutorBean>) request.getAttribute("activitiesCollection");  
        
     if (activitiesCollection == null){
-		response.sendRedirect(response.encodeRedirectURL("/TutoratoSmart/ActivityTutor?flag=1"));
+		response.sendRedirect(response.encodeRedirectURL("/TutoratoSmart/ActivityTutor?flag=2"));
 		return;
 	}
+    
+    TutorBean tutor = (TutorBean) request.getAttribute("tutor");
+    
+    if (tutor == null) {
+    	response.sendRedirect(response.encodeRedirectURL("/TutoratoSmart/ActivityTutor?flag=2"));
+    	return;
+    }
 %>
 
 <!DOCTYPE html>
 <html>
 
-<%@ page import="java.util.*,project.Model.ActivityTutorBean" %>
+<%@ page import="java.util.*,project.Model.ActivityTutorBean,project.Model.TutorBean" %>
 
 <head>
 	<meta charset="UTF-8">
@@ -39,7 +46,7 @@
 	
 	<div class="content text-center" style="width: 70%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
 		<div class="panel">
-			<h2 align="center">Registro di tutorato - <%= user.getFirstName() %> <%= user.getLastName() %></h2>
+			<h2 align="center">Registro di tutorato - <%= tutor.getFirstName() %> <%= tutor.getLastName() %></h2>
 		</div>
 				
 		<div id="registerDiv">
@@ -66,19 +73,6 @@
 				} %>			
 			</table>
 		</div>
-		
-		<div class="container-fluid" style="margin: 25px; margin-bottom: 10px;">
-			<div class="row row-space">
-				<div class="row">
-					<div class="form-group col-lg-6">
-						<a class="btn btn-primary" href="tutor/modifyActivity.jsp">Aggiungi attivit&aacute lavorativa al registro</a>
-					</div>
-					<div class="form-group col-lg-6">
-						<input class="btn btn-primary" id="generateRegister" type="button" onclick="generateRegister()" name="generateRegister" value="Genera registro tutorato">
-					</div>
-				</div>
-			</div>
-		</div>	
 	</div>
     
 	<%@ include file="/partials/footer.jsp" %>

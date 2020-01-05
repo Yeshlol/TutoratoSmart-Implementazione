@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	    contentHeight: 'auto',
 	    eventMouseEnter: function(mouseEnterInfo ) {
 	    	$("#info").css({
-	    	      top: mouseEnterInfo.jsEvent.pageY + 3,
-	    	      left: mouseEnterInfo.jsEvent.pageX + 3,
+	    	      top: mouseEnterInfo.jsEvent.pageY + 15,
+	    	      left: mouseEnterInfo.jsEvent.pageX + 15,
 	    	      background: "red",
 	    	      border: "1px solid blue",
 	    	});

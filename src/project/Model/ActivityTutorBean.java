@@ -69,6 +69,58 @@ public class ActivityTutorBean implements Serializable {
 	}
 
 	
+	public String getStartTimeString() {		
+		int min = startTime % 60;
+		String minutes = "";
+		
+		if (min == 0) {
+			minutes = "00";
+		}
+		else if (min < 10)
+			minutes = "0" + min;
+		else
+			minutes = "" + min;
+		
+		int hours = startTime / 60;
+		String hs = "";
+		
+		if (hours == 0) {
+			hs = "00";
+		}
+		else if (hours < 10)
+			hs = "0" + hours;
+		else
+			hs = "" + hours;
+							
+		return hs + ":" + minutes;
+	}
+
+	public String getFinishTimeString() {
+		int min = finishTime % 60;
+		String minutes = "";
+		
+		if (min == 0) {
+			minutes = "00";
+		}
+		else if (min < 10)
+			minutes = "0" + min;
+		else
+			minutes = "" + min;
+		
+		int hours = finishTime / 60;
+		String hs = "";
+		
+		if (hours == 0) {
+			hs = "00";
+		}
+		else if (hours < 10)
+			hs = "0" + hours;
+		else
+			hs = "" + hours;
+							
+		return hs + ":" + minutes;
+	}
+
 	public String getState() {
 		return state;
 	}
