@@ -14,14 +14,24 @@
 <body>
 	<%@ include file="/partials/header.jsp" %>
 	    
-   	<div class="form-general" style="margin-left:20px;margin-right:20px;">
+   	<div class="form-general" style="width: 70%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
    	<h3 align="center">Modifica Dati Attivit&aacute</h3>
    
    	<form method="POST" action="<%= response.encodeURL("ModifyActivity") %>">
        
         <h3 align="center">Inserisci i campi che si desiderano modificare:</h3>  
-         
-        Categoria <input type="text" class="form-control" name="categoria">
+        <div class="panel" style="margin: 25px;">
+       <div>Categoria<br>
+       <select id="categoria" name="categoria">
+									<option value="1">Sportello informativo</option>
+									<option value="2">Assistenza esame</option>
+									<option value="3">Organizzazione seminario</option>
+									<option value="4">Seminario</option>
+									<option value="5">Organizzazione evento</option>
+									<option value="6">Evento</option>
+								</select>
+					</div>
+					<br>		
        
         <div class="form-group">Data
         	<input type="date"   class="form-control" name="data">
@@ -40,7 +50,9 @@
         </div>
          
         <input type = "hidden" name ="idActivity">          
-        <input id="button" type="button" name="modificaButton" value="Modifica">
+        <button type="submit" class="btn btn-primary" style="margin-left:400px;">Modifica</button>
+        </div>
+        
 	</form> 
 	</div>     
       		

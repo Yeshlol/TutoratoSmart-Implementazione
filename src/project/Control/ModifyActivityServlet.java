@@ -32,14 +32,12 @@ public class ModifyActivityServlet extends HttpServlet {
 		String data=request.getParameter("data");
 		String oraInizio=request.getParameter("oraInizio");
 		String oraFine=request.getParameter("oraFine");
-		String oreSvolte=request.getParameter("oreAttivit�Svolte");
 		String dettagli=request.getParameter("dettagli");
 		String id=request.getParameter("idActivity");
 	     
 	    Date date=Date.valueOf(data);
 	    int orainizio=Integer.parseInt(oraInizio);
 	    int orafine=Integer.parseInt(oraFine);
-	    float oresvolte=Float.parseFloat(oreSvolte);
 	    int idattivita=Integer.parseInt(id);
 	    
 	    activityBean.setIdActivity(idattivita);
@@ -47,7 +45,6 @@ public class ModifyActivityServlet extends HttpServlet {
 	    activityBean.setActivityDate(date);
 	    activityBean.setStartTime(orainizio);
 	    activityBean.setFinishTime(orafine);
-	    activityBean.setHours(oresvolte);
 	    activityBean.setDetails(dettagli);
 	     
 	   
@@ -59,7 +56,7 @@ public class ModifyActivityServlet extends HttpServlet {
 			e.printStackTrace();
 			response.sendRedirect("modifyActivity.jsp");
 		}
-	    request.getRequestDispatcher("activity.jsp").forward(request, response);	
+	    request.getRequestDispatcher("activityInfo.jsp").forward(request, response);	
 	}
 
 	

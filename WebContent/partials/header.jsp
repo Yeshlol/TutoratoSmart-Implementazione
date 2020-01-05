@@ -46,6 +46,7 @@
         	<ul class="nav navbar-nav">
           		<li><a href="/TutoratoSmart/commission/tutorRegistration.jsp">Registra Tutor</a></li>
           		<li><a  href="/TutoratoSmart/commission/searchTutors.jsp">Ricerca Tutor</a></li>
+          		<li><a href="/TutoratoSmart/commission/searchStudents.jsp">Ricerca Studenti</a>
           	</ul>
           	</div>     
 		<% } else if(user.getRole()==2) { %>

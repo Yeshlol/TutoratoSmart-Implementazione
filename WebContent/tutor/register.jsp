@@ -71,7 +71,7 @@
 			<div class="row row-space">
 				<div class="row">
 					<div class="form-group col-lg-6">
-						<a class="btn btn-primary" href="tutor/modifyActivity.jsp">Aggiungi attivit&aacute lavorativa al registro</a>
+						<a class="btn btn-primary" href="tutor/addActivity.jsp">Aggiungi attivit&aacute lavorativa al registro</a>
 					</div>
 					<div class="form-group col-lg-6">
 						<input class="btn btn-primary" id="generateRegister" type="button" onclick="generateRegister()" name="generateRegister" value="Genera registro tutorato">
