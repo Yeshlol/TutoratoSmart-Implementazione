@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.LinkedList;
 
 import project.Control.DBConnection;
 
@@ -124,13 +122,13 @@ public class AppointmentDAO  {
 	}
 
 
-	public Collection<AppointmentBean> doRetrieveAllByMail(String order, String studentMail) throws SQLException {
+	public AppointmentBean doRetrieveByRequestId(String order, int requestId) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
-		Collection<AppointmentBean> list = new LinkedList<AppointmentBean>();
+		AppointmentBean bean = new AppointmentBean();
 		
-		String selectSql = "SELECT SQL_NO_CACHE * FROM APPOINTMENT AS A, REQUEST AS R WHERE R.Student = ?";
+		String selectSql = "SELECT SQL_NO_CACHE * FROM APPOINTMENT AS A, REQUEST AS R WHERE R.IdRequest = A.RequestId AND R.IdRequest = ?";
 		
 		if(order!=null && !order.equals("")) {
 			selectSql +=" ORDER BY " + order;
@@ -138,23 +136,20 @@ public class AppointmentDAO  {
 		
 		try {
 			preparedStatement = connection.prepareStatement(selectSql);
-			preparedStatement.setString(1, studentMail);
+			preparedStatement.setInt(1, requestId);
 			
-			System.out.println("Appointment doRetrieveAllByMail: " + preparedStatement.toString());
+			System.out.println("Appointment doRetrieveByRequestId: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
-			while(rs.next()) {
-				AppointmentBean bean = new AppointmentBean();
+			while(rs.next()) {				
 				bean.setIdAppointment(rs.getInt("IdAppointment"));
 				bean.setDetails(rs.getString("Details"));
 				bean.setRequestId(rs.getInt("RequestId"));
 				bean.setTutor(rs.getString("Tutor"));
-				
-				list.add(bean);
 			}			
 		} finally {
 			if(preparedStatement != null)
 				preparedStatement.close();
 		}
-		return list;
+		return bean;
 	}
 }

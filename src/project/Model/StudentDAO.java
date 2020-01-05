@@ -107,10 +107,10 @@ public class StudentDAO  {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
-		Collection<StudentBean> list = new LinkedList<StudentBean>();
+		Collection<StudentBean> studentsList = new LinkedList<StudentBean>();
 		
-		String selectSql = "SELECT * FROM APPOINTMENT AS A, STUDENT AS S, REQUEST AS Q "
-				+ "WHERE RequestDate >= ? AND RequestDate <= ?";
+		String selectSql = "SELECT * FROM STUDENT AS S, REQUEST AS R, TS_USER AS T "
+				+ "WHERE R.RequestDate >= ? AND R.RequestDate <= ? AND R.Student = S.Email AND S.Email = T.Email";
 		
 		if(order!=null && !order.equals("")) {
 			selectSql +=" ORDER BY " + order;
@@ -135,13 +135,13 @@ public class StudentDAO  {
 				sbean.setRegistrationNumber(rs.getString("RegistrationNumber"));
 				sbean.setAcademicYear(rs.getInt("AcademicYear"));
 				
-				list.add(sbean);
+				studentsList.add(sbean);
 			}			
 		} finally {
 			if(preparedStatement != null)
 				preparedStatement.close();
 		}
 		
-		return list;
+		return studentsList;
 	}
 }

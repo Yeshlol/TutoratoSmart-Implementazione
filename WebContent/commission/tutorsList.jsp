@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<% Collection<TutorBean> tutorsCollection = (Collection<TutorBean>) request.getAttribute("tutorsCollection"); %>
+<% 	Collection<TutorBean> tutorsCollection = (Collection<TutorBean>) request.getAttribute("tutorsCollection"); 
+	if(tutorsCollection == null ){
+		response.sendRedirect(response.encodeRedirectURL("RicercaProdotti"));
+		return;
+	}
+%>
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +44,7 @@
 		<div id="tutorsDiv">
 			<table style="width: 95%;margin: 0 auto;margin-bottom: 25px">
 				<tr>					
-       			<% if (tutorsCollection.isEmpty()) { %>
+       			<% if (tutorsCollection == null || tutorsCollection.isEmpty()) { %>
 					<th class="text-center">Nessun Tutor Trovato!</th>
 				<%  } else  { %>
 						<th class="text-center">Nome</th>

@@ -26,18 +26,23 @@ public class TutorsServlet extends HttpServlet {
 
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    TutorDAO tutorDAO = new TutorDAO();
+	    doPost(request, response);
+	}
+	
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		TutorDAO tutorDAO = new TutorDAO();
 		Collection<TutorBean> tutorsCollection = null;
 		
-		String startDate=request.getParameter("startActivity");
+		String startDate = request.getParameter("startDate");
 		if (startDate == null || startDate == "") {
-			startDate="2019-01-01";
+			startDate = "2019-01-01";
 		}
-		Date dataIniziale= Date.valueOf(startDate);
+		Date dataIniziale = Date.valueOf(startDate);
 		
-		String finishDate=request.getParameter("finishActivity");
+		String finishDate = request.getParameter("finishDate");
 		if(finishDate == null || finishDate == "") {
-			finishDate="2019-12-31";
+			finishDate = "2019-12-31";
 		}
 		Date dataFinale= Date.valueOf(finishDate);
 				
@@ -53,11 +58,6 @@ public class TutorsServlet extends HttpServlet {
 		}
 				
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/commission/tutorsList.jsp");
-		dispatcher.forward(request, response);		
-	}
-	
-    
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		dispatcher.forward(request, response);
 	}
 }
