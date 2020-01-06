@@ -96,6 +96,7 @@ public class ActivityTutorDAO  {
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
+			
 	
 			preparedStatement.setDate(1, bean.getActivityDate());
 			preparedStatement.setInt(2, bean.getStartTime());

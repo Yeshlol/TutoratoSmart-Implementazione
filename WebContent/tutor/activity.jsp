@@ -11,12 +11,11 @@
    	<div class="form-general" style="width: 70%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
    	<h3 align="center">Aggiungi attivit&aacute lavorativa</h3>
    
-   	<form method="POST" action="AddActivityServlet">
+  <form method="POST" action="<%= response.encodeURL(request.getContextPath() + "/ModifyActivity")%>">
        
         <h3 align="center">Inserisci i campi:</h3>  
-        <div class="panel" style=" margin:25px;"> 
+        <div class="panel" style=" margin:25px;">   
        <div class="form-group">Categoria  
-       <label for="categoria"></label>
 					<select id="categoria" name="categoria">
 						<option value="1">Sportello informativo</option>
 						<option value="2">Assistenza esame</option>
@@ -46,10 +45,9 @@
         	<input type="text" class="form-control" name="dettagli">
         </div>
          
-         
-        <input type ="hidden" name ="idActivity">
+        <input type="hidden" name="inserimento" value="true">
         <input type="hidden" name="idRegistro">         
-        <button type="submit" class="btn btn-primary" style="margin-left:400px;">Aggiungi</button>
+        <input id="button" type="submit" name="aggiungiButton" value="Aggiungi">
         </div>
 	</form> 
 	

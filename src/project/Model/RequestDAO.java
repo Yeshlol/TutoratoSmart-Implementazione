@@ -52,7 +52,6 @@ public class RequestDAO  {
 		return bean;
 	}
 	
-	
 	public synchronized void doSave(RequestBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;

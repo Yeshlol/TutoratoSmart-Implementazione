@@ -58,7 +58,7 @@
 		</div>
 				
 		<div class="text-center" style="margin-bottom: 25px;">
-			<a class="btn btn-primary" href="tutor/activityModify.jsp">Modifica attività</a>
+			<a href="<%= response.encodeURL(request.getContextPath() +  "/ModifyActivity?cod=" + activity.getIdActivity()) %>"><input class="btn btn-primary" id="modificaActivityButton" type="button" value="ModificaActivity"></a>
 		</div>
 	</div>
 		
