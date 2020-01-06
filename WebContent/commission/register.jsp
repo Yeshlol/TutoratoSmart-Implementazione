@@ -4,16 +4,11 @@
 <% Collection<ActivityTutorBean> activitiesCollection = (Collection<ActivityTutorBean>) request.getAttribute("activitiesCollection");  
        
     if (activitiesCollection == null){
-		response.sendRedirect(response.encodeRedirectURL("/TutoratoSmart/ActivityTutor?flag=2"));
+		response.sendRedirect(response.encodeRedirectURL("/TutoratoSmart/ShowRegister?flag=2"));
 		return;
 	}
     
     TutorBean tutor = (TutorBean) request.getAttribute("tutor");
-    
-    if (tutor == null) {
-    	response.sendRedirect(response.encodeRedirectURL("/TutoratoSmart/ActivityTutor?flag=2"));
-    	return;
-    }
 %>
 
 <!DOCTYPE html>
@@ -67,7 +62,7 @@
 					 			<td><%= bean.getCategory() %></td>
 					 			<td><%= bean.getActivityDate() %></td>
 					 			<td><%= bean.getState() %></td>
-					 			<td><a href ="<%= response.encodeURL(request.getContextPath() + "/Activity?id=" + bean.getIdActivity()) %>">Mostra</a></td>
+					 			<td><a href ="<%= response.encodeURL(request.getContextPath() + "/ShowActivity?id=" + bean.getIdActivity()) %>&flag=2">Mostra</a></td>
 					 		</tr>		 
 					<%	} 
 				} %>			

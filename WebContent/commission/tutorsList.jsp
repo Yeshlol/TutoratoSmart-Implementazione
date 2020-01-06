@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<% 	Collection<TutorBean> tutorsCollection = (Collection<TutorBean>) request.getAttribute("tutorsCollection"); 
-	if(tutorsCollection == null ){
-		response.sendRedirect(response.encodeRedirectURL("RicercaProdotti"));
-		return;
-	}
-%>
+<% 	Collection<TutorBean> tutorsCollection = (Collection<TutorBean>) request.getAttribute("tutorsCollection"); %>
 
 <!DOCTYPE html>
 <html>
@@ -36,28 +31,27 @@
 <body>
 	<%@ include file="/partials/header.jsp" %>
     
-    <div id="content text-center" style="width: 70%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
-		<div class="panel">
-			<h2 align="center">Visualizzazione lista tutor</h2>
-		</div>
-		
-		<div id="tutorsDiv">
+    <div id="content text-center" style="width: 70%;margin: 0 auto; padding-bottom: 25px; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
+		<% if (tutorsCollection == null || tutorsCollection.isEmpty()) { %>
+			<h2 align="center">Nessun tutor trovato</h2>
+		<% } else { %>
+			<div class="panel text-center">
+				<h2>Visualizzazione lista tutor</h2>
+			</div>
+			
 			<table style="width: 95%;margin: 0 auto;margin-bottom: 25px">
-				<tr>					
-       			<% if (tutorsCollection == null || tutorsCollection.isEmpty()) { %>
-					<th class="text-center">Nessun Tutor Trovato!</th>
-				<%  } else  { %>
-						<th class="text-center">Nome</th>
-		    			<th class="text-center">Cognome</th>
-		    			<th class="text-center">Matricola</th>
-		    			<th class="text-center">Data inizio tutorato</th>
-		    			<th class="text-center">Data termine tutorato</th>
-		    			<th class="text-center">Email</th>
-		    			<th class="text-center">Dettagli</th>
-	    			</tr>
-					<% 	Iterator<?> it = tutorsCollection.iterator();
-					 	for(int i = 0 ; i < tutorsCollection.size() && it.hasNext(); i++){ 
-				 			TutorBean bean = (TutorBean) it.next(); %>
+				<tr>						
+					<th class="text-center">Nome</th>
+		    		<th class="text-center">Cognome</th>
+		    		<th class="text-center">Matricola</th>
+		    		<th class="text-center">Data inizio tutorato</th>
+		    		<th class="text-center">Data termine tutorato</th>
+		    		<th class="text-center">Email</th>
+		    		<th class="text-center">Dettagli</th>
+	    		</tr>
+				<% 	Iterator<?> it = tutorsCollection.iterator();
+				 	for(int i = 0 ; i < tutorsCollection.size() && it.hasNext(); i++){ 
+						TutorBean bean = (TutorBean) it.next(); %>
 			 			<tr>
 				 			<td><%= bean.getFirstName() %></td>
 				 			<td><%= bean.getLastName() %></td>
@@ -65,13 +59,12 @@
 				 			<td><%= bean.getStartDate() %></td>
 				 			<td><%= bean.getFinishDate() %></td>
 				 			<td><%= bean.getEmail() %></td>
-				 			<td><a href ="<%= response.encodeURL(request.getContextPath() + "/ActivityTutor?Email=" + bean.getEmail()) %>&flag=2">Mostra</a></td>
+				 			<td><a href ="<%= response.encodeURL(request.getContextPath() + "/ShowRegister?Email=" + bean.getEmail()) %>&flag=2">Mostra</a></td>
 				 		</tr>		 
-					<%	} 
-				} %>			
-			</table> 			
-	 	</div> 			
-	</div>
+				<%	} %>			
+			</table>
+		<%	} %> 			
+	 </div>
         
     <%@ include file="/partials/footer.jsp" %>        
 </body>

@@ -19,7 +19,7 @@
 		</div>
 		
 		<div class="container-fluid" style="margin: 25px;">
-			<form method="POST" action="<%= response.encodeURL("/TutoratoSmart/Tutors") %>">
+			<form method="POST" action="<%= response.encodeRedirectURL(request.getContextPath() + "/Tutors") %>">
 				<div class="row row-space">
 				  	<div class="row">
 				  		<div class="form-group col-lg-6">

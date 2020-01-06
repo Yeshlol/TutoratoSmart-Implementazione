@@ -58,7 +58,8 @@
 		</div>
 				
 		<div class="text-center" style="margin-bottom: 25px;">
-			<a class="btn btn-primary" href="tutor/activityModify.jsp">Modifica attività</a>
+			<a class="btn btn-primary">Convalida attività</a>
+			<a class="btn btn-primary">Cancella attività</a>
 		</div>
 	</div>
 		

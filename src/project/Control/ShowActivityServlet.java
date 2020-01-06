@@ -14,31 +14,45 @@ import project.Model.ActivityTutorBean;
 import project.Model.ActivityTutorDAO;
 
 
-@WebServlet("/Activity")
-public class ActivityServlet extends HttpServlet {
+@WebServlet("/ShowActivity")
+public class ShowActivityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
-    public ActivityServlet() {
+    public ShowActivityServlet() {
     	super();
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ActivityTutorDAO activityDAO=new ActivityTutorDAO();
-		ActivityTutorBean activityBean=new ActivityTutorBean();
-	    int id=Integer.parseInt(request.getParameter("id"));
+		ActivityTutorDAO activityDAO = new ActivityTutorDAO();
+		
+		int flag = Integer.parseInt(request.getParameter("flag"));	// Flag 1 = visualizza dettagli attività del tutor (loggato)
+																	// Flag 2 = membro della Commissione vuole visualizzare un'attivita di un tutor.
+		
+		ActivityTutorBean activityBean = new ActivityTutorBean();
+		
+	    int id = Integer.parseInt(request.getParameter("id"));
 	     
 	    try {
-	    	activityBean=activityDAO.doRetrieveById(id);
+	    	activityBean = activityDAO.doRetrieveById(id);
 			request.removeAttribute("activity");
 			request.setAttribute("activity",activityBean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	    	     
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("/tutor/activityInfo.jsp");
-	    dispatcher.forward(request, response); 
+		
+		if (flag == 1) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/tutor/activityInfo.jsp");
+		    dispatcher.forward(request, response);		    
+		    return;
+		}
+		
+		else if (flag == 2) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/commission/activityInfo.jsp");
+		    dispatcher.forward(request, response);
+		    return;
+		}		 
 	}
 
 	

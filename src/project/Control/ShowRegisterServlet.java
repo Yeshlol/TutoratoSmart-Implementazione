@@ -18,11 +18,11 @@ import project.Model.TutorDAO;
 import project.Model.UserBean;
 
 
-@WebServlet("/ActivityTutor")
-public class ActivityTutorServlet extends HttpServlet {
+@WebServlet("/ShowRegister")
+public class ShowRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ActivityTutorServlet() {
+    public ShowRegisterServlet() {
         super();       
     }
 

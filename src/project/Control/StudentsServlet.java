@@ -29,20 +29,20 @@ public class StudentsServlet extends HttpServlet {
 	    StudentDAO studentDAO = new StudentDAO();
 		Collection<StudentBean> studentsCollection = null;
 		
-		String startDate=request.getParameter("startDate");
+		String startDate = request.getParameter("startDate");
 		if (startDate == null || startDate == "") {
 			startDate="2019-01-01";
 		}
-		Date dataIniziale= Date.valueOf(startDate);
+		Date start = Date.valueOf(startDate);
 		
-		String finishDate=request.getParameter("finishDate");
+		String finishDate = request.getParameter("finishDate");
 		if(finishDate == null || finishDate == "") {
 			finishDate="2019-12-31";
 		}
-		Date dataFinale= Date.valueOf(finishDate);
+		Date finish = Date.valueOf(finishDate);
 				
 		try {
-			studentsCollection = studentDAO.doRetrieveAllByDates(null, dataIniziale, dataFinale);
+			studentsCollection = studentDAO.doRetrieveAllByDates(null, start, finish);
 		} catch (SQLException e) {			
 			e.printStackTrace();
 		}
@@ -50,6 +50,8 @@ public class StudentsServlet extends HttpServlet {
 		if (studentsCollection != null) {
 			request.removeAttribute("studentsCollection");
 			request.setAttribute("studentsCollection", studentsCollection);
+			request.setAttribute("startDate", startDate);
+			request.setAttribute("finishDate", finishDate);
 		}
 				
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/commission/studentsList.jsp");

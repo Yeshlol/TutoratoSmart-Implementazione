@@ -28,17 +28,17 @@ public class ModifyActivityServlet extends HttpServlet {
     	ActivityTutorBean activityBean=new ActivityTutorBean();
 		ActivityTutorDAO activityDAO=new ActivityTutorDAO();
 		 
-		String categoria=request.getParameter("categoria");
-		String data=request.getParameter("data");
-		String oraInizio=request.getParameter("oraInizio");
-		String oraFine=request.getParameter("oraFine");
-		String dettagli=request.getParameter("dettagli");
-		String id=request.getParameter("idActivity");
+		String categoria = request.getParameter("categoria");
+		String data = request.getParameter("data");
+		String oraInizio = request.getParameter("oraInizio");
+		String oraFine = request.getParameter("oraFine");
+		String dettagli = request.getParameter("dettagli");
+		String id = request.getParameter("idActivity");
 	     
-	    Date date=Date.valueOf(data);
-	    int orainizio=Integer.parseInt(oraInizio);
-	    int orafine=Integer.parseInt(oraFine);
-	    int idattivita=Integer.parseInt(id);
+	    Date date = Date.valueOf(data);
+	    int orainizio = Integer.parseInt(oraInizio);
+	    int orafine = Integer.parseInt(oraFine);
+	    int idattivita = Integer.parseInt(id);
 	    
 	    activityBean.setIdActivity(idattivita);
 	    activityBean.setCategory(categoria);
@@ -54,7 +54,7 @@ public class ModifyActivityServlet extends HttpServlet {
 	    	request.getSession(false).setAttribute("activity", activityDAO.doRetrieveById(idattivita));
 		} catch (SQLException e) {
 			e.printStackTrace();
-			response.sendRedirect("modifyActivity.jsp");
+			response.sendRedirect("activityModify.jsp");
 		}
 	    request.getRequestDispatcher("activityInfo.jsp").forward(request, response);	
 	}

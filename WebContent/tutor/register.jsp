@@ -4,7 +4,7 @@
 <% Collection<ActivityTutorBean> activitiesCollection = (Collection<ActivityTutorBean>) request.getAttribute("activitiesCollection");  
        
     if (activitiesCollection == null){
-		response.sendRedirect(response.encodeRedirectURL("/TutoratoSmart/ActivityTutor?flag=1"));
+		response.sendRedirect(response.encodeRedirectURL("/TutoratoSmart/ShowRegister?flag=1"));
 		return;
 	}
 %>
@@ -60,7 +60,7 @@
 					 			<td><%= bean.getCategory() %></td>
 					 			<td><%= bean.getActivityDate() %></td>
 					 			<td><%= bean.getState() %></td>
-					 			<td><a href ="<%= response.encodeURL(request.getContextPath() + "/Activity?id=" + bean.getIdActivity()) %>">Mostra</a></td>
+					 			<td><a href ="<%= response.encodeURL(request.getContextPath() + "/ShowActivity?id=" + bean.getIdActivity() + "&flag=1") %>">Mostra</a></td>
 					 		</tr>		 
 					<%	} 
 				} %>			
@@ -71,7 +71,7 @@
 			<div class="row row-space">
 				<div class="row">
 					<div class="form-group col-lg-6">
-						<a class="btn btn-primary" href="tutor/addActivity.jsp">Aggiungi attivit&aacute lavorativa al registro</a>
+						<a class="btn btn-primary" href="tutor/activity.jsp">Aggiungi attivit&aacute lavorativa al registro</a>
 					</div>
 					<div class="form-group col-lg-6">
 						<input class="btn btn-primary" id="generateRegister" type="button" onclick="generateRegister()" name="generateRegister" value="Genera registro tutorato">

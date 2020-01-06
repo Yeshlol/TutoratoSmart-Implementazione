@@ -1,6 +1,7 @@
 package project.Model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -229,5 +230,45 @@ public class RequestDAO  {
 				preparedStatement.close();
 		}
 		return list;
+	}
+
+	public Collection<RequestBean> doRetrieveAllByDates(String order, String studentMail, Date startResearchDate, Date finishResearchDate) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		Collection<RequestBean> requestsList = new LinkedList<RequestBean>();
+		
+		String selectSql = "SELECT * FROM REQUEST AS R WHERE R.RequestDate >= ? AND R.RequestDate <= ? AND R.Student = ?";
+		
+		if(order!=null && !order.equals("")) {
+			selectSql +=" ORDER BY " + order;
+		}
+		
+		try {
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setDate(1, startResearchDate);
+			preparedStatement.setDate(2, finishResearchDate);
+			preparedStatement.setString(3, studentMail);
+			
+			System.out.println("Request doRetrieveAllByDates: " + preparedStatement.toString());
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()) {
+				RequestBean bean = new RequestBean();
+				bean.setIdRequest(rs.getInt("IdRequest"));
+				bean.setState(rs.getString("State"));
+				bean.setStudentComment(rs.getString("StudentComment"));
+				bean.setRequestDate(rs.getDate("RequestDate"));
+				bean.setRequestTime(rs.getInt("RequestTime"));
+				bean.setDuration(rs.getInt("Duration"));
+				bean.setStudent(rs.getString("Student"));
+				
+				requestsList.add(bean);
+			}			
+		} finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}
+		
+		return requestsList;
 	}
 }
