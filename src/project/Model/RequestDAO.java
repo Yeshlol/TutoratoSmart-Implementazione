@@ -164,7 +164,7 @@ public class RequestDAO  {
 		
 		Collection<RequestBean> list = new LinkedList<RequestBean>();
 		
-		String selectSql = "SELECT SQL_NO_CACHE * FROM REQUEST WHERE Student = ?";
+		String selectSql = "SELECT SQL_NO_CACHE * FROM REQUEST WHERE Student = ? ";
 		
 		if(order!=null && !order.equals("")) {
 			selectSql +=" ORDER BY " + order;
@@ -186,6 +186,8 @@ public class RequestDAO  {
 				bean.setRequestTime(rs.getInt("RequestTime"));
 				bean.setDuration(rs.getInt("Duration"));
 				bean.setStudent(rs.getString("Student"));
+				
+			    
 				
 				list.add(bean);
 			}			

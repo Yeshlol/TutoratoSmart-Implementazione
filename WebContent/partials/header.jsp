@@ -57,7 +57,11 @@
           		</ul>
           	</div>
 	    <% } else if(user.getRole()==3) { %>
-	      
+	         <div class="collapse navbar-collapse" id="myNavbar">
+        	<ul class="nav navbar-nav">
+          		<li><a href="/TutoratoSmart/student/requestList.jsp" style="font-weight:bold;">Richieste di appuntamento effettuate</a></li>
+          		</ul>
+          	</div>
 	      
 		<% } %>
 		</div>
