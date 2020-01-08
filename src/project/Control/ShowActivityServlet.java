@@ -36,8 +36,7 @@ public class ShowActivityServlet extends HttpServlet {
 	     
 	    try {
 	    	activityBean = activityDAO.doRetrieveById(id);
-			request.removeAttribute("activity");
-			request.setAttribute("activity",activityBean);
+			request.getSession(false).setAttribute("activity",activityBean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

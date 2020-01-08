@@ -20,7 +20,7 @@ $("#Email").on('keyup', function() {
 $("#Password").on('keyup',function(){
 	var color;
 	
-	if (validatePassword($(this)) && checkPasswords($(this), $("#VerifyPassword"))) 
+	if (validatePassword($(this))) 
 		color = "1px solid green";			
 	else
 		color = "1px solid red";
@@ -29,7 +29,6 @@ $("#Password").on('keyup',function(){
 		color = "0";
 	
 	$(this).css("border", color);
-	$("#VerifyPassword").css("border", color);
 });
 
 
@@ -46,7 +45,6 @@ $("#VerifyPassword").on('keyup',function(){
 		color = "0";
 	
 	$(this).css("border",color);
-	$("#Password").css("border", color);
 });
 
 

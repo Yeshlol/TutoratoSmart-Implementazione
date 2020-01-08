@@ -12,7 +12,7 @@
 <body>
 	<%@ include file="/partials/header.jsp" %>
 	
-	<div class="content text-center" style="width: 50%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
+	<div class="content text-center" style="width: 40%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
 		<div class="panel">
 			<h2>Registrazione</h2>
 			<p>Compila tutti i campi per registrarti</p>
@@ -99,7 +99,6 @@
 		
 	<%@ include file="/partials/footer.jsp" %>
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="<%= request.getContextPath() %>/js/validationScript.js"></script>
 	<script src="<%= request.getContextPath() %>/js/registrationScript.js"></script>
 </body>

@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<% ActivityTutorBean activity = (ActivityTutorBean) request.getAttribute("activity"); %>
+<% ActivityTutorBean activity = (ActivityTutorBean) session.getAttribute("activity"); %>
 
 <!DOCTYPE html>
 <html>
 
-<%@ page import="java.util.*,project.Model.ActivityTutorBean" %>
+<%@ page import="java.util.*,project.Utils.Utils,project.Model.ActivityTutorBean" %>
 
 <head>
 	<meta charset="UTF-8">
-	<title>Attivit&aacute</title>
+	<title>Dettagli attivit&aacute</title>
     
     <style>
 	    table,th,td{
@@ -46,19 +46,26 @@
 		    		<th class="text-center">Ore di attivit&aacute svolte</th>
 		    		<th class="text-center">Stato</th>
 	    		</tr>
-				<tr>
+	    		<tr>
 				 	<td><%= activity.getCategory() %></td>				 			
 				 	<td><%= activity.getActivityDate() %></td>
-				 	<td><%= activity.getStartTimeString() %></td>				 			
-				 	<td><%= activity.getFinishTimeString() %></td>
+				 	<td><%= Utils.getTimeAsString(activity.getStartTime()) %></td>				 			
+				 	<td><%= Utils.getTimeAsString(activity.getFinishTime()) %></td>
 				 	<td><%= activity.getHours() %></td>
 				 	<td><%= activity.getState() %></td>
+				</tr>
+								
+				<tr>
+					<th class="text-center" colspan="6">Descrizione attivit&aacute</th>
+				</tr>				
+				<tr>
+					<td colspan="6"><%= activity.getDetails() %></td>
 				</tr>			
 			</table>
 		</div>
 				
 		<div class="text-center" style="margin-bottom: 25px;">
-			<a href="<%= response.encodeURL(request.getContextPath() +  "/ModifyActivity?cod=" + activity.getIdActivity()) %>"><input class="btn btn-primary" id="modificaActivityButton" type="button" value="ModificaActivity"></a>
+			<a href="<%= response.encodeURL("tutor/activityModify.jsp") %>"><input class="btn btn-primary" id="modifyActivity" type="button" value="Modifica Attivit&aacute"></a>
 		</div>
 	</div>
 		

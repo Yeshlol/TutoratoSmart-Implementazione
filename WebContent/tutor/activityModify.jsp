@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%  ActivityTutorBean activity = (ActivityTutorBean) request.getAttribute("activity"); %>
+    
+<%  ActivityTutorBean activity = (ActivityTutorBean) session.getAttribute("activity"); %>
+
 <!DOCTYPE html>
 <html>
 
@@ -13,53 +15,57 @@
 
 <body>
 	<%@ include file="/partials/header.jsp" %>
-	    
-   	<div class="form-general" style="width: 70%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
-   	<h3 align="center">Modifica Dati Attivit&aacute</h3>
-   
-   <form method="POST" action="<%= response.encodeURL(request.getContextPath() + "/ModifyActivity")%>">
-       
-        <h3 align="center">Inserisci i campi che si desiderano modificare:</h3>  
-        <div class="panel" style="margin: 25px;">
-       <div>Categoria<br>
-       <select id="categoria" name="categoria">
-									<option value="1">Sportello informativo</option>
-									<option value="2">Assistenza esame</option>
-									<option value="3">Organizzazione seminario</option>
-									<option value="4">Seminario</option>
-									<option value="5">Organizzazione evento</option>
-									<option value="6">Evento</option>
-								</select>
-					</div>
-					<br>		
-       
-        <div class="form-group">Data
-        	<input type="date"   class="form-control" name="data" value="<%= activity.getActivityDate() %> " >
-        </div>
-        
-        <div class="form-group">Ora di inizio
-        	<input type="number" min="1" max="24" class="form-control" name="oraInizio" value="<%= activity.getStartTime() %>" >
-        </div>
-        
-		<div class="form-group">Ora di fine
-			<input type="number" min="1" max="23" class="form-control" name="oraFine" value="<%= activity.getFinishTime() %>" >
-        </div>
-        
-        <div class="form-group">Ore svolte
-			<input type="number" min="1" max="23" class="form-control" name="oreSvolte" value="<%= activity.getHours() %>" >
-        </div>
-        
-        <div class="form-group">Dettagli
-        	<input type="text" class="form-control" name="dettagli" value="<%= activity.getDetails() %>" >
-        </div>
-         
-        <input type = "hidden" name ="idActivity" value="<%= activity.getIdActivity() %>">          
-        <input id="button" type="submit" name="modificaButton" value="Modifica">
-        </div>
-        
-	</form> 
-	</div>     
-      		
+	
+	<div class="content text-center" style="width: 50%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
+		<div class="panel">
+			<h2 align="center">Modifica dati attivit&aacute del <%= activity.getActivityDate() %></h2>
+		</div>
+		
+		<div class="container-fluid" style="margin: 25px;">
+			<form method="POST" action="<%= response.encodeURL("/TutoratoSmart/Activity") %>">
+				<div class="row row-space">
+					<div class="row">
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				  			<label for="category" class="control-label">Specificare la categoria</label>
+							<select id="category" name="category">
+								<option value="1">Sportello informativo</option>
+								<option value="2">Assistenza esame</option>
+								<option value="3">Organizzazione seminario</option>
+								<option value="3">Seminario</option>
+								<option value="3">Organizzazione evento</option>
+								<option value="3">Evento</option>
+							</select>
+						</div>
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				  			<label for="date" class="control-label">Specificare la data</label>
+				  			<input type="date" class="form-control" name="date">
+				  		</div>
+				  	</div>
+				  	
+				  	<div class="row">
+				  		<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				  			<label for="startTime" class="control-label">Specificare l'orario di inizio attivit&aacute</label>
+				  			<input type="time" min="7:30" max="22:00" class="form-control" name="startTime">
+				  		</div>
+				  		<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				  			<label for="finishTime" class="control-label">Specificare l'orario di fine attivit&aacute</label>
+				  			<input type="time" min="7:30" max="22:00" class="form-control" name="finishTime">
+				  		</div>
+				  	</div>
+				</div>	
+									
+		  		<label for="description" class="control-label">Inserire la descrizione dell'attivit&aacute</label>
+		  		<textarea class="form-control" id="description" name="description" rows="3"></textarea>
+		  		<br>
+								
+				<div class="panel"></div>
+				<div>
+					<input class="btn btn-primary" id="modifyActivity" type="submit" onclick="validateInputsActivity()" name="modifyActivity" value="Modifica">		        	
+		        </div>			
+			</form>
+		</div>
+	</div>
+
 	<%@ include file="/partials/footer.jsp" %>
 </body>
 </html>

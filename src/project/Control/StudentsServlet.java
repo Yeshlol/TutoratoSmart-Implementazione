@@ -26,7 +26,12 @@ public class StudentsServlet extends HttpServlet {
 
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    StudentDAO studentDAO = new StudentDAO();
+    	doPost(request,response);		
+	}
+	
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		StudentDAO studentDAO = new StudentDAO();
 		Collection<StudentBean> studentsCollection = null;
 		
 		String startDate = request.getParameter("startDate");
@@ -55,11 +60,6 @@ public class StudentsServlet extends HttpServlet {
 		}
 				
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/commission/studentsList.jsp");
-		dispatcher.forward(request, response);		
-	}
-	
-    
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		dispatcher.forward(request, response);
 	}
 }

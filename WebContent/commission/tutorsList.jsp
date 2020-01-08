@@ -10,7 +10,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Visualizzazione lista tutor</title>
+	<title>Lista Tutor</title>
 	
     <style>
 	    table,th,td{
@@ -31,7 +31,7 @@
 <body>
 	<%@ include file="/partials/header.jsp" %>
     
-    <div id="content text-center" style="width: 70%;margin: 0 auto; padding-bottom: 25px; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
+    <div class="content text-center" style="width: 70%;margin: 0 auto; padding-bottom: 25px; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
 		<% if (tutorsCollection == null || tutorsCollection.isEmpty()) { %>
 			<h2 align="center">Nessun tutor trovato</h2>
 		<% } else { %>
@@ -63,7 +63,10 @@
 				 		</tr>		 
 				<%	} %>			
 			</table>
-		<%	} %> 			
+		<%	} %>
+		
+		<div class="panel"></div>
+		<input class="btn btn-primary" type="button" value="Indietro" onClick="history.go(-1);return true;">			
 	 </div>
         
     <%@ include file="/partials/footer.jsp" %>        

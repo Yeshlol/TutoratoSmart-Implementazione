@@ -56,6 +56,9 @@ public class ShowRegisterServlet extends HttpServlet {
 		
 		else if(flag == 2) {
 			String email = request.getParameter("Email");
+			if (email == null) {
+				email = (String) request.getSession(false).getAttribute("Email");
+			}
 			TutorDAO tutorDAO = new TutorDAO();
 			TutorBean tutor = new TutorBean();		
 			

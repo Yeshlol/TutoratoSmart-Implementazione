@@ -83,20 +83,20 @@
 				</div>
 				
 				<div>
+					<div class="panel"></div>
 					<input class="btn btn-primary" id="registra" type="button" onclick="validateInputsTutor()" name="registraButton" value="Registra">		        	
 		        </div>
 		        
 			</form>
 			
-			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;">Registrazione completata con successo!</div>
+			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Registrazione completata con successo!</div>
 									
-			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;">Registrazione fallita!</div>
+			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Registrazione fallita!</div>
 		</div>
 	</div>					 				
 	
 	<%@ include file="/partials/footer.jsp" %>
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="<%= request.getContextPath() %>/js/validationScript.js"></script>
 	<script src="<%= request.getContextPath() %>/js/registrationScript.js"></script>
 	<script type="text/javascript">

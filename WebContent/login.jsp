@@ -84,8 +84,7 @@
 			if (valid)
 				$("#loginForm form").submit();
 		}
-	</script>	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	</script>
 	<script src="<%= request.getContextPath() %>/js/validationScript.js"></script>
 </body>
 </html>

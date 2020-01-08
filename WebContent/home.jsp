@@ -6,14 +6,14 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>HomePage</title>
+	<title>Home</title>
 </head>
 
 <body>
     <%@ include file="/partials/header.jsp" %>
-                              
-    <h1 align="center">Benvenuto in TutoratoSmart!</h1>    
-               
+     
+    <h1 align="center">Benvenuto in TutoratoSmart!</h1>
+                 
     <%@ include file="/partials/footer.jsp" %>
 </body>
 </html>

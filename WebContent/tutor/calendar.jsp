@@ -30,7 +30,6 @@
 	
 	<%@ include file="/partials/footer.jsp" %>
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="/TutoratoSmart/js/calendarScript.js"></script>
 </body>
 </html>

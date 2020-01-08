@@ -10,7 +10,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Dettagli richiesta n <%= req.getIdRequest() %> </title>
+	<title>Dettagli Richiesta n <%= req.getIdRequest() %> </title>
 </head>
 
 <body>

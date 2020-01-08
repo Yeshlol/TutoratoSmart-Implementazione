@@ -25,7 +25,7 @@ public class RegisterDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			
-			System.out.println("Register doRetrieveById: " + preparedStatement.toString());
+			//System.out.println("Register doRetrieveById: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
@@ -35,7 +35,7 @@ public class RegisterDAO  {
 				bean.setTotalHours(rs.getInt("TotalHours"));
 				bean.setPercentageComplete(rs.getFloat("PercentageComplete"));
 				
-				System.out.println("Registro Trovato con l'id!");
+				//System.out.println("Registro Trovato con l'id!");
 			}
 		} catch (SQLException e) {
 			System.out.println("Id non trovato!");

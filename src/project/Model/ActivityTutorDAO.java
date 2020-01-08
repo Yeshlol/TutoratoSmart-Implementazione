@@ -59,8 +59,8 @@ public class ActivityTutorDAO  {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
-		String insertSql = "INSERT INTO ACTIVITY_TUTOR(Category,ActivityDate,StartTime,FinishTime,Hours,State,Details,Tutor,RegisterId)"
-						 + " VALUES (?,?,?,?,?,?,?,?,?)";
+		String insertSql = "INSERT INTO ACTIVITY_TUTOR(Category,ActivityDate,StartTime,FinishTime,Hours,Details,Tutor,RegisterId)"
+						 + " VALUES (?,?,?,?,?,?,?,?)";
 		
 		try {
 			connection.setAutoCommit(false);
@@ -70,10 +70,9 @@ public class ActivityTutorDAO  {
 			preparedStatement.setInt(3, bean.getStartTime());
 			preparedStatement.setInt(4, bean.getFinishTime());
 			preparedStatement.setFloat(5, bean.getHours());
-			preparedStatement.setString(6, bean.getState());
-			preparedStatement.setString(7, bean.getDetails());
-			preparedStatement.setString(8, bean.getTutor());
-			preparedStatement.setInt(9, bean.getRegisterId());
+			preparedStatement.setString(6, bean.getDetails());
+			preparedStatement.setString(7, bean.getTutor());
+			preparedStatement.setInt(8, bean.getRegisterId());
 			
 			System.out.println("ActivityTutor doSave: "+ preparedStatement.toString());
 			

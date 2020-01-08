@@ -119,7 +119,9 @@ public class RegistrationServlet extends HttpServlet {
 							
 			String startDate = request.getParameter("StartDate");	// Dati Tutor
 			int totalHours = Integer.parseInt(request.getParameter("TotalHours"));
-						
+			
+			UserBean commissionMember = (UserBean) request.getSession().getAttribute("user");
+			
 			TutorBean tutor = new TutorBean();
 			
 			tutor.setEmail(email);
@@ -130,7 +132,7 @@ public class RegistrationServlet extends HttpServlet {
 			tutor.setSex(sex);
 			tutor.setRegistrationNumber(registrationNumber);
 			tutor.setStartDate(Date.valueOf(startDate));
-			tutor.setCommissionMember("d.molinaro@commissione.unicampania.it");
+			tutor.setCommissionMember(commissionMember.getEmail());
 					
 			try {
 				tutorDAO.doSave(tutor, totalHours);

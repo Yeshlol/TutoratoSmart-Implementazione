@@ -11,9 +11,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Header</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/csspage.css">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/mycss.css">
 	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
@@ -44,9 +46,9 @@
 		<% if (user.getRole()==1) { %>
 	        <div class="collapse navbar-collapse" id="myNavbar">
         	<ul class="nav navbar-nav">
-          		<li><a href="/TutoratoSmart/commission/tutorRegistration.jsp">Registra Tutor</a></li>
-          		<li><a  href="/TutoratoSmart/commission/searchTutors.jsp">Ricerca Tutor</a></li>
-          		<li><a href="/TutoratoSmart/commission/searchStudents.jsp">Ricerca Studenti</a>
+          		<li><a href="/TutoratoSmart/commission/tutorRegistration.jsp" style="font-weight:bold;">Registra Tutor</a></li>
+          		<li><a  href="/TutoratoSmart/commission/searchTutors.jsp" style="font-weight:bold;">Ricerca Tutor</a></li>
+          		<li><a href="/TutoratoSmart/commission/searchStudents.jsp" style="font-weight:bold;">Ricerca Studenti</a>
           	</ul>
           	</div>     
 		<% } else if(user.getRole()==2) { %>
@@ -76,7 +78,7 @@
 			          <span class="icon-bar"></span>
 			          <span class="icon-bar"></span>                        
 			        </button>
-			        <a class="navbar-brand" style="font-weight:bold;" href="<%= response.encodeURL(request.getContextPath() + "/login.jsp") %>">Effettua l'accesso</a>
+			        <a class="navbar-brand" style="font-weight:bold;" href="<%= response.encodeURL(request.getContextPath() + "/index.jsp") %>">Effettua l'accesso</a>
 				</div>
 			</div>
 		</nav>

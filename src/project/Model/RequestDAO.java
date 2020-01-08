@@ -166,7 +166,7 @@ public class RequestDAO  {
 		
 		String selectSql = "SELECT SQL_NO_CACHE * FROM REQUEST WHERE Student = ? ";
 		
-		if(order!=null && !order.equals("")) {
+		if (order!=null && !order.equals("")) {
 			selectSql +=" ORDER BY " + order;
 		}
 		
@@ -186,9 +186,7 @@ public class RequestDAO  {
 				bean.setRequestTime(rs.getInt("RequestTime"));
 				bean.setDuration(rs.getInt("Duration"));
 				bean.setStudent(rs.getString("Student"));
-				
-			    
-				
+							
 				list.add(bean);
 			}			
 		} finally {

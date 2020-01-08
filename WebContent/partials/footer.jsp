@@ -3,7 +3,7 @@
 
 <!-- Footer -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<footer class="page-footer font-small mdb-color lighten-3 pt-4" style="margin-top:100px; background-color:#232F3E;">
+<footer class="page-footer font-small mdb-color lighten-3 pt-4" style="margin-top:25px; background-color:#232F3E;">
 
 <!-- Copyright -->
 <div class="row">

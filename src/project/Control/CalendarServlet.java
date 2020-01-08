@@ -21,6 +21,7 @@ import project.Model.CalendarEvent;
 import project.Model.RequestBean;
 import project.Model.StudentBean;
 import project.Model.StudentDAO;
+import project.Utils.Utils;
 
 @WebServlet("/Calendar")
 public class CalendarServlet extends HttpServlet {
@@ -61,49 +62,8 @@ public class CalendarServlet extends HttpServlet {
 					
 					String name = student.getLastName() + " " + student.getFirstName();
 					
-					String startTime;
-					int min = bean.getRequestTime() % 60;
-					String minutes = "" + min;
-					
-					if (min == 0) {
-						minutes = "00";
-					}
-					else if (bean.getRequestTime() % 60 < 10)
-						minutes = "0" + bean.getRequestTime()%60;
-					
-					if (bean.getRequestTime()/60 < 10)
-						startTime = "0" + bean.getRequestTime()/60 + ":" + minutes;
-					else
-						startTime = bean.getRequestTime()/60 + ":" + minutes;
-					
-					minutes = "" + bean.getRequestTime()%60;
-					
-					if (bean.getRequestTime()%60 < 10)
-						minutes = "0" + bean.getRequestTime()%60;
-					
-					if (bean.getRequestTime()/60 < 10)
-						startTime = "T0" + bean.getRequestTime()/60 + ":" + minutes + ":00";
-					else
-						startTime = "T" + bean.getRequestTime()/60 + ":" + minutes + ":00";
-					
-					int finish = bean.getRequestTime() + bean.getDuration();
-					
-					min = finish % 60;
-					minutes = "" + min;
-					
-					String finishTime;
-					
-					if (min == 0) {
-						minutes = "00";
-					}
-					
-					if (min < 10)
-						minutes = "0" + min;
-					
-					if (finish / 60 < 10)
-						finishTime = "0" + finish / 60 + ":" + minutes;
-					else
-						finishTime = finish / 60 + ":" + minutes;
+					String startTime = "T" + Utils.getTimeAsString(bean.getRequestTime());
+					String finishTime = "T" + Utils.getTimeAsString(bean.getRequestTime() + bean.getDuration());
 															
 					CalendarEvent ce = new CalendarEvent();
 	                ce.setTitle("Appuntamento");
