@@ -9,6 +9,8 @@
 	}
     
     TutorBean tutor = (TutorBean) request.getAttribute("tutor");
+    
+    String delete = (String) session.getAttribute("delete");
 %>
 
 <!DOCTYPE html>
@@ -91,7 +93,13 @@
 		
 		<div style="margin-bottom: 25px;">
 			<div class="panel"></div>
-			<input class="btn btn-primary" type="button" value="Indietro" onClick="history.go(-1);return true;">
+			<% if(delete != null && delete.equals("true")) {
+				session.removeAttribute("delete"); 
+			%>
+				<input class="btn btn-primary" type="button" value="Indietro" onClick="history.go(-3);return true;">
+			<% } else { %>	
+				<input class="btn btn-primary" type="button" value="Indietro" onClick="history.go(-1);return true;">
+			<% } %>
 		</div>
 	</div>
     

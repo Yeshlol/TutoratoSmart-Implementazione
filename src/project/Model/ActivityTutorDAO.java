@@ -55,29 +55,29 @@ public class ActivityTutorDAO  {
 	}
 	
 	
-	public synchronized void doSave(ActivityTutorBean bean) throws SQLException {
+	public synchronized void doSave(ActivityTutorBean activity) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
 		String insertSql = "INSERT INTO ACTIVITY_TUTOR(Category,ActivityDate,StartTime,FinishTime,Hours,Details,Tutor,RegisterId)"
 						 + " VALUES (?,?,?,?,?,?,?,?)";
-		
+						
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
-			preparedStatement.setString(1, bean.getCategory());
-			preparedStatement.setDate(2, bean.getActivityDate());
-			preparedStatement.setInt(3, bean.getStartTime());
-			preparedStatement.setInt(4, bean.getFinishTime());
-			preparedStatement.setFloat(5, bean.getHours());
-			preparedStatement.setString(6, bean.getDetails());
-			preparedStatement.setString(7, bean.getTutor());
-			preparedStatement.setInt(8, bean.getRegisterId());
+			preparedStatement.setString(1, activity.getCategory());
+			preparedStatement.setDate(2, activity.getActivityDate());
+			preparedStatement.setInt(3, activity.getStartTime());
+			preparedStatement.setInt(4, activity.getFinishTime());
+			preparedStatement.setFloat(5, activity.getHours());
+			preparedStatement.setString(6, activity.getDetails());
+			preparedStatement.setString(7, activity.getTutor());
+			preparedStatement.setInt(8, activity.getRegisterId());
 			
 			System.out.println("ActivityTutor doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
-			
+												
 			connection.commit();
 		} finally {
 			if(preparedStatement != null)
@@ -94,8 +94,7 @@ public class ActivityTutorDAO  {
 		
 		try {
 			connection.setAutoCommit(false);
-			preparedStatement = connection.prepareStatement(updateSql);
-			
+			preparedStatement = connection.prepareStatement(updateSql);			
 	
 			preparedStatement.setDate(1, bean.getActivityDate());
 			preparedStatement.setInt(2, bean.getStartTime());
@@ -116,19 +115,30 @@ public class ActivityTutorDAO  {
 	}
 
 
-	public synchronized boolean doDelete(ActivityTutorBean bean) throws SQLException {
+	public synchronized boolean doDelete(ActivityTutorBean activity) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
+		
+		RegisterDAO registerDAO = new RegisterDAO();
+		RegisterBean register = registerDAO.doRetrieveById(activity.getRegisterId());
+		
+		if(activity.getState().equals("Convalidata")) {
+			float hours = activity.getHours();
+			register.setValidatedHours(register.getValidatedHours() - hours);
+			register.setPercentageComplete(register.getValidatedHours() / register.getTotalHours());
+		}
 		
 		String deleteSql = "DELETE FROM ACTIVITY_TUTOR WHERE IdActivity = ?";
 		int result;
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(deleteSql);
-			preparedStatement.setInt(1, bean.getIdActivity());
+			preparedStatement.setInt(1, activity.getIdActivity());
 			
 			System.out.println("ActivityTutor doDelete: " + preparedStatement.toString());
 			result = preparedStatement.executeUpdate();
+			
+			registerDAO.doUpdate(register);
 			
 			connection.commit();
 		}

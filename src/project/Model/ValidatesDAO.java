@@ -62,6 +62,22 @@ public class ValidatesDAO {
 		String insertSql = "INSERT INTO VALIDATES(CommissionMember,ActivityId) VALUES (?,?)";
 		String updateSql = "UPDATE ACTIVITY_TUTOR SET State='Convalidata' WHERE IdActivity = ?";
 		
+		ActivityTutorDAO activityDAO = new ActivityTutorDAO();
+		ActivityTutorBean activity = activityDAO.doRetrieveById(bean.getActivityId());
+		
+		RegisterDAO registerDAO = new RegisterDAO();
+		RegisterBean register = registerDAO.doRetrieveById(activity.getRegisterId());
+		
+		float hours = activity.getHours();
+		register.setValidatedHours(register.getValidatedHours() + hours);
+		register.setPercentageComplete((register.getValidatedHours() / register.getTotalHours()) * 100);
+		
+		System.out.println("Ore validate: " + register.getValidatedHours() + "\tOre totali: " + register.getTotalHours() + "\tPercentuale: " + register.getPercentageComplete() + "%");
+		
+		if(register.getPercentageComplete() >= 100) {
+			register.setState("Approvato");
+		}
+		
 		try {			
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
@@ -79,6 +95,8 @@ public class ValidatesDAO {
 			System.out.println("Validates doValidateActivity: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
+			
+			registerDAO.doUpdate(register);
 			
 			connection.commit();
 		} finally {

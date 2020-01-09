@@ -51,11 +51,16 @@ public class ShowActivityServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/commission/activityInfo.jsp");
 		    dispatcher.forward(request, response);
 		    return;
-		}		 
+		}
+		else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
+		    dispatcher.forward(request, response);
+		    return;
+		}
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		return;
 	}
 }

@@ -65,7 +65,7 @@
 		</div>
 				
 		<div class="text-center" style="margin-bottom: 25px;">
-			<a href="<%= response.encodeURL("tutor/activityModify.jsp") %>"><input class="btn btn-primary" id="modifyActivity" type="button" value="Modifica Attivit&aacute"></a>
+			<a href="<%= response.encodeURL("tutor/activityModify.jsp") %>"><input class="btn btn-primary" id="modifyActivity" type="button" value="Modifica attivit&aacute"></a>
 		</div>
 	</div>
 		

@@ -30,13 +30,9 @@
 	<nav class="navbar navbar-inverse" style="background:#232F3E;">
 		<div class="container-fluid" style="border-right:1px solid #bbb;">
 			<div class="navbar-header">
-		        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>                        
-		        </button>
-			    <a class="navbar-brand" >Ciao, <%= user.getFirstName() %></a>
-        	</div>
+		        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"></button>
+			    <a class="navbar-brand" style="border-right:1px solid #bbb; float:left;">Ciao, <%= user.getFirstName() %></a>
+			</div>
         	<div class="nav navbar-nav navbar-right">
 				<form method="POST" action="/TutoratoSmart/LogoutServlet">
 					<button type="submit" class="btn btn-default btn-sm" style="margin-right:30px; margin-top:8px;"><span class="glyphicon glyphicon-log-out"></span>Log out</button>   		
@@ -45,23 +41,23 @@
 		               
 		<% if (user.getRole()==1) { %>
 	        <div class="collapse navbar-collapse" id="myNavbar">
-        	<ul class="nav navbar-nav">
-          		<li><a href="/TutoratoSmart/commission/tutorRegistration.jsp" style="font-weight:bold;">Registra Tutor</a></li>
-          		<li><a  href="/TutoratoSmart/commission/searchTutors.jsp" style="font-weight:bold;">Ricerca Tutor</a></li>
-          		<li><a href="/TutoratoSmart/commission/searchStudents.jsp" style="font-weight:bold;">Ricerca Studenti</a>
-          	</ul>
+	        	<ul class="nav navbar-nav">
+	          		<li style="border-right:1px solid #bbb; float:left;"><a href="/TutoratoSmart/commission/tutorRegistration.jsp" style="font-weight:bold;">Registra Tutor</a></li>
+	          		<li style="border-right:1px solid #bbb; float:left;"><a href="/TutoratoSmart/commission/searchTutors.jsp" style="font-weight:bold;">Ricerca Tutor</a></li>
+	          		<li><a href="/TutoratoSmart/commission/searchStudents.jsp" style="font-weight:bold;">Ricerca Studenti</a>
+	          	</ul>
           	</div>     
 		<% } else if(user.getRole()==2) { %>
 	        <div class="collapse navbar-collapse" id="myNavbar">
-        	<ul class="nav navbar-nav">
-          		<li><a href="/TutoratoSmart/tutor/register.jsp" style="font-weight:bold;">Registro Tutorato</a></li>
-          		<li><a href="/TutoratoSmart/tutor/calendar.jsp" style="font-weight:bold;">Calendario Appuntamenti</a></li>
-          		</ul>
+	        	<ul class="nav navbar-nav">
+	          		<li style="border-right:1px solid #bbb; float:left;"><a href="/TutoratoSmart/tutor/register.jsp" style="font-weight:bold;">Registro Tutorato</a></li>
+	          		<li><a href="/TutoratoSmart/tutor/calendar.jsp" style="font-weight:bold;">Calendario Appuntamenti</a></li>
+	          	</ul>
           	</div>
 	    <% } else if(user.getRole()==3) { %>
 	         <div class="collapse navbar-collapse" id="myNavbar">
-        	<ul class="nav navbar-nav">
-          		<li><a href="/TutoratoSmart/student/requestList.jsp" style="font-weight:bold;">Richieste di appuntamento effettuate</a></li>
+        		<ul class="nav navbar-nav">
+          			<li><a href="/TutoratoSmart/student/requestsList.jsp" style="font-weight:bold;">Richieste di appuntamento effettuate</a></li>
           		</ul>
           	</div>
 	      
@@ -73,11 +69,7 @@
 		<nav class="navbar navbar-inverse" style="background:#232F3E;">
 			<div class="container-fluid" style="border-right:1px solid #bbb; float:left;">
 				<div class="navbar-header">
-			        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-			          <span class="icon-bar"></span>
-			          <span class="icon-bar"></span>
-			          <span class="icon-bar"></span>                        
-			        </button>
+			        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"></button>
 			        <a class="navbar-brand" style="font-weight:bold;" href="<%= response.encodeURL(request.getContextPath() + "/index.jsp") %>">Effettua l'accesso</a>
 				</div>
 			</div>

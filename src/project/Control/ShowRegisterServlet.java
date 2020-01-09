@@ -28,7 +28,7 @@ public class ShowRegisterServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ActivityTutorDAO activityTutorDAO= new ActivityTutorDAO();
+		ActivityTutorDAO activityTutorDAO = new ActivityTutorDAO();
 		Collection<ActivityTutorBean> activitiesCollection  = null;
 		
 		int flag = Integer.parseInt(request.getParameter("flag"));	// Flag 1 = visualizza registro del tutor (loggato)
@@ -79,11 +79,16 @@ public class ShowRegisterServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/commission/register.jsp");
 			dispatcher.forward(request, response);
 			return;
-		}			
+		}
+		else {
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		return;
 	}
 }

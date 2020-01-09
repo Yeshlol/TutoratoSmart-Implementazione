@@ -31,7 +31,7 @@ public class RegistrationServlet extends HttpServlet {
 	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("registerStudent.jsp");
+		return;
 	}
 
 	

@@ -36,7 +36,7 @@
 			<h2 align="center">Nessun tutor trovato</h2>
 		<% } else { %>
 			<div class="panel text-center">
-				<h2>Visualizzazione lista tutor</h2>
+				<h2>Tutor trovati</h2>
 			</div>
 			
 			<table style="width: 95%;margin: 0 auto;margin-bottom: 25px">

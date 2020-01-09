@@ -36,10 +36,10 @@
     
     <div class="content text-center" style="width: 70%;margin: 0 auto; padding-bottom: 25px; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
 		<% if (studentsCollection == null || studentsCollection.isEmpty()) { %>
-			<h2 align="center">Nessuno studente trovato</h2></div>
+			<h2 align="center">Nessuno studente trovato</h2>
 		<%  } else  { %>		 
 			<div class="panel text-center">
-				<h2>Visualizzazione lista studenti</h2>
+				<h2>Studenti trovati</h2>
 			</div>
 		<%
 			Iterator<?> it = studentsCollection.iterator();

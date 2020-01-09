@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import project.Model.ActivityTutorBean;
@@ -32,16 +33,18 @@ public class ActivityServlet extends HttpServlet {
 
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	doPost(request, response);
+    	return;
     }
     	    	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int flag = Integer.parseInt(request.getParameter("flag"));		// Flag passato nello script ajax: 
+		int flag = Integer.parseInt(request.getParameter("flag"));		// Flag passato: 
 																		// 1 = registrazione nuova attività
-																		// 2 = modifica attività da parte di un tutor
+																		// 2 = modifica/cancellazione attività da parte di un tutor
 																		// 3 = convalida/cancellazione attività da parte di un membro della Commissione
 		ActivityTutorDAO activityDAO = new ActivityTutorDAO();
+		
+		JSONObject obj = new JSONObject();
 		
 		if (flag == 1) {												// Registrazione nuova attività
 			String category = request.getParameter("category");			// Dati Attività
@@ -54,8 +57,8 @@ public class ActivityServlet extends HttpServlet {
 			
 			int start = Utils.getTimeAsInt(startTime);
 			int finish = Utils.getTimeAsInt(finishTime);
-			float hours = (finish - start) / 60;
-			
+			float hours = (finish - start) / 60.f;
+						
 			ActivityTutorBean activityBean = new ActivityTutorBean();
 			
 			activityBean.setCategory(category);
@@ -74,6 +77,8 @@ public class ActivityServlet extends HttpServlet {
 			}
 			
 			request.setAttribute("activitiesCollection", null);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/tutor/register.jsp");
+			dispatcher.forward(request, response);
 			return;
 		}
 		
@@ -89,7 +94,7 @@ public class ActivityServlet extends HttpServlet {
 			
 			String validate = request.getParameter("validate");
 			
-			if(validate != null && validate.equals("true")) {
+			if (validate != null && validate.equals("true")) {
 				UserBean user = (UserBean) request.getSession(false).getAttribute("user");
 				try {
 					ValidatesBean bean = new ValidatesBean();
@@ -98,76 +103,56 @@ public class ActivityServlet extends HttpServlet {
 					validatesDAO.doSave(bean);
 					
 					request.removeAttribute("activitiesCollection");
-					request.getSession(false).setAttribute("Email", activityDAO.doRetrieveById(id).getTutor());					
-				} catch (SQLException e) {
-					e.printStackTrace();
+					request.getSession(false).setAttribute("Email", activityDAO.doRetrieveById(id).getTutor());
+					
+					response.setContentType("application/json");
+					response.setCharacterEncoding("UTF-8");
+					
+					obj.put("result", 1);
+				} catch (SQLException e) {				// Errore nella convalida dell'attivita'.
+					try {
+						obj.put("result", 2);			
+					} catch (JSONException jsonexp) {	// Errore parser json					
+					}
+				} catch (JSONException jsonexp) {		// Errore parser json
 				}
+				finally {
+					response.getWriter().write(obj.toString());
+				}
+				
+				return;
 			}
-			if(validate != null && validate.equals("false")) {
+			if (validate != null && validate.equals("false")) {
 				try {
 					ActivityTutorBean activity = activityDAO.doRetrieveById(id);
+					request.getSession(false).setAttribute("Email", activityDAO.doRetrieveById(id).getTutor());
 					activityDAO.doDelete(activity);
-				} catch (SQLException e) {
-					e.printStackTrace();
+					request.removeAttribute("activitiesCollection");
+					request.getSession(false).removeAttribute("activity");
+					request.getSession(false).setAttribute("delete", "true");
+					
+					response.setContentType("application/json");
+					response.setCharacterEncoding("UTF-8");
+					
+					obj.put("result", 1);
+				} catch (SQLException e) {				// Errore nella rimozione dell'attivita'.
+					try {
+						obj.put("result", 2);			
+					} catch (JSONException jsonexp) {	// Errore parser json					
+					}
+				} catch (JSONException jsonexp) {		// Errore parser json
 				}
+				finally {
+					response.getWriter().write(obj.toString());
+				}
+				
+				return;
 			}
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/commission/register.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
-		    	
-/*    	RequestDispatcher dispatcher = null;
-    	int id = 0;
-    	try {
-			if (idActivity != null && !idActivity.equals("")) {
-				id = Integer.parseInt(idActivity);
-				ActivityTutorBean activity = activityDAO.doRetrieveById(id);
-				request.removeAttribute("activity");
-				request.setAttribute("activity",activity);
-				dispatcher = request.getRequestDispatcher("/tutor/activityModify.jsp");
-			}else dispatcher = request.getRequestDispatcher("/tutor/activity.jsp");
 			
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}		
-    	dispatcher.forward(request, response);
-		
-    	 
-    	
-    	
-		ActivityTutorBean activityBean=new ActivityTutorBean();
-		
-		String fl=request.getParameter("flag");
-		int flag=Integer.parseInt(fl);
-		if ((idActivity != null && !idActivity.equals("")) || flag==1 ) {
-			if(flag!=1)
-				id = Integer.parseInt(idActivity);
-			String categoria=request.getParameter("categoria");
-			Date data=Date.valueOf(request.getParameter("data"));
-			int oraInizio=Integer.parseInt(request.getParameter("oraInizio"));
-			int oraFine=Integer.parseInt(request.getParameter("oraFine"));
-			String dettagli=request.getParameter("dettagli");
-			
-			float oreSvolte=oraFine-oraInizio;
-			
-			activityBean.setIdActivity(id);
-			activityBean.setCategory(categoria);
-			activityBean.setActivityDate(data);
-			activityBean.setStartTime(oraInizio);
-			activityBean.setFinishTime(oraFine);
-			activityBean.setHours(oreSvolte);
-			activityBean.setDetails(dettagli);
-			
-			try {
-				if(flag==1) {
-					activityDAO.doSave(activityBean);
-				}else
-					activityDAO.doModify(activityBean);
-			}catch (SQLException e) {
-				e.printStackTrace();
-			}
-	    } */
-		
 		response.sendRedirect(request.getContextPath()+ "/tutor/register.jsp");
      }
  }	

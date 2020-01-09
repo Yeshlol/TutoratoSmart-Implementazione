@@ -43,11 +43,6 @@
    
     <%@ include file="/partials/footer.jsp" %>
     
-    <script type="text/javascript">
-		$(document).ready( function() {
-			document.getElementById("startDate").valueAsDate = new Date("2019-01-01");
-			document.getElementById("finishDate").valueAsDate = new Date("2019-12-31");
-		});
-	</script>
+    <script src="<%= request.getContextPath() %>/js/commissionScript.js"></script>
 </body>
 </html>

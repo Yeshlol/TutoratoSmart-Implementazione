@@ -31,7 +31,7 @@ public class RegisterDAO  {
 			while(rs.next()) {
 				bean.setIdRegister(rs.getInt("IdRegister"));
 				bean.setState(rs.getString("State"));
-				bean.setValidatedHours(rs.getInt("ValidatedHours"));
+				bean.setValidatedHours(rs.getFloat("ValidatedHours"));
 				bean.setTotalHours(rs.getInt("TotalHours"));
 				bean.setPercentageComplete(rs.getFloat("PercentageComplete"));
 				
