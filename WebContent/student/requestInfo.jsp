@@ -62,6 +62,11 @@
 			</table>
 		</div>
 		
+		<div class="container-fluid" style="margin-top: 25px;">
+			<div class="alert alert-success" id="successDeleteDiv" style="display:none;" role="alert">Prenotazione eliminata con successo!</div>
+			<div class="alert alert-danger" id="failureDeleteDiv" style="display:none;" role="alert">Eliminazione fallita!</div>
+		</div>
+		
 		<div class="panel"></div>
 		<% if(req.getState().equalsIgnoreCase("In valutazione")) { %>
 			<div class="row text-center" style="margin-bottom: 25px;">				
@@ -98,7 +103,7 @@
 			        </div>
 			        <div class="modal-footer">
 			        	<div class="row text-center">
-						  <div class="column" style="width: 50%;"><a href="<%= response.encodeURL(request.getContextPath() +  "/Request?flag=2&delete=true&id=" + req.getIdRequest()) %>"><input class="btn btn-danger"  id="deleteActivityButton" type="button" value="Elimina prenotazione"></a></div>
+						  <div class="column" style="width: 50%;"><input class="btn btn-danger" type="button" onclick="deleteRequest()" value="Elimina prenotazione"></div>
 						  <div class="column" style="width: 50%;"><button type="button" class="btn btn-primary" data-dismiss="modal">Annulla</button></div>
 						</div>
 				    </div>
@@ -107,15 +112,10 @@
 		</div>
 	</div>
 	
+	<input type="hidden" id="requestId" value="<%= req.getIdRequest() %>">
+	
 	<%@ include file="/partials/footer.jsp" %>
 	
-	<script src="<%= request.getContextPath() %>/js/commissionScript.js"></script>
-	<script>
-		$(document).ready(function(){
-		  $("#deleteButton").click(function(){
-		    $("#deleteModal").modal();
-		  });
-		});
-	</script>
+	<script src="<%= request.getContextPath() %>/js/studentScript.js"></script>
 </body>
 </html>

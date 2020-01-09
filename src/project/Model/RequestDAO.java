@@ -56,18 +56,16 @@ public class RequestDAO  {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
-		String insertSql = "INSERT INTO REQUEST(State,StudentComment,RequestDate,RequestTime,Duration,Student)"
-						 + " VALUES (?,?,?,?,?,?,?)";
+		String insertSql = "INSERT INTO REQUEST(StudentComment,RequestDate,RequestTime,Student)"
+						 + " VALUES (?,?,?,?)";
 		
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
-			preparedStatement.setString(1, bean.getState());
-			preparedStatement.setString(2, bean.getStudentComment());
-			preparedStatement.setDate(3, bean.getRequestDate());
-			preparedStatement.setInt(4, bean.getRequestTime());
-			preparedStatement.setInt(5, bean.getDuration());			
-			preparedStatement.setString(6, bean.getStudent());
+			preparedStatement.setString(1, bean.getStudentComment());
+			preparedStatement.setDate(2, bean.getRequestDate());
+			preparedStatement.setInt(3, bean.getRequestTime());		
+			preparedStatement.setString(4, bean.getStudent());
 			
 			System.out.println("Request doSave: "+ preparedStatement.toString());
 			

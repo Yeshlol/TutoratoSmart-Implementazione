@@ -38,7 +38,7 @@ public class ActivityServlet extends HttpServlet {
     	    	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int flag = Integer.parseInt(request.getParameter("flag"));		// Flag passato: 
+		int flag = Integer.parseInt(request.getParameter("flag"));		// Flag passato nello script: 
 																		// 1 = registrazione nuova attività
 																		// 2 = modifica/cancellazione attività da parte di un tutor
 																		// 3 = convalida/cancellazione attività da parte di un membro della Commissione
@@ -86,7 +86,7 @@ public class ActivityServlet extends HttpServlet {
 			
 		}
 		
-		else if (flag == 3) {											// Validazione di un'attività da parte di un membro della Commissione
+		else if (flag == 3) {											// Validazione/Rimozione di un'attività da parte di un membro della Commissione
 			String activityId = request.getParameter("id");
 			int id = Integer.parseInt(activityId);
 			
@@ -94,7 +94,7 @@ public class ActivityServlet extends HttpServlet {
 			
 			String validate = request.getParameter("validate");
 			
-			if (validate != null && validate.equals("true")) {
+			if (validate != null && validate.equals("true")) {			// Validazione attivita'.
 				UserBean user = (UserBean) request.getSession(false).getAttribute("user");
 				try {
 					ValidatesBean bean = new ValidatesBean();
@@ -109,12 +109,12 @@ public class ActivityServlet extends HttpServlet {
 					response.setCharacterEncoding("UTF-8");
 					
 					obj.put("result", 1);
-				} catch (SQLException e) {				// Errore nella convalida dell'attivita'.
+				} catch (SQLException e) {								// Errore nella convalida dell'attivita'.
 					try {
 						obj.put("result", 2);			
-					} catch (JSONException jsonexp) {	// Errore parser json					
+					} catch (JSONException jsonexp) {					// Errore parser json					
 					}
-				} catch (JSONException jsonexp) {		// Errore parser json
+				} catch (JSONException jsonexp) {						// Errore parser json
 				}
 				finally {
 					response.getWriter().write(obj.toString());
@@ -122,7 +122,7 @@ public class ActivityServlet extends HttpServlet {
 				
 				return;
 			}
-			if (validate != null && validate.equals("false")) {
+			if (validate != null && validate.equals("false")) {			// Rimozione attivita'.
 				try {
 					ActivityTutorBean activity = activityDAO.doRetrieveById(id);
 					request.getSession(false).setAttribute("Email", activityDAO.doRetrieveById(id).getTutor());
@@ -135,24 +135,25 @@ public class ActivityServlet extends HttpServlet {
 					response.setCharacterEncoding("UTF-8");
 					
 					obj.put("result", 1);
-				} catch (SQLException e) {				// Errore nella rimozione dell'attivita'.
+				} catch (SQLException e) {								// Errore nella rimozione dell'attivita'.
 					try {
 						obj.put("result", 2);			
-					} catch (JSONException jsonexp) {	// Errore parser json					
+					} catch (JSONException jsonexp) {					// Errore parser json					
 					}
-				} catch (JSONException jsonexp) {		// Errore parser json
+				} catch (JSONException jsonexp) {						// Errore parser json
 				}
 				finally {
 					response.getWriter().write(obj.toString());
 				}
 				
 				return;
-			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/commission/register.jsp");
+			}			
+		}
+		
+		else {															// flag non valido.
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
-			
-		response.sendRedirect(request.getContextPath()+ "/tutor/register.jsp");
      }
  }	

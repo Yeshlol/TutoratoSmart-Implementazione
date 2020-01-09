@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		allDayDefault: false,
 		firstDay: 1,
 		hiddenDays: [ 0 ],
-		minTime: '07:00:00',
-		maxTime: '20:30:00',
+		minTime: '09:00:00',
+		maxTime: '17:00:00',
 		businessHours: true,
 		businessHours: [
 			{
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	    	$("#info").css({
 	    	      top: mouseEnterInfo.jsEvent.pageY + 15,
 	    	      left: mouseEnterInfo.jsEvent.pageX + 15,
-	    	      background: "red",
+	    	      background: "white",
 	    	      border: "1px solid blue",
 	    	});
 	        $('#info').html(mouseEnterInfo.event.extendedProps.description);

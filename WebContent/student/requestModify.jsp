@@ -26,41 +26,23 @@
 				<div class="row row-space">
 					<div class="row">
 						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-				  			<label for="category" class="control-label">Specificare la categoria</label>
-							<select id="category" name="category">
-								<option value="1">Sportello informativo</option>
-								<option value="2">Assistenza esame</option>
-								<option value="3">Organizzazione seminario</option>
-								<option value="3">Seminario</option>
-								<option value="3">Organizzazione evento</option>
-								<option value="3">Evento</option>
-							</select>
+				  			<label for="data" class="control-label">Selezionare la data</label>
+				  			<input type="date" class="form-control" name="date">
 						</div>
 						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-				  			<label for="date" class="control-label">Specificare la data</label>
-				  			<input type="date" class="form-control" name="date">
-				  		</div>
-				  	</div>
-				  	
-				  	<div class="row">
-				  		<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-				  			<label for="startTime" class="control-label">Specificare l'orario di inizio attivit&aacute</label>
-				  			<input type="time" min="7:30" max="22:00" class="form-control" name="startTime">
-				  		</div>
-				  		<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-				  			<label for="finishTime" class="control-label">Specificare l'orario di fine attivit&aacute</label>
-				  			<input type="time" min="7:30" max="22:00" class="form-control" name="finishTime">
+				  			<label for="date" class="control-label">Selezionare l'orario</label>
+				  			<input type="time" min="09:00" max="16:45" class="form-control" name="startTime" step="900">
 				  		</div>
 				  	</div>
 				</div>	
 									
-		  		<label for="description" class="control-label">Inserire la descrizione dell'attivit&aacute</label>
+		  		<label for="comment" class="control-label">Commento</label>
 		  		<textarea class="form-control" id="description" name="description" rows="3"></textarea>
 		  		<br>
 								
 				<div class="panel"></div>
 				<div>
-					<input class="btn btn-primary" id="modifyActivity" type="submit" onclick="validateInputsActivity()" name="modifyActivity" value="Modifica">		        	
+					<input class="btn btn-primary" id="modifyActivity" type="submit" onclick="validateInputsRequest()" name="modifyActivity" value="Modifica">		        	
 		        </div>			
 			</form>
 		</div>

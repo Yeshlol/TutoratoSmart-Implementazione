@@ -37,7 +37,7 @@
 <body>     
 	<%@ include file="/partials/header.jsp" %>
 	
-	<div class="content text-center" style="width: 70%;margin: 0 auto; padding-bottom: 25px; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
+	<div class="content text-center" style="width: 70%;margin: 0 auto; padding-bottom: 25px; border: 2px solid #232F3E; border-radius:8px;">
 		<% if (requestsCollection == null || requestsCollection.isEmpty()) { %>
 			<h2 align="center">Nessuna richiesta di appuntamento trovata</h2>
 		<% } else { %>

@@ -15,7 +15,8 @@
 	</div>
       
   	<div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
-    	<h4 style="color:white; padding-top:30px; padding-left:20px;"><a href="<%=request.getContextPath() %>/index.jsp">Universit&aacute degli studi della Campania Luigi Vanvitelli.</a></h4>
+    	<h4 style="color:white; padding-top:30px; padding-left:20px;"><a href="<%=request.getContextPath() %>/index.jsp">Universit&aacute degli studi della Campania Luigi Vanvitelli</a></h4>
+    	<h5 style="color:white; padding-left:20px;"><a href="<%=request.getContextPath() %>/index.jsp">Dipartimento di Psicologia</a></h5>
     </div>
       
     <div class="col-md-2 col-lg-2 text-center mx-auto my-4" style="margin-left:450px;">

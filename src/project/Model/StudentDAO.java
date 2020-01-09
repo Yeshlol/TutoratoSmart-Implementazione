@@ -29,7 +29,7 @@ public class StudentDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, mail);
 			
-			System.out.println("Student doRetrieveByMail: " + preparedStatement.toString());
+			//System.out.println("Student doRetrieveByMail: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.wasNull()) {
@@ -47,10 +47,10 @@ public class StudentDAO  {
 					bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
 					bean.setAcademicYear(rs.getInt("AcademicYear"));
 					
-					System.out.println("Studente trovato con la email!");
+					//System.out.println("Studente trovato con la email!");
 	            }
-	            else
-	            	System.out.println("Studente non trovato!");
+	            //else
+	            	//System.out.println("Studente non trovato!");
 	        }
 		} catch (SQLException e) {
 			System.out.println("Eccezione SQL: " + e.getMessage());

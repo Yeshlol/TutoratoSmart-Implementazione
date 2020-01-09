@@ -62,9 +62,9 @@ function deleteActivity(){
 		"id":$("#activityId").val(),
 		"validate":"false",
 		},
-		function(data){	  
-			if (data.result == 1) {
-				$('#deleteModal').modal('hide');
+		function(data){
+			$('#deleteModal').modal('hide');
+			if (data.result == 1) {				
 				$("#successDeleteDiv").fadeIn(500, function() {
 					$("#successDeleteDiv").fadeOut(3000);
 					setTimeout(function() {

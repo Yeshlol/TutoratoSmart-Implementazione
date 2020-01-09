@@ -37,5 +37,13 @@ public class Calendar {
 	 */
 	public Collection<RequestBean> getRequests() {
 		return this.requests;
-	}	
+	}
+	
+	
+	/**
+	 * Set the Calendar instance to null.
+	 */
+	public void reset() {
+		instance = null;
+	}
 }

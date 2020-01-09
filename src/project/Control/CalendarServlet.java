@@ -70,7 +70,7 @@ public class CalendarServlet extends HttpServlet {
 	                ce.setDescription("Appuntamento con " + name);
 	                ce.setStart(bean.getRequestDate() + startTime);
 	                ce.setEnd(bean.getRequestDate() + finishTime);
-					ce.setUrl("/TutoratoSmart/ShowRequest?id=" + bean.getIdRequest());
+					ce.setUrl("/TutoratoSmart/ShowRequest?flag=2&id=" + bean.getIdRequest());
 	                events.add(ce);
 				}
 				
@@ -78,6 +78,7 @@ public class CalendarServlet extends HttpServlet {
 		        response.setCharacterEncoding("UTF-8");
 		        PrintWriter out = response.getWriter();
 		        out.write(new Gson().toJson(events));
+		        calendar.reset();
 		        return;
 			}
 		}

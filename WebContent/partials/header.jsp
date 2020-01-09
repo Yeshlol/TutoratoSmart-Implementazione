@@ -22,7 +22,7 @@
 
 <body>
 	<div class="text-center">
-  		<a href="<%=request.getContextPath() %>/index.jsp"><img src="<%=request.getContextPath() %>/img/LogoTutoratoSmart.png"></a>
+  		<a href="<%=request.getContextPath() %>/index.jsp"><img src="<%=request.getContextPath() %>/img/LogoTutoratoSmart.png" style="border-radius:2px; height:20%; width:20%;"></a>
 	</div>
 	          
 	<%if(user != null) { %> 
@@ -57,6 +57,7 @@
 	    <% } else if(user.getRole()==3) { %>
 	         <div class="collapse navbar-collapse" id="myNavbar">
         		<ul class="nav navbar-nav">
+        			<li style="border-right:1px solid #bbb; float:left;"><a href="/TutoratoSmart/student/calendar.jsp" style="font-weight:bold;">Orari Sportello</a></li>
           			<li><a href="/TutoratoSmart/student/requestsList.jsp" style="font-weight:bold;">Richieste di appuntamento effettuate</a></li>
           		</ul>
           	</div>
