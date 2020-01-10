@@ -35,12 +35,46 @@ public class RequestServlet extends HttpServlet {
     	    	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int flag = Integer.parseInt(request.getParameter("flag"));		// Flag passato come hidden nel form: 
-																		// 1 = registrazione nuova prenotazione.
-																		// 2 = cancellazione prenotazione.
+		boolean ajax = Boolean.parseBoolean(request.getParameter("ajax"));  // Richieste ajax per disponibilità orario appuntamento
+		
 		RequestDAO requestDAO = new RequestDAO();
 		JSONObject obj = new JSONObject();
 		
+		if(ajax) {
+			try {				
+				String date = request.getParameter("date");
+				String time = request.getParameter("time");
+				
+				boolean available = false;
+				
+				if (date != null && date != "" && time != null && time != "") {
+					Date requestDate = Date.valueOf(date);
+					int requestTime = Utils.getTimeAsInt(time);
+					
+					available = requestDAO.isAvailable(requestDate, requestTime);
+				}
+								
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				
+				obj.put("disponibile", available);
+				
+				response.getWriter().write(obj.toString());
+				return;
+			} catch(SQLException e) { 
+				response.sendRedirect("home.jsp");						// Errore query
+				return;
+			} catch(JSONException e) {
+				response.sendRedirect("home.jsp"); 						// Errore parser json
+				return;
+			}
+		}
+		
+		int flag = Integer.parseInt(request.getParameter("flag"));		// Flag passato come hidden nel form: 
+																		// 1 = registrazione nuova prenotazione.
+																		// 2 = cancellazione prenotazione.
+																		// 3 = modifica prenotazione.
+				
 		if (flag == 1) {												// 1 = Registrazione nuova prenotazione da parte dello studente.
 			String time = request.getParameter("time");					// Dati della richiesta inseriti dallo studente.
 			String comment = request.getParameter("comment");					
@@ -61,12 +95,12 @@ public class RequestServlet extends HttpServlet {
 				response.setCharacterEncoding("UTF-8");
 			
 				obj.put("result", 1);
-			} catch (SQLException e) {								// Errore nella convalida dell'attivita'.
+			} catch (SQLException e) {									// Errore nella convalida dell'attivita'.
 				try {
 					obj.put("result", 2);			
-				} catch (JSONException jsonexp) {					// Errore parser json					
+				} catch (JSONException jsonexp) {						// Errore parser json					
 				}
-			} catch (JSONException jsonexp) {						// Errore parser json
+			} catch (JSONException jsonexp) {							// Errore parser json
 			}
 			finally {
 				response.getWriter().write(obj.toString());
@@ -87,37 +121,77 @@ public class RequestServlet extends HttpServlet {
 				return;
 			}
 		
-			String delete = request.getParameter("delete");
-			
-			if(delete != null && delete.equals("true")) {				// cancellazione prenotazione da parte dello studente.
-				RequestBean bean;
-				try {
-					bean = requestDAO.doRetrieveById(id);
-					requestDAO.doDelete(bean);
-					request.getSession(false).removeAttribute("request");
-					request.getSession(false).removeAttribute("requestsCollection");
-					response.setContentType("application/json");
-					response.setCharacterEncoding("UTF-8");
-					
-					obj.put("result", 1);
-				} catch (SQLException e) {								// Errore nella convalida dell'attivita'.
-					try {
-						obj.put("result", 2);			
-					} catch (JSONException jsonexp) {					// Errore parser json					
-					}
-				} catch (JSONException jsonexp) {						// Errore parser json
-				}
-				finally {
-					response.getWriter().write(obj.toString());
-				}
+			RequestBean bean;											// cancellazione prenotazione da parte dello studente.
+			try {
+				bean = requestDAO.doRetrieveById(id);
+				requestDAO.doDelete(bean);
+				request.getSession(false).removeAttribute("request");
+				request.getSession(false).removeAttribute("requestsCollection");
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
 				
-				return;
+				obj.put("result", 1);
+			} catch (SQLException e) {									// Errore nella convalida dell'attivita'.
+				try {
+					obj.put("result", 2);			
+				} catch (JSONException jsonexp) {						// Errore parser json					
+				}
+			} catch (JSONException jsonexp) {							// Errore parser json
 			}
-			else {														// Parametro delete non valido o nullo.
+			finally {
+				response.getWriter().write(obj.toString());
+			}
+			
+			return;
+		}
+		else if (flag == 3) {											// 3 = modifica prenotazione da parte dello studente.
+			String requestId = request.getParameter("id");
+			int id;
+		
+			if (requestId != null && requestId != "") {					// recupero id richiesta.
+				id = Integer.parseInt(requestId);
+			}
+			else {														// parametro id non valido o nullo.
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
+											
+			String time = request.getParameter("time");					// Dati della richiesta inseriti dallo studente.
+			String comment = request.getParameter("comment");
+						
+			Date date = Date.valueOf(request.getParameter("date"));			
+			
+			try {
+				RequestBean bean = new RequestBean();					// Recupero dati della richiesta registrati nel DB
+				bean = requestDAO.doRetrieveById(id);
+				
+				bean.setRequestDate(date);								// Modifica dati del bean
+				bean.setRequestTime(Utils.getTimeAsInt(time));
+				bean.setStudentComment(comment);
+				
+				requestDAO.doModify(bean);								// Modifica dati della richiesta nel DB
+				
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				
+				request.getSession(false).removeAttribute("request");
+				request.getSession(false).setAttribute("request",bean);
+				request.removeAttribute("requestsCollection");
+				
+				obj.put("result", 1);
+			} catch (SQLException e) {									// Errore nella convalida dell'attivita'.
+				try {
+					obj.put("result", 2);			
+				} catch (JSONException jsonexp) {						// Errore parser json					
+				}
+			} catch (JSONException jsonexp) {							// Errore parser json
+			}
+			finally {
+				response.getWriter().write(obj.toString());
+			}
+		
+			return;
 		}
 		else {															// flag non valido.
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");

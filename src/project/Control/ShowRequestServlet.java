@@ -21,10 +21,12 @@ public class ShowRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getSession(false).removeAttribute("request");
+		
 		int flag = Integer.parseInt(request.getParameter("flag"));		// Flag passato nell'url: 
 																		// 1 = visualizzazione elenco richieste di appuntamento.
 																		// 2 = visualizzazione dettagli di una richiesta di appuntamento.
-
+		
 		RequestDAO requestDAO = new RequestDAO();
 		UserBean user = (UserBean) request.getSession().getAttribute("user");
 		String email = user.getEmail();
@@ -32,7 +34,7 @@ public class ShowRequestServlet extends HttpServlet {
 		if (flag == 1) {												// Ricerca richieste
 			Collection<RequestBean> requestsCollection = null;		
 			try {
-				requestsCollection = requestDAO.doRetrieveAllByMail(null, email);
+				requestsCollection = requestDAO.doRetrieveAllByMail("YEAR(RequestDate) DESC, MONTH(RequestDate) DESC, DAY(RequestDate) DESC", email);
 				request.removeAttribute("requestsCollection");
 				request.setAttribute("requestsCollection", requestsCollection);
 			} catch (SQLException e) {
@@ -52,8 +54,7 @@ public class ShowRequestServlet extends HttpServlet {
 				id = Integer.parseInt(requestId);
 			
 			try {
-				request.removeAttribute("request");
-				request.setAttribute("request", requestDAO.doRetrieveById(id));
+				request.getSession(false).removeAttribute("request");
 				request.getSession(false).setAttribute("request",requestDAO.doRetrieveById(id));
 			} catch(SQLException e) {
 				e.printStackTrace();

@@ -10,7 +10,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Modifica Prenotazione</title>
+	<title>Effettua Prenotazione</title>
 	<style>
 		.vertical-alignment-helper {
 		    display:table;
@@ -41,17 +41,17 @@
         	<div class="modal-dialog vertical-align-center">
             	<div class="modal-content">
 		      		<div class="modal-body">
-			        	<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Modifica prenotazione completata con successo!</div>
-			        	<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Modifica prenotazione fallita!</div>
+			        	<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Prenotazione completata con successo!</div>
+			        	<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Prenotazione fallita!</div>
 			      	</div>
 		    	</div>
 		  	</div>
 		</div>
 	</div>
 	
-	<div class="content text-center" style="width: 50%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
+	<div class="content text-center" style="width: 40%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
 		<div class="panel">
-			<h2 align="center">Modifica dati prenotazione</h2>
+			<h2 align="center">Inserisci dati prenotazione</h2>
 		</div>
 		
 		<div class="container-fluid" style="margin: 25px;">
@@ -63,27 +63,27 @@
 				<div class="row">
 					<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
 			  			<label for="requestDate" class="control-label">Selezionare la data</label>
-			  			<input type="date" id="requestDate" class="form-control" value="<%= req.getRequestDate() %>">
+			  			<input type="date" id="requestDate" class="form-control" required="required">
 					</div>
 					<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
 			  			<label for="requestTime" class="control-label">Selezionare l'orario</label>
-			  			<input type="time" id="requestTime" class="form-control" min="09:00" max="16:45" step="900" value="<%= Utils.getTimeAsString(req.getRequestTime()) %>">
+			  			<input type="time" id="requestTime" class="form-control" min="09:00" max="16:45" step="900" required="required">
 			  		</div>
 			  	</div>
 			</div>	
 								
 	  		<label for="comment" class="control-label">Commento</label>
-	  		<textarea class="form-control" id="comment" rows="3"><%= req.getStudentComment() %></textarea>
+	  		<textarea class="form-control" id="comment" rows="3"></textarea>
 	  		<br>
 							
 			<div class="panel"></div>
 			<div>
-				<input class="btn btn-primary" id="createRequest" type="button" onclick="validateInputsModifyRequest()" value="Prenota">		        	
+				<input class="btn btn-primary" id="createRequest" type="button" onclick="validateInputsNewRequest()" value="Prenota">		        	
 	        </div>
 		</div>
 	</div>
-	
-	<input type="hidden" id="requestId" value="<%= req.getIdRequest() %>">
+
+	<%@ include file="/partials/footer.jsp" %>
 	
 	<script src="<%= request.getContextPath() %>/js/studentScript.js"></script>
 	<script type="text/javascript">
@@ -92,7 +92,9 @@
 			now.setHours(now.getHours() + 1 );
 			
 			$("#requestDate").change();
-			
+							
+			document.getElementById("requestDate").valueAsDate = now;
+					
 			var dd = now.getDate();
 			var mm = now.getMonth() + 1;
 			var yyyy = now.getFullYear();
@@ -104,12 +106,15 @@
 			} 
 			today = yyyy + '-' + mm + '-' + dd;
 			
-			document.getElementById("requestDate").setAttribute("min", today);
+			document.getElementById("requestDate").setAttribute("min", today);			
+			
+			var timeString = now.toISOString().substr(11, 8);
+						
+			document.getElementById("requestTime").value = timeString;
+			document.getElementById("requestTime").stepUp(1);
 									
 			$("#requestTime").change();
 		});
 	</script>
-
-	<%@ include file="/partials/footer.jsp" %>
 </body>
 </html>

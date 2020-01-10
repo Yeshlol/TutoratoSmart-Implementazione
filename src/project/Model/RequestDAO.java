@@ -268,4 +268,44 @@ public class RequestDAO  {
 		
 		return requestsList;
 	}
+
+
+	public boolean isAvailable(Date requestDate, int requestTime) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		String deleteSql = "SELECT IdRequest FROM REQUEST WHERE RequestDate = ? AND ? BETWEEN RequestTime AND RequestTime+Duration ";
+		
+		try {
+			preparedStatement = connection.prepareStatement(deleteSql);
+			preparedStatement.setDate(1, requestDate);
+			preparedStatement.setInt(2, requestTime);
+			
+			//System.out.println("Request isAvailable: " + preparedStatement.toString());
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			if (rs.wasNull()) {
+				//System.out.println("Errore esecuzione query!");
+				return false;
+	        } else {
+	        	int count = rs.last() ? rs.getRow() : 0;
+	            if (count == 1) {
+	            	//System.out.println("Orario non disponibile! Esiste già una prenotazione!");
+	            	return false;
+	            }
+	            else {
+	            	//System.out.println("Orario disponibile!");
+	            	return true;
+	            }
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}
+		return false;
+	}
 }

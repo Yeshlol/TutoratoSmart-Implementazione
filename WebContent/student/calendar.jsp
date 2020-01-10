@@ -51,7 +51,7 @@
 	
 	<div id='calendar' style="width: 65%; margin: 0 auto;"></div>
 	
-	
+		
 	<div class="modal fade" id="resultModal" role="dialog">
 		 <div class="vertical-alignment-helper">
         	<div class="modal-dialog vertical-align-center">

@@ -71,7 +71,7 @@
 		<% if(req.getState().equalsIgnoreCase("In valutazione")) { %>
 			<div class="row text-center" style="margin-bottom: 25px;">				
 				<div class="column">
-					<a href="<%= response.encodeURL("tutor/requestModify.jsp") %>"><input class="btn btn-primary" id="modifyRequest" type="button" value="Modifica prenotazione"></a>
+					<a href="/TutoratoSmart/student/requestModify.jsp"><input class="btn btn-primary" id="modifyRequest" type="button" value="Modifica prenotazione"></a>
 				</div>
 				<div class="column">
 					<button type="button" class="btn btn-danger" id="deleteButton">Elimina prenotazione</button>
@@ -117,5 +117,12 @@
 	<%@ include file="/partials/footer.jsp" %>
 	
 	<script src="<%= request.getContextPath() %>/js/studentScript.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#deleteButton").click(function(){
+				$("#deleteModal").modal();
+			});
+		});
+	</script>
 </body>
 </html>

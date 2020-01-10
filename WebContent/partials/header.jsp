@@ -58,7 +58,8 @@
 	         <div class="collapse navbar-collapse" id="myNavbar">
         		<ul class="nav navbar-nav">
         			<li style="border-right:1px solid #bbb; float:left;"><a href="/TutoratoSmart/student/calendar.jsp" style="font-weight:bold;">Orari Sportello</a></li>
-          			<li><a href="/TutoratoSmart/student/requestsList.jsp" style="font-weight:bold;">Richieste di appuntamento effettuate</a></li>
+        			<li style="border-right:1px solid #bbb; float:left;"><a href="/TutoratoSmart/student/request.jsp" style="font-weight:bold;">Prenota Appuntamento</a></li>
+          			<li><a href="/TutoratoSmart/student/requestsList.jsp" style="font-weight:bold;">Storico Prenotazioni</a></li>
           		</ul>
           	</div>
 	      
