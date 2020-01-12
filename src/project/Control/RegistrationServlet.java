@@ -3,6 +3,7 @@ package project.Control;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,12 +31,12 @@ public class RegistrationServlet extends HttpServlet {
     }
 	
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		return;
 	}
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean ajax = Boolean.parseBoolean(request.getParameter("ajax"));  // Richieste ajax per validazione email
 				
 		if(ajax) {
@@ -92,8 +93,10 @@ public class RegistrationServlet extends HttpServlet {
 			student.setSex(sex);
 			student.setRegistrationNumber(registrationNumber);
 			student.setAcademicYear(Integer.parseInt(academicYear));
-				
+			
+			
 			try {
+				//if(valida(email, pwd, firstname, lastname, telephoneNumber, sex, registrationNumber, academicYear)) {}
 				studentDAO.doSave(student);
 				
 				response.setContentType("application/json");
@@ -155,4 +158,53 @@ public class RegistrationServlet extends HttpServlet {
 			return;
 		}
 	}
+	
+/*	
+	private boolean valida(String email, String pwd, String firstname, String lastname, String telephoneNumber, String sex, String registrationNumber, String academicYear) throws SQLException {
+		boolean valido=true;
+		String expEmail="^\\w+([\\.-]?\\w+)*@studenti.unicampania.it$";
+		String expPwd="^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,10}$";
+		String expFirstName="^[A-Z]{1}[a-zA-Z\\s]{2,30}$";
+		String expLastName="^[A-Z]{1}[a-zA-Z\\s]{2,30}$";
+		String expTelephoneNumber="^\\d{9,10}$";
+		String expSex="";
+		String expRegistrationNumber="^[AB]\\d{5,9}$";
+		String expAcademicYear="";
+
+		
+		if (!Pattern.matches(expEmail, email)) {
+			valido=false;
+			System.out.print(email);
+		}
+		if (!Pattern.matches(expPwd, pwd)) {
+			valido=false;
+			System.out.print(pwd);
+		}
+		if (!Pattern.matches(expFirstName, firstname)) {
+			valido=false;
+			System.out.print(firstname);
+		}	
+		if (!Pattern.matches(expLastName, lastname)) {
+			valido=false;
+			System.out.print(lastname);
+		}
+		if (!Pattern.matches(expTelephoneNumber, telephoneNumber)) {
+			valido=false;
+			System.out.print(telephoneNumber);
+		}
+		if (!Pattern.matches(expSex, sex)) {
+			valido=false;
+			System.out.print(sex);
+		}
+		if (!Pattern.matches(expRegistrationNumber, registrationNumber)) {
+			valido=false;
+			System.out.print(registrationNumber);
+		}
+		if (!Pattern.matches(expAcademicYear, academicYear)) {
+			valido=false;
+			System.out.print(academicYear);
+		}
+		
+		return valido;
+	}*/
 }

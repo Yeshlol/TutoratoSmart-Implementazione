@@ -19,6 +19,17 @@ public class UserBean implements Serializable {
 		registrationNumber = "";
 	}
 	
+	public UserBean(String email, String pwd, int role, String firstName, String lastName, String telephoneNumber, String sex, String registrationNumber) {
+		this.email=email;
+		this.pwd=pwd;
+		this.role=role;
+		this.firstName=firstName;
+		this.lastName=lastName;
+		this.sex=sex;
+		this.telephoneNumber=telephoneNumber;
+		this.registrationNumber=registrationNumber;
+	}
+	
 	
 	public String getEmail() {
 		return email;

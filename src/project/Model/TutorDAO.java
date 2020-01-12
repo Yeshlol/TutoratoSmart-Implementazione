@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -17,7 +18,37 @@ public class TutorDAO  {
 	}
 
 	
-	public TutorBean doRetrieveByMail(String mail) throws SQLException {
+	public static synchronized ArrayList<TutorBean> doRetrieveAll() throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		ArrayList<TutorBean> tutorList = new ArrayList<TutorBean>();
+		String sql = "select * from TUTOR";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			TutorBean bean = null;
+        	String email = rs.getString("Email");
+			String password = rs.getString("Pwd");
+			int userRole = rs.getInt("UserRole");
+			String firstname = rs.getString("FirstName");
+			String lastname = rs.getString("LastName");
+			String telephoneNumber = rs.getString("TelephoneNumber");
+			String sex = rs.getString("Sex");
+			String registrationNumber = rs.getString("RegistrationNumber");
+			String state = rs.getString("State");
+			Date startDate = rs.getDate("StartDate");
+			Date finishDate = rs.getDate("FinishDate");
+			String commissionMember = rs.getString("CommissionMember");
+			int registerId = rs.getInt("RegisterId");
+			
+			
+			bean = new TutorBean(email, password, userRole, firstname, lastname, telephoneNumber, sex, registrationNumber, startDate, finishDate, commissionMember, state, registerId);
+			tutorList.add(bean);
+		}
+		return tutorList;
+	}
+	
+	
+	public static TutorBean doRetrieveByMail(String mail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
@@ -66,7 +97,7 @@ public class TutorDAO  {
 	
 	
 	@SuppressWarnings("resource")
-	public synchronized void doSave(TutorBean bean, int totalHours) throws SQLException {
+	public static synchronized void doSave(TutorBean bean, int totalHours) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
@@ -112,7 +143,7 @@ public class TutorDAO  {
 	}
 	
 	
-	public Collection<TutorBean> doRetrieveAllByDates(String order, Date startResearchDate, Date finishResearchDate) throws SQLException {
+	public static Collection<TutorBean> doRetrieveAllByDates(String order, Date startResearchDate, Date finishResearchDate) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
@@ -156,7 +187,7 @@ public class TutorDAO  {
 	}
 	
 	
-	public Collection<TutorBean> doRetrieveAllActive(String order) throws SQLException {
+	public static Collection<TutorBean> doRetrieveAllActive(String order) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
