@@ -70,10 +70,7 @@ public class RequestServlet extends HttpServlet {
 			}
 		}
 		
-		int flag = Integer.parseInt(request.getParameter("flag"));		// Flag passato come hidden nel form: 
-																		// 1 = registrazione nuova prenotazione.
-																		// 2 = cancellazione prenotazione.
-																		// 3 = modifica prenotazione.
+		int flag = Integer.parseInt(request.getParameter("flag"));		// Flag passato tramite gli scipt ajax																		
 				
 		if (flag == 1) {												// 1 = Registrazione nuova prenotazione da parte dello studente.
 			String time = request.getParameter("time");					// Dati della richiesta inseriti dallo studente.
@@ -126,7 +123,7 @@ public class RequestServlet extends HttpServlet {
 				bean = requestDAO.doRetrieveById(id);
 				requestDAO.doDelete(bean);
 				request.getSession(false).removeAttribute("request");
-				request.getSession(false).removeAttribute("requestsCollection");
+				request.removeAttribute("requestsCollection");
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				
@@ -178,6 +175,64 @@ public class RequestServlet extends HttpServlet {
 				request.getSession(false).removeAttribute("request");
 				request.getSession(false).setAttribute("request",bean);
 				request.removeAttribute("requestsCollection");
+				
+				obj.put("result", 1);
+			} catch (SQLException e) {									// Errore nella convalida dell'attivita'.
+				try {
+					obj.put("result", 2);			
+				} catch (JSONException jsonexp) {						// Errore parser json					
+				}
+			} catch (JSONException jsonexp) {							// Errore parser json
+			}
+			finally {
+				response.getWriter().write(obj.toString());
+			}
+		
+			return;
+		}
+		else if(flag == 4) {											// 4 = accettazione prenotazione da parte di un tutor.
+			String requestId = request.getParameter("id");
+			int id;
+		
+			if (requestId != null && requestId != "") {					// recupero id richiesta.
+				id = Integer.parseInt(requestId);
+			}
+			else {														// parametro id non valido o nullo.
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}			
+			
+			String requestDuration = request.getParameter("duration");
+			
+			int duration;
+			
+			if (requestDuration != null && requestDuration != "") {		// recupero durata stimata.
+				duration = Integer.parseInt(requestDuration);
+			}
+			else {														// parametro durata non valido o nullo.
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
+			
+			UserBean user = (UserBean) request.getSession().getAttribute("user");
+			
+			try {
+				RequestBean bean = new RequestBean();					// Recupero dati della richiesta registrati nel DB
+				bean = requestDAO.doRetrieveById(id);
+				bean.setDuration(duration);
+				
+				requestDAO.doAccept(bean, user.getEmail());				// Accetta la richiesta, ne aggiorna lo stato e memorizza nel DB il tutor che l'ha gestita.
+				
+				bean = requestDAO.doRetrieveById(id);
+				
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				
+				request.getSession(false).removeAttribute("request");
+				request.getSession(false).setAttribute("request",bean);
+				request.getSession(false).setAttribute("accept", "true");
 				
 				obj.put("result", 1);
 			} catch (SQLException e) {									// Errore nella convalida dell'attivita'.

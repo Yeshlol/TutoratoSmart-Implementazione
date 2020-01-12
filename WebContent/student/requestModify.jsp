@@ -11,26 +11,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Modifica Prenotazione</title>
-	<style>
-		.vertical-alignment-helper {
-		    display:table;
-		    height: 100%;
-		    width: 100%;
-		    pointer-events:none;
-		}
-		.vertical-align-center {
-		    display: table-cell;
-		    vertical-align: middle;
-		    pointer-events:none;
-		}
-		.modal-content {
-		    width:inherit;
-		    max-width:inherit;
-		    height:inherit;
-		    margin: 0 auto;
-		    pointer-events: all;
-		}  	
-    </style>
 </head>
 
 <body>

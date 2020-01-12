@@ -90,30 +90,14 @@
 			</table>
 		</div>
 		
-		<% if (register.getState().equals("Approvato")) { %>
-		
-		<div class="container-fluid" style="margin: 25px; margin-bottom: 10px;">
-			<div class="panel"></div>
-			<div class="row row-space">
-				<div class="row">
-					<div class="form-group col-lg-6">
-						<a href="activity.jsp"><input class="btn btn-primary" type="button" value="Aggiungi attivit&aacute"></a>
-					</div>
-					<div class="form-group col-lg-6">
-						<input class="btn btn-primary" id="addActivity" type="submit" onclick="validateInputsActivity()" name="addActivity" value="Genera registro">
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<% } else { %>
-			
 		<div class="panel"></div>
 		<div style="margin-bottom: 25px;">
-			<a href="tutor/activity.jsp"><input class="btn btn-primary" type="button" value="Aggiungi attivit&aacute"></a>		        	
+			<% if (register.getState().equals("Approvato")) { %>
+				<input class="btn btn-primary" type="button" value="Genera registro" onclick="generateRegister()">		        	
+			<% } else { %>			
+				<a href="tutor/activity.jsp"><input class="btn btn-primary" type="button" value="Aggiungi attivit&aacute"></a>		        	
+			<% } %>
 		</div>
-			
-		<% } %>
 	</div>
     
 	<%@ include file="/partials/footer.jsp" %>

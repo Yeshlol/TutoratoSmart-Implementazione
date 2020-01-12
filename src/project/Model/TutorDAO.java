@@ -29,7 +29,7 @@ public class TutorDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, mail);
 			
-			System.out.println("Tutor doRetrieveByMail: " + preparedStatement.toString());
+			// System.out.println("Tutor doRetrieveByMail: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.wasNull()) {
@@ -51,11 +51,11 @@ public class TutorDAO  {
 					bean.setCommissionMember(rs.getString("CommissionMember"));
 					bean.setRegisterId(rs.getInt("RegisterId"));
 					
-					System.out.println("Tutor Trovato con la email!");
+				//	System.out.println("Tutor Trovato con la email!");
 	            }
 	        }
 		} catch (SQLException e) {
-			System.out.println("Utente non trovato!");
+			// System.out.println("Utente non trovato!");
 			return null;
 		} finally {
 			if(preparedStatement != null)
@@ -88,7 +88,7 @@ public class TutorDAO  {
 			preparedStatement.setString(7, bean.getSex());
 			preparedStatement.setString(8, bean.getRegistrationNumber());
 			
-			System.out.println("User doSave: "+ preparedStatement.toString());
+			// System.out.println("User doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			
@@ -100,7 +100,7 @@ public class TutorDAO  {
 			preparedStatement.setString(3, bean.getCommissionMember());
 			preparedStatement.setInt(4, idRegister);
 						
-			System.out.println("Tutor doSave: "+ preparedStatement.toString());
+		 	// System.out.println("Tutor doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			

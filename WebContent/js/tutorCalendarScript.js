@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-	var initialLocaleCode = 'it';
-	
 	/* initialize the calendar
 	-----------------------------------------------------------------*/
 	var calendarEl = document.getElementById('calendar');
@@ -12,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		    center: 'title',
 		    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
 		},
+		eventLimit: 2,
 		buttonText: {
 			prev: 'Precedente',
 			next: 'Successivo',
@@ -42,24 +41,32 @@ document.addEventListener('DOMContentLoaded', function() {
 				endTime: '17:00'
 			}
 		],
+		slotDuration: '00:15:00',
+	    slotLabelFormat: [{
+	    	  hour: 'numeric',
+	    	  minute: '2-digit',
+	    	  omitZeroMinute: false,
+	    }],
+	    slotLabelInterval: '00:15:00',
 		weekNumbers: true,
 	    navLinks: true,
-	    editable: false,
-	    droppable: false,
-	    
 	    height: 450,
 	    contentHeight: 'auto',
+	    editable: false,
+	    droppable: false,
 	    eventMouseEnter: function(mouseEnterInfo ) {
+	    	$("#info").show();
 	    	$("#info").css({
-	    	      top: mouseEnterInfo.jsEvent.pageY + 15,
-	    	      left: mouseEnterInfo.jsEvent.pageX + 15,
+	    	      top: mouseEnterInfo.jsEvent.pageY + 10,
+	    	      left: mouseEnterInfo.jsEvent.pageX + 10,
 	    	      background: "white",
-	    	      border: "1px solid blue",
+	    	      border: "1px solid #232F3E",
 	    	});
 	        $('#info').html(mouseEnterInfo.event.extendedProps.description);
 	    },
 	    eventMouseLeave: function(mouseLeaveInfo) {
 	    	$('#info').html("");
+	    	$("#info").hide();
 	    },
 	    eventClick: function(eventClickInfo) {
 	    	eventClickInfo.jsEvent.preventDefault();
@@ -72,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		        flag: '1'
 		    },
 		    data: {
+		    	color: 'color',
                 start: 'start',
                 end: 'end',
                 id: 'id',

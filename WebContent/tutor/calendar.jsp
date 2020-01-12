@@ -18,7 +18,13 @@
     <script src='/TutoratoSmart/fullcalendar/core/main.js'></script>
     <script src='/TutoratoSmart/fullcalendar/daygrid/main.js'></script>
     <script src='/TutoratoSmart/fullcalendar/timegrid/main.js'></script>
-    <script src='/TutoratoSmart/fullcalendar/list/main.js'></script>  
+    <script src='/TutoratoSmart/fullcalendar/list/main.js'></script>
+    
+    <style type="text/css">
+    	.fc-event {
+    		min-height: 12px !important;
+    	}
+    </style>
 </head>
 
 <body>
@@ -30,6 +36,6 @@
 	
 	<%@ include file="/partials/footer.jsp" %>
 	
-	<script src="/TutoratoSmart/js/calendarScript.js"></script>
+	<script src="/TutoratoSmart/js/tutorCalendarScript.js"></script>
 </body>
 </html>

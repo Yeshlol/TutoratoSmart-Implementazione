@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%  RequestBean req = (RequestBean) session.getAttribute("request"); %>
 
 <!DOCTYPE html>
 <html>
@@ -51,7 +49,8 @@
 	
 	<div class="content text-center" style="width: 40%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
 		<div class="panel">
-			<h2 align="center">Inserisci dati prenotazione</h2>
+			<h2 align="center">Nuova prenotazione</h2>
+			<p>Inserisci i dati della prenotazione, aggiungendo un commento che verr&aacute letto dai tutor</p>
 		</div>
 		
 		<div class="container-fluid" style="margin: 25px;">
@@ -63,11 +62,11 @@
 				<div class="row">
 					<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
 			  			<label for="requestDate" class="control-label">Selezionare la data</label>
-			  			<input type="date" id="requestDate" class="form-control" required="required">
+			  			<input type="date" id="requestDate" class="form-control">
 					</div>
 					<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
 			  			<label for="requestTime" class="control-label">Selezionare l'orario</label>
-			  			<input type="time" id="requestTime" class="form-control" min="09:00" max="16:45" step="900" required="required">
+			  			<input type="time" id="requestTime" class="form-control" min="09:00" max="16:45" step="900">
 			  		</div>
 			  	</div>
 			</div>	

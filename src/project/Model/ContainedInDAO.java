@@ -47,6 +47,33 @@ public class ContainedInDAO {
 		return list;
 	}
 	
+	
+	public synchronized ContainedInBean doRetrieveByAppointmentId (int appointmentId) throws SQLException {
+		ContainedInBean bean = new ContainedInBean();
+				
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+			
+		String selectSql = "SELECT SQL_NO_CACHE * FROM CONTAINED_IN WHERE AppointmentId = ?";
+			
+		try {
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setInt(1, appointmentId);
+			
+			System.out.println("Contained_In doRetrieveByAppointmentId: " + preparedStatement.toString());
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()) {
+				bean.setActivityId(rs.getInt("ActivityId"));
+			}	
+		} finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}
+		
+		return bean;
+	}
+	
 
 	public synchronized void doSave(ContainedInBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();

@@ -9,6 +9,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Aggiunta attivit&aacute lavorativa</title>
+	 <style>
+	    table,th,td{
+	    	border: 1px solid black;
+	    	border-collapse: collapse;
+	    	text-align:center;
+	    }
+	    th {
+	    	background-color:#4d94ff;
+	     	color: white;
+	    }
+	    th,td {
+	    	padding:8px;
+	    }
+    </style>
 </head>
 
 <body>
@@ -21,63 +35,81 @@
 		</div>
 		
 		<div class="container-fluid" style="margin: 25px;">
-			<form method="POST" action="<%= response.encodeURL("/TutoratoSmart/Activity") %>">
-				<div class="row row-space">
-					<div class="row">
-						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-				  			<label for="category" class="control-label">Specificare la categoria</label>
-							<select id="category" name="category">
-								<option value="1">Sportello informativo</option>
-								<option value="2">Assistenza esame</option>
-								<option value="3">Organizzazione seminario</option>
-								<option value="3">Seminario</option>
-								<option value="3">Organizzazione evento</option>
-								<option value="3">Evento</option>
-							</select>
-						</div>
-						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-				  			<label for="date" class="control-label">Specificare la data</label>
-				  			<input type="date" class="form-control" name="date">
-				  		</div>
-				  	</div>
-				  	
-				  	<div class="row">
-				  		<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-				  			<label for="startTime" class="control-label">Specificare l'orario di inizio attivit&aacute</label>
-				  			<input type="time" min="7:30" max="22:00" class="form-control" name="startTime">
-				  		</div>
-				  		<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-				  			<label for="finishTime" class="control-label">Specificare l'orario di fine attivit&aacute</label>
-				  			<input type="time" min="7:30" max="22:00" class="form-control" name="finishTime">
-				  		</div>
-				  	</div>
-				</div>	
-									
-		  		<label for="description" class="control-label">Inserire la descrizione dell'attivit&aacute</label>
-		  		<textarea class="form-control" id="description" name="description" rows="3"></textarea>
-		  		<br>
+			<div class="row row-space">
+				<div class="row">
+					<div class="alert alert-warning" id="errorDiv" role="alert" style="display:none;"></div>
+				</div>
+			
+				<div class="row">
+					<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			  			<label for="category" class="control-label">Specificare la categoria</label>
+						<select id="category" name="category">
+							<option selected disabled="disabled">--</option>
+							<option value="Sportello Tutorato">Sportello Tutorato</option>
+							<option value="Assistenza Esame">Assistenza Esame</option>
+							<option value="Organizzazione Seminario">Organizzazione Seminario</option>
+							<option value="Seminario">Seminario</option>
+							<option value="Organizzazione Evento">Organizzazione Evento</option>
+							<option value="Evento">Evento</option>
+						</select>
+					</div>
+					<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			  			<label for="date" class="control-label">Specificare la data</label>
+			  			<input type="date" class="form-control" name="date" id="date">
+			  		</div>
+			  	</div>
+			  	
+			  	<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			  		<label for="startTime" class="control-label">Specificare l'orario di inizio attivit&aacute</label>
+			  		<input type="time" id="startTime" class="form-control" min="07:30" max="22:00" step="600">
+				</div>
+			  	
+			  	<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			  		<label for="finishTime" class="control-label">Specificare l'orario di fine attivit&aacute</label>
+			  		<input type="time" id="finishTime" class="form-control" min="07:30" max="22:00" step="600">
+				</div>
+			</div>	
 								
-				<div class="panel"></div>
-				<div>
-					<input class="btn btn-primary" id="addActivity" type="submit" onclick="validateInputsActivity()" name="addActivity" value="Aggiungi">		        	
-		        </div>
-		        <% 	
-		        	TutorDAO tutorDAO = new TutorDAO();
-		        	TutorBean tutor = tutorDAO.doRetrieveByMail(user.getEmail());
-					RegisterDAO registerDAO = new RegisterDAO();
-					RegisterBean register = registerDAO.doRetrieveById(tutor.getRegisterId());
-				%>
-				<input type="hidden" name="flag" id="flag" value="1">
-				<input type="hidden" name="email" id="email" value="<%= tutor.getEmail() %>">
-				<input type="hidden" name="registerId" id="registerId" value="<%= register.getIdRegister() %>">
-			</form>
+	  		<label for="description" class="control-label">Inserire la descrizione dell'attivit&aacute</label>
+	  		<textarea class="form-control" id="description" name="description" rows="3"></textarea>
+	  		<br>
+			
+			<div class="panel" id="appointmentsPanel" style="display: none;"></div>
+			<div id="appointments"></div>
+			
+						
+			<div class="panel"></div>
+			<div>
+				<input class="btn btn-success" id="addActivity" type="button" onclick="validateInputsActivity()" value="Aggiungi">		        	
+	        </div>
+	        
+	        <div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Attivit&aacute aggiunta con successo!</div>
+									
+			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Aggiunta attivit&aacute fallita!</div>
 		</div>
 	</div>
-         
-    <input type="hidden" name="inserimento" value="true">
-    <input type="hidden" name="idRegistro">          
      
-	<!--     AGGIUNGERE SCRIPT VALIDAZIONE QUI -->
+    <script src="<%= request.getContextPath() %>/js/tutorScript.js"></script>        
+	<script>
+		$(document).ready( function() {
+			var now = new Date();			
+			document.getElementById("date").valueAsDate = now;
+			
+			var timeString = now.toISOString().substr(11, 8);
+									
+			document.getElementById("startTime").value = timeString;
+			document.getElementById("startTime").stepDown(1);
+			
+			now.setHours(now.getHours() + 1 );
+			
+			timeString = now.toISOString().substr(11, 8);
+			
+			document.getElementById("finishTime").value = timeString;
+			document.getElementById("finishTime").stepDown(1);
+			
+			$("#addActivity").click();
+		});
+	</script>
      	
 	<%@ include file="/partials/footer.jsp" %>
 </body>

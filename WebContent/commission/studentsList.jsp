@@ -46,7 +46,7 @@
 		 	for(int i = 0 ; i < studentsCollection.size() && it.hasNext(); i++) { 
 	 			StudentBean student = (StudentBean) it.next(); 
 	 	%>
-	 			<div style="width: 95%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
+	 			<div style="width: 95%;margin: 0 auto; margin-top: 25px; border: 2px solid #232F3E; border-radius:8px;">
 				 	<div class="panel">
 						<h4><%= student.getLastName() %> <%= student.getFirstName() %></h4>
 					</div>

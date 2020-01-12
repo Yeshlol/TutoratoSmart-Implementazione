@@ -39,7 +39,7 @@
 				<h2>Tutor trovati</h2>
 			</div>
 			
-			<table style="width: 95%;margin: 0 auto;margin-bottom: 25px">
+			<table style="width: 95%;margin: 0 auto;">
 				<tr>						
 					<th class="text-center">Nome</th>
 		    		<th class="text-center">Cognome</th>

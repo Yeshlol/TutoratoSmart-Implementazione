@@ -16,7 +16,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Richieste di appuntamento effettuate</title>
+	<title>Storico Prenotazioni</title>
 
 	<style>
 	    table,th,td{
@@ -45,7 +45,7 @@
 				<h2>Elenco prenotazioni</h2>
 			</div>
 			
-			<table style="width: 95%;margin: 0 auto;margin-bottom: 25px">
+			<table style="width: 95%;margin: 0 auto;">
 				<tr>
 					<th class="text-center">Data</th>
 					<th class="text-center">Orario</th>

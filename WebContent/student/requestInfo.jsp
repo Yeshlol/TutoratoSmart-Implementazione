@@ -28,7 +28,25 @@
 	    .column {
 		  float: left;
 		  width: 33%;
-		}	    
+		}
+		.vertical-alignment-helper {
+		    display:table;
+		    height: 100%;
+		    width: 100%;
+		    pointer-events:none;
+		}
+		.vertical-align-center {
+		    display: table-cell;
+		    vertical-align: middle;
+		    pointer-events:none;
+		}
+		.modal-content {
+		    width:inherit;
+		    max-width:inherit;
+		    height:inherit;
+		    margin: 0 auto;
+		    pointer-events: all;
+		}    
     </style>	
 </head>
 
@@ -92,22 +110,26 @@
 		<% } %>
 		
 		<div class="modal fade" id="deleteModal" role="dialog">
-		    <div class="modal-dialog">
-		        <div class="modal-content">
-			        <div class="modal-header">
-			          	<button type="button" class="close" data-dismiss="modal">&times;</button>
-			          	<h4 class="modal-title">Elimina prenotazione</h4>
-			        </div>
-			        <div class="modal-body">
-			          	<p>Procedere con l'eliminazione?</p>
-			        </div>
-			        <div class="modal-footer">
-			        	<div class="row text-center">
-						  <div class="column" style="width: 50%;"><input class="btn btn-danger" type="button" onclick="deleteRequest()" value="Elimina prenotazione"></div>
-						  <div class="column" style="width: 50%;"><button type="button" class="btn btn-primary" data-dismiss="modal">Annulla</button></div>
-						</div>
-				    </div>
-		    	</div>						      
+			 <div class="vertical-alignment-helper">
+	        	<div class="modal-dialog vertical-align-center">
+	            	<div class="modal-content">
+	            		<div class="modal-header">
+			          		<button type="button" class="close" data-dismiss="modal">&times;</button>
+			          		<h4 class="modal-title">Elimina prenotazione</h4>
+			       		</div>
+				        <div class="modal-body">
+				          	<div class="modal-body">
+			          			<p>Procedere con l'eliminazione?</p>
+			        		</div>
+			        	</div>
+			        	<div class="modal-footer">
+			        		<div class="row text-center">
+						  		<div class="column" style="width: 50%;"><input class="btn btn-danger" type="button" onclick="deleteRequest()" value="Elimina prenotazione"></div>
+						  		<div class="column" style="width: 50%;"><button type="button" class="btn btn-primary" data-dismiss="modal">Annulla</button></div>
+							</div>
+				    	</div>
+			    	</div>
+			  	</div>
 			</div>
 		</div>
 	</div>

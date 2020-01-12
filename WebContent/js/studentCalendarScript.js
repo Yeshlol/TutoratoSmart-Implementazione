@@ -52,25 +52,23 @@ document.addEventListener('DOMContentLoaded', function() {
 				endTime: '17:00'
 			}
 		],
-		weekNumbers: true,
-	    navLinks: true,	    
-	    
 	    slotDuration: '00:15:00',
 	    slotLabelFormat: [{
 	    	  hour: 'numeric',
 	    	  minute: '2-digit',
 	    	  omitZeroMinute: false,
 	    }],
+	    weekNumbers: true,
+	    navLinks: true,
 	    height: 450,
-	    contentHeight: 'auto',	    
-	    
-	    selectOverlap: false,
-	    	    
+	    contentHeight: 'auto',
+	    editable: false,
+	    droppable: false,
+	    selectOverlap: false,	    	    
 	    eventClick: function( eventClickInfo ) { 
 	    	eventClickInfo.jsEvent.preventDefault();
 	    },
-	    
-	 	events: {
+	    events: {
 		    url: '/TutoratoSmart/Calendar',
 		    method: 'POST',
 		    extraParams: {
@@ -81,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 end: 'end',
                 id: 'id',
                 title: 'title',
-                description: 'description'
             },
             failure: function() {
 		      alert('there was an error while fetching events!');

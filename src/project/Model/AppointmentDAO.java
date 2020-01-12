@@ -1,6 +1,7 @@
 package project.Model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -66,6 +67,9 @@ public class AppointmentDAO  {
 			System.out.println("Appointment doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
+			
+			RequestDAO requestDAO = new RequestDAO();
+			requestDAO.confirmAppointment(bean.getRequestId());
 			
 			connection.commit();
 		} finally {
@@ -153,5 +157,44 @@ public class AppointmentDAO  {
 				preparedStatement.close();
 		}
 		return bean;
+	}
+
+	public Collection<AppointmentBean> doRetrieveAllByDate (String order, String tutorMail, Date requestDate, int startTime, int finishTime) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		Collection<AppointmentBean> list = new LinkedList<AppointmentBean>();
+		
+		String selectSql = "SELECT * FROM APPOINTMENT AS A, REQUEST AS R WHERE A.Tutor = ? AND A.RequestId = R.IdRequest "
+						 + "AND R.RequestDate = ? AND R.RequestTime BETWEEN ? AND ?";
+		
+		if(order!=null && !order.equals("")) {
+			selectSql +=" ORDER BY " + order;
+		}
+		
+		try {
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setString(1, tutorMail);
+			preparedStatement.setDate(2, requestDate);
+			preparedStatement.setInt(3, startTime);
+			preparedStatement.setInt(4, finishTime);
+			
+			System.out.println("Appointment doRetrieveAllByDate: " + preparedStatement.toString());
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				AppointmentBean bean = new AppointmentBean();
+				bean.setIdAppointment(rs.getInt("IdAppointment"));
+				bean.setDetails(rs.getString("Details"));
+				bean.setRequestId(rs.getInt("RequestId"));
+				bean.setTutor(rs.getString("Tutor"));
+				
+				list.add(bean);
+			}			
+		} finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}
+		return list;
 	}
 }

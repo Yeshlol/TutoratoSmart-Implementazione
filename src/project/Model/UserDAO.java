@@ -26,7 +26,7 @@ public class UserDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, mail);
 			
-			System.out.println("User doRetrieveByMail: " + preparedStatement.toString());
+			// System.out.println("User doRetrieveByMail: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.wasNull()) {
@@ -43,10 +43,10 @@ public class UserDAO  {
 					bean.setSex(rs.getString("Sex"));
 					bean.setRegistrationNumber(rs.getString("RegistrationNumber"));
 										
-					System.out.println("Utente trovato con la email!");
+					// System.out.println("Utente trovato con la email!");
 	            }
 	            else {
-	            	System.out.println("Utente non trovato!");
+	            	// System.out.println("Utente non trovato!");
 	            }
 	        }
 		} catch (SQLException e) {
@@ -77,7 +77,7 @@ public class UserDAO  {
 			preparedStatement.setString(7, bean.getSex());
 			preparedStatement.setString(8, bean.getRegistrationNumber());
 			
-			System.out.println("User doSave: "+ preparedStatement.toString());
+			// System.out.println("User doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			

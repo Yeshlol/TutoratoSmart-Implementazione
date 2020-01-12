@@ -39,7 +39,7 @@ public class ShowRegisterServlet extends HttpServlet {
 			String email = user.getEmail();
 	 
 			try {
-				activitiesCollection = activityTutorDAO.doRetrieveAllByMail(null, email);
+				activitiesCollection = activityTutorDAO.doRetrieveAllByMail("YEAR(ActivityDate) DESC, MONTH(ActivityDate) DESC, DAY(ActivityDate) DESC", email);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

@@ -3,11 +3,12 @@ function deleteRequest(){
 	$.post("/TutoratoSmart/Request", {
 		"flag":"2",
 		"id":$("#requestId").val(),
-		"delete":"true",
 		},
-		function(data){	  
+		function(data){
+			$('#deleteModal').modal('hide');
 			if (data.result == 1) {
-				$('#deleteModal').modal('hide');
+				$('#deleteButton').attr('disabled','disabled');
+				$('#modifyRequest').attr('disabled','disabled');
 				$("#successDeleteDiv").fadeIn(500, function() {
 					$("#successDeleteDiv").fadeOut(3000);
 					setTimeout(function() {
@@ -17,7 +18,9 @@ function deleteRequest(){
 			}
 			else {
 				$("#failureDeleteDiv").fadeIn(500, function() {
-					$("#failureDeleteDiv").fadeOut(5000)
+					$("#failureDeleteDiv").fadeOut(5000);
+					$('#deleteButton').attr('disabled','disabled');
+					$('#modifyRequest').attr('disabled','disabled');
 				})
 			}					 
 		});
@@ -109,7 +112,7 @@ $("#requestTime").on("change",function(){
 	}
 });
 
-// Verifica campi input prima del post registrazione nuova richiesta di appuntamento
+// Verifica campi input ed esegue post registrazione nuova richiesta di appuntamento
 function validateInputsNewRequest() {
 	$("#errorDiv").html("");
 	$('#errorDiv').hide();

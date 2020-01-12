@@ -51,7 +51,8 @@
 	        <div class="collapse navbar-collapse" id="myNavbar">
 	        	<ul class="nav navbar-nav">
 	          		<li style="border-right:1px solid #bbb; float:left;"><a href="/TutoratoSmart/tutor/register.jsp" style="font-weight:bold;">Registro Tutorato</a></li>
-	          		<li><a href="/TutoratoSmart/tutor/calendar.jsp" style="font-weight:bold;">Calendario Appuntamenti</a></li>
+	          		<li style="border-right:1px solid #bbb; float:left;"><a href="/TutoratoSmart/tutor/calendar.jsp" style="font-weight:bold;">Calendario Appuntamenti</a></li>
+	          		<li><a href="/TutoratoSmart/tutor/requestsList.jsp" style="font-weight:bold;">Nuove Prenotazioni</a></li>
 	          	</ul>
           	</div>
 	    <% } else if(user.getRole()==3) { %>

@@ -70,7 +70,16 @@ public class CalendarServlet extends HttpServlet {
 	                ce.setDescription("Appuntamento con " + name);
 	                ce.setStart(bean.getRequestDate() + startTime);
 	                ce.setEnd(bean.getRequestDate() + finishTime);
-					ce.setUrl("/TutoratoSmart/ShowRequest?flag=2&id=" + bean.getIdRequest());
+	                ce.setUrl("/TutoratoSmart/ShowRequest?flag=3&id=" + bean.getIdRequest());
+	                
+	                if(bean.getState().equals("In valutazione"))
+	                	ce.setColor("#FFFF00");
+	                else if(bean.getState().equals("Accettata"))
+	                	ce.setColor("green");
+	                else if(bean.getState().equals("Appuntamento effettuato"))
+	                	ce.setColor("#232F3E");
+	                else
+	                	ce.setColor("red");
 	                events.add(ce);
 				}
 				

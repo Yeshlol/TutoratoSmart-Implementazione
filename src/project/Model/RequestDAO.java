@@ -28,7 +28,7 @@ public class RequestDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			
-			System.out.println("Request doRetrieveById: " + preparedStatement.toString());
+			//System.out.println("Request doRetrieveById: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
@@ -40,10 +40,10 @@ public class RequestDAO  {
 				bean.setDuration(rs.getInt("Duration"));
 				bean.setStudent(rs.getString("Student"));
 				
-				System.out.println("Richiesta Trovata con l'id!");
+				//System.out.println("Richiesta Trovata con l'id!");
 			}
 		} catch (SQLException e) {
-			System.out.println("Id non trovato!");
+			//System.out.println("Id non trovato!");
 			return null;
 		} finally {
 			if(preparedStatement != null)
@@ -67,7 +67,7 @@ public class RequestDAO  {
 			preparedStatement.setInt(3, bean.getRequestTime());		
 			preparedStatement.setString(4, bean.getStudent());
 			
-			System.out.println("Request doSave: "+ preparedStatement.toString());
+			//System.out.println("Request doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			
@@ -94,7 +94,7 @@ public class RequestDAO  {
 			preparedStatement.setInt(3, bean.getRequestTime());
 			preparedStatement.setInt(4, bean.getIdRequest());
 			
-			System.out.println("Request doModify: " + preparedStatement.toString());
+			//System.out.println("Request doModify: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 			
 			connection.commit();
@@ -106,7 +106,7 @@ public class RequestDAO  {
 	}
 	
 	
-	public synchronized void doAccept(RequestBean bean) throws SQLException {		
+	public synchronized void doAccept(RequestBean bean, String tutorMail) throws SQLException {		
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
@@ -119,8 +119,14 @@ public class RequestDAO  {
 			preparedStatement.setInt(1, bean.getDuration());
 			preparedStatement.setInt(2, bean.getIdRequest());
 			
-			System.out.println("Request doAccept: " + preparedStatement.toString());
+			//System.out.println("Request doAccept: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
+			
+			ManagesDAO managesDAO = new ManagesDAO();
+			ManagesBean manage = new ManagesBean();
+			manage.setRequestId(bean.getIdRequest());
+			manage.setTutor(tutorMail);
+			managesDAO.doSave(manage);
 			
 			connection.commit();
 		}
@@ -142,7 +148,7 @@ public class RequestDAO  {
 			preparedStatement = connection.prepareStatement(deleteSql);
 			preparedStatement.setInt(1, bean.getIdRequest());
 			
-			System.out.println("Request doDelete: " + preparedStatement.toString());
+			//System.out.println("Request doDelete: " + preparedStatement.toString());
 			result = preparedStatement.executeUpdate();
 			
 			connection.commit();
@@ -172,7 +178,7 @@ public class RequestDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, studentMail);
 			
-			System.out.println("Request doRetrieveAllByMail: " + preparedStatement.toString());
+			//System.out.println("Request doRetrieveAllByMail: " + preparedStatement.toString());
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
@@ -207,7 +213,7 @@ public class RequestDAO  {
 		try {
 			preparedStatement = connection.prepareStatement(selectSql);
 			
-			System.out.println("Request doRetrieveAll: " + preparedStatement.toString());
+			//System.out.println("Request doRetrieveAll: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
 				RequestBean bean = new RequestBean();
@@ -229,6 +235,7 @@ public class RequestDAO  {
 		return list;
 	}
 
+	
 	public Collection<RequestBean> doRetrieveAllByDates(String order, String studentMail, Date startResearchDate, Date finishResearchDate) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -247,7 +254,7 @@ public class RequestDAO  {
 			preparedStatement.setDate(2, finishResearchDate);
 			preparedStatement.setString(3, studentMail);
 			
-			System.out.println("Request doRetrieveAllByDates: " + preparedStatement.toString());
+			//System.out.println("Request doRetrieveAllByDates: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
 				RequestBean bean = new RequestBean();
@@ -268,7 +275,45 @@ public class RequestDAO  {
 		
 		return requestsList;
 	}
-
+	
+	
+	public Collection<RequestBean> doRetrieveAllPending(String order) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		Collection<RequestBean> list = new LinkedList<RequestBean>();
+		
+		String selectSql = "SELECT * FROM REQUEST WHERE STATE = 'In valutazione'";
+		
+		if(order!=null && !order.equals("")) {
+			selectSql +=" ORDER BY " + order;
+		}
+		
+		try {
+			preparedStatement = connection.prepareStatement(selectSql);
+			
+			//System.out.println("Request doRetrieveAll: " + preparedStatement.toString());
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()) {
+				RequestBean bean = new RequestBean();
+				bean.setIdRequest(rs.getInt("IdRequest"));
+				bean.setState(rs.getString("State"));
+				bean.setStudentComment(rs.getString("StudentComment"));
+				bean.setRequestDate(rs.getDate("RequestDate"));
+				bean.setRequestTime(rs.getInt("RequestTime"));
+				bean.setDuration(rs.getInt("Duration"));
+				bean.setState(rs.getString("State"));
+				bean.setStudent(rs.getString("Student"));
+				
+				list.add(bean);
+			}			
+		} finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}
+		return list;
+	}
+	
 
 	public boolean isAvailable(Date requestDate, int requestTime) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -307,5 +352,29 @@ public class RequestDAO  {
 				preparedStatement.close();
 		}
 		return false;
+	}
+
+
+	public void confirmAppointment(int idRequest) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		String updateSql = "UPDATE REQUEST SET State='Appuntamento effettuato' WHERE IdRequest = ?";
+		
+		try {
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(updateSql);
+	
+			preparedStatement.setInt(1, idRequest);
+			
+			System.out.println("Request doConfirmAppointment: " + preparedStatement.toString());
+			preparedStatement.executeUpdate();
+						
+			connection.commit();
+		}
+		finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}		
 	}
 }
