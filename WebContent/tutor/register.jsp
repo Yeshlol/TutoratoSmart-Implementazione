@@ -99,7 +99,36 @@
 			<% } %>
 		</div>
 	</div>
+        
+    <div id="registerDivPdf">
+		<table>
+			<tr>
+	     		<th width="20%">Categoria</th>
+	    		<th width="20%">Data</th>
+	    		<th width="60%">Commento</th>
+	   		</tr>
+			<% 	Iterator<?> it = activitiesCollection.iterator();
+			 	for(int i = 0 ; i < activitiesCollection.size() && it.hasNext(); i++) { 
+		 			ActivityTutorBean bean = (ActivityTutorBean) it.next(); %>
+	 			<tr>
+		 			<td width="20%"><%= bean.getCategory() %></td>
+		 			<td width="20%"><%= bean.getActivityDate() %></td>
+		 			<td width="60%"><%= bean.getDetails() %></td>
+		 		</tr>
+		 	<% } %>	
+		</table>
+	</div>    
+    
+    <input type="hidden" id="firstName" value ="<%= user.getFirstName() %>">
+    <input type="hidden" id="lastName" value ="<%= user.getLastName() %>">
     
 	<%@ include file="/partials/footer.jsp" %>
+	<script>
+		$(document).ready(function(){
+			$("#registerDivPdf").hide();
+		});
+	</script>
+	<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+	<script src="/TutoratoSmart/js/fileGenerationScript.js"></script>
 </body>
 </html>
