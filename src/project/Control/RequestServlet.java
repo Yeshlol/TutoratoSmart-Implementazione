@@ -248,6 +248,35 @@ public class RequestServlet extends HttpServlet {
 		
 			return;
 		}
+		else if(flag == 5) {											// Studente assente
+			try {
+				RequestBean req = (RequestBean) request.getSession(false).getAttribute("request");					// Recupero dati della richiesta registrati nel DB
+				
+				req.setState("Studente assente");
+								
+				requestDAO.doModify(req);				// Accetta la richiesta, ne aggiorna lo stato e memorizza nel DB il tutor che l'ha gestita.
+				
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				
+				request.getSession(false).removeAttribute("request");
+				request.getSession(false).setAttribute("request",req);
+				request.getSession(false).setAttribute("absent", "true");
+				
+				obj.put("result", 1);
+			} catch (SQLException e) {									// Errore nella convalida dell'attivita'.
+				try {
+					obj.put("result", 2);			
+				} catch (JSONException jsonexp) {						// Errore parser json					
+				}
+			} catch (JSONException jsonexp) {							// Errore parser json
+			}
+			finally {
+				response.getWriter().write(obj.toString());
+			}
+		
+			return;
+		}
 		else {															// flag non valido.
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
 			dispatcher.forward(request, response);

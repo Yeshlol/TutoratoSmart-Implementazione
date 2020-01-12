@@ -83,16 +83,17 @@ public class RequestDAO  {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
-		String updateSql = "UPDATE REQUEST SET StudentComment=?,RequestDate=?,RequestTime=? WHERE IdRequest = ?";
+		String updateSql = "UPDATE REQUEST SET State=?,StudentComment=?,RequestDate=?,RequestTime=? WHERE IdRequest = ?";
 		
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
-	
-			preparedStatement.setString(1, bean.getStudentComment());
-			preparedStatement.setDate(2, bean.getRequestDate());
-			preparedStatement.setInt(3, bean.getRequestTime());
-			preparedStatement.setInt(4, bean.getIdRequest());
+			
+			preparedStatement.setString(1, bean.getState());
+			preparedStatement.setString(2, bean.getStudentComment());
+			preparedStatement.setDate(3, bean.getRequestDate());
+			preparedStatement.setInt(4, bean.getRequestTime());
+			preparedStatement.setInt(5, bean.getIdRequest());
 			
 			//System.out.println("Request doModify: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();

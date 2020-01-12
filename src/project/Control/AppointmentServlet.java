@@ -44,7 +44,8 @@ public class AppointmentServlet extends HttpServlet {
 		
 		int flag = Integer.parseInt(request.getParameter("flag"));		// Flag passato nello script: 
 																		// 1 = registrazione nuovo appuntamento
-																		// 2 = modifica/cancellazione appuntamento da parte di un tutor
+																		// 2 = modifica appuntamento
+																		// 3 = cancellazione appuntamento
 																		
 		if (flag == 1) {												// Registrazione nuovo appuntamento
 			String comment = request.getParameter("comment");			// Dati appuntamento
@@ -57,7 +58,7 @@ public class AppointmentServlet extends HttpServlet {
 			appointmentBean.setRequestId(req.getIdRequest());
 			
 			try {
-				appointmentDAO.doSave(appointmentBean);
+				appointmentDAO.doModify(appointmentBean);
 							
 				req = requestDAO.doRetrieveById(req.getIdRequest());
 				
@@ -81,6 +82,62 @@ public class AppointmentServlet extends HttpServlet {
 			finally {
 				response.getWriter().write(obj.toString());
 			}
+		}
+		
+		else if (flag == 2) {										// Modifica appuntamento
+			String comment = request.getParameter("comment");		// Dati appuntamento
+									
+			AppointmentBean appointmentBean = (AppointmentBean) request.getSession(false).getAttribute("appointment");
+			
+			appointmentBean.setDetails(comment);
+			
+			try {
+				appointmentDAO.doModify(appointmentBean);
+				
+				request.getSession(false).removeAttribute("appointment");
+				request.getSession(false).setAttribute("appointment", appointmentBean);
+				
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+			
+				obj.put("result", 1);
+			} catch (SQLException e) {								// Errore nella convalida dell'attivita'.
+				System.out.println(e.getMessage());
+				try {
+					obj.put("result", 2);			
+				} catch (JSONException jsonexp) {					// Errore parser json					
+				}
+			} catch (JSONException jsonexp) {						// Errore parser json
+			}
+			finally {
+				response.getWriter().write(obj.toString());
+			}
+		}
+		
+		else if (flag == 3) {										// Cancellazione appuntamento
+			AppointmentBean appointment = (AppointmentBean) request.getSession(false).getAttribute("appointment");
+			
+			try {
+				appointmentDAO.doDelete(appointment);
+							
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+			
+				obj.put("result", 1);
+			} catch (SQLException e) {								// Errore nella convalida dell'attivita'.
+				System.out.println(e.getMessage());
+				try {
+					obj.put("result", 2);			
+				} catch (JSONException jsonexp) {					// Errore parser json					
+				}
+			} catch (JSONException jsonexp) {						// Errore parser json
+			}
+			finally {
+				response.getWriter().write(obj.toString());
+			}
+		}
+		else {
+			
 		}
 	}
 }

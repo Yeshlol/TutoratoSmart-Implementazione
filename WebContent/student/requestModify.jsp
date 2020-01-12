@@ -47,7 +47,7 @@
 					</div>
 					<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
 			  			<label for="requestTime" class="control-label">Selezionare l'orario</label>
-			  			<input type="time" id="requestTime" class="form-control" min="09:00" max="16:45" step="900" value="<%= Utils.getTimeAsString(req.getRequestTime()) %>">
+			  			<input type="time" id="requestTime" class="form-control" min="09:00" max="16:45" step="900" value="<%= Utils.getTimeAsString(req.getRequestTime() + 60) %>">
 			  		</div>
 			  	</div>
 			</div>	

@@ -149,7 +149,6 @@ $('#category').change(function () {
     }
 });
 
-
 // Controlla se i dati inseriti della nuova attività sono validi e procede al salvataggio
 function validateInputsActivity() {
 	$("#failureDiv").hide();
@@ -452,22 +451,23 @@ function deleteActivity(){
 		},
 		function(data){
 			$('#deleteModal').modal('hide');
-			$('#deleteButton').attr('disabled','disabled');
 			$('#modifyActivity').attr('disabled','disabled');
+			$('#deleteButton').attr('disabled','disabled');
+			$('#back').attr('disabled','disabled');
 			
 			if (data.result == 1) {				
 				$("#successDeleteDiv").fadeIn(500, function() {
 					$("#successDeleteDiv").fadeOut(3000);
 					setTimeout(function() {
-						  window.location.href = "/TutoratoSmart/commission/register.jsp";
+						  window.location.href = "/TutoratoSmart/tutor/register.jsp";
 					}, 3000);
 				})
 			}
 			else {
 				$("#failureDeleteDiv").fadeIn(500, function() {
-					$("#failureDeleteDiv").fadeOut(5000)
 					$("#modifyActivity").removeAttr('disabled');
 					$("#deleteButton").removeAttr('disabled');
+					$("#back").removeAttr('disabled');
 				})
 			}					 
 		});
@@ -523,7 +523,6 @@ function acceptRequest() {
 				}
 				else {
 					$("#failureDeleteDiv").fadeIn(500, function() {
-						$("#failureDeleteDiv").fadeOut(5000);
 						$('#acceptRequest').removeAttr('disabled');
 					})
 				}					 
@@ -534,6 +533,47 @@ function acceptRequest() {
 		$("#errorDiv").show();
 	}	
 }
+
+// Funzione che aggiorna lo stato di una richiesta quando uno studente risulta assente
+function absentStudent() {
+	$("#errorDiv").html("");
+	$('#errorDiv').hide();
+	
+	var valid = true;
+	var errorMessage = "";
+	
+	if(valid) {
+		$.post("/TutoratoSmart/Request", {
+			"flag":"5",
+			},
+			function(data){
+				$('#absentModal').modal('hide');
+				$('#confirmAppointment').attr('disabled','disabled');
+				$('#absentStudent').attr('disabled','disabled');
+				$('#back').attr('disabled','disabled');
+				if (data.result == 1) {
+					$("#successAbsentDiv").fadeIn(500, function() {
+						$("#successAbsentDiv").fadeOut(3000);
+						setTimeout(function() {
+							  window.location.href = "/TutoratoSmart/tutor/requestInfo.jsp";
+						}, 3000);
+					})
+				}
+				else {
+					$("#failureAbsentDiv").fadeIn(500, function() {
+						$('#confirmAppointment').removeAttr('disabled');
+						$('#absentStudent').removeAttr('disabled');
+						$('#back').removeAttr('disabled');
+					})
+				}					 
+			});
+	}
+	else {
+		$("#errorDiv").append(errorMessage);
+		$("#errorDiv").show();
+	}	
+}
+
 
 //Verifica che sia stato inserito un commento ed esegue post per la registrazione di un nuovo appuntamento
 function validateInputsAppointment() {
@@ -567,8 +607,84 @@ function validateInputsAppointment() {
 				}
 				else {
 					$("#failureDiv").fadeIn(500, function() {
-						$("#failureDiv").fadeOut(5000);
 						$('#addAppointment').removeAttr('disabled');
+					})
+				}					 
+			});
+	}
+	else {
+		$("#errorDiv").append(errorMessage);
+		$("#errorDiv").show();
+	}	
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Script cancellazione appuntamento
+//Funzione di cancellazione appuntamento da parte di un tutor
+function deleteAppointment(){
+	$.post("/TutoratoSmart/Appointment", {
+		"flag":"3",
+		},
+		function(data){
+			$('#deleteModal').modal('hide');
+			$('#modifyAppointment').attr('disabled','disabled');
+			$('#deleteButton').attr('disabled','disabled');
+			$('#back').attr('disabled','disabled');
+			
+			if (data.result == 1) {				
+				$("#successDeleteDiv").fadeIn(500, function() {
+					$("#successDeleteDiv").fadeOut(3000);
+					setTimeout(function() {
+						  window.location.href = "/TutoratoSmart/tutor/appointmentsList.jsp";
+					}, 3000);
+				})
+			}
+			else {
+				$("#failureDeleteDiv").fadeIn(500, function() {
+					$("#modifyAppointment").removeAttr('disabled');
+					$("#deleteButton").removeAttr('disabled');
+					$("#back").removeAttr('disabled');
+				})
+			}					 
+		});
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function validateModifyAppointment() {
+	$("#errorDiv").html("");
+	$('#errorDiv').hide();
+	
+	var valid = true;
+	var errorMessage = "";
+	
+	var comment = $("#appointmentComment");
+		
+	if (!$('#appointmentComment').val().trim().length > 0) {
+		errorMessage += "<strong>Inserire un commento riguardante l'appuntamento svolto</strong><br/>";	
+		valid = false;
+	}
+	
+	if(valid) {
+		$.post("/TutoratoSmart/Appointment", {
+			"flag":"2",
+			"comment":$(comment).val(),
+			},
+			function(data){
+				$('#modifyAppointment').attr('disabled','disabled');
+				if (data.result == 1) {
+					$("#successDiv").fadeIn(500, function() {
+						$("#successDiv").fadeOut(3000);
+						setTimeout(function() {
+							  window.location.href = "/TutoratoSmart/tutor/appointmentsList.jsp";
+						}, 3000);
+					})
+				}
+				else {
+					$("#failureDiv").fadeIn(500, function() {
+						$('#modifyAppointment').removeAttr('disabled');
 					})
 				}					 
 			});

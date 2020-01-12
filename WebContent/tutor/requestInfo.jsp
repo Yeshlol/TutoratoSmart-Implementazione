@@ -5,6 +5,7 @@
 	StudentBean student = (StudentBean) session.getAttribute("student");
 	AppointmentBean appointment = (AppointmentBean) session.getAttribute("appointment");
 	String accept = (String) session.getAttribute("accept");
+	String absent = (String) session.getAttribute("absent");
 %>
 
 <!DOCTYPE html>
@@ -79,13 +80,15 @@
 				 	<td><%= Utils.getTimeAsString(req.getRequestTime()) %></td>
 				 	<td><%= req.getState() %></td>
 				</tr>
-				
+			</table>
+			<br>
+			<table style="width: 95%;margin: 0 auto;">
 				<tr>
 					<th class="text-center" colspan="5">Commento studente</th>
 				</tr>				
 				<tr>
 					<td colspan="5"><%= req.getStudentComment() %></td>
-				</tr>				
+				</tr>
 			</table>
 			<br>
 			<% if (req.getState().equals("Appuntamento effettuato")) { %>
@@ -99,13 +102,15 @@
 			</table>
 			<% } else if(req.getState().equals("Studente assente")) { %>
 			<div class="panel"></div>
-			<h2 align="center">Studente Assente %></h2>		
+			<h2 align="center">Studente Assente</h2>		
 			<% } %>
 		</div>
 		
 		<div class="container-fluid" style="margin-top: 25px;">
-			<div class="alert alert-success" id="successDeleteDiv" style="display:none;" role="alert">Prenotazione accettata con successo!</div>
-			<div class="alert alert-danger" id="failureDeleteDiv" style="display:none;" role="alert">Accettazione fallita!</div>
+			<div class="alert alert-success" id="successDeleteDiv" style="display:none;" role="alert">Prenotazione accettata con successo</div>
+			<div class="alert alert-danger" id="failureDeleteDiv" style="display:none;" role="alert">Accettazione fallita</div>
+			<div class="alert alert-success" id="successAbsentDiv" style="display:none;" role="alert">Studente assente registrato</div>
+			<div class="alert alert-danger" id="failureAbsentDiv" style="display:none;" role="alert">Registrazione studente assente fallita</div>
 		</div>
 		
 		<div class="panel"></div>
@@ -130,15 +135,16 @@
 				</div>
  				<div class="column" style="width: 33%;">
 					<div style="margin-bottom: 25px;">
-						<input class="btn btn-primary" type="button" value="Indietro" onClick="history.go(-1);return true;">
+						<input class="btn btn-primary" type="button" id="back" value="Indietro" onClick="history.go(-1);return true;">
 					</div>
 				</div>
 			</div>	
 		<% } else { %>	
 			<div class="row text-center" style="margin-bottom: 25px;">
 				<div class="column" style="width: 100%;">
-					<% if(accept != null && accept.equals("true")) {
-						session.removeAttribute("accept"); 
+					<% if((accept != null && accept.equals("true")) || (absent != null && absent.equals("true"))) {
+						session.removeAttribute("accept");
+						session.removeAttribute("absent");
 					%>
 						<input class="btn btn-primary" type="button" value="Indietro" onclick="location.href='calendar.jsp';">
 					<% } else { %>	
@@ -156,7 +162,7 @@
 				          	<div class="container-fluid" style="margin: 25px;">
 								<div class="row row-space">
 									<div class="row text-center">
-										<label for="requestDate" class="control-label">Indicare la durata prevista (In minuti)</label>
+										<label for="requestDuration" class="control-label">Indicare la durata prevista (In minuti)</label>
 								  		<input type="number" id="requestDuration" class="form-control" value="15" min="10" max="120" step="5">
 									</div>
 									<br>
@@ -176,6 +182,30 @@
 			  	</div>
 			</div>
 		</div>
+		
+		<div class="modal fade" id="absentModal" role="dialog">
+			 <div class="vertical-alignment-helper">
+	        	<div class="modal-dialog vertical-align-center">
+	            	<div class="modal-content">
+				        <div class="modal-body">
+				          	<div class="container-fluid" style="margin: 25px;">
+								<div class="row row-space">
+									<div class="row text-center">
+										<h3>Lo studente risulta assente?</h3>
+									</div>
+								</div>
+							</div>
+				        </div>
+				        <div class="modal-footer">
+				        	<div class="row text-center">
+							  <div class="column"><input class="btn btn-warning" type="button" onclick="absentStudent()" value="Conferma assenza"></div>
+							  <div class="column"><button type="button" class="btn btn-primary" data-dismiss="modal">Annulla</button></div>
+							</div>
+					    </div>
+			    	</div>
+			  	</div>
+			</div>
+		</div>
 	</div>
 	
 	<input type="hidden" id="requestId" value="<%= req.getIdRequest() %>">
@@ -187,6 +217,10 @@
 		$(document).ready(function(){
 			$("#acceptRequest").click(function(){
 				$("#acceptModal").modal();
+			});
+			
+			$("#absentStudent").click(function(){
+				$("#absentModal").modal();
 			});
 		});
 	</script>

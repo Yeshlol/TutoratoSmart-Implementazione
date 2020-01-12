@@ -13,8 +13,31 @@ public class ContainedInDAO {
 	public ContainedInDAO() {
 		super();
 	}
-
-	public  synchronized Collection<AppointmentBean> doRetrieveByActivityId(int id) throws SQLException {
+	
+	
+	public synchronized void doDeleteByActivityId(int id) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		String deleteSql = "DELETE FROM CONTAINED_IN WHERE ActivityId = ?";
+			
+		try {
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(deleteSql);
+			preparedStatement.setInt(1, id);
+			
+			System.out.println("ContainedIn doDeleteByActivityId: " + preparedStatement.toString());
+			preparedStatement.executeUpdate();
+			
+			connection.commit();
+		}
+		finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}
+	}
+	
+	public synchronized Collection<AppointmentBean> doRetrieveByActivityId(int id) throws SQLException {
 		Collection<AppointmentBean> list = new LinkedList<AppointmentBean>();
 				
 		if(id > 0) {
@@ -46,7 +69,7 @@ public class ContainedInDAO {
 		}
 		return list;
 	}
-	
+		
 	
 	public synchronized ContainedInBean doRetrieveByAppointmentId (int appointmentId) throws SQLException {
 		ContainedInBean bean = new ContainedInBean();

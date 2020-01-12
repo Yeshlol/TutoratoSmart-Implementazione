@@ -28,7 +28,7 @@ public class AppointmentDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			
-			System.out.println("Appointment doRetrieveById: " + preparedStatement.toString());
+			//System.out.println("Appointment doRetrieveById: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
@@ -36,8 +36,6 @@ public class AppointmentDAO  {
 				bean.setDetails(rs.getString("Details"));
 				bean.setRequestId(rs.getInt("RequestId"));
 				bean.setTutor(rs.getString("Tutor"));
-				
-				System.out.println("Appuntamento Trovato con l'id!");
 			}
 		} catch (SQLException e) {
 			System.out.println("Id non trovato!");
@@ -88,12 +86,18 @@ public class AppointmentDAO  {
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
-	
+			
 			preparedStatement.setString(1, bean.getDetails());
 			preparedStatement.setInt(2, bean.getIdAppointment());
 			
-			System.out.println("Appointment doModify: " + preparedStatement.toString());
+			// System.out.println("Appointment doModify: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
+			
+			RequestDAO requestDAO = new RequestDAO();
+			RequestBean request = requestDAO.doRetrieveById(bean.getRequestId());
+			request.setState("Appuntamento effettuato");
+			
+			requestDAO.doModify(request);
 			
 			connection.commit();
 		}
@@ -115,7 +119,7 @@ public class AppointmentDAO  {
 			preparedStatement = connection.prepareStatement(deleteSql);
 			preparedStatement.setInt(1, bean.getIdAppointment());
 			
-			System.out.println("Appointment doDelete: " + preparedStatement.toString());
+			// System.out.println("Appointment doDelete: " + preparedStatement.toString());
 			result = preparedStatement.executeUpdate();
 			
 			connection.commit();
@@ -128,18 +132,14 @@ public class AppointmentDAO  {
 	}
 
 
-	public AppointmentBean doRetrieveByRequestId(String order, int requestId) throws SQLException {
+	public AppointmentBean doRetrieveByRequestId(int requestId) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
 		AppointmentBean bean = new AppointmentBean();
 		
 		String selectSql = "SELECT SQL_NO_CACHE * FROM APPOINTMENT AS A, REQUEST AS R WHERE R.IdRequest = A.RequestId AND R.IdRequest = ?";
-		
-		if(order!=null && !order.equals("")) {
-			selectSql +=" ORDER BY " + order;
-		}
-		
+						
 		try {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, requestId);
@@ -180,6 +180,37 @@ public class AppointmentDAO  {
 			preparedStatement.setInt(4, finishTime);
 			
 			System.out.println("Appointment doRetrieveAllByDate: " + preparedStatement.toString());
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				AppointmentBean bean = new AppointmentBean();
+				bean.setIdAppointment(rs.getInt("IdAppointment"));
+				bean.setDetails(rs.getString("Details"));
+				bean.setRequestId(rs.getInt("RequestId"));
+				bean.setTutor(rs.getString("Tutor"));
+				
+				list.add(bean);
+			}			
+		} finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}
+		return list;
+	}
+	
+	public Collection<AppointmentBean> doRetrieveAllByTutor (String tutorMail) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		Collection<AppointmentBean> list = new LinkedList<AppointmentBean>();
+		
+		String selectSql = "SELECT * FROM APPOINTMENT WHERE Tutor = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setString(1, tutorMail);
+			
+			System.out.println("Appointment doRetrieveAllByTutor: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {

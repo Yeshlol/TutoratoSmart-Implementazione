@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<% RequestBean req = (RequestBean) session.getAttribute("request"); %>
+<%  RequestBean req = (RequestBean) session.getAttribute("request"); 
+	AppointmentBean appointment = (AppointmentBean) session.getAttribute("appointment");
+%>
 
 <!DOCTYPE html>
 <html>
 
-<%@ page import="java.util.*,project.Model.RequestBean" %>
+<%@ page import="java.util.*,project.Model.RequestBean,project.Model.AppointmentBean" %>
 
 <head>
 	<meta charset="UTF-8">
-	<title>Registrazione Appuntamento</title>
+	<title>Modifica Appuntamento</title>
 	 <style>
 	    table,th,td{
 	    	border: 1px solid black;
@@ -32,7 +34,7 @@
 	
 	<div class="content text-center" style="width: 50%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
 		<div class="panel">
-			<h2>Registrazione appuntamento</h2>
+			<h2>Modifica appuntamento</h2>
 			<p>Inserisci un commento relativo all'appuntamento svolto</p>
 		</div>
 		
@@ -47,16 +49,15 @@
 	  		<textarea class="form-control" id="appointmentComment" rows="3"></textarea>
 	  		<br>
 			
-			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Appuntamento registrato con successo!</div>
+			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Appuntamento modificato con successo</div>
 									
-			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Registrazione appuntamento fallita!</div>
+			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Modifica appuntamento fallita</div>
 									
 			<div class="panel"></div>
 			<div>
-				<input class="btn btn-success" id="addAppointment" type="button" onclick="validateInputsAppointment()" value="Registra">		        	
+				<input class="btn btn-success" id="modifyAppointment" type="button" onclick="validateModifyAppointment()" value="Modifica">		        	
 	        </div>
-	        
-	        </div>
+	    </div>
 	</div>
           
     <script src="<%= request.getContextPath() %>/js/tutorScript.js"></script>

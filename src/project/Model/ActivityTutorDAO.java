@@ -191,8 +191,14 @@ public class ActivityTutorDAO  {
 			register.setPercentageComplete(register.getValidatedHours() / register.getTotalHours());
 		}
 		
+		if(activity.getCategory().equals("Sportello Tutorato")) {
+			ContainedInDAO containedInDAO = new ContainedInDAO();
+			containedInDAO.doDeleteByActivityId(activity.getIdActivity());		
+		}
+		
 		String deleteSql = "DELETE FROM ACTIVITY_TUTOR WHERE IdActivity = ?";
 		int result;
+			
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(deleteSql);

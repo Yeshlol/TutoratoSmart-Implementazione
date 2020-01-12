@@ -85,15 +85,15 @@
 				    </div>
 				</div>
 				
+				<div class="alert alert-success" id="successDiv" role="alert" style="display:none;">Registrazione completata con successo!</div>
+									
+				<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;">Registrazione fallita!</div>
+				
 				<div>
 					<input class="btn btn-primary" id="registra" type="button" onclick="validateInputsTutor()" name="registraButton" value="Registra">		        	
 		        </div>
 		        
 			</form>
-			
-			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;">Registrazione completata con successo!</div>
-									
-			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;">Registrazione fallita!</div>
 		</div>
 	</div>
 		

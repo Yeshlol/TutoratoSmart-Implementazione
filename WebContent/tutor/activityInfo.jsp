@@ -85,6 +85,9 @@
 				</tr>			
 			</table>
 		</div>
+		
+		<div class="alert alert-success" id="successDeleteDiv" role="alert" style="display:none;margin-top: 25px;">Attivit&aacute rimossa con successo!</div>
+		<div class="alert alert-danger" id="failureDeleteDiv" role="alert" style="display:none;margin-top: 25px;">Rimozione attivit&aacute fallita!</div>
 				
 		<div class="panel"></div>
 		<% if (activity.getState() != "Convalidata" ) {%>
@@ -96,13 +99,13 @@
 					<button type="button" class="btn btn-danger" id="deleteButton">Elimina attivit&aacute</button>
 				</div>
 				<div class="column">
-					<input class="btn btn-primary" type="button" value="Indietro" onClick="location.href='tutor/register.jsp';">
+					<input class="btn btn-primary" type="button" id="back" value="Indietro" onClick="location.href='tutor/register.jsp';">
 				</div>
 	 		</div>
 	 	<% } else { %>
 	 		<div class="row text-center" style="margin-bottom: 25px;">
 	 			<div class="column" style="width: 100%;">
-					<input class="btn btn-primary" type="button" value="Indietro" onClick="location.href='tutor/register.jsp';">
+					<input class="btn btn-primary" type="button" id="back" value="Indietro" onClick="location.href='tutor/register.jsp';">
 				</div>
 	 		</div> 		
 	 	<% } %>

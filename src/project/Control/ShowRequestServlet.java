@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import project.Model.AppointmentBean;
+import project.Model.AppointmentDAO;
 import project.Model.RequestBean;
 import project.Model.RequestDAO;
 import project.Model.StudentDAO;
@@ -80,6 +82,14 @@ public class ShowRequestServlet extends HttpServlet {
 			try {
 				StudentDAO studentDAO = new StudentDAO();
 				RequestBean req = requestDAO.doRetrieveById(id);
+				
+				if(req.getState().equals("Appuntamento effettuato")) {
+					AppointmentDAO appointmentDAO = new AppointmentDAO();
+					AppointmentBean appointment = appointmentDAO.doRetrieveByRequestId(req.getIdRequest());
+					
+					request.getSession(false).removeAttribute("appointment");		// Cancella la richiesta memorizzata in sessione, se presente
+					request.getSession(false).setAttribute("appointment", appointment);		// Salva in sessione la richiesta da visualizzare
+				}
 				
 				request.getSession(false).removeAttribute("request");		// Cancella la richiesta memorizzata in sessione, se presente
 				request.getSession(false).setAttribute("request", req);		// Salva in sessione la richiesta da visualizzare

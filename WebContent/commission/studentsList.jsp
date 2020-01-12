@@ -85,7 +85,7 @@
 						Iterator<?> it2 = requestsCollection.iterator();
 						for(int j = 0; j < requestsCollection.size() && it2.hasNext(); j++) {
 							RequestBean req = (RequestBean) it2.next(); 
-							AppointmentBean appointment = appointmentDAO.doRetrieveByRequestId(null, req.getIdRequest());
+							AppointmentBean appointment = appointmentDAO.doRetrieveByRequestId(req.getIdRequest());
 				%>	
 						<tr>
 							<td><%= req.getRequestDate() %></td>

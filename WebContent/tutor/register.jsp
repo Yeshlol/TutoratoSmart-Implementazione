@@ -95,7 +95,7 @@
 			<% if (register.getState().equals("Approvato")) { %>
 				<input class="btn btn-primary" type="button" value="Genera registro" onclick="generateRegister()">		        	
 			<% } else { %>			
-				<a href="tutor/activity.jsp"><input class="btn btn-primary" type="button" value="Aggiungi attivit&aacute"></a>		        	
+				<a href="tutor/activity.jsp"><input class="btn btn-success" type="button" value="Aggiungi attivit&aacute"></a>		        	
 			<% } %>
 		</div>
 	</div>

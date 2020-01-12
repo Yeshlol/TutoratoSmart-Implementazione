@@ -90,7 +90,6 @@ public class ActivityServlet extends HttpServlet {
 						try {
 							available = activityDAO.differentActivityRegistered(user.getEmail(), activityId, activityDate, start, finish);
 							obj.put("available", available);
-							System.out.println("Altra attività registrata = " + available);
 						} catch (JSONException e) {
 							e.printStackTrace();
 							return;
@@ -103,7 +102,6 @@ public class ActivityServlet extends HttpServlet {
 						try {
 							available = activityDAO.anyActivityRegistered(user.getEmail(), activityDate, start, finish);
 							obj.put("available", available);
-							System.out.println("registrata = " + available);
 						} catch (SQLException e) {
 							e.printStackTrace();
 							return;
