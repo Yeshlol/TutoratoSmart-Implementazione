@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import project.Control.DBConnection;
 import project.Utils.Utils;
@@ -13,8 +14,34 @@ public class UserDAO  {
 	public UserDAO() {
 		super();
 	}
+	
+	
+	public static synchronized ArrayList<UserBean> doRetrieveAll() throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		ArrayList<UserBean> userList = new ArrayList<UserBean>();
+		String sql = "select * from TS_USER";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			UserBean bean = null;
+        	String email = rs.getString("Email");
+			String password = rs.getString("Pwd");
+			int userRole = rs.getInt("UserRole");
+			String firstname = rs.getString("FirstName");
+			String lastname = rs.getString("LastName");
+			String telephoneNumber = rs.getString("TelephoneNumber");
+			String sex = rs.getString("Sex");
+			String registrationNumber = rs.getString("RegistrationNumber");
+			
+			bean = new UserBean(email, password, userRole, firstname, lastname, telephoneNumber, sex, registrationNumber);
+			userList.add(bean);
+		}
+		return userList;
+		
+	}
+	
 
-	public UserBean doRetrieveByMail(String mail) throws SQLException {
+	public static UserBean doRetrieveByMail(String mail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
@@ -60,7 +87,7 @@ public class UserDAO  {
 	}
 	
 	
-	public synchronized void doSave(UserBean bean) throws SQLException {
+	public static synchronized void doSave(UserBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		

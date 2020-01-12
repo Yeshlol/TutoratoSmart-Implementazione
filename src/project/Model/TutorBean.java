@@ -18,6 +18,15 @@ public class TutorBean extends UserBean implements Serializable {
 		state = "";
 		registerId = -1;
 	}
+	
+	public TutorBean(String email, String pwd, int role, String firstName, String lastName, String telephoneNumber, String sex, String registrationNumber, Date startDate, Date finishDate, String commissionMember, String state, int registerId) {
+		super(email, pwd, role, firstName, lastName, telephoneNumber, sex, registrationNumber);
+		this.startDate=startDate;
+		this.finishDate=finishDate;
+		this.commissionMember=commissionMember;
+		this.state=state;
+		this.registerId=registerId;
+	}
 
 	
 	public String getState() {

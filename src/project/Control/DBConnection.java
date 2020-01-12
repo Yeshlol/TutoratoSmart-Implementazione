@@ -2,8 +2,22 @@ package project.Control;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class DBConnection {
+	private static List<Connection> freeDbConnections;
+	private static boolean isTest = false;
+	
+	static {
+		freeDbConnections = new LinkedList<Connection>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver"); 
+		} catch (ClassNotFoundException e) {
+			System.out.println("DB driver not found:"+ e.getMessage());
+		} 
+	}
 	/**
 	 * Variables.
 	 */
@@ -18,7 +32,28 @@ public class DBConnection {
 	/**
 	 * Constructor.
 	 */
-	public DBConnection() {
+	
+	private static synchronized Connection createDBConnection() throws SQLException {
+		Connection newConnection = null;
+		String username = "root";
+		String password = "root";
+		String db;
+		if(!isTest) {
+			db = "TutoratoSmart";
+		} else {
+			db = "TutoratoSmartTest";
+		}
+		
+		String url = "jdbc:mysql://localhost:3306/"+db+"?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+
+		newConnection = DriverManager.getConnection(url, username, password);
+
+		//newConnection.setAutoCommit(false);
+		return newConnection;
+		
+	}
+	
+  /**	public DBConnection() {
 	    this.conn = null;
 	    this.databaseName = "TutoratoSmart";
 	    this.userName = "root";
@@ -35,7 +70,7 @@ public class DBConnection {
 	    } catch (Exception exc) {
 	      System.out.println(exc.getMessage());
 	    }
-	}
+	}  */
 
 	/**
 	 * Get the instance of the database.
@@ -50,7 +85,47 @@ public class DBConnection {
 	/**
 	 * Returns the Connection type object.
 	 */
-	public Connection getConn() {
+	public static synchronized Connection getConn() throws SQLException {
+		Connection connection;
+
+		if (!freeDbConnections.isEmpty()) {
+			connection = (Connection) freeDbConnections.get(0);
+			freeDbConnections.remove(0);
+
+			try {
+				if (connection.isClosed())
+					connection = getConn();
+			} catch (SQLException e) {
+				connection.close();
+				connection = getConn();
+			}
+		} else {
+			connection = createDBConnection();		
+		}
+
+		return connection;
+	}
+	
+	public static synchronized void releaseConnection(Connection connection) throws SQLException {
+		if(connection != null) freeDbConnections.add(connection);
+	}
+	
+	public static boolean isTest() {
+		return isTest;
+	}
+
+
+	public static void setTest(boolean isTest) {
+		DBConnection.isTest = isTest;
+	}
+	
+	
+	
+	
+	
+	
+	
+	/*public Connection getConn() {
 		return this.conn;
 	}
 
