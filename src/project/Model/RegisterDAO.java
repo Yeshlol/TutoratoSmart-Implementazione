@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import project.Control.DBConnection;
 
@@ -12,6 +13,24 @@ public class RegisterDAO  {
 		super();
 	}
 
+	public synchronized ArrayList<RegisterBean> doRetrieveAll() throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		ArrayList<RegisterBean> registerList = new ArrayList<RegisterBean>();
+		String sql = "select * from REGISTER";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			RegisterBean bean = null;
+        	int id=rs.getInt("IdRegister");
+			String state=rs.getString("State");
+			float validateHours=rs.getFloat("ValidatedHours");
+			float percentageComplete=rs.getInt("PercentageComplete");
+			
+			bean = new RegisterBean(id,state,validateHours,percentageComplete);
+			registerList.add(bean);
+		}
+		return registerList;
+	}
 	
 	public synchronized RegisterBean doRetrieveById(int id) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();

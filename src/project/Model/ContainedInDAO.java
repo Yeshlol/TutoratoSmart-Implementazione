@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -12,6 +13,24 @@ import project.Control.DBConnection;
 public class ContainedInDAO {
 	public ContainedInDAO() {
 		super();
+	}
+	
+	public synchronized ArrayList<ContainedInBean> doRetrieveAll() throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		ArrayList<ContainedInBean> containedInList = new ArrayList<ContainedInBean>();
+		String sql = "select * from CONTAINED_IN";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+		    ContainedInBean bean = null;
+        	int appointmentId=rs.getInt("AppointmentId");
+			int requestId=rs.getInt("ActivityId");
+
+			
+			bean = new ContainedInBean(appointmentId,requestId);
+			containedInList.add(bean);
+		}
+		return containedInList;
 	}
 	
 	

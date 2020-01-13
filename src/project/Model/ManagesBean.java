@@ -12,6 +12,12 @@ public class ManagesBean implements Serializable {
 		tutor = "";
 		requestId = -1;
 	}
+	
+	public ManagesBean(String tutor,int requestId) {
+		this.tutor=tutor;
+		this.requestId=requestId;
+		
+	}
 
 	
 	public String getTutor() {

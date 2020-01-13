@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -14,6 +15,31 @@ import project.Utils.Utils;
 public class StudentDAO  {		
 	public StudentDAO() {
 		super();
+	}
+	
+	public synchronized ArrayList<StudentBean> doRetrieveAll() throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		ArrayList<StudentBean> tutorList = new ArrayList<StudentBean>();
+		String sql = "select * from STUDENT,TS_USER WHERE TS_USER.Email = STUDENT.Email";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			StudentBean bean = null;
+        	String email = rs.getString("Email");
+			String password = rs.getString("Pwd");
+			int userRole = rs.getInt("UserRole");
+			String firstname = rs.getString("FirstName");
+			String lastname = rs.getString("LastName");
+			String telephoneNumber = rs.getString("TelephoneNumber");
+			String sex = rs.getString("Sex");
+			String registrationNumber = rs.getString("RegistrationNumber");
+			int academicYear=rs.getInt("AcademicYear");
+			
+			
+			bean = new StudentBean(email, password, userRole, firstname, lastname, telephoneNumber, sex, registrationNumber,academicYear);
+			tutorList.add(bean);
+		}
+		return tutorList;
 	}
 
 	
