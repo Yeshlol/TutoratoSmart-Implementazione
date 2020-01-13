@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  
+ 
+<% String msg = (String) session.getAttribute("msg"); %>
+ 
 <!DOCTYPE html>
 <html>
 
@@ -20,11 +22,11 @@
 	
 	<div class="content text-center" style="width:50%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
 		<div class="panel">
-			<h2 class="text-center">Login</h2>
+			<h2 class="text-center"><%= (msg!=null && !msg.equals("")) ? msg : "Login" %></h2>
 			<p class="text-center">Compilare email e password per accedere</p>
 		</div>
 		
-		<div id="loginForm" class="container-fluid" style="margin: 25px;">
+		<div id="loginForm" class="container-fluid" style="margin: 25px; margin-bottom: 0px;">
 			<form method="POST" action="<%= response.encodeURL("Login") %>">
 				<div class="row row-space">
 					<div class="row">
@@ -71,17 +73,24 @@
 			var email = $("#email");
 			var password = $("#password");
 			
-			if (email.val() == "" || password.val() == "")
+			if (email.val() == "") {
 				valid = false;
+				errorMessage += "<strong>Inserire l'email</strong><br>";
+			}
+			
+			if (password.val() == "") {
+				valid = false;
+				errorMessage += "<strong>Inserire la password</strong><br>";
+			}
 			
 			if (email.val() != "" && !validateEmail(email)){
 				valid = false;
-				errorMessage += "<strong>Errore!</strong> Formato email non valido! (<i>Es: mrossi@studenti.unicampania.it</i>)<br>";
+				errorMessage += "<strong>Formato email non valido</strong> (<i>Es: mrossi@studenti.unicampania.it</i>)<br>";
 			}
 			
 			if (password.val() != "" && !validatePassword(password)){
 				valid = false;
-				errorMessage += "<strong>Errore!</strong> Formato password non valido!";
+				errorMessage += "<strong>Formato password non valido</strong>";
 			}
 			
 			if (valid) {		

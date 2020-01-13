@@ -3,6 +3,13 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<style>
+	#footer {
+      margin-top: 25px;
+	  width: 100%;
+	}		
+</style>
+
 <footer id="footer" style="margin-top:25px; background-color:#232F3E;">
 	<div class="row">
 	    <div class="column text-center" style="float: left;width: 33%;color:white;">	
