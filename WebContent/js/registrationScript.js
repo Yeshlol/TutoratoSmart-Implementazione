@@ -208,6 +208,7 @@ function validateInputs(){
 				}
 				else {
 					$("#failureDiv").fadeIn(500, function() {
+						$('#register').prop("disabled", false);
 						$("#failureDiv").fadeOut(5000)
 					})
 				}					 
@@ -227,7 +228,7 @@ function validateInputs(){
 //Validazione dati registrazione tutor
 function validateInputsTutor(){
 	$("#errorDiv").html("");
-	
+	$('#register').attr('disabled','disabled');
 	var valid = true;
 	var errorMessage = "";
 	
@@ -330,6 +331,7 @@ function validateInputsTutor(){
 				}
 				else {
 					$("#failureDiv").fadeIn(500, function() {
+						$('#register').prop("disabled", false);
 						$("#failureDiv").fadeOut(5000)
 					})
 				}					 

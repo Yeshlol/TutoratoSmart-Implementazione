@@ -43,6 +43,6 @@
    
     <%@ include file="/partials/footer.jsp" %>
     
-    <script src="<%= request.getContextPath() %>/js/commissionScript.js"></script>
+    <script src="<%= request.getContextPath() %>/js/searchScript.js"></script>
 </body>
 </html>

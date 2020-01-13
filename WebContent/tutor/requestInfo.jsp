@@ -121,7 +121,7 @@
 				</div>
  				<div class="column">
 					<div>
-						<input class="btn btn-primary" type="button" value="Indietro" onClick="history.go(-1);return true;">
+						<input class="btn btn-primary" type="button" id="back" value="Indietro" onClick="history.go(-1);return true;">
 					</div>
 				</div>
 			</div>			
@@ -146,9 +146,9 @@
 						session.removeAttribute("accept");
 						session.removeAttribute("absent");
 					%>
-						<input class="btn btn-primary" type="button" value="Indietro" onclick="location.href='calendar.jsp';">
+						<input class="btn btn-primary" type="button" id="back" value="Indietro" onclick="location.href='calendar.jsp';">
 					<% } else { %>	
-						<input class="btn btn-primary" type="button" value="Indietro" onClick="history.go(-1);return true;">
+						<input class="btn btn-primary" type="button" id="back" value="Indietro" onClick="history.go(-1);return true;">
 					<% } %>
 				</div>
 			</div>		

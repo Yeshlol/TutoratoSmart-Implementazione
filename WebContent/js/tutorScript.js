@@ -170,7 +170,7 @@ function validateInputsActivity() {
 		errorMessage += "<strong>Hai registrato un'altra attivit&aacute in quelle ore</strong><br/>"
 		valid = false;
 	}
-	
+	$('#addActivity').attr('disabled','disabled');
 	if (!isValidCategory(category)) {
 		errorMessage += "<strong>Selezionare una categoria</strong><br/>"
 		valid = false;
@@ -205,7 +205,6 @@ function validateInputsActivity() {
 			"description": description.val(),
 			},
 			function(data){
-				$('#modifyActivity').attr('disabled','disabled');
 				if (data.result == 1) {
 					$("#successDiv").fadeIn(500, function() {
 						$("#successDiv").fadeOut(3000);
@@ -216,13 +215,14 @@ function validateInputsActivity() {
 				}
 				else {
 					$("#failureDiv").fadeIn(500);
-					$('#modifyActivity').prop("disabled", false);
+					$('#addActivity').prop("disabled", false);
 				}					 
 			});
 	}
 	else {
 		$("#errorDiv").append(errorMessage);
 		$("#errorDiv").show();
+		$('#addActivity').prop("disabled", false);
 	}
 }
 
@@ -491,6 +491,9 @@ function isValidDuration(duration) {
 
 // Verifica durata ed esegue post per accettazione richiesta di appuntamento
 function acceptRequest() {
+	$('#acceptRequest').attr('disabled','disabled');
+	$('#back').attr('disabled','disabled');
+	
 	$("#errorDiv").html("");
 	$('#errorDiv').hide();
 	
@@ -511,8 +514,7 @@ function acceptRequest() {
 			"duration":$("#requestDuration").val(),
 			},
 			function(data){
-				$('#acceptModal').modal('hide');
-				$('#acceptRequest').attr('disabled','disabled');
+				$('#acceptModal').modal('hide');				
 				if (data.result == 1) {
 					$("#successDeleteDiv").fadeIn(500, function() {
 						$("#successDeleteDiv").fadeOut(3000);
@@ -523,6 +525,7 @@ function acceptRequest() {
 				}
 				else {
 					$("#failureDeleteDiv").fadeIn(500, function() {
+						$('#back').prop("disabled", false);
 						$('#acceptRequest').prop("disabled", false);
 					})
 				}					 
@@ -531,6 +534,8 @@ function acceptRequest() {
 	else {
 		$("#errorDiv").append(errorMessage);
 		$("#errorDiv").show();
+		$('#back').prop("disabled", false);
+		$('#acceptRequest').prop("disabled", false);
 	}	
 }
 
@@ -652,8 +657,9 @@ function deleteAppointment(){
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Funzione di controllo dati per modifica appuntamento.
 function validateModifyAppointment() {
+	$('#modifyAppointment').attr('disabled','disabled');
 	$("#errorDiv").html("");
 	$('#errorDiv').hide();
 	
@@ -678,7 +684,7 @@ function validateModifyAppointment() {
 					$("#successDiv").fadeIn(500, function() {
 						$("#successDiv").fadeOut(3000);
 						setTimeout(function() {
-							  window.location.href = "/TutoratoSmart/tutor/appointmentsList.jsp";
+							window.location.href = "/TutoratoSmart/tutor/appointmentsList.jsp";
 						}, 3000);
 					})
 				}
@@ -692,5 +698,6 @@ function validateModifyAppointment() {
 	else {
 		$("#errorDiv").append(errorMessage);
 		$("#errorDiv").show();
+		$('#modifyAppointment').prop("disabled", false);
 	}	
 }

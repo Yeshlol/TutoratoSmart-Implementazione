@@ -75,17 +75,17 @@
 	  		<br>
 			
 			<div class="panel" id="appointmentsPanel" style="display: none;"></div>
-			<div id="appointments"></div>
-			
-						
-			<div class="panel"></div>
-			<div>
-				<input class="btn btn-success" id="addActivity" type="button" onclick="validateInputsActivity()" value="Aggiungi">		        	
-	        </div>
-	        
-	        <div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Attivit&aacute aggiunta con successo!</div>
-									
-			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Aggiunta attivit&aacute fallita!</div>
+			<div id="appointments"></div>		        
+		</div>
+		
+		<div style="margin-top: 25px;">
+			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;">Attivit&aacute aggiunta con successo!</div>
+			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;">Aggiunta attivit&aacute fallita!</div>
+		</div>
+							
+		<div class="panel"></div>
+		<div style="margin-bottom: 25px;">
+			<input class="btn btn-success" id="addActivity" type="button" onclick="validateInputsActivity()" value="Aggiungi">		        	
 		</div>
 	</div>
      

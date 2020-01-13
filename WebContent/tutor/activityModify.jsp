@@ -81,7 +81,11 @@
 			
 			<div class="panel" id="appointmentsPanel" style="display: none;"></div>
 			<div id="appointments"></div>
-			
+						
+			<div style="margin-top: 25px;">
+				<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Attivit&aacute modificata con successo</div>
+				<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Modifica attivit&aacute fallita</div>
+			</div>
 						
 			<div class="panel"></div>
 			<div class="row text-center" style="margin-bottom: 25px;">
@@ -89,14 +93,9 @@
 					<input class="btn btn-success" id="modifyActivity" type="button" onclick="modifyActivity()" value="Modifica">		        	
 	        	</div>
 	 			<div class="column">
-					<input class="btn btn-primary" id="back" type="button" value="Indietro" onClick="location.href='tutor/register.jsp';">
+					<input class="btn btn-primary" id="back" type="button" value="Indietro" onClick="location.href='register.jsp';">
 				</div>
 	 		</div>
-			
-	        
-	        <div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Attivit&aacute modificata con successo!</div>
-									
-			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Modifica attivit&aacute fallita!</div>
 		</div>
 	</div>
      

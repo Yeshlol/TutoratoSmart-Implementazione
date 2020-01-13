@@ -48,10 +48,11 @@
 	  		<label for="appointmentComment" class="control-label">Inserire un commento all'appuntamento</label>
 	  		<textarea class="form-control" id="appointmentComment" rows="3"></textarea>
 	  		<br>
-			
-			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Appuntamento modificato con successo</div>
-									
-			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Modifica appuntamento fallita</div>
+						
+			<div style="margin-top: 25px;">
+				<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Appuntamento modificato con successo</div>
+				<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Modifica appuntamento fallita</div>
+			</div>
 									
 			<div class="panel"></div>
 			<div>

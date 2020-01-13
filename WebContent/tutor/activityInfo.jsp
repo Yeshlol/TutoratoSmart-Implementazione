@@ -93,7 +93,7 @@
 		<% if (activity.getState() != "Convalidata" ) {%>
 			<div class="row text-center" style="margin-bottom: 25px;">
 				<div class="column">
-					<a href="/TutoratoSmart/tutor/activityModify.jsp"><input class="btn btn-primary" id="modifyActivity" type="button" value="Modifica attivit&aacute"></a>
+					<a href="/TutoratoSmart/tutor/activityModify.jsp"><input class="btn btn-warning" id="modifyActivity" type="button" value="Modifica attivit&aacute"></a>
 				</div>
 				<div class="column">
 					<button type="button" class="btn btn-danger" id="deleteButton">Elimina attivit&aacute</button>

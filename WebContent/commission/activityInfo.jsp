@@ -80,13 +80,13 @@
 		<% if(activity.getState().equalsIgnoreCase("In valutazione")) { %>
 			<div class="row text-center" style="margin-bottom: 25px;">				
 				<div class="column">
-					<input class="btn btn-success" type="button" onclick="validateActivity()" value="Convalida attivit&aacute">
+					<input class="btn btn-success" type="button" id="validateButton" onclick="validateActivity()" value="Convalida attivit&aacute">
 				</div>
 				<div class="column">
 					<button type="button" class="btn btn-danger" id="deleteButton">Elimina attivit&aacute</button>
  				</div>
  				<div class="column">
-					<input class="btn btn-primary" type="button" value="Indietro" onClick="history.go(-1);return true;">
+					<input class="btn btn-primary" type="button" id="back" value="Indietro" onClick="history.go(-1);return true;">
 				</div>
 			</div>
 		<% } else {%>
@@ -95,7 +95,7 @@
 					<button type="button" class="btn btn-danger" id="deleteButton">Elimina attivit&aacute</button>
  				</div>
  				<div class="column" style="width: 50%;">
-					<input class="btn btn-primary" type="button" value="Indietro" onClick="history.go(-1);return true;">
+					<input class="btn btn-primary" type="button" id="back" value="Indietro" onClick="history.go(-1);return true;">
 				</div>
 			</div>		
 		<% } %>
@@ -127,5 +127,12 @@
 	<%@ include file="/partials/footer.jsp" %>
 	
 	<script src="<%= request.getContextPath() %>/js/commissionScript.js"></script>
+	<script type="text/javascript">
+		$(document).ready( function() {
+			$("#deleteButton").click(function(){
+			    $("#deleteModal").modal();
+			});
+		});
+	</script>
 </body>
 </html>

@@ -54,9 +54,8 @@
 			<div class="panel"></div>
 			<div>
 				<input class="btn btn-success" id="addAppointment" type="button" onclick="validateInputsAppointment()" value="Registra">		        	
-	        </div>
-	        
-	        </div>
+	        </div>	        
+	    </div>
 	</div>
           
     <script src="<%= request.getContextPath() %>/js/tutorScript.js"></script>

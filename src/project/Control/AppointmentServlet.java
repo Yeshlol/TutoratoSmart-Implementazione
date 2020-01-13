@@ -3,6 +3,7 @@ package project.Control;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -78,7 +79,7 @@ public class AppointmentServlet extends HttpServlet {
 			appointmentBean.setRequestId(req.getIdRequest());
 			
 			try {
-				appointmentDAO.doModify(appointmentBean);
+				appointmentDAO.doSave(appointmentBean);
 							
 				req = requestDAO.doRetrieveById(req.getIdRequest());
 				
@@ -156,8 +157,10 @@ public class AppointmentServlet extends HttpServlet {
 				response.getWriter().write(obj.toString());
 			}
 		}
-		else {
-			
+		else {														// flag non valido
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
+			dispatcher.forward(request, response);
+			return;
 		}
 	}
 }

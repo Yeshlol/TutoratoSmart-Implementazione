@@ -90,7 +90,7 @@
 		<div class="panel"></div>
 			<div class="row text-center" style="margin-bottom: 25px;">
 				<div class="column">
-					<a href="/TutoratoSmart/tutor/appointmentModify.jsp"><input class="btn btn-primary" id="modifyAppointment" type="button" value="Modifica appuntamento"></a>
+					<a href="/TutoratoSmart/tutor/appointmentModify.jsp"><input class="btn btn-warning" id="modifyAppointment" type="button" value="Modifica appuntamento"></a>
 				</div>
 				<div class="column">
 					<button type="button" class="btn btn-danger" id="deleteButton">Elimina appuntamento</button>
