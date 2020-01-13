@@ -15,7 +15,6 @@ import org.junit.jupiter.api.Test;
 import project.Control.DBConnection;
 import project.Model.TutorBean;
 import project.Model.TutorDAO;
-import project.Model.UserDAO;
 
 class TutorDAOTest {
 	TutorDAO tutorDAO = new TutorDAO();

@@ -68,7 +68,7 @@ class RequestDAOTest {
 	void testDoDelete() throws SQLException{
 		String requestData="2019-11-26";
 		Date requestD = Date.valueOf(requestData);
-		RequestBean bean = new RequestBean(4, 600, 20, "In valutazione", "Supporto prenotazione esame", "e.merola@studenti.unicampania.it", requestD);
+		RequestBean bean = new RequestBean(5, 600, 20, "In valutazione", "Supporto prenotazione esame", "e.merola@studenti.unicampania.it", requestD);
 		boolean value;
 		value=requestDAO.doDelete(bean);
 		assertTrue(value);
@@ -105,6 +105,18 @@ class RequestDAOTest {
 		value = requestDAO.isAvailable(requestD, 660);
 				assertFalse(value);
 	}
+	
+	@Test
+	void testDifferentRequestRegistered() throws SQLException {
+		String requestData="2019-11-25";
+		Date requestD = Date.valueOf(requestData);
+		boolean value;
+		
+		value = requestDAO.differentRequestRegistered(requestD, 660, 2);
+				assertTrue(value);
+	}
+	
+	
 
 	@Test
 	void testConfirmAppointment() throws SQLException{

@@ -2,9 +2,7 @@ package project.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.sql.Date;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.jupiter.api.AfterEach;

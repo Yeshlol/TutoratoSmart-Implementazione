@@ -18,7 +18,6 @@ import project.Model.AppointmentBean;
 import project.Model.AppointmentDAO;
 import project.Model.ContainedInBean;
 import project.Model.ContainedInDAO;
-import project.Model.RegisterBean;
 import project.Model.RegisterDAO;
 import project.Model.RequestBean;
 import project.Model.RequestDAO;
@@ -93,5 +92,4 @@ class ContainedInDAOTest {
 		value = containedDAO.doDelete(bean);
 		assertTrue(value);
 	}
-
 }
