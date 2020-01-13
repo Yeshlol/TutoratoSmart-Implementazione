@@ -28,8 +28,8 @@ function generateRegister(){
     margins = {
         top: 265,
         bottom: 60,
-        left: 75,
-        width: 500
+        left: 10,
+        width: 900
     };
             
     doc.fromHTML(

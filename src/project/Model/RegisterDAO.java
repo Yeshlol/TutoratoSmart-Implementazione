@@ -13,7 +13,7 @@ public class RegisterDAO  {
 	}
 
 	
-	public RegisterBean doRetrieveById(int id) throws SQLException {
+	public synchronized RegisterBean doRetrieveById(int id) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		

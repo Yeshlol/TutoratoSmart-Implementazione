@@ -31,6 +31,7 @@ public class ShowRequestServlet extends HttpServlet {
 																		// 2 = visualizzazione dettagli di una richiesta di appuntamento (lato studente).
 																		// 3 = visualizzazione dettagli di una richiesta (lato tutor).
 																		// 4 = visualizzazione richieste da valutare (lato tutor).
+																		// 5 = visualizzazione richieste da validare (conferma appuntamento/studente assente).
 		
 		RequestDAO requestDAO = new RequestDAO();
 				
@@ -108,6 +109,21 @@ public class ShowRequestServlet extends HttpServlet {
 						
 			try {
 				requestsCollection = requestDAO.doRetrieveAllPending("YEAR(RequestDate) ASC, MONTH(RequestDate) ASC, DAY(RequestDate) ASC");
+				request.removeAttribute("requestsCollection");
+				request.setAttribute("requestsCollection", requestsCollection);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/tutor/requestsList.jsp");
+			dispatcher.forward(request, response);    
+			return;
+		}
+		else if (flag == 5) {
+			Collection<RequestBean> requestsCollection = null;
+						
+			try {
+				requestsCollection = requestDAO.doRetrieveAllAccepted("YEAR(RequestDate) ASC, MONTH(RequestDate) ASC, DAY(RequestDate) ASC");
 				request.removeAttribute("requestsCollection");
 				request.setAttribute("requestsCollection", requestsCollection);
 			} catch (SQLException e) {

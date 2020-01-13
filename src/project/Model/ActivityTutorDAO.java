@@ -260,7 +260,7 @@ public class ActivityTutorDAO  {
 	}
 
 
-	public boolean differentActivityRegistered(String tutorMail, int activityId, Date activityDate, int start, int finish) {
+	public boolean differentActivityRegistered(String tutorMail, int activityId, Date activityDate, int start, int finish) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 				

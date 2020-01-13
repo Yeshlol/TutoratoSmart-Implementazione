@@ -93,6 +93,9 @@ public class ActivityServlet extends HttpServlet {
 						} catch (JSONException e) {
 							e.printStackTrace();
 							return;
+						} catch (SQLException e) {
+							e.printStackTrace();
+							return;
 						}
 						
 						response.getWriter().write(obj.toString());

@@ -17,7 +17,7 @@ public class StudentDAO  {
 	}
 
 	
-	public StudentBean doRetrieveByMail(String mail) throws SQLException {
+	public synchronized StudentBean doRetrieveByMail(String mail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
@@ -103,7 +103,7 @@ public class StudentDAO  {
 	}
 	
 	
-	public Collection<StudentBean> doRetrieveAllByDates(String order, Date startResearchDate, Date finishResearchDate) throws SQLException {
+	public synchronized Collection<StudentBean> doRetrieveAllByDates(String order, Date startResearchDate, Date finishResearchDate) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		

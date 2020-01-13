@@ -16,7 +16,7 @@ public class UserDAO  {
 	}
 	
 	
-	public static synchronized ArrayList<UserBean> doRetrieveAll() throws SQLException {
+	public synchronized ArrayList<UserBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		ArrayList<UserBean> userList = new ArrayList<UserBean>();
 		String sql = "select * from TS_USER";
@@ -41,7 +41,7 @@ public class UserDAO  {
 	}
 	
 
-	public static UserBean doRetrieveByMail(String mail) throws SQLException {
+	public synchronized UserBean doRetrieveByMail(String mail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
@@ -87,7 +87,7 @@ public class UserDAO  {
 	}
 	
 	
-	public static synchronized void doSave(UserBean bean) throws SQLException {
+	public synchronized void doSave(UserBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		

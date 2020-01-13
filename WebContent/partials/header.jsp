@@ -53,7 +53,8 @@
 	          		<li style="border-right:1px solid #bbb; float:left;"><a href="/TutoratoSmart/tutor/register.jsp" style="font-weight:bold;">Registro Tutorato</a></li>
 	          		<li style="border-right:1px solid #bbb; float:left;"><a href="/TutoratoSmart/tutor/calendar.jsp" style="font-weight:bold;">Calendario Appuntamenti</a></li>
 	          		<li style="border-right:1px solid #bbb; float:left;"><a href="/TutoratoSmart/tutor/requestsList.jsp" style="font-weight:bold;">Nuove Prenotazioni</a></li>
-	          		<li><a href="/TutoratoSmart/tutor/appointmentsList.jsp" style="font-weight:bold;">Storico Appuntamenti</a></li>
+	          		<li style="border-right:1px solid #bbb; float:left;"><a href="/TutoratoSmart/tutor/appointmentsList.jsp" style="font-weight:bold;">Storico Appuntamenti</a></li>
+	          		<li><a href="/TutoratoSmart/tutor/acceptedRequestsList.jsp" style="font-weight:bold;">Richieste Accettate</a></li>
 	          	</ul>
           	</div>
 	    <% } else if(user.getRole()==3) { %>

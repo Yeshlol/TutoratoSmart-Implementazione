@@ -18,7 +18,7 @@ public class TutorDAO  {
 	}
 
 	
-	public static synchronized ArrayList<TutorBean> doRetrieveAll() throws SQLException {
+	public synchronized ArrayList<TutorBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		ArrayList<TutorBean> tutorList = new ArrayList<TutorBean>();
 		String sql = "select * from TUTOR";
@@ -48,7 +48,7 @@ public class TutorDAO  {
 	}
 	
 	
-	public static TutorBean doRetrieveByMail(String mail) throws SQLException {
+	public synchronized TutorBean doRetrieveByMail(String mail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
@@ -97,7 +97,7 @@ public class TutorDAO  {
 	
 	
 	@SuppressWarnings("resource")
-	public static synchronized void doSave(TutorBean bean, int totalHours) throws SQLException {
+	public synchronized void doSave(TutorBean bean, int totalHours) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
@@ -143,7 +143,7 @@ public class TutorDAO  {
 	}
 	
 	
-	public static Collection<TutorBean> doRetrieveAllByDates(String order, Date startResearchDate, Date finishResearchDate) throws SQLException {
+	public synchronized Collection<TutorBean> doRetrieveAllByDates(String order, Date startResearchDate, Date finishResearchDate) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
@@ -187,7 +187,7 @@ public class TutorDAO  {
 	}
 	
 	
-	public static Collection<TutorBean> doRetrieveAllActive(String order) throws SQLException {
+	public synchronized Collection<TutorBean> doRetrieveAllActive(String order) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		

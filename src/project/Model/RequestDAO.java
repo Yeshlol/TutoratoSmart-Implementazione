@@ -16,7 +16,7 @@ public class RequestDAO  {
 	}
 
 	
-	public RequestBean doRetrieveById(int id) throws SQLException {
+	public synchronized RequestBean doRetrieveById(int id) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
@@ -293,7 +293,7 @@ public class RequestDAO  {
 		try {
 			preparedStatement = connection.prepareStatement(selectSql);
 			
-			//System.out.println("Request doRetrieveAll: " + preparedStatement.toString());
+			//System.out.println("Request doRetrieveAllPending: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
 				RequestBean bean = new RequestBean();
@@ -303,7 +303,6 @@ public class RequestDAO  {
 				bean.setRequestDate(rs.getDate("RequestDate"));
 				bean.setRequestTime(rs.getInt("RequestTime"));
 				bean.setDuration(rs.getInt("Duration"));
-				bean.setState(rs.getString("State"));
 				bean.setStudent(rs.getString("Student"));
 				
 				list.add(bean);
@@ -377,5 +376,42 @@ public class RequestDAO  {
 			if(preparedStatement != null)
 				preparedStatement.close();
 		}		
+	}
+
+
+	public Collection<RequestBean> doRetrieveAllAccepted(String order) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		Collection<RequestBean> list = new LinkedList<RequestBean>();
+		
+		String selectSql = "SELECT * FROM REQUEST WHERE STATE = 'Accettata'";
+		
+		if(order!=null && !order.equals("")) {
+			selectSql +=" ORDER BY " + order;
+		}
+		
+		try {
+			preparedStatement = connection.prepareStatement(selectSql);
+			
+			//System.out.println("Request doRetrieveAllAccepted: " + preparedStatement.toString());
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()) {
+				RequestBean bean = new RequestBean();
+				bean.setIdRequest(rs.getInt("IdRequest"));
+				bean.setState(rs.getString("State"));
+				bean.setStudentComment(rs.getString("StudentComment"));
+				bean.setRequestDate(rs.getDate("RequestDate"));
+				bean.setRequestTime(rs.getInt("RequestTime"));
+				bean.setDuration(rs.getInt("Duration"));
+				bean.setStudent(rs.getString("Student"));
+				
+				list.add(bean);
+			}			
+		} finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}
+		return list;
 	}
 }

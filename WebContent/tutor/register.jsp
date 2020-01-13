@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 
-<%@ page import="java.util.*,project.Model.ActivityTutorBean,project.Model.TutorBean,project.Model.TutorDAO,project.Model.RegisterDAO,project.Model.RegisterBean" %>
+<%@ page import="java.util.*,project.Utils.Utils,project.Model.ActivityTutorBean,project.Model.TutorBean,project.Model.TutorDAO,project.Model.RegisterDAO,project.Model.RegisterBean" %>
 
 <head>
 	<meta charset="UTF-8">
@@ -99,30 +99,36 @@
 			<% } %>
 		</div>
 	</div>
-        
-    <div id="registerDivPdf">
-		<table>
-			<tr>
-	     		<th width="20%">Categoria</th>
-	    		<th width="20%">Data</th>
-	    		<th width="60%">Commento</th>
-	   		</tr>
-			<% 	Iterator<?> it = activitiesCollection.iterator();
-			 	for(int i = 0 ; i < activitiesCollection.size() && it.hasNext(); i++) { 
-		 			ActivityTutorBean bean = (ActivityTutorBean) it.next(); %>
-	 			<tr>
-		 			<td width="20%"><%= bean.getCategory() %></td>
-		 			<td width="20%"><%= bean.getActivityDate() %></td>
-		 			<td width="60%"><%= bean.getDetails() %></td>
-		 		</tr>
-		 	<% } %>	
-		</table>
-	</div>    
+    
     
     <input type="hidden" id="firstName" value ="<%= user.getFirstName() %>">
     <input type="hidden" id="lastName" value ="<%= user.getLastName() %>">
     
 	<%@ include file="/partials/footer.jsp" %>
+	
+	<div id="registerDivPdf">
+		<table class="text-center">
+			<tr>
+	     		<th width="17%" class="text-center">Categoria</th>
+	    		<th class="text-center">Data</th>
+	    		<th class="text-center">Orario inizio</th>
+	    		<th class="text-center">Orario fine</th>
+	    		<th width="30%" class="text-center">Commento</th>
+	   		</tr>
+			<% 	Iterator<?> it = activitiesCollection.iterator();
+			 	for(int i = 0 ; i < activitiesCollection.size() && it.hasNext(); i++) { 
+		 			ActivityTutorBean bean = (ActivityTutorBean) it.next(); %>
+	 			<tr>
+		 			<td width="17%" class="text-center"><%= bean.getCategory() %></td>
+		 			<td class="text-center"><%= bean.getActivityDate() %></td>
+		 			<td class="text-center"><%= Utils.getTimeAsString(bean.getStartTime()) %></td>
+		 			<td class="text-center"><%= Utils.getTimeAsString(bean.getFinishTime()) %></td>
+		 			<td width="30%"><%= bean.getDetails() %></td>
+		 		</tr>
+		 	<% } %>	
+		</table>
+	</div> 
+	
 	<script>
 		$(document).ready(function(){
 			$("#registerDivPdf").hide();

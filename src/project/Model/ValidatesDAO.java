@@ -14,7 +14,7 @@ public class ValidatesDAO {
 		super();
 	}
 
-	public  synchronized Collection<ActivityTutorBean> doRetrieveByCommissionMember(String commissionMemberMail) throws SQLException {
+	public synchronized Collection<ActivityTutorBean> doRetrieveByCommissionMember(String commissionMemberMail) throws SQLException {
 		Collection<ActivityTutorBean> list = new LinkedList<ActivityTutorBean>();
 				
 		if(commissionMemberMail != null && !commissionMemberMail.equals("")) {
