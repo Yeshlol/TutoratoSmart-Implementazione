@@ -23,6 +23,19 @@ public class ActivityTutorBean implements Serializable {
 		activityDate = new Date(-3000000);
 		hours = -1.f;
 	}
+	
+	public ActivityTutorBean(int idActivity, int startTime, int finishTime, int registerId, String category, String state, String details, String tutor, Date activityDate, float hours) {
+		this.idActivity=idActivity;
+		this.startTime=startTime;
+		this.finishTime=finishTime;
+		this.registerId=registerId;
+		this.category=category;
+		this.state=state;
+		this.details=details;
+		this.tutor=tutor;
+		this.activityDate=activityDate;
+		this.hours=hours;
+	}
 
 	public int getIdActivity() {
 		return idActivity;

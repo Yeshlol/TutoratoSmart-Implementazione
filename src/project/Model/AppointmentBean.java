@@ -14,6 +14,13 @@ public class AppointmentBean implements Serializable {
 		details = "";
 		tutor = "";
 	}
+	
+	public AppointmentBean(int idAppointment,String details,int requestId,String tutor) {
+		this.idAppointment=idAppointment;
+		this.requestId=requestId;
+		this.details=details;
+		this.tutor=tutor;
+	}
 
 	public int getIdAppointment() {
 		return idAppointment;

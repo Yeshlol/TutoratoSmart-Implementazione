@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -13,6 +14,25 @@ import project.Control.DBConnection;
 public class AppointmentDAO  {		
 	public AppointmentDAO() {
 		super();
+	}
+  
+	public synchronized ArrayList<AppointmentBean> doRetrieveAll() throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		ArrayList<AppointmentBean> appointmentList = new ArrayList<AppointmentBean>();
+		String sql = "select * from APPOINTMENT";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			AppointmentBean bean = null;
+        	int id=rs.getInt("IdAppointment");
+			String details=rs.getString("Details");
+			int requestId=rs.getInt("RequestId");
+			String tutor=rs.getString("Tutor");
+			
+			bean = new AppointmentBean(id,details,requestId,tutor);
+			appointmentList.add(bean);
+		}
+		return appointmentList;
 	}
 
 	

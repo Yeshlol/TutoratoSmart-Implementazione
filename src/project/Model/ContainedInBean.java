@@ -11,6 +11,11 @@ public class ContainedInBean implements Serializable {
 		appointmentId = -1;
 		activityId = -1;
 	}
+	
+	public ContainedInBean(int appointmentId,int activityId) {
+		this.appointmentId=appointmentId;
+		this.activityId=activityId;
+	}
 
 	
 	public int getAppointmentId() {

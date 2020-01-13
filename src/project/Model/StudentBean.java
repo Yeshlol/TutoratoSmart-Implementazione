@@ -12,6 +12,11 @@ public class StudentBean extends UserBean implements Serializable {
 		super();
 		academicYear = -1;
 	}
+	
+	public StudentBean(String email, String pwd, int role, String firstName, String lastName, String telephoneNumber, String sex, String registrationNumber, int academicYear) {
+		super(email, pwd, role, firstName, lastName, telephoneNumber, sex, registrationNumber);
+		this.academicYear=academicYear;
+	}
 
 
 	public int getAcademicYear() {
