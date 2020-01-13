@@ -17,15 +17,31 @@ import project.Model.TutorBean;
 import project.Model.TutorDAO;
 import project.Model.UserBean;
 
+/**
+ * 
+ *  Servlet implementation class ShowRegisterServlet
+ *  
+ */
 
 @WebServlet("/ShowRegister")
 public class ShowRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	/**
+	 * Constructor
+	 *
+     * @see HttpServlet#HttpServlet()
+     */	
+	
     public ShowRegisterServlet() {
         super();       
     }
-
+    
+    /**
+     * Method doGet()
+     * 
+   	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   	 */
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ActivityTutorDAO activityTutorDAO = new ActivityTutorDAO();
@@ -87,6 +103,11 @@ public class ShowRegisterServlet extends HttpServlet {
 		}
 	}
 
+	/**
+     * Method doPost()
+     * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		return;

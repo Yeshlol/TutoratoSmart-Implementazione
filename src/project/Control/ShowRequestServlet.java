@@ -18,11 +18,22 @@ import project.Model.RequestDAO;
 import project.Model.StudentDAO;
 import project.Model.UserBean;
 
+/**
+ * 
+ *  Servlet implementation class ShowRequestServlet
+ *  
+ */
 
 @WebServlet("/ShowRequest")
 public class ShowRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     	
+	/**
+     * Method doGet()
+     * 
+   	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession(false).removeAttribute("request");
 		
@@ -141,7 +152,12 @@ public class ShowRequestServlet extends HttpServlet {
 		}
 	}
 
-
+	/**
+     * Method doPost()
+     * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		return;
 	}

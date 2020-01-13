@@ -23,14 +23,31 @@ import project.Model.StudentBean;
 import project.Model.StudentDAO;
 import project.Utils.Utils;
 
+/**
+ * 
+ *  Servlet implementation class CalendarServlet
+ *
+ */
+
 @WebServlet("/Calendar")
 public class CalendarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     	
+	 /**
+     * Method doGet()
+     * 
+   	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		return;
 	}
-
+    
+	/**
+     * Method doPost()
+     * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Calendar calendar = null;

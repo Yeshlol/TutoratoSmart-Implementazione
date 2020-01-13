@@ -17,17 +17,32 @@ import project.Model.UserBean;
 import project.Model.UserDAO;
 import project.Utils.Utils;
 
+/**
+ * 
+ *  Servlet implementation class LoginServlet
+ *
+ */
 
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+	 /**
+     * Method doGet()
+     * 
+   	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		return;
 	}
 
-
+	/**
+     * Method doPost()
+     * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("password");

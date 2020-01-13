@@ -13,16 +13,31 @@ import javax.servlet.http.HttpServletResponse;
 import project.Model.ActivityTutorBean;
 import project.Model.ActivityTutorDAO;
 
+/**
+ * 
+ *  Servlet implementation class ShowActivityServlet
+ *
+ */
 
 @WebServlet("/ShowActivity")
 public class ShowActivityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	/**
+	 * Constructor
+	 *
+     * @see HttpServlet#HttpServlet()
+     */	
     
     public ShowActivityServlet() {
     	super();
     }
-
+    
+    /**
+     * Method doGet()
+     * 
+   	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   	 */
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ActivityTutorDAO activityDAO = new ActivityTutorDAO();
@@ -59,6 +74,11 @@ public class ShowActivityServlet extends HttpServlet {
 		}
 	}
 
+	/**
+     * Method doPost()
+     * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		return;

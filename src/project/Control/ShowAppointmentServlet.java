@@ -16,16 +16,31 @@ import project.Model.AppointmentBean;
 import project.Model.AppointmentDAO;
 import project.Model.UserBean;
 
+/**
+ * 
+ *  Servlet implementation class ShowAppointment
+ *  
+ */
 
 @WebServlet("/ShowAppointment")
 public class ShowAppointmentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	/**
+	 * Constructor
+	 *
+     * @see HttpServlet#HttpServlet()
+     */	
     
     public ShowAppointmentServlet() {
     	super();
     }
-
+    
+    /**
+     * Method doGet()
+     * 
+   	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   	 */
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserBean tutor = (UserBean) request.getSession(false).getAttribute("user");
@@ -79,6 +94,11 @@ public class ShowAppointmentServlet extends HttpServlet {
 		}
 	}
 
+	/**
+     * Method doPost()
+     * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		return;

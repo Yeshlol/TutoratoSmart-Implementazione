@@ -15,20 +15,41 @@ import javax.servlet.http.HttpServletResponse;
 import project.Model.TutorBean;
 import project.Model.TutorDAO;
 
+/**
+ * 
+ *  Servlet implementation class StudentsServlet
+ *  
+ */
 
 @WebServlet("/Tutors")
 public class TutorsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	/**
+	 * Constructor
+	 *
+     * @see HttpServlet#HttpServlet()
+     */	
+	
     public TutorsServlet() {
         super();
     }
-
+    
+    /**
+     * Method doGet()
+     * 
+   	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   	 */
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    return;
 	}
 	
+    /**
+     * Method doPost()
+     * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TutorDAO tutorDAO = new TutorDAO();

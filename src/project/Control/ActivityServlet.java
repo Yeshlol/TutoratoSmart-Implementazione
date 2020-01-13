@@ -34,21 +34,38 @@ import project.Model.ValidatesBean;
 import project.Model.ValidatesDAO;
 import project.Utils.Utils;
 
-
+/**
+ * 
+ *  Servlet implementation class ActivityServlet
+ *
+ */
 @WebServlet("/Activity")
 public class ActivityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
+	/**
+	 * Constructor
+	 * 
+     * @see HttpServlet#HttpServlet()
+     */
     public ActivityServlet() {
         super();
     }
 
-	
+    /**
+     * Method doGet()
+     * 
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	return;
     }
-    	    	
+    
+    /**
+     * Method doPost()
+     * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean ajax = Boolean.parseBoolean(request.getParameter("ajax"));  // Richieste ajax per elenco appuntamenti effettuati dal tutor

@@ -18,21 +18,41 @@ import project.Model.RequestBean;
 import project.Model.RequestDAO;
 import project.Model.UserBean;
 
+/**
+ * 
+ *  Servlet implementation class AppointmentServlet
+ *
+ */
 @WebServlet("/Appointment")
 public class AppointmentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+      
+	/**
+	 * Constructor
+	 *
+     * @see HttpServlet#HttpServlet()
+     */
     
     public AppointmentServlet() {
         super();
     }
-
+    
+    /**
+     * Method doGet()
+     * 
+   	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   	 */
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	return;
     }
     	    	
-	
+    /**
+     * Method doPost()
+     * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserBean tutor = (UserBean) request.getSession(false).getAttribute("user");
 		RequestBean req = (RequestBean) request.getSession(false).getAttribute("request");

@@ -15,19 +15,43 @@ import javax.servlet.http.HttpServletResponse;
 import project.Model.StudentBean;
 import project.Model.StudentDAO;
 
+/**
+ * 
+ *  Servlet implementation class StudentsServlet
+ *  
+ */
 
 @WebServlet("/Students")
 public class StudentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	/**
+	 * Constructor
+	 *
+     * @see HttpServlet#HttpServlet()
+     */	
+	
     public StudentsServlet() {
         super();
     }
 
+    /**
+     * Method doGet()
+     * 
+   	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   	 */
+	
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	return;
 	}
+	
+    
+    /**
+     * Method doPost()
+     * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
