@@ -19,6 +19,16 @@ public class RequestBean implements Serializable {
 		student = "";
 		requestDate = new Date(-3000000);
 	}
+	
+	public RequestBean(int idRequest, int requestTime, int duration, String state, String studentComment, String student, Date requestDate) {
+		this.idRequest=idRequest;
+		this.requestTime=requestTime;
+		this.duration=duration;
+		this.state=state;
+		this.studentComment=studentComment;
+		this.student=student;
+		this.requestDate=requestDate;
+	}
 
 	public int getIdRequest() {
 		return idRequest;

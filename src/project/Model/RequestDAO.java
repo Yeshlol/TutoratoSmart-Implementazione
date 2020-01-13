@@ -335,7 +335,7 @@ public class RequestDAO  {
 				return false;
 	        } else {
 	        	int count = rs.last() ? rs.getRow() : 0;
-	            if (count == 1) {
+	            if (count > 0) {
 	            	//System.out.println("Orario non disponibile! Esiste già una prenotazione!");
 	            	return false;
 	            }

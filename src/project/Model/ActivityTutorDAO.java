@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -13,6 +14,32 @@ import project.Control.DBConnection;
 public class ActivityTutorDAO  {		
 	public ActivityTutorDAO() {
 		super();
+	}
+
+	public synchronized ArrayList<ActivityTutorBean> doRetrieveAll() throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		ArrayList<ActivityTutorBean> activityList = new ArrayList<ActivityTutorBean>();
+		String sql = "select * from ACTIVITY_TUTOR";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			ActivityTutorBean bean = new ActivityTutorBean();
+			int idActivity = rs.getInt("IdActivity");
+			String category = rs.getString("Category");
+			Date activityDate = rs.getDate("ActivityDate");
+			int startTime = rs.getInt("StartTime");
+			int finishTime = rs.getInt("FinishTime");
+			float hours = rs.getFloat("Hours");
+			String state = rs.getString("State");
+			String details = rs.getString("Details");
+			String tutor = rs.getString("Tutor");
+			int registerId = rs.getInt("RegisterId");
+			
+			
+			bean = new ActivityTutorBean(idActivity, startTime, finishTime, registerId, category, state, details, tutor, activityDate, hours);
+			activityList.add(bean);
+		}
+		return activityList;
 	}
 
 	

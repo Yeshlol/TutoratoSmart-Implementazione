@@ -12,6 +12,11 @@ public class ValidatesBean implements Serializable {
 		commissionMember = "";
 		activityId = -1;
 	}
+	
+	public ValidatesBean(String commissionMember, int activityId) {
+		this.commissionMember=commissionMember;
+		this.activityId=activityId;
+	}
 
 	
 	public String getCommissionMember() {
