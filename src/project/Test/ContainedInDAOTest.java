@@ -32,6 +32,7 @@ class ContainedInDAOTest {
 
 	@AfterEach
 	void tearDown() throws Exception {
+		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
 
@@ -73,7 +74,7 @@ class ContainedInDAOTest {
 		Date date = Date.valueOf(activityDate);
 		RegisterDAO registerDAO = new RegisterDAO();
 		int id=registerDAO.doSave(10);
-		ActivityTutorBean activityTutorBean = new ActivityTutorBean(4,720,780,1,"Sportello Tutorato","Convalidata","L'attività riguarda il supporto per la prenotazione dell'apello","m.pisciotta@studenti.unicampania.it",date, 1);
+		ActivityTutorBean activityTutorBean = new ActivityTutorBean(4,720,780,1,"Sportello Tutorato","Convalidata","L'attivitï¿½ riguarda il supporto per la prenotazione dell'apello","m.pisciotta@studenti.unicampania.it",date, 1);
 		activityTutorDAO.doSave(activityTutorBean);
 		ContainedInBean bean = new ContainedInBean(4,4);
 		ArrayList<ContainedInBean> list = containedDAO.doRetrieveAll();

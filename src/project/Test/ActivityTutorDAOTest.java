@@ -23,6 +23,7 @@ class ActivityTutorDAOTest {
 
 	@AfterEach
 	void tearDown() throws Exception {
+		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
 
@@ -62,7 +63,7 @@ class ActivityTutorDAOTest {
 		Date activityD = Date.valueOf(activityData);
 		
 		ActivityTutorBean activity1 = activityTutorDAO.doRetrieveById(2);
-		ActivityTutorBean activity = new ActivityTutorBean(2, 540, 900, 1, "Sportello Tutorato", "In valutazione", "ModificaAttivitàTest", "m.pisciotta@studenti.unicampania.it", activityD, 6);
+		ActivityTutorBean activity = new ActivityTutorBean(2, 540, 900, 1, "Sportello Tutorato", "In valutazione", "ModificaAttivitï¿½Test", "m.pisciotta@studenti.unicampania.it", activityD, 6);
 		activityTutorDAO.doModify(activity);
 		assertNotEquals(activity1, activity);
 	}

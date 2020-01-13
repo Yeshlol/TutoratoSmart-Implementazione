@@ -27,6 +27,7 @@ class AppointmentDAOTest {
 
 	@AfterEach
 	void tearDown() throws Exception {
+		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
 
@@ -39,7 +40,7 @@ class AppointmentDAOTest {
 
 	@Test
 	void testDoSave() throws SQLException {
-		AppointmentBean appointment = new AppointmentBean(4,"Supporto registrazione sito università",4,"m.pisciotta@studenti.unicampania.it");
+		AppointmentBean appointment = new AppointmentBean(4,"Supporto registrazione sito universitï¿½",4,"m.pisciotta@studenti.unicampania.it");
 		ArrayList<AppointmentBean> tutorlist = appointmentDAO.doRetrieveAll();
 		assertEquals(3, tutorlist.size());
 		appointmentDAO.doSave(appointment);

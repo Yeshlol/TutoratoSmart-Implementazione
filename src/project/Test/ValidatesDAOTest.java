@@ -23,6 +23,7 @@ class ValidatesDAOTest {
 
 	@AfterEach
 	void tearDown() throws Exception {
+		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
 
