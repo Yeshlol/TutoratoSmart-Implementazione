@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	    select: function(info) {
 			var selected = info.start.getTime();
 			var now = new Date().getTime();
-						
+			
 			if(selected > now) {
-				$("#requestModal").modal();
-			    $("#date").val(info.startStr.substring(0,10));
+				$("#date").val(info.startStr.substring(0,10));
 			    $("#time").val(info.startStr.substring(11,16));
+			    $("#requestModal").modal();
 			}		
 	    },
 		header: {
@@ -94,7 +94,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function createRequest() {	
+function createRequest() {
+	$('#confirm').attr('disabled','disabled');
+	
 	$.post("/TutoratoSmart/Request", {
 		"flag":"1",
 		"comment":$("#comment").val(),
@@ -110,6 +112,7 @@ function createRequest() {
 					$("#successDiv").fadeOut(3000);					
 					setTimeout(function() {
 						$('#resultModal').modal('hide');
+						$('#confirm').prop("disabled", false);
 					}, 3000);
 				});
 			}
@@ -119,6 +122,7 @@ function createRequest() {
 					$("#failureDiv").fadeOut(4000);					
 					setTimeout(function() {
 						$('#resultModal').modal('hide');
+						$('#confirm').prop("disabled", false);
 					}, 4000);
 				})
 			}					 

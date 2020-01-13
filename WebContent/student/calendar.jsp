@@ -50,8 +50,7 @@
 	<%@ include file="/partials/header.jsp" %>
 	
 	<div id='calendar' style="width: 65%; margin: 0 auto;"></div>
-	
-		
+			
 	<div class="modal fade" id="resultModal" role="dialog">
 		 <div class="vertical-alignment-helper">
         	<div class="modal-dialog vertical-align-center">
@@ -64,15 +63,14 @@
 		  	</div>
 		</div>
 	</div>
-	
-	
+		
 	<div class="modal fade" id="requestModal" role="dialog">
 		 <div class="vertical-alignment-helper">
         	<div class="modal-dialog vertical-align-center">
             	<div class="modal-content">
 					<div class="modal-header">
 			          	<button type="button" class="close" data-dismiss="modal">&times;</button>
-			          	<h4 class="modal-title">Nuova prenotazione</h4>
+			          	<h4 class="modal-title text-center">Nuova prenotazione</h4>
 			        </div>
 			        <div class="modal-body">
 			          	<div class="container-fluid" style="margin: 25px;">
@@ -80,22 +78,22 @@
 								<div class="row text-center">
 								  	<div class="column" style="float: left;width: 50%;">
 								  		<label for="date" class="control-label">Giorno selezionato</label>
-										<input type="text" value="" class="text-center" readonly id ="date">
+										<input type="text" name="date" value="2" class="text-center" readonly id="date">
 								  	</div>
 								  	<div class="column" style="float: left;width: 50%;">
 								  		<label for="time" class="control-label">Orario selezionato</label>
-										<input type="text" value="" class="text-center" readonly id ="time">
+										<input type="text" name="time" value="1" class="text-center" readonly id ="time">
 								  	</div>
 								</div>
 								<br>							
-								<label for="comment" class="control-label">Inserire un commento alla prenotazione: </label>							
+								<label for="comment" class="control-label text-center">Inserire un commento alla prenotazione: </label>							
 			  					<textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
 							</form>
 						</div>
 					</div>
 		            <div class="modal-footer">
 			        	<div class="row text-center">
-						  	<div class="column" style="float: left;width: 50%;"><input class="btn btn-success" type="button" onclick="createRequest()" value="Conferma prenotazione"></div>
+						  	<div class="column" style="float: left;width: 50%;"><input class="btn btn-success" id="confirm" type="button" onclick="createRequest()" value="Conferma prenotazione"></div>
 						  	<div class="column" style="float: left;width: 50%;"><button type="button" class="btn btn-primary" data-dismiss="modal">Annulla</button></div>
 						</div>
 				    </div>

@@ -30,9 +30,12 @@
 <body>
 	<%@ include file="/partials/header.jsp" %>
 	
-	<div id='calendar' style="width: 65%; margin: 0 auto;"></div>
+	<div class="content">
+		<div id='calendar' style="width: 65%; margin: 0 auto;"></div>
+		
+		<div id='info' style="position: absolute;z-index:999;"></div>
+	</div>
 	
-	<div id='info' style="position: absolute;z-index:999;"></div>
 	
 	<%@ include file="/partials/footer.jsp" %>
 	

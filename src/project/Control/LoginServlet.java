@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import project.Model.UserBean;
 import project.Model.UserDAO;
 import project.Utils.Utils;
@@ -33,26 +36,36 @@ public class LoginServlet extends HttpServlet {
 		UserBean user = null;
 		request.getSession().invalidate();
 		HttpSession session = request.getSession(true);
+		JSONObject obj = new JSONObject();
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+				
 		synchronized (session) {
 			try {
 				user = userDAO.doRetrieveByMail(email);
 				if (user != null) {
 					pwd = Utils.sha256(pwd);
 					if (pwd.equals(user.getPwd())) {					// Utente trovato, password corretta.
-						session.setAttribute("user", user);
-						response.sendRedirect(request.getContextPath() + "/home.jsp");
-					}
-					else {
-						session.setAttribute("user", null);				// Utente trovato, password non corretta.
-						response.sendRedirect(request.getContextPath() + "/login.jsp");
-					}
-				} else {
-					session.setAttribute("user", null);					// Utente non trovato.
-					response.sendRedirect(request.getContextPath() + "/login.jsp");
+						request.getSession(false).setAttribute("user", user);
+						obj.put("result", 1);				
+					}				
+				}
+				else {
+					obj.put("result", 2);
 				}
 			} catch (SQLException e) {
-				System.out.println("Errore query sql!");
-				response.sendRedirect(request.getContextPath() + "/index.jsp");
+				try {
+					obj.put("result", 2);
+				} catch (JSONException e1) {
+					e1.printStackTrace();
+				}
+				e.printStackTrace();
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			finally {
+				response.getWriter().write(obj.toString());
 			}
 		}
 	}

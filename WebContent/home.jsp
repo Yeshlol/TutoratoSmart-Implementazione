@@ -9,10 +9,14 @@
 	<title>Home</title>
 </head>
 
+
+
 <body>
     <%@ include file="/partials/header.jsp" %>
      
-    <h1 align="center">Benvenuto in TutoratoSmart</h1>
+	<div class="content" style="margin: 10%">
+		<h1 align="center">Benvenuto in TutoratoSmart</h1>
+	</div>   
                  
     <%@ include file="/partials/footer.jsp" %>
 </body>

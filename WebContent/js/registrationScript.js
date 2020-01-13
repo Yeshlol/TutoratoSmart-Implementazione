@@ -106,6 +106,7 @@ $("#RegistrationNumber").on('keyup',function(){
 //Validazione dati registrazione studente
 function validateInputs(){
 	$("#errorDiv").html("");
+	$('#register').attr('disabled','disabled');
 	
 	var valid = true;
 	var errorMessage = "";
@@ -201,7 +202,7 @@ function validateInputs(){
 					$("#successDiv").fadeIn(500, function() {
 						$("#successDiv").fadeOut(5000);
 						setTimeout(function() {
-							  window.location.href = "/TutoratoSmart/home.jsp";
+							  window.location.href = "/TutoratoSmart/login.jsp";
 						}, 5000);
 					})
 				}
@@ -215,9 +216,11 @@ function validateInputs(){
 	
 	else {
 		$("#errorDiv").append(errorMessage);
-		$("#errorDiv").fadeIn(500, function() {
-			$("#errorDiv").fadeOut(5000)
-		})
+		$("#errorDiv").show();
+		setTimeout(function() {
+			$("#errorDiv").hide();
+			$('#register').prop("disabled", false);
+		}, 4500);
 	}
 }
 
@@ -321,7 +324,7 @@ function validateInputsTutor(){
 					$("#successDiv").fadeIn(500, function() {
 						$("#successDiv").fadeOut(5000);
 						setTimeout(function() {
-							  window.location.href = "/TutoratoSmart/home.jsp";
+							  window.location.href = "/TutoratoSmart/tutorRegistration.jsp";
 						}, 5000);
 					})
 				}

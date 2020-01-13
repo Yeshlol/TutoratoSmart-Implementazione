@@ -18,11 +18,21 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<style>
+		#footer {
+	      margin-top: 25px;
+		  width: 100%;
+		}		
+	</style>
 </head>
 
 <body>
 	<div class="text-center">
-  		<a href="<%=request.getContextPath() %>/index.jsp"><img src="<%=request.getContextPath() %>/img/LogoTutoratoSmart.png" style="border-radius:2px; height:20%; width:20%;"></a>
+		<% if (user != null) { %>
+			<a href="<%=request.getContextPath() %>/home.jsp"><img src="<%=request.getContextPath() %>/img/LogoTutoratoSmart.png" style="border-radius:2px; height:20%; width:20%;"></a>
+		<% } else { %>
+  			<a href="<%=request.getContextPath() %>/index.jsp"><img src="<%=request.getContextPath() %>/img/LogoTutoratoSmart.png" style="border-radius:2px; height:20%; width:20%;"></a>
+  		<% } %>
 	</div>
 	          
 	<%if(user != null) { %> 

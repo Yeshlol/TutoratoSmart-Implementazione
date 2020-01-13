@@ -216,7 +216,7 @@ function validateInputsActivity() {
 				}
 				else {
 					$("#failureDiv").fadeIn(500);
-					$("#modifyActivity").removeAttr('disabled');
+					$('#modifyActivity').prop("disabled", false);
 				}					 
 			});
 	}
@@ -429,8 +429,8 @@ function modifyActivity() {
 				}
 				else {
 					$("#failureDiv").fadeIn(500);
-					$("#modifyActivity").removeAttr('disabled');
-					$("#back").removeAttr('disabled');
+					$('#modifyActivity').prop("disabled", false);
+					$('#back').prop("disabled", false);
 				}					 
 			});
 	}
@@ -465,9 +465,9 @@ function deleteActivity(){
 			}
 			else {
 				$("#failureDeleteDiv").fadeIn(500, function() {
-					$("#modifyActivity").removeAttr('disabled');
-					$("#deleteButton").removeAttr('disabled');
-					$("#back").removeAttr('disabled');
+					$('#modifyActivity').prop("disabled", false);
+					$('#deleteButton').prop("disabled", false);
+					$('#back').prop("disabled", false);
 				})
 			}					 
 		});
@@ -523,7 +523,7 @@ function acceptRequest() {
 				}
 				else {
 					$("#failureDeleteDiv").fadeIn(500, function() {
-						$('#acceptRequest').removeAttr('disabled');
+						$('#acceptRequest').prop("disabled", false);
 					})
 				}					 
 			});
@@ -561,9 +561,9 @@ function absentStudent() {
 				}
 				else {
 					$("#failureAbsentDiv").fadeIn(500, function() {
-						$('#confirmAppointment').removeAttr('disabled');
-						$('#absentStudent').removeAttr('disabled');
-						$('#back').removeAttr('disabled');
+						$('#confirmAppointment').prop("disabled", false);
+						$('#absentStudent').prop("disabled", false);
+						$('#back').prop("disabled", false);
 					})
 				}					 
 			});
@@ -607,7 +607,7 @@ function validateInputsAppointment() {
 				}
 				else {
 					$("#failureDiv").fadeIn(500, function() {
-						$('#addAppointment').removeAttr('disabled');
+						$('#addAppointment').prop("disabled", false);
 					})
 				}					 
 			});
@@ -642,9 +642,9 @@ function deleteAppointment(){
 			}
 			else {
 				$("#failureDeleteDiv").fadeIn(500, function() {
-					$("#modifyAppointment").removeAttr('disabled');
-					$("#deleteButton").removeAttr('disabled');
-					$("#back").removeAttr('disabled');
+					$('#modifyAppointment').prop("disabled", false);
+					$('#deleteButton').prop("disabled", false);
+					$('#back').prop("disabled", false);
 				})
 			}					 
 		});
@@ -684,7 +684,7 @@ function validateModifyAppointment() {
 				}
 				else {
 					$("#failureDiv").fadeIn(500, function() {
-						$('#modifyAppointment').removeAttr('disabled');
+						$('#modifyAppointment').prop("disabled", false);
 					})
 				}					 
 			});

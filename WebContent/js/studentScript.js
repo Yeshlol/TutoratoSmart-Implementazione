@@ -19,8 +19,8 @@ function deleteRequest(){
 			else {
 				$("#failureDeleteDiv").fadeIn(500, function() {
 					$("#failureDeleteDiv").fadeOut(5000);
-					$('#deleteButton').attr('disabled','disabled');
-					$('#modifyRequest').attr('disabled','disabled');
+					$('#deleteButton').prop("disabled", false);
+					$('#modifyRequest').prop("disabled", false);
 				})
 			}					 
 		});
@@ -65,7 +65,7 @@ function isValidTime(time) {
 	var array = time.val().split(':');	
 	var min = (+array[0]) * 60 + (+array[1]);
 	
-	if (min < 540 || min > 765 && min < 870 || min > 990)
+	if (min < 540 || min > 765 && min < 870 || min > 975)
 		return false;
 	else
 		return true;
@@ -114,6 +114,8 @@ $("#requestTime").on("change",function(){
 
 // Verifica campi input ed esegue post registrazione nuova richiesta di appuntamento
 function validateInputsNewRequest() {
+	$("#create").attr('disabled','disabled');
+	
 	$("#errorDiv").html("");
 	$('#errorDiv').hide();
 	
@@ -172,6 +174,7 @@ function validateInputsNewRequest() {
 					$("#failureDiv").show();
 					
 					setTimeout(function() {
+						$('#create').prop("disabled", false);
 						$('#resultModal').modal('hide');
 					}, 3000);
 				}					 
@@ -180,6 +183,7 @@ function validateInputsNewRequest() {
 	else {
 		$("#errorDiv").append(errorMessage);
 		$("#errorDiv").show();
+		$('#create').prop("disabled", false);
 	}
 }
 

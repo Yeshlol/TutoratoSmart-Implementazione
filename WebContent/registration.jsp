@@ -43,7 +43,7 @@
 						</div>
 						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
 							<label for="VerifyPassword" class="control-label">Confermare la password</label>
-							<input type="password" class="form-control" id="VerifyPassword" placeholder="ConfermaPassword" name="VerifyPassword" maxlength="10">
+							<input type="password" class="form-control" style="height: 35px;" id="VerifyPassword" placeholder="ConfermaPassword" name="VerifyPassword" maxlength="10">
 						</div>
 				    </div>
 				    
@@ -73,26 +73,25 @@
 				    <div class="row">
 				    	<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
 							<label for="AcademicYear" class="control-label">Specificare l'anno accademico</label><br>
-								<select id="AcademicYear" name="AcademicYear">
-									<option value="1">Primo Anno - Triennale</option>
-									<option value="2">Secondo Anno - Triennale</option>
-									<option value="3">Terzo Anno - Triennale</option>
-									<option value="4">Primo Anno - Magistrale</option>
-									<option value="5">Secondo Anno - Magistrale</option>
-									<option value="6">Fuori Corso</option>
-								</select>
+							<select id="AcademicYear" name="AcademicYear">
+								<option value="1">Primo Anno - Triennale</option>
+								<option value="2">Secondo Anno - Triennale</option>
+								<option value="3">Terzo Anno - Triennale</option>
+								<option value="4">Primo Anno - Magistrale</option>
+								<option value="5">Secondo Anno - Magistrale</option>
+								<option value="6">Fuori Corso</option>
+							</select>
 						</div>
 				    </div>
 				</div>
 				
-				<div class="alert alert-success" id="successDiv" role="alert" style="display:none;">Registrazione completata con successo!</div>
-									
-				<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;">Registrazione fallita!</div>
-				
+				<div class="row">
+					<div class="alert alert-success text-center" id="successDiv" role="alert" style="display:none;margin:25px;margin-top:0px;">Autenticazione riuscita</div>
+					<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin:25px;margin-top:0px;">Autenticazione fallita</div>		
+				</div>
 				<div>
-					<input class="btn btn-primary" id="registra" type="button" onclick="validateInputsTutor()" name="registraButton" value="Registra">		        	
-		        </div>
-		        
+					<input class="btn btn-primary" id="register" type="button" onclick="validateInputs()" name="registraButton" value="Registra">		        	
+		        </div>		        
 			</form>
 		</div>
 	</div>

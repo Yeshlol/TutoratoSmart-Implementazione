@@ -77,7 +77,7 @@
 							
 			<div class="panel"></div>
 			<div>
-				<input class="btn btn-primary" id="createRequest" type="button" onclick="validateInputsNewRequest()" value="Prenota">		        	
+				<input class="btn btn-primary" id="create" type="button" onclick="validateInputsNewRequest()" value="Prenota">		        	
 	        </div>
 		</div>
 	</div>
