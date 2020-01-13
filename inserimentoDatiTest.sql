@@ -1,15 +1,6 @@
 Use TutoratoSmartTest;
 SET SQL_SAFE_UPDATES = 0;
-delete from TS_USER;
-delete from STUDENT;
-delete from REGISTER;
-delete from TUTOR;
-delete from ACTIVITY_TUTOR;
-delete from REQUEST;
-delete from APPOINTMENT;
-delete from CONTAINED_IN;
-delete from MANAGES;
-delete from VALIDATES;
+
 
 -- Users:
 INSERT INTO TS_USER (Email,Pwd,UserRole,FirstName,LastName,TelephoneNumber,Sex) VALUES ('d.molinaro@commissione.unicampania.it',SHA2('M12345678', 256),1,'Danila','Molinari','3374488832','F');

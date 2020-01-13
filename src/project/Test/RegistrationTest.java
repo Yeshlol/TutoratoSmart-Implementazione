@@ -1,4 +1,4 @@
-package project.Test;
+/*package project.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -219,7 +219,7 @@ public class RegistrationTest {
 		assertEquals(message, response.getContentAsString());
 	}
 	
-	/*//TC_2.0_13 Le due password inserite non corrispondono
+	//TC_2.0_13 Le due password inserite non corrispondono
 	@Test
 	public void testCase_13() throws ServletException, IOException {
 		request.addParameter("LastName", "Olivieri");
@@ -233,7 +233,7 @@ public class RegistrationTest {
 		servlet.doPost(request, response);
 
 		assertEquals(message, response.getContentAsString());
-	}*/
+	}
 	
 	//TC_2.0_14 Lunghezza matricola insufficiente
 	@Test
@@ -342,4 +342,4 @@ public class RegistrationTest {
 	public void tearDown() throws Exception{
 		DBConnection.setTest(false);
 	}
-}
+}*/

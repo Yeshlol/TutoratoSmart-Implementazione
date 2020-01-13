@@ -21,7 +21,7 @@ public class TutorDAO  {
 	public synchronized ArrayList<TutorBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		ArrayList<TutorBean> tutorList = new ArrayList<TutorBean>();
-		String sql = "select * from TUTOR";
+		String sql = "select * from TUTOR,TS_USER WHERE TS_USER.Email = TUTOR.Email";
 		PreparedStatement ps = connection.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {
@@ -193,7 +193,7 @@ public class TutorDAO  {
 		
 		Collection<TutorBean> list = new LinkedList<TutorBean>();
 		
-		String selectSql = "SELECT SQL_NO_CACHE * FROM TUTOR WHERE State = 'Attivo'";
+		String selectSql = "SELECT SQL_NO_CACHE * FROM TUTOR,TS_USER WHERE TS_USER.Email = TUTOR.Email && State = 'Attivo'";
 		
 		if(order!=null && !order.equals("")) {
 			selectSql +=" ORDER BY " + order;

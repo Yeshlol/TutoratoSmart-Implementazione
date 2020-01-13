@@ -3,21 +3,9 @@ package project.Control;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.LinkedList;
-import java.util.List;
 
 public class DBConnection {
-	private static List<Connection> freeDbConnections;
-	private static boolean isTest = false;
 	
-	static {
-		freeDbConnections = new LinkedList<Connection>();
-		try {
-			Class.forName("com.mysql.jdbc.Driver"); 
-		} catch (ClassNotFoundException e) {
-			System.out.println("DB driver not found:"+ e.getMessage());
-		} 
-	}
 	/**
 	 * Variables.
 	 */
@@ -28,50 +16,44 @@ public class DBConnection {
 	private String password;
 	private int hostPort;
 	private String hostName;
-
+	private static boolean isTest=false;
+	
+	
 	/**
 	 * Constructor.
 	 */
-	
-	private static synchronized Connection createDBConnection() throws SQLException {
-		Connection newConnection = null;
-		String username = "root";
-		String password = "root";
-		String db;
-		if(!isTest) {
-			db = "TutoratoSmart";
-		} else {
-			db = "TutoratoSmartTest";
-		}
-		
-		String url = "jdbc:mysql://localhost:3306/"+db+"?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-
-		newConnection = DriverManager.getConnection(url, username, password);
-
-		//newConnection.setAutoCommit(false);
-		return newConnection;
-		
-	}
-	
-  /**	public DBConnection() {
+	public DBConnection() {
 	    this.conn = null;
-	    this.databaseName = "TutoratoSmart";
+	    //this.databaseName = "TutoratoSmart";
 	    this.userName = "root";
 	    this.password = "root";
 	    this.hostPort = 3306;
 	    this.hostName = "localhost";
 
 	    try {
+	    	if(!isTest) {
+	    		this.databaseName="TutoratoSmart";
+	    	}else {
+	    		this.databaseName="TutoratoSmartTest";
+	    	}
 	      Class.forName("com.mysql.jdbc.Driver");
 	      String url = "jdbc:mysql://" + this.hostName + ":" + this.hostPort + "/" + this.databaseName
 	          + "?useSSL=false";
 	      this.conn = DriverManager.getConnection(url, this.userName, this.password);
-	      this.conn.setAutoCommit(false);
+	      //this.conn.setAutoCommit(false);
 	    } catch (Exception exc) {
 	      System.out.println(exc.getMessage());
 	    }
-	}  */
-
+	}
+	
+	public static boolean isTest() {
+		return isTest;
+	}
+	
+	public static void setTest(boolean isTest) {
+		DBConnection.isTest=isTest;
+	}
+	
 	/**
 	 * Get the instance of the database.
 	 */
@@ -85,47 +67,7 @@ public class DBConnection {
 	/**
 	 * Returns the Connection type object.
 	 */
-	public static synchronized Connection getConn() throws SQLException {
-		Connection connection;
-
-		if (!freeDbConnections.isEmpty()) {
-			connection = (Connection) freeDbConnections.get(0);
-			freeDbConnections.remove(0);
-
-			try {
-				if (connection.isClosed())
-					connection = getConn();
-			} catch (SQLException e) {
-				connection.close();
-				connection = getConn();
-			}
-		} else {
-			connection = createDBConnection();		
-		}
-
-		return connection;
-	}
-	
-	public static synchronized void releaseConnection(Connection connection) throws SQLException {
-		if(connection != null) freeDbConnections.add(connection);
-	}
-	
-	public static boolean isTest() {
-		return isTest;
-	}
-
-
-	public static void setTest(boolean isTest) {
-		DBConnection.isTest = isTest;
-	}
-	
-	
-	
-	
-	
-	
-	
-	/*public Connection getConn() {
+	public synchronized Connection getConn() throws SQLException{
 		return this.conn;
 	}
 
@@ -135,9 +77,10 @@ public class DBConnection {
 	 * @param conn is the variable that contains the object that allows you to connect the database to
 	 * the code.
 	 */
-	public void setConn(Connection conn) {
+	
+	/*public void setConn(Connection conn) {
 	  this.conn = conn;
-	}
+	}*/
 
 	/**
 	 * Get the name of the database.
@@ -218,4 +161,4 @@ public class DBConnection {
 	public void setHostName(String hostName) {
 		this.hostName = hostName;
 	}
-}
+} 

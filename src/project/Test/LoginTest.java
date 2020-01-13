@@ -1,4 +1,4 @@
-package project.Test;
+/*package project.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -117,4 +117,4 @@ public class LoginTest {
 	public void tearDown() throws Exception{
 		DBConnection.setTest(false);
 	}
-}
+}*/
