@@ -89,13 +89,13 @@
 		<% if(req.getState().equalsIgnoreCase("In valutazione")) { %>
 			<div class="row text-center" style="margin-bottom: 25px;">				
 				<div class="column">
-					<a href="/TutoratoSmart/student/requestModify.jsp"><input class="btn btn-primary" id="modifyRequest" type="button" value="Modifica prenotazione"></a>
+					<a href="/TutoratoSmart/student/requestModify.jsp"><input class="btn btn-warning" id="modifyRequest" type="button" value="Modifica prenotazione"></a>
 				</div>
 				<div class="column">
 					<button type="button" class="btn btn-danger" id="deleteButton">Elimina prenotazione</button>
  				</div>
  				<div class="column">
-					<input class="btn btn-primary" type="button" value="Indietro" onClick="history.go(-1);return true;">
+					<input class="btn btn-primary" type="button" id="back" value="Indietro" onClick="history.go(-1);return true;">
 				</div>
 			</div>
 		<% } else {%>
@@ -104,7 +104,7 @@
 					<button type="button" class="btn btn-danger" id="deleteButton">Elimina prenotazione</button>
  				</div>
  				<div class="column" style="width: 50%;">
-					<input class="btn btn-primary" type="button" value="Indietro" onClick="history.go(-1);return true;">
+					<input class="btn btn-primary" type="button" id="back" value="Indietro" onClick="history.go(-1);return true;">
 				</div>
 			</div>		
 		<% } %>
@@ -119,7 +119,7 @@
 			       		</div>
 				        <div class="modal-body">
 				          	<div class="modal-body">
-			          			<p>Procedere con l'eliminazione?</p>
+			          			<h5>Procedere con l'eliminazione?</h5>
 			        		</div>
 			        	</div>
 			        	<div class="modal-footer">

@@ -9,6 +9,7 @@ function deleteRequest(){
 			if (data.result == 1) {
 				$('#deleteButton').attr('disabled','disabled');
 				$('#modifyRequest').attr('disabled','disabled');
+				$('#back').attr('disabled','disabled');
 				$("#successDeleteDiv").fadeIn(500, function() {
 					$("#successDeleteDiv").fadeOut(3000);
 					setTimeout(function() {
@@ -21,6 +22,7 @@ function deleteRequest(){
 					$("#failureDeleteDiv").fadeOut(5000);
 					$('#deleteButton').prop("disabled", false);
 					$('#modifyRequest').prop("disabled", false);
+					$('#back').prop("disabled", false);
 				})
 			}					 
 		});
@@ -65,7 +67,7 @@ function isValidTime(time) {
 	var array = time.val().split(':');	
 	var min = (+array[0]) * 60 + (+array[1]);
 	
-	if (min < 540 || min > 765 && min < 870 || min > 975)
+	if (min < 540 || min > 765 && min < 870 || min > 1000)
 		return false;
 	else
 		return true;
@@ -99,7 +101,8 @@ $("#requestTime").on("change",function(){
 		$.post("/TutoratoSmart/Request", {
 			"date":$(date).val(),
 			"time":$(time).val(),
-			"ajax":"true"
+			"ajax":"true",
+			"modify":"false",
 			},
 			function(data){				
 				if (data.disponibile) {
@@ -114,7 +117,7 @@ $("#requestTime").on("change",function(){
 
 // Verifica campi input ed esegue post registrazione nuova richiesta di appuntamento
 function validateInputsNewRequest() {
-	$("#create").attr('disabled','disabled');
+	$('#create').attr('disabled','disabled');
 	
 	$("#errorDiv").html("");
 	$('#errorDiv').hide();
@@ -188,16 +191,60 @@ function validateInputsNewRequest() {
 }
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Funzioni per la modifica richiesta
+// Controllo modifica data
+$("#requestDateM").on("change",function(){
+	var color = "1px solid red";
+	
+	if (isValidDate($(this)) && validateDate($(this))) 
+		color = "1px solid green";
+	
+	$(this).css("border", color);
+		
+	$("#requestTimeM").val("09:00");
+	$("#requestTimeM").change();
+});
+
+
+// Controllo disponibilità appuntamento presso lo sportello
+$("#requestTimeM").on("change",function(){	
+	var time = $("#requestTimeM");
+	var date = $("#requestDateM");
+	
+	var color = "1px solid red";
+	
+	$(this).css("border",color);
+	
+	if (isValidDate(date) && validateDate(date) && isValidTime(time)) {
+		$.post("/TutoratoSmart/Request", {
+			"date":$(date).val(),
+			"time":$(time).val(),
+			"ajax":"true",
+			"modify":"true",
+			"id":$("#requestId").val(),
+			},
+			function(data){				
+				if (data.disponibile) {
+					color = "1px solid green";					
+					$(time).css("border",color);
+				}
+				
+				available = data.disponibile;
+			});
+	}
+});
+
 // Verifica campi input prima della modifica prenotazione
 function validateInputsModifyRequest() {
 	$("#errorDiv").html("");
 	$('#errorDiv').hide();
-	
+	$('#modifyRequest').attr('disabled','disabled');
 	var valid = true;
 	var errorMessage = "";
 	
-	var date = $("#requestDate");
-	var time = $("#requestTime");
+	var date = $("#requestDateM");
+	var time = $("#requestTimeM");
 	var comment = $("#comment");
 	
 	if (!isValidDate(date)) {
@@ -231,8 +278,8 @@ function validateInputsModifyRequest() {
 			"flag":"3",
 			"id":$("#requestId").val(),
 			"comment":$("#comment").val(),
-			"date":$("#requestDate").val(),
-			"time":$("#requestTime").val(),
+			"date":$("#requestDateM").val(),
+			"time":$("#requestTimeM").val(),
 			},
 			function(data) {
 				$('#resultModal').modal();
@@ -249,6 +296,7 @@ function validateInputsModifyRequest() {
 					$("#failureDiv").show();
 					
 					setTimeout(function() {
+						$('#modifyRequest').prop("disabled", false);
 						$('#resultModal').modal('hide');
 					}, 3000);
 				}					 

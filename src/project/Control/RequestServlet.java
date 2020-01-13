@@ -45,24 +45,53 @@ public class RequestServlet extends HttpServlet {
 				String date = request.getParameter("date");
 				String time = request.getParameter("time");
 				
-				boolean available = false;
-				
 				if (date != null && date != "" && time != null && time != "") {
 					Date requestDate = Date.valueOf(date);
 					int requestTime = Utils.getTimeAsInt(time);
 					
-					available = requestDAO.isAvailable(requestDate, requestTime);
+					response.setContentType("application/json");
+					response.setCharacterEncoding("UTF-8");
+					
+					boolean available = false;
+					
+					boolean modify = Boolean.parseBoolean(request.getParameter("modify"));
+					
+					if(modify) {														// Controllo altre richieste registrate, diverse da quella in modifica
+						int requestId = Integer.parseInt(request.getParameter("id"));
+						
+						try {
+							available = requestDAO.differentRequestRegistered(requestDate, requestTime, requestId);
+							obj.put("disponibile", available);
+						} catch (JSONException e) {
+							e.printStackTrace();
+							return;
+						} catch (SQLException e) {
+							e.printStackTrace();
+							return;
+						}
+						
+						response.getWriter().write(obj.toString());
+						return;
+					}
+					else {																// Controllo altre richieste registrate
+						try {
+							available = requestDAO.isAvailable(requestDate, requestTime);
+							obj.put("disponibile", available);
+						} catch (SQLException e) {
+							e.printStackTrace();
+							return;
+						} catch (JSONException e) {
+							e.printStackTrace();
+							return;
+						}
+						
+						response.getWriter().write(obj.toString());
+						return;
+					}
 				}
-								
-				response.setContentType("application/json");
-				response.setCharacterEncoding("UTF-8");
-				
-				obj.put("disponibile", available);
+				obj.put("disponibile", false);
 				
 				response.getWriter().write(obj.toString());
-				return;
-			} catch(SQLException e) { 
-				response.sendRedirect("home.jsp");						// Errore query
 				return;
 			} catch(JSONException e) {
 				response.sendRedirect("home.jsp"); 						// Errore parser json

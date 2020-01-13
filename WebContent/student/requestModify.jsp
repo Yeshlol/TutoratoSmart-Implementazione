@@ -16,18 +16,6 @@
 <body>
 	<%@ include file="/partials/header.jsp" %>
 	
-	<div class="modal fade" id="resultModal" role="dialog">
-		 <div class="vertical-alignment-helper">
-        	<div class="modal-dialog vertical-align-center">
-            	<div class="modal-content">
-		      		<div class="modal-body">
-			        	<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Modifica prenotazione completata con successo!</div>
-			        	<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Modifica prenotazione fallita!</div>
-			      	</div>
-		    	</div>
-		  	</div>
-		</div>
-	</div>
 	
 	<div class="content text-center" style="width: 50%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
 		<div class="panel">
@@ -42,12 +30,12 @@
 				
 				<div class="row">
 					<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-			  			<label for="requestDate" class="control-label">Selezionare la data</label>
-			  			<input type="date" id="requestDate" class="form-control" value="<%= req.getRequestDate() %>">
+			  			<label for="requestDateM" class="control-label">Selezionare la data</label>
+			  			<input type="date" id="requestDateM" class="form-control" value="<%= req.getRequestDate() %>">
 					</div>
 					<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-			  			<label for="requestTime" class="control-label">Selezionare l'orario</label>
-			  			<input type="time" id="requestTime" class="form-control" min="09:00" max="16:45" step="900" value="<%= Utils.getTimeAsString(req.getRequestTime() + 60) %>">
+			  			<label for="requestTimeM" class="control-label">Selezionare l'orario</label>
+			  			<input type="time" id="requestTimeM" class="form-control" min="09:00" max="16:40" step="900" value="<%= Utils.getTimeAsString(req.getRequestTime()) %>">
 			  		</div>
 			  	</div>
 			</div>	
@@ -57,8 +45,11 @@
 	  		<br>
 							
 			<div class="panel"></div>
+			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Modifica prenotazione completata con successo!</div>
+			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Modifica prenotazione fallita!</div>
+			      	
 			<div>
-				<input class="btn btn-primary" id="createRequest" type="button" onclick="validateInputsModifyRequest()" value="Prenota">		        	
+				<input class="btn btn-primary" id="modifyRequest" type="button" onclick="validateInputsModifyRequest()" value="Modifica">		        	
 	        </div>
 		</div>
 	</div>
@@ -70,9 +61,7 @@
 		$(document).ready( function() {
 			var now = new Date();
 			now.setHours(now.getHours() + 1 );
-			
-			$("#requestDate").change();
-			
+						
 			var dd = now.getDate();
 			var mm = now.getMonth() + 1;
 			var yyyy = now.getFullYear();
@@ -84,9 +73,9 @@
 			} 
 			today = yyyy + '-' + mm + '-' + dd;
 			
-			document.getElementById("requestDate").setAttribute("min", today);
+			document.getElementById("requestDateM").setAttribute("min", today);
 									
-			$("#requestTime").change();
+			$("#requestTimeM").change();
 		});
 	</script>
 

@@ -326,21 +326,21 @@ public class RequestDAO  {
 			preparedStatement.setDate(1, requestDate);
 			preparedStatement.setInt(2, requestTime);
 			
-			//System.out.println("Request isAvailable: " + preparedStatement.toString());
+			System.out.println("Request isAvailable: " + preparedStatement.toString());
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.wasNull()) {
-				//System.out.println("Errore esecuzione query!");
+				System.out.println("Errore esecuzione query!");
 				return false;
 	        } else {
 	        	int count = rs.last() ? rs.getRow() : 0;
-	            if (count == 1) {
-	            	//System.out.println("Orario non disponibile! Esiste già una prenotazione!");
+	            if (count != 0) {
+	            	System.out.println("Orario non disponibile! Esiste già una prenotazione!");
 	            	return false;
 	            }
 	            else {
-	            	//System.out.println("Orario disponibile!");
+	            	System.out.println("Orario disponibile!");
 	            	return true;
 	            }
 	        }
@@ -355,6 +355,47 @@ public class RequestDAO  {
 	}
 
 
+	public boolean differentRequestRegistered(Date requestDate, int requestTime, int requestId) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		String deleteSql = "SELECT IdRequest FROM REQUEST WHERE RequestDate = ? AND ? BETWEEN RequestTime AND RequestTime+Duration AND IdRequest != ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(deleteSql);
+			preparedStatement.setDate(1, requestDate);
+			preparedStatement.setInt(2, requestTime);
+			preparedStatement.setInt(3, requestId);
+			
+			System.out.println("Request isAvailableModify: " + preparedStatement.toString());
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			if (rs.wasNull()) {
+				System.out.println("Errore esecuzione query!");
+				return false;
+	        } else {
+	        	int count = rs.last() ? rs.getRow() : 0;
+	            if (count != 0) {
+	            	System.out.println("Orario non disponibile! Esiste già una prenotazione!");
+	            	return false;
+	            }
+	            else {
+	            	System.out.println("Orario disponibile!");
+	            	return true;
+	            }
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}
+		return false;
+	}
+	
+	
 	public void confirmAppointment(int idRequest) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
