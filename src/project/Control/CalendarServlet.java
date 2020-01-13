@@ -42,6 +42,7 @@ public class CalendarServlet extends HttpServlet {
 		
 		int flag = Integer.parseInt(request.getParameter("flag"));	// Flag passato nello script calendarScript: 
 																	// 1 = caricamento richieste di appuntamento per calendario (lato tutor)
+																	// 2 = caricamento richieste di appuntamento per calendario (lato studente)
 
 		if (flag == 1) {				
 			Collection<RequestBean> requests = calendar.getRequests();
@@ -77,9 +78,38 @@ public class CalendarServlet extends HttpServlet {
 	                else if(bean.getState().equals("Accettata"))
 	                	ce.setColor("green");
 	                else if(bean.getState().equals("Appuntamento effettuato"))
-	                	ce.setColor("#232F3E");
+	                	ce.setColor("#547094");
 	                else
 	                	ce.setColor("red");
+	                events.add(ce);
+				}
+				
+				response.setContentType("application/json");
+		        response.setCharacterEncoding("UTF-8");
+		        PrintWriter out = response.getWriter();
+		        out.write(new Gson().toJson(events));
+		        calendar.reset();
+		        return;
+			}
+		}
+		else if (flag == 2) {						
+			Collection<RequestBean> requests = calendar.getRequests();
+			List<CalendarEvent> events = new ArrayList<CalendarEvent>();
+			
+			if(requests != null && !requests.isEmpty()) {		// Richieste di appuntamento
+				Iterator<?> it = requests.iterator();
+				
+				while(it.hasNext()) {
+					RequestBean bean = (RequestBean)it.next();
+										
+					String startTime = "T" + Utils.getTimeAsString(bean.getRequestTime());
+					String finishTime = "T" + Utils.getTimeAsString(bean.getRequestTime() + bean.getDuration());
+															
+					CalendarEvent ce = new CalendarEvent();
+	                ce.setTitle("Appuntamento");
+	                ce.setStart(bean.getRequestDate() + startTime);
+	                ce.setEnd(bean.getRequestDate() + finishTime);
+	                ce.setColor("#547094");
 	                events.add(ce);
 				}
 				

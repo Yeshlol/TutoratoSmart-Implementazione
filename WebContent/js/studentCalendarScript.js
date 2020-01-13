@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		    url: '/TutoratoSmart/Calendar',
 		    method: 'POST',
 		    extraParams: {
-		        flag: '1'
+		        flag: '2',
 		    },
 		    data: {
                 start: 'start',
