@@ -260,6 +260,10 @@ public class ActivityServlet extends HttpServlet {
 				String description = request.getParameter("description");
 				int id = Integer.parseInt(request.getParameter("id"));
 				String tutorMail = user.getEmail();
+				
+				if(description.length() == 0 || description.length() > 240) {
+					throw new IllegalArgumentException("Lunghezza commento non valida");
+				}
 										
 				int start = Utils.getTimeAsInt(startTime);
 				int finish = Utils.getTimeAsInt(finishTime);
