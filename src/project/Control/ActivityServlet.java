@@ -183,17 +183,17 @@ public class ActivityServlet extends HttpServlet {
 			String finishTime = request.getParameter("finishTime");
 			String description = request.getParameter("description");
 			String tutorMail = user.getEmail();
-									
+			
+			System.out.println("startTime = " + startTime);
+			
+			if(description.length() == 0 || description.length() > 240) {
+				throw new IllegalArgumentException("Lunghezza commento non valida");
+			}
+			
 			int start = Utils.getTimeAsInt(startTime);
 			int finish = Utils.getTimeAsInt(finishTime);
 			float hours = (finish - start) / 60.f;
-			
-	   		
-		if(description.length()> 240) {
-			throw new IllegalArgumentException("Commento troppo lungo");
-		}
-			
-						
+									
 			ActivityTutorBean activityBean = new ActivityTutorBean();
 			
 			activityBean.setCategory(category);
