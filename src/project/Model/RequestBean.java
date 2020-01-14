@@ -6,7 +6,6 @@ import java.sql.Date;
 
 /**
  * Questa classe rappresenta l'entità Richiesta.
- * @author 
  */
 public class RequestBean implements Serializable {
 	private static final long serialVersionUID = -1814614838729922562L;

@@ -11,11 +11,19 @@ import java.util.LinkedList;
 
 import project.Control.DBConnection;
 
+/**
+ * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Attività.
+ */
 public class ActivityTutorDAO  {		
 	public ActivityTutorDAO() {
 		super();
 	}
 
+	/** 
+	 * @param
+	 * @return un ArrayList di tutte le attività registrate nel database
+	 * @throws SQLException
+	 */
 	public synchronized ArrayList<ActivityTutorBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		ArrayList<ActivityTutorBean> activityList = new ArrayList<ActivityTutorBean>();
@@ -42,7 +50,11 @@ public class ActivityTutorDAO  {
 		return activityList;
 	}
 
-	
+	/**
+	 * @param id
+	 * @return un'attività, tramite id, registrata nel database
+	 * @throws SQLException
+	 */
 	public ActivityTutorBean doRetrieveById(int id) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -82,7 +94,14 @@ public class ActivityTutorDAO  {
 		return bean;
 	}
 	
-	
+	/**
+	 * @param tutorMail
+	 * @param activityDate
+	 * @param start
+	 * @param finish
+	 * @return un booleano per controllare la presenza di un'attività registrata nel database
+	 * @throws SQLException
+	 */
 	public boolean anyActivityRegistered(String tutorMail, Date activityDate, int start, int finish) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -128,7 +147,11 @@ public class ActivityTutorDAO  {
 		return false;
 	}
 	
-	
+	/** 
+	 * @param activity
+	 * @return un intero per il salvataggio di un'attività nel database
+	 * @throws SQLException
+	 */
 	@SuppressWarnings("resource")
 	public synchronized int doSave(ActivityTutorBean activity) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -174,7 +197,11 @@ public class ActivityTutorDAO  {
 		return idActivity;
 	}
 	
-		
+	/** 
+	 * @param bean
+	 * @return
+	 * @throws SQLException
+	 */
 	public synchronized void doModify(ActivityTutorBean bean) throws SQLException {		
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -204,7 +231,11 @@ public class ActivityTutorDAO  {
 		}		
 	}
 
-
+	/** 
+	 * @param activity
+	 * @return un booleano per controllare la cancellazione di un'attività nel database
+	 * @throws SQLException
+	 */
 	public synchronized boolean doDelete(ActivityTutorBean activity) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -245,7 +276,12 @@ public class ActivityTutorDAO  {
 		return (result!=0);		
 	}
 
-	
+	/** 
+	 * @param order
+	 * @param tutorMail
+	 * @return una Collection di attività, tramite mail, registrate nel database
+	 * @throws SQLException
+	 */
 	public Collection<ActivityTutorBean> doRetrieveAllByMail(String order, String tutorMail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -286,7 +322,15 @@ public class ActivityTutorDAO  {
 		return list;
 	}
 
-
+	/** 
+	 * @param tutorMail
+	 * @param activityId
+	 * @param activityDate
+	 * @param start
+	 * @param finish
+	 * @return un booleano per controllare differenti attività registrate nel database
+	 * @throws SQLException
+	 */
 	public boolean differentActivityRegistered(String tutorMail, int activityId, Date activityDate, int start, int finish) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;

@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 /**
  * Questa classe rappresenta l'associazione Gestione tra l'entita Richiesta e l'entita Tutor.
- * @author 
  */
 public class ManagesBean implements Serializable {
 	private static final long serialVersionUID = 9006955833783450405L;

@@ -12,11 +12,19 @@ import java.util.LinkedList;
 import project.Control.DBConnection;
 import project.Utils.Utils;
 
+/**
+ * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Studenti.
+ */
 public class StudentDAO  {		
 	public StudentDAO() {
 		super();
 	}
 	
+	/** 
+	 * @param
+	 * @return un ArrayList di tutti gli studenti registrati nel database
+	 * @throws SQLException
+	 */
 	public synchronized ArrayList<StudentBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		ArrayList<StudentBean> tutorList = new ArrayList<StudentBean>();
@@ -42,7 +50,11 @@ public class StudentDAO  {
 		return tutorList;
 	}
 
-	
+	/** 
+	 * @param mail
+	 * @return uno studente, tramite mail, registrato nel database
+	 * @throws SQLException
+	 */
 	public synchronized StudentBean doRetrieveByMail(String mail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -88,7 +100,11 @@ public class StudentDAO  {
 		return bean;
 	}
 	
-	
+	/** 
+	 * @param bean
+	 * @return
+	 * @throws SQLException
+	 */
 	@SuppressWarnings("resource")
 	public synchronized void doSave(StudentBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -128,7 +144,13 @@ public class StudentDAO  {
 		}	
 	}
 	
-	
+	/** 
+	 * @param order
+	 * @param startResearchDate
+	 * @param finishReasearchDate
+	 * @return una Collection di studenti, tramite date di inizio e di fine, registrati nel database
+	 * @throws SQLException
+	 */
 	public synchronized Collection<StudentBean> doRetrieveAllByDates(String order, Date startResearchDate, Date finishResearchDate) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;

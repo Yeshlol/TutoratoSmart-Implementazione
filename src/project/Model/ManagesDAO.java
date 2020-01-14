@@ -8,12 +8,19 @@ import java.util.ArrayList;
 
 import project.Control.DBConnection;
 
+/**
+ * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Gestione.
+ */
 public class ManagesDAO {
 	public ManagesDAO() {
 		super();
 	}
 	
-	
+	/** 
+	 * @param
+	 * @return un ArrayList di tutte le gestioni registrate nel database
+	 * @throws SQLException
+	 */
 	public synchronized ArrayList<ManagesBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		ArrayList<ManagesBean>managesList = new ArrayList<ManagesBean>();
@@ -32,6 +39,11 @@ public class ManagesDAO {
 		return managesList;
 	}
 	
+	/** 
+	 * @param bean
+	 * @return 
+	 * @throws SQLException
+	 */
 	public synchronized void doSave(ManagesBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement=null;

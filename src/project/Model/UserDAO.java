@@ -9,13 +9,20 @@ import java.util.ArrayList;
 import project.Control.DBConnection;
 import project.Utils.Utils;
 
+/**
+ * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Utente.
+ */
 public class UserDAO  {
 
 	public UserDAO() {
 		super();
 	}
 	
-	
+	/** 
+	 * @param
+	 * @return un ArrayList di tutti gli utente registrati nel database
+	 * @throws SQLException
+	 */
 	public synchronized ArrayList<UserBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		ArrayList<UserBean> userList = new ArrayList<UserBean>();
@@ -37,10 +44,14 @@ public class UserDAO  {
 			userList.add(bean);
 		}
 		return userList;
-		
 	}
 	
 
+	/** 
+	 * @param mail
+	 * @return un utente, tramite mail, registrato nel database
+	 * @throws SQLException
+	 */
 	public synchronized UserBean doRetrieveByMail(String mail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -86,7 +97,11 @@ public class UserDAO  {
 		return bean;
 	}
 	
-	
+	/** 
+	 * @param bean
+	 * @return
+	 * @throws SQLException
+	 */
 	public synchronized void doSave(UserBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;

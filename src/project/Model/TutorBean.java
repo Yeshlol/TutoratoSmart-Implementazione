@@ -5,7 +5,6 @@ import java.sql.Date;
 
 /**
  * Questa classe rappresenta l'entità Tutor.
- * @author 
  */
 public class TutorBean extends UserBean implements Serializable {
 	private static final long serialVersionUID = 4408007616136291300L;

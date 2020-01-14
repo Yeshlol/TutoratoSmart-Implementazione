@@ -8,11 +8,19 @@ import java.util.ArrayList;
 
 import project.Control.DBConnection;
 
+/**
+ * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Registro.
+ */
 public class RegisterDAO  {		
 	public RegisterDAO() {
 		super();
 	}
 
+	/** 
+	 * @param
+	 * @return un ArrayList di tutti i registri registrati nel database
+	 * @throws SQLException
+	 */
 	public synchronized ArrayList<RegisterBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		ArrayList<RegisterBean> registerList = new ArrayList<RegisterBean>();
@@ -32,6 +40,11 @@ public class RegisterDAO  {
 		return registerList;
 	}
 	
+	/** 
+	 * @param id
+	 * @return un registro, tramite id, registrato nel database
+	 * @throws SQLException
+	 */
 	public synchronized RegisterBean doRetrieveById(int id) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -66,7 +79,11 @@ public class RegisterDAO  {
 		return bean;
 	}
 	
-	
+	/** 
+	 * @param totalHours
+	 * @return un intero per il salvataggio di un registro nel database
+	 * @throws SQLException
+	 */
 	@SuppressWarnings("resource")
 	public synchronized int doSave(int totalHours) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -102,7 +119,11 @@ public class RegisterDAO  {
 		return idRegister;
 	}
 		
-	
+	/** 
+	 * @param bean
+	 * @return
+	 * @throws SQLException
+	 */
 	public synchronized void doUpdate(RegisterBean bean) throws SQLException {		
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;

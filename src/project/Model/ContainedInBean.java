@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * Questa classe rappresenta l'associazione tra l'entita Attività e l'entita Appuntamento.
- * @author 
  */
 public class ContainedInBean implements Serializable {
 	private static final long serialVersionUID = 1487359154874662002L;

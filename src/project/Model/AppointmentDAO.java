@@ -11,11 +11,20 @@ import java.util.LinkedList;
 
 import project.Control.DBConnection;
 
+/**
+ * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Appuntamento.
+ *
+ */
 public class AppointmentDAO  {		
 	public AppointmentDAO() {
 		super();
 	}
-  
+	
+	/** 
+	 * @param
+	 * @return un ArrayList di tutti gli appuntamenti registrati nel database
+	 * @throws SQLException
+	 */
 	public synchronized ArrayList<AppointmentBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		ArrayList<AppointmentBean> appointmentList = new ArrayList<AppointmentBean>();
@@ -35,7 +44,11 @@ public class AppointmentDAO  {
 		return appointmentList;
 	}
 
-	
+	/** 
+	 * @param id
+	 * @return un appuntamento, tramite id, registrato nel database
+	 * @throws SQLException
+	 */
 	public AppointmentBean doRetrieveById(int id) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -67,7 +80,11 @@ public class AppointmentDAO  {
 		return bean;
 	}
 	
-	
+	/** 
+	 * @param bean
+	 * @return  un intero per il salvataggio di un appuntamento nel database
+	 * @throws SQLException
+	 */
 	@SuppressWarnings("resource")
 	public synchronized int doSave(AppointmentBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -111,7 +128,11 @@ public class AppointmentDAO  {
 		return idAppointment;
 	}
 		
-	
+	/** 
+	 * @param bean
+	 * @return
+	 * @throws SQLException
+	 */
 	public synchronized void doModify(AppointmentBean bean) throws SQLException {		
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -142,7 +163,11 @@ public class AppointmentDAO  {
 		}		
 	}
 
-
+	/** 
+	 * @param bean
+	 * @return un booleano per controllare la cancellazione di un appuntamento nel database
+	 * @throws SQLException
+	 */
 	public synchronized boolean doDelete(AppointmentBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -166,7 +191,11 @@ public class AppointmentDAO  {
 		return (result!=0);		
 	}
 
-
+	/** 
+	 * @param requestId
+	 * @return un appuntamento, tramite requestId, registrato nel database
+	 * @throws SQLException
+	 */
 	public AppointmentBean doRetrieveByRequestId(int requestId) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -194,6 +223,15 @@ public class AppointmentDAO  {
 		return bean;
 	}
 
+	/** 
+	 * @param order
+	 * @param tutorMail
+	 * @param requestDate
+	 * @param startTime
+	 * @param finishTime
+	 * @return una Collection di appuntamenti, tramite la data, registrati nel database
+	 * @throws SQLException
+	 */
 	public Collection<AppointmentBean> doRetrieveAllByDate (String order, String tutorMail, Date requestDate, int startTime, int finishTime) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -233,6 +271,11 @@ public class AppointmentDAO  {
 		return list;
 	}
 	
+	/** 
+	 * @param tutorMail
+	 * @return una Collection di appuntamenti, tramite mail del tutor, registrati nel database
+	 * @throws SQLException
+	 */
 	public Collection<AppointmentBean> doRetrieveAllByTutor (String tutorMail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;

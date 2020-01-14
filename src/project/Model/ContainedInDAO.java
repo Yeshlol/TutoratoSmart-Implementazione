@@ -10,11 +10,19 @@ import java.util.LinkedList;
 
 import project.Control.DBConnection;
 
+/**
+ * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti ContainedIn.
+ */
 public class ContainedInDAO {
 	public ContainedInDAO() {
 		super();
 	}
-	
+
+	/** 
+	 * @param
+	 * @return un ArrayList di tutti i ContainedIn registrati nel database
+	 * @throws SQLException
+	 */
 	public synchronized ArrayList<ContainedInBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		ArrayList<ContainedInBean> containedInList = new ArrayList<ContainedInBean>();
@@ -33,7 +41,11 @@ public class ContainedInDAO {
 		return containedInList;
 	}
 	
-	
+	/** 
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	public synchronized void doDeleteByActivityId(int id) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -56,6 +68,11 @@ public class ContainedInDAO {
 		}
 	}
 	
+	/** 
+	 * @param id
+	 * @return una Collection di appuntamenti, tramite l'id, registrati nel database
+	 * @throws SQLException
+	 */
 	public synchronized Collection<AppointmentBean> doRetrieveByActivityId(int id) throws SQLException {
 		Collection<AppointmentBean> list = new LinkedList<AppointmentBean>();
 				
@@ -89,7 +106,11 @@ public class ContainedInDAO {
 		return list;
 	}
 		
-	
+	/** 
+	 * @param appointmentId
+	 * @return un ContainedIn, tramite id, registrati nel database
+	 * @throws SQLException
+	 */
 	public synchronized ContainedInBean doRetrieveByAppointmentId (int appointmentId) throws SQLException {
 		ContainedInBean bean = new ContainedInBean();
 				
@@ -116,7 +137,11 @@ public class ContainedInDAO {
 		return bean;
 	}
 	
-
+	/** 
+	 * @param bean
+	 * @return
+	 * @throws SQLException
+	 */
 	public synchronized void doSave(ContainedInBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement=null;
@@ -140,7 +165,11 @@ public class ContainedInDAO {
 		}		
 	}
 	
-
+	/** 
+	 * @param bean
+	 * @return un booleano per controllare la cancellazione di un ContainedIn nel database
+	 * @throws SQLException
+	 */
 	public boolean doDelete(ContainedInBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;

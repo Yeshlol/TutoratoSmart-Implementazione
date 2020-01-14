@@ -10,11 +10,19 @@ import java.util.LinkedList;
 
 import project.Control.DBConnection;
 
+/**
+ * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Valida.
+ */
 public class ValidatesDAO {
 	public ValidatesDAO() {
 		super();
 	}
 	
+	/** 
+	 * @param tutorMail
+	 * @return un ArrayList di tutte le validazioni registrate nel database
+	 * @throws SQLException
+	 */
 	public synchronized ArrayList<ValidatesBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		ArrayList<ValidatesBean> validatesList = new ArrayList<ValidatesBean>();
@@ -34,6 +42,11 @@ public class ValidatesDAO {
 		return validatesList;
 	}
 
+	/** 
+	 * @param commissionMemberMail
+	 * @return una Collection di attività, tramite mail del membro della commissione, registrate nel database
+	 * @throws SQLException
+	 */
 	public synchronized Collection<ActivityTutorBean> doRetrieveByCommissionMember(String commissionMemberMail) throws SQLException {
 		Collection<ActivityTutorBean> list = new LinkedList<ActivityTutorBean>();
 				
@@ -73,7 +86,11 @@ public class ValidatesDAO {
 		return list;
 	}
 	
-
+	/** 
+	 * @param bean
+	 * @return
+	 * @throws SQLException
+	 */
 	@SuppressWarnings("resource")
 	public synchronized void doSave(ValidatesBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -126,6 +143,11 @@ public class ValidatesDAO {
 		}		
 	}
 
+	/** 
+	 * @param idActivity
+	 * @return
+	 * @throws SQLException
+	 */
 	public void doDelete(int idActivity) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		
