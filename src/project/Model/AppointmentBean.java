@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * Questa classe rappresenta l'entità Appuntamento.
- * @author 
  */
 public class AppointmentBean implements Serializable {
 	private static final long serialVersionUID = -680124132381248316L;

@@ -12,12 +12,19 @@ import java.util.LinkedList;
 import project.Control.DBConnection;
 import project.Utils.Utils;
 
+/**
+ * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Tutor
+ */
 public class TutorDAO  {		
 	public TutorDAO() {
 		super();
 	}
 
-	
+	/** 
+	 * @param 
+	 * @return un ArrayList di tutti i tutor registrati nel database
+	 * @throws SQLException
+	 */
 	public synchronized ArrayList<TutorBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		ArrayList<TutorBean> tutorList = new ArrayList<TutorBean>();
@@ -47,7 +54,11 @@ public class TutorDAO  {
 		return tutorList;
 	}
 	
-	
+	/** 
+	 * @param mail
+	 * @return un tutor, tramite mail, registrato nel database
+	 * @throws SQLException
+	 */
 	public synchronized TutorBean doRetrieveByMail(String mail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -95,7 +106,12 @@ public class TutorDAO  {
 		return bean;
 	}
 	
-	
+	/** 
+	 * @param bean
+	 * @param totalHours
+	 * @return
+	 * @throws SQLException
+	 */
 	@SuppressWarnings("resource")
 	public synchronized void doSave(TutorBean bean, int totalHours) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -142,7 +158,13 @@ public class TutorDAO  {
 		}	
 	}
 	
-	
+	/** 
+	 * @param order
+	 * @param startResearchDate
+	 * @param finishResearchDate
+	 * @return una Collection di tutor, tramite date di inizio e di fine, registrati nel database
+	 * @throws SQLException
+	 */
 	public synchronized Collection<TutorBean> doRetrieveAllByDates(String order, Date startResearchDate, Date finishResearchDate) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -186,7 +208,11 @@ public class TutorDAO  {
 		return list;
 	}
 	
-	
+	/** 
+	 * @param order
+	 * @return una Collection di tutor, tramite le attività, registrati nel database
+	 * @throws SQLException
+	 */
 	public synchronized Collection<TutorBean> doRetrieveAllActive(String order) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;

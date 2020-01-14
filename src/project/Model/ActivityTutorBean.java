@@ -5,7 +5,6 @@ import java.sql.Date;
 
 /**
  * Questa classe rappresenta l'entità Attività.
- * @author 
  */
 public class ActivityTutorBean implements Serializable {
 	private static final long serialVersionUID = 8213234379677788321L;

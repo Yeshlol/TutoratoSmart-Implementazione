@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * Questa classe rappresenta l'associazione Valida tra l'entita Attività e l'entita Utente.
- * @author 
  */
 public class ValidatesBean implements Serializable {
 	private static final long serialVersionUID = -8762723026814198860L;
