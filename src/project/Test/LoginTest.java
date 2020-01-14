@@ -1,4 +1,4 @@
-/*package project.Test;
+package project.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,100 +23,118 @@ public class LoginTest {
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;
 	
-	//CONTROLLARE MESSAGGI
-	final String message = "Formato errato dati";
-	final String successMessage="successo";
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		servlet=new LoginServlet();
+		servlet = new LoginServlet();
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
 		DatabaseHelper.initializeDatabase();
 	}
+	
+	@AfterEach
+	void tearDown() throws Exception {
+		DatabaseHelper.resetDatabase();
+		DBConnection.setTest(false);
+	}
 
-	//TC_1.0_1 Lunghezza email insufficiente
+	//TC_1.0_1 Lunghezza email == 0
 	@Test
-	public void testCase_1() throws ServletException, IOException {
-		request.addParameter("Email", "@studenti.unicampania.it");
-		request.addParameter("Password", "M12345678");
+	public void testCase_1_0_1() throws ServletException, IOException {
+		request.addParameter("email", "");
+		request.addParameter("password", "M12345678");
 		
-		servlet.doPost(request, response);
+		final String message = "Lunghezza email non valida";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
 
-		assertEquals(message, response.getContentAsString());
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
 	}
-
-	//TC_1.0_2 Lunchezza email non corretta
+	
+	//TC_1.0_2 Lunghezza email > 45
 	@Test
-	public void testCase_2() throws ServletException, IOException {
-		request.addParameter("Email", "a.olivieriabcdertghilp@studenti.unicampania.it");
-		request.addParameter("Password", "M12345678");
+	public void testCase_1_0_2() throws ServletException, IOException {
+		request.addParameter("email", "a.olivieriabcdertghilp@studenti.unicampania.it");
+		request.addParameter("password", "M12345678");
+		
+		final String message = "Lunghezza email non valida";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
 
-		servlet.doPost(request, response);
-
-		assertEquals(message, response.getContentAsString());
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
 	}
-
+	
 	//TC_1.0_3 Formato email errato
 	@Test
-	public void testCase_3() throws ServletException, IOException {
-		request.addParameter("Email", "a.olivieri@studenti.unisa.it");
-		request.addParameter("Password", "M12345678");
+	public void testCase_1_0_3() throws ServletException, IOException {
+		request.addParameter("email", "a.olivieri@studenti.unisa.it");
+		request.addParameter("password", "M12345678");
 
+		final String message = "Formato email non valido";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
 
-		servlet.doPost(request, response);
-
-		assertEquals(message, response.getContentAsString());
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
 	}
 
-	//TC_1.0_4 Lunghezza password insufficiente
+	//TC_1.0_4 Lunghezza password < 8
 	@Test
-	public void testCase_4() throws ServletException, IOException {
-		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
-		request.addParameter("Password", "M12345");
+	public void testCase_1_0_4() throws ServletException, IOException {
+		request.addParameter("email", "a.olivieri@studenti.unicampania.it");
+		request.addParameter("password", "M12345");
 
-		servlet.doPost(request, response);
+		final String message = "Lunghezza password non valida";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
 
-		assertEquals(message, response.getContentAsString());
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
 	}
 
-	//TC_1.0_5 Lunghezza password non corretta
+	//TC_1.0_5 Lunghezza password > 10
 	@Test
-	public void testCase_5() throws ServletException, IOException {
-		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
-		request.addParameter("Password", "M1234567890");
+	public void testCase_1_0_5() throws ServletException, IOException {
+		request.addParameter("email", "a.olivieri@studenti.unicampania.it");
+		request.addParameter("password", "M1234567890");
 
-		servlet.doPost(request, response);
+		final String message = "Lunghezza password non valida";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
 
-		assertEquals(message, response.getContentAsString());
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
 	}
 
 
 	//TC_1.0_6 Formato password non corretto
 	@Test
-	public void testCase_6() throws ServletException, IOException {
-		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
-		request.addParameter("Password", "123456789");
+	public void testCase_1_0_6() throws ServletException, IOException {
+		request.addParameter("email", "a.olivieri@studenti.unicampania.it");
+		request.addParameter("password", "123456789");
 
-		servlet.doPost(request, response);
+		final String message = "Formato password non valido";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
 
-		assertEquals(message, response.getContentAsString());
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
 	}
-
 	
 	//TC_1.0.7 Successo
 	@Test
-	public void testCase_7() throws ServletException, IOException {
-		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
-		request.addParameter("Password", "M12345678");
+	public void testCase_1_0_7() throws ServletException, IOException, JSONException {
+		request.addParameter("email", "m.pisciotta@studenti.unicampania.it");
+		request.addParameter("password", "M12345678");
 
 		servlet.doPost(request, response);
-
-		assertEquals(successMessage, (String) request.getAttribute("result"));
+		
+		String content = response.getContentAsString();
+		JSONObject jsonObj = new JSONObject(content);
+		int result = (int) jsonObj.get("result");
+		
+		assertEquals(result, 1);
 	}
-
-	@AfterEach
-	public void tearDown() throws Exception{
-		DBConnection.setTest(false);
-	}
-}*/
+}

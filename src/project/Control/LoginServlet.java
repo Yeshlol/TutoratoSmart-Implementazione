@@ -43,19 +43,42 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("password");
-
-		UserDAO userDAO = new UserDAO();
-		UserBean user = null;
-		request.getSession().invalidate();
-		HttpSession session = request.getSession(true);
+		
 		JSONObject obj = new JSONObject();
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 				
+		if (email.length() == 0 || email.length() > 45) {
+			throw new IllegalArgumentException("Lunghezza email non valida");
+	    }
+		
+		String mailFormat1 = "\\w+([\\.-]?\\w+)*@studenti.unicampania.it";
+		String mailFormat2 = "\\w+([\\.-]?\\w+)*@commissione.unicampania.it";
+		String mailFormat3 = "\\w+([\\.-]?\\w+)*@unicampania.it";
+		
+		if (!(email.matches(mailFormat1) || email.matches(mailFormat2) || email.matches(mailFormat3))) {
+			throw new IllegalArgumentException("Formato email non valido");
+		}
+	   		
+		if(pwd.length() < 8 || pwd.length() > 10) {
+			throw new IllegalArgumentException("Lunghezza password non valida");
+		}
+		
+		String passwordFormat = "(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,10}";
+		
+		if (!pwd.matches(passwordFormat)) {
+			throw new IllegalArgumentException("Formato password non valido");
+		}
+		
+		UserDAO userDAO = new UserDAO();
+		UserBean user = null;
+		request.getSession().invalidate();
+		HttpSession session = request.getSession(true);
+						
 		synchronized (session) {
 			try {
 				user = userDAO.doRetrieveByMail(email);
@@ -68,14 +91,15 @@ public class LoginServlet extends HttpServlet {
 				}
 				else {
 					obj.put("result", 2);
+					throw new IllegalArgumentException("Utente non trovato");
 				}
 			} catch (SQLException e) {
 				try {
 					obj.put("result", 2);
+					e.printStackTrace();
 				} catch (JSONException e1) {
 					e1.printStackTrace();
-				}
-				e.printStackTrace();
+				}				
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
