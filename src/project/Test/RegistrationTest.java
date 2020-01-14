@@ -1,4 +1,4 @@
-/*package project.Test;
+package project.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -112,7 +112,8 @@ public class RegistrationTest {
 
 		assertEquals(message, response.getContentAsString());
 	}
-
+}
+/*
 
 	//TC_2.0_6 Formato nome non corretto
 	@Test
