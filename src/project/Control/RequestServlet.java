@@ -17,7 +17,6 @@ import org.json.JSONObject;
 import project.Model.RequestBean;
 import project.Model.RequestDAO;
 import project.Model.UserBean;
-import project.Model.UserDAO;
 import project.Utils.Utils;
 
 /**
@@ -129,17 +128,29 @@ public class RequestServlet extends HttpServlet {
 			UserBean user = (UserBean) request.getSession().getAttribute("user");
 			
 			String stringDate = request.getParameter("date");
-			if(stringDate.length()==0) {
-				throw new IllegalArgumentException("Non è stato selezionato il giorno");
-			}
-			Date date = Date.valueOf(stringDate);
-			if(comment.length()>240) {
-				throw new IllegalArgumentException("Lunghezza Commento troppo grande");
-			}
 			
 			if(time.length()==0) {
 				throw new IllegalArgumentException("Non è stato selezionato l'orario");
 			}
+			int tempo=Integer.parseInt(time);
+			if(tempo<540 || ((tempo==765 || tempo > 765) && (tempo==870 || tempo < 870)) || tempo > 1000){
+				throw new IllegalArgumentException("Minuti selezionati errati");
+			}
+			
+			if(stringDate.length()==0) {
+				throw new IllegalArgumentException("Non è stato selezionato il giorno");
+			}
+			
+			if(comment.length()>240 || comment.length()<=0) {
+				throw new IllegalArgumentException("Lunghezza commento errata");
+			}
+			Date date = Date.valueOf(stringDate);
+			/*if(date.getDay()!=3 && date.getDay()!=4) {
+				throw new IllegalArgumentException("Il giorno selezionato non è corretto");
+			}*/
+			
+			
+			
 			
 			
 			RequestBean bean = new RequestBean();
@@ -222,17 +233,25 @@ public class RequestServlet extends HttpServlet {
 			
 							
 			String stringDate = request.getParameter("date");
-			if(stringDate.length()==0) {
-				throw new IllegalArgumentException("Non è stato selezionato il giorno");
-			}
-			Date date = Date.valueOf(stringDate);
-			if(comment.length()>240) {
-				throw new IllegalArgumentException("Lunghezza Commento troppo grande");
-			}
-			
 			if(time.length()==0) {
 				throw new IllegalArgumentException("Non è stato selezionato l'orario");
 			}
+			int tempo=Integer.parseInt(time);
+			if(tempo<540 || ((tempo==765 || tempo > 765) && (tempo==870 || tempo < 870)) || tempo > 1000){
+				throw new IllegalArgumentException("Minuti selezionati errati");
+			}
+			
+			if(stringDate.length()==0) {
+				throw new IllegalArgumentException("Non è stato selezionato il giorno");
+			}
+			
+			if(comment.length()>240 || comment.length()<=0) {
+				throw new IllegalArgumentException("Lunghezza commento errata");
+			}
+			Date date = Date.valueOf(stringDate);
+			/*if(date.getDay()!=3 && date.getDay()!=4) {
+				throw new IllegalArgumentException("Il giorno selezionato non è corretto");
+			}*/
 			
 			try {
 				RequestBean bean = new RequestBean();					// Recupero dati della richiesta registrati nel DB
@@ -279,6 +298,11 @@ public class RequestServlet extends HttpServlet {
 			}			
 			
 			String requestDuration = request.getParameter("duration");
+			
+			int durata=Integer.parseInt(requestDuration);
+			if(durata < 10 || durata > 120) {
+				throw new IllegalArgumentException("Numero di ore inserite non corretto");
+			}
 			
 			int duration;
 			

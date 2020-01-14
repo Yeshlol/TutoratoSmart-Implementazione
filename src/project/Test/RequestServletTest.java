@@ -16,10 +16,8 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import project.Control.DBConnection;
-import project.Control.LoginServlet;
 import project.Control.RequestServlet;
-import project.Model.UserBean;
-import project.Model.UserDAO;
+
 
 class RequestServletTest {
 	private RequestServlet servlet;
@@ -43,10 +41,8 @@ class RequestServletTest {
 	//TC_3.0_1 Nessun giorno selezionato
 	@Test
 	public void testCase_3_0_1() throws ServletException, IOException {
-		int time=630;
-		String tempo=Integer.toString(time);
 		request.addParameter("flag","1");
-		request.addParameter("time",tempo);
+		request.addParameter("time","900");
 		request.addParameter("comment","ppppp");
 		request.addParameter("date","");
 		
@@ -58,14 +54,31 @@ class RequestServletTest {
 		assertEquals(message, exceptionThrown.getMessage());
 	}
 	
-	//TC_3.0_2 Nessun orario selezionato
+  /*	//TC_3.0_2 Selezionato giorno diverso da mercoledi e giovedi
 		@Test
 		public void testCase_3_0_2() throws ServletException, IOException {
 
 			request.addParameter("flag","1");
+			request.addParameter("time","900");
+			request.addParameter("comment","ppppp");
+			request.addParameter("date","2020-17-01");
+			
+			final String message = "Il giorno selezionato non è corretto";
+			IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+
+				servlet.doPost(request, response);
+			});
+			assertEquals(message, exceptionThrown.getMessage());
+		} */
+		
+		//TC_3.0_3 Orario non selezionato
+		@Test
+		public void testCase_3_0_3() throws ServletException, IOException {
+
+			request.addParameter("flag","1");
 			request.addParameter("time","");
 			request.addParameter("comment","ppppp");
-			request.addParameter("date","2019-10-07");
+			request.addParameter("date","2020-22-01");
 			
 			final String message = "Non è stato selezionato l'orario";
 			IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
@@ -73,25 +86,18 @@ class RequestServletTest {
 				servlet.doPost(request, response);
 			});
 			assertEquals(message, exceptionThrown.getMessage());
+		
 		}
 	
-	//TC_3.0_3 Lunghezza commento > 240
+	//TC_3.0_4 Minuti < 540
 		@Test
-		public void testCase_3_0_3() throws ServletException, IOException {
-			int time=630;
-			String tempo=Integer.toString(time);
+		public void testCase_3_0_4() throws ServletException, IOException {
 			request.addParameter("flag","1");
-			request.addParameter("time",tempo);
-			request.addParameter("comment","Ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
-					"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
-					"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
-					"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
-					"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
-					"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
-					"");
-			request.addParameter("date","2019-10-06");
+			request.addParameter("time","500");
+			request.addParameter("comment","ppppp");
+			request.addParameter("date","2020-22-01");
 			
-			final String message = "Lunghezza Commento troppo grande";
+			final String message = "Minuti selezionati errati";
 			IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
 
 				servlet.doPost(request, response);
@@ -99,24 +105,94 @@ class RequestServletTest {
 			assertEquals(message, exceptionThrown.getMessage());
 		}
 		
-		//TC_3.0_4 Successo
+		//TC_3.0_5 	765 <= Minuti <= 870 
 		@Test
-		public void testCase_3_0_4() throws ServletException, IOException, JSONException, SQLException {	
-			UserDAO userDAO = new UserDAO();
-			UserBean user=userDAO.doRetrieveByMail("e.merola@studenti.unicampania.it");
-			request.getSession().setAttribute("user", user);
+		public void testCase_3_0_5() throws ServletException, IOException, JSONException, SQLException {	
 			request.addParameter("flag","1");
-			request.addParameter("time","1030");
+			request.addParameter("time","800");
 			request.addParameter("comment","ppppp");
-			request.addParameter("date","2019-10-07");
+			request.addParameter("date","2020-22-01");
 			
 			
-			servlet.doPost(request, response);
-			
-			String content = response.getContentAsString();
-			JSONObject jsonObj = new JSONObject(content);
-			int result = (int) jsonObj.get("result");
-			
-			assertEquals(result, 1);
+			final String message = "Minuti selezionati errati";
+			IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+
+				servlet.doPost(request, response);
+			});
+			assertEquals(message, exceptionThrown.getMessage());
 		}
+		//TC_3.0_6 	Minuti > 1000 
+				@Test
+				public void testCase_3_0_6() throws ServletException, IOException, JSONException, SQLException {	
+					request.addParameter("flag","1");
+					request.addParameter("time","1100");
+					request.addParameter("comment","ppppp");
+					request.addParameter("date","2020-22-01");
+					
+					
+					final String message = "Minuti selezionati errati";
+					IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+
+						servlet.doPost(request, response);
+					});
+					assertEquals(message, exceptionThrown.getMessage());
+				}
+				//TC_3.0_7 	Lunghezza commento <=0
+				@Test
+				public void testCase_3_0_7() throws ServletException, IOException, JSONException, SQLException {	
+					request.addParameter("flag","1");
+					request.addParameter("time","900");
+					request.addParameter("comment","");
+					request.addParameter("date","2020-22-01");
+					
+					
+					final String message = "Lunghezza commento errata";
+					IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+
+						servlet.doPost(request, response);
+					});
+					assertEquals(message, exceptionThrown.getMessage());
+				}
+				//TC_3.0_8 	Lunghezza commento > 240
+				@Test
+				public void testCase_3_0_8() throws ServletException, IOException, JSONException, SQLException {	
+					request.addParameter("flag","1");
+					request.addParameter("time","900");
+					request.addParameter("comment","Ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
+							"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
+							"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
+							"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
+							"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
+							"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
+							"");
+					request.addParameter("date","2020-22-01");
+					
+					
+					final String message = "Lunghezza commento errata";
+					IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+
+						servlet.doPost(request, response);
+					});
+					assertEquals(message, exceptionThrown.getMessage());
+				}
+				//TC_3.0_9 Successo
+			/*	@Test
+				public void testCase_3_0_9() throws ServletException, IOException, JSONException, SQLException {	
+					UserDAO userDAO = new UserDAO();
+					UserBean user=userDAO.doRetrieveByMail("e.merola@studenti.unicampania.it");
+					request.getSession().setAttribute("user", user);
+					request.addParameter("flag","1");
+					request.addParameter("time","900");
+					request.addParameter("comment","ppppp");
+					request.addParameter("date","2020-22-01");
+					
+					
+					servlet.doPost(request, response);
+					
+					String content = response.getContentAsString();
+					JSONObject jsonObj = new JSONObject(content);
+					int result = (int) jsonObj.get("result");
+					
+					assertEquals(result, 1);
+				}*/
 }

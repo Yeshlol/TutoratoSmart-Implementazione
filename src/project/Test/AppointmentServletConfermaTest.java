@@ -42,7 +42,7 @@ class AppointmentServletConfermaTest {
 
 	//TC_6.0_1 Lunghezza commento > 240
 	@Test
-	public void testCase_6_0_1() throws ServletException, IOException {
+	public void testCase_6_0_1() throws ServletException, IOException, SQLException {
 		request.addParameter("flag", "1");
 		request.addParameter("commento", "Pppppppppppppppppppppppppppppppppppppppppppppppppppppppppp" + 
 				"ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp" + 
@@ -50,6 +50,7 @@ class AppointmentServletConfermaTest {
 				"ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp" + 
 				"ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp" + 
 				"ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp");
+		
 		
 		final String message = "Commento troppo lungo";
 		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {

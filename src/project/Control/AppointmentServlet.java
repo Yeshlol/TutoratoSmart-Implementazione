@@ -70,14 +70,13 @@ public class AppointmentServlet extends HttpServlet {
 																		
 		if (flag == 1) {												// Registrazione nuovo appuntamento
 			String comment = request.getParameter("comment");		// Dati appuntamento
-			String tutorMail = tutor.getEmail();
 			
-
 			
 			if (comment.length() > 240) {
 				throw new IllegalArgumentException("Commento troppo lungo");
 		    }
 			
+			String tutorMail = tutor.getEmail();
 			AppointmentBean appointmentBean = new AppointmentBean();
 			
 			appointmentBean.setDetails(comment);
