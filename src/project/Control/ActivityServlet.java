@@ -67,7 +67,7 @@ public class ActivityServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean ajax = Boolean.parseBoolean(request.getParameter("ajax"));  // Richieste ajax per elenco appuntamenti effettuati dal tutor
 		
 		UserBean user = (UserBean) request.getSession(false).getAttribute("user");
@@ -187,6 +187,12 @@ public class ActivityServlet extends HttpServlet {
 			int start = Utils.getTimeAsInt(startTime);
 			int finish = Utils.getTimeAsInt(finishTime);
 			float hours = (finish - start) / 60.f;
+			
+	   		
+		if(description.length()> 240) {
+			throw new IllegalArgumentException("Commento troppo lungo");
+		}
+			
 						
 			ActivityTutorBean activityBean = new ActivityTutorBean();
 			
