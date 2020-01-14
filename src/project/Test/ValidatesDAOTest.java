@@ -3,6 +3,7 @@ package project.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.jupiter.api.AfterEach;
@@ -26,23 +27,40 @@ class ValidatesDAOTest {
 		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
-
+	
+	@Test
+	void testDoRetrieveAll() throws SQLException {
+		ArrayList<ValidatesBean> validatesList = (ArrayList<ValidatesBean>) validatesDAO.doRetrieveAll();
+		assertNotNull(validatesList);
+	}
+	
 	@Test
 	void testDoRetrieveByCommissionMember() throws SQLException {
 		Collection<ActivityTutorBean> validateList = (Collection<ActivityTutorBean>) validatesDAO.doRetrieveByCommissionMember("d.molinaro@commissione.unicampania.it");
 		assertNotNull(validateList);
 	}
 
-	
-	/* DA CONTROLLARE
+		
+	@Test 
+	void testDoSaveValidates() throws SQLException {	
+		ValidatesBean validates = new ValidatesBean("d.molinaro@commissione.unicampania.it", 3);
+		ArrayList<ValidatesBean> validatesList = validatesDAO.doRetrieveAll();
+		
+		assertEquals(2, validatesList.size());
+		validatesDAO.doSave(validates);
+		validatesList = validatesDAO.doRetrieveAll();
+		assertEquals(3,validatesList.size());
+	}
 	
 	@Test 
-	void testDoSave() throws SQLException{	
-		ValidatesBean validates = new ValidatesBean("d.molinaro@commissione.unicampania.it", 4);
-		ArrayList<ActivityTutorBean> activityTutorlist = validatesDAO.doRetrieveAll();
-		assertEquals(3, activityTutorlist.size());
-		validatesDAO.doSave(validates);
-		activityTutorlist = validatesDAO.doRetrieveAll();
-		assertEquals(4,activityTutorlist.size());
-	}*/
+	void testDoDelete() throws SQLException {	
+		RegisterDAO registerDAO = new RegisterDAO();
+		RegisterBean register = registerDAO.doRetrieveById(3);
+		float previousValidatedHours = register.getValidatedHours();
+		
+		validatesDAO.doDelete(3);
+		register = registerDAO.doRetrieveById(3);
+		
+		assertNotEquals(register.getValidatedHours(), previousValidatedHours);
+	}
 }

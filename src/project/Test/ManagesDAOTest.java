@@ -34,8 +34,6 @@ class ManagesDAOTest {
 		assertEquals(3,list.size());
 		managesDAO.doSave(bean);
 		list = managesDAO.doRetrieveAll();
-		assertEquals(4,list.size());
-		
+		assertEquals(4,list.size());		
 	}
-
 }

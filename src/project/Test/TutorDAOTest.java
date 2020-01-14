@@ -66,5 +66,4 @@ class TutorDAOTest {
 		LinkedList<TutorBean> tutorList= (LinkedList<TutorBean>) tutorDAO.doRetrieveAllActive(null);
 		assertNotNull(tutorList);
 	}
-
 }

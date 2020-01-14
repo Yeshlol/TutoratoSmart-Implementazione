@@ -73,7 +73,7 @@ public class ActivityTutorDAO  {
 			//	System.out.println("Attivita' Trovata con l'id!");
 			}
 		} catch (SQLException e) {
-			System.out.println("Id non trovato!");
+			// System.out.println("Id non trovato!");
 			return null;
 		} finally {
 			if(preparedStatement != null)
@@ -110,7 +110,7 @@ public class ActivityTutorDAO  {
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.wasNull()) {
-				System.out.println("Errore esecuzione query!");
+				// System.out.println("Errore esecuzione query!");
 	        } else {
 	        	int count = rs.last() ? rs.getRow() : 0;
 	            if (count > 0) 
@@ -153,7 +153,7 @@ public class ActivityTutorDAO  {
 			preparedStatement.setString(7, activity.getTutor());
 			preparedStatement.setInt(8, activity.getRegisterId());
 			
-			System.out.println("ActivityTutor doSave: "+ preparedStatement.toString());
+			// System.out.println("ActivityTutor doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			
@@ -163,7 +163,7 @@ public class ActivityTutorDAO  {
 			while(rs.next()) {
 				idActivity = rs.getInt("IdActivity");
 			}			
-			System.out.println("IdActivity added: " + idActivity);
+			// System.out.println("IdActivity added: " + idActivity);
 			
 			connection.commit();
 		} finally {
@@ -193,7 +193,7 @@ public class ActivityTutorDAO  {
 			preparedStatement.setString(6, bean.getDetails());
 			preparedStatement.setInt(7, bean.getIdActivity());
 			
-			System.out.println("ActivityTutor doModify: " + preparedStatement.toString());
+			// System.out.println("ActivityTutor doModify: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 			
 			connection.commit();
@@ -231,7 +231,7 @@ public class ActivityTutorDAO  {
 			preparedStatement = connection.prepareStatement(deleteSql);
 			preparedStatement.setInt(1, activity.getIdActivity());
 			
-			System.out.println("ActivityTutor doDelete: " + preparedStatement.toString());
+			// System.out.println("ActivityTutor doDelete: " + preparedStatement.toString());
 			result = preparedStatement.executeUpdate();
 			
 			registerDAO.doUpdate(register);
@@ -311,11 +311,11 @@ public class ActivityTutorDAO  {
 			preparedStatement.setInt(10, finish);
 			preparedStatement.setInt(11, activityId);
 			
-			System.out.println("ActivityTutor isActivityRegistered: " + preparedStatement.toString());
+			// System.out.println("ActivityTutor isActivityRegistered: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.wasNull()) {
-				System.out.println("Errore esecuzione query!");
+			// System.out.println("Errore esecuzione query!");
 	        } else {
 	        	int count = rs.last() ? rs.getRow() : 0;
 	            if (count > 0) 
@@ -324,7 +324,7 @@ public class ActivityTutorDAO  {
 	            	return false;
 	        }
 		} catch (SQLException e) {
-			System.out.println("Attività non trovata!");
+			// System.out.println("Attività non trovata!");
 			return false;
 		}
 		

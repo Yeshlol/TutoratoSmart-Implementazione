@@ -1,5 +1,4 @@
 Use TutoratoSmartTest;
-SET SQL_SAFE_UPDATES = 0;
 
 
 -- Users:
@@ -21,9 +20,9 @@ INSERT INTO STUDENT(Email,AcademicYear) VALUES ('a.tommasino@studenti.unicampani
 
 
 -- Registers:
-INSERT INTO REGISTER(IdRegister,State,ValidatedHours,TotalHours,PercentageComplete) VALUES (1, 'Non approvato', 3, 10, 30);
-INSERT INTO REGISTER(IdRegister,State,ValidatedHours,TotalHours,PercentageComplete) VALUES (2, 'Non approvato', 1, 10, 10);
-INSERT INTO REGISTER(IdRegister,State,ValidatedHours,TotalHours,PercentageComplete) VALUES (3, 'Approvato', 10, 10, 100);
+INSERT INTO REGISTER(IdRegister,State,ValidatedHours,TotalHours,PercentageComplete) VALUES (1, 'Non approvato', 0, 10, 30);
+INSERT INTO REGISTER(IdRegister,State,ValidatedHours,TotalHours,PercentageComplete) VALUES (2, 'Non approvato', 0, 10, 10);
+INSERT INTO REGISTER(IdRegister,State,ValidatedHours,TotalHours,PercentageComplete) VALUES (3, 'Approvato', 4, 4, 100);
 
 
 -- Tutors:
@@ -67,4 +66,3 @@ INSERT INTO MANAGES(Tutor,RequestId) VALUES ('m.lombardo@studenti.unicampania.it
 -- Validates
 INSERT INTO VALIDATES(CommissionMember,ActivityId) VALUES('d.molinaro@commissione.unicampania.it', 1);
 INSERT INTO VALIDATES(CommissionMember,ActivityId) VALUES('d.molinaro@commissione.unicampania.it', 2);
-INSERT INTO VALIDATES(CommissionMember,ActivityId) VALUES('d.molinaro@commissione.unicampania.it', 3);

@@ -202,7 +202,7 @@ public class TutorDAO  {
 		try {
 			preparedStatement = connection.prepareStatement(selectSql);
 			
-			System.out.println("Tutor doRetrieveAllActive: " + preparedStatement.toString());
+			// System.out.println("Tutor doRetrieveAllActive: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
 				TutorBean bean = new TutorBean();

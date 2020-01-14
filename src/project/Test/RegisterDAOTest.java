@@ -3,6 +3,7 @@ package project.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,6 +26,12 @@ class RegisterDAOTest {
 		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
+	
+	@Test
+	void testDoRetrieveAll() throws SQLException {
+		ArrayList<RegisterBean> registersList = registerDAO.doRetrieveAll();
+		assertNotNull(registersList);
+	}
 
 	@Test
 	void testDoRetrieveById() throws SQLException {
@@ -34,11 +41,8 @@ class RegisterDAOTest {
 
 	@Test
 	void testDoSave() throws SQLException {
-		int id=0;
-		id=registerDAO.doSave(10);
-		assertEquals(4,4);
-		
-	
+		int registerId = registerDAO.doSave(10);
+		assertEquals(4, registerId);
 	}
 
 	@Test
@@ -46,8 +50,6 @@ class RegisterDAOTest {
 		RegisterBean register1= registerDAO.doRetrieveById(3);
 		RegisterBean register = new RegisterBean(2,"Approvato",4,40);
 		registerDAO.doUpdate(register);
-		assertNotEquals(register1,register);
-		
+		assertNotEquals(register1,register);		
 	}
-
 }

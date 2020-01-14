@@ -73,11 +73,11 @@ public class ContainedInDAO {
 				
 				ResultSet rs = preparedStatement.executeQuery();
 				while(rs.next()) {
-					AppointmentBean bean = new AppointmentBean();
-					bean.setIdAppointment(rs.getInt("IdAppointment"));
-					bean.setDetails(rs.getString("Details"));
-					bean.setRequestId(rs.getInt("RequestId"));
-					bean.setTutor(rs.getString("Tutor"));
+					AppointmentDAO appointmentDAO = new AppointmentDAO();
+					
+					int idAppointment = rs.getInt("AppointmentId");
+					
+					AppointmentBean bean = appointmentDAO.doRetrieveById(idAppointment);
 					
 					list.add(bean);
 				}	

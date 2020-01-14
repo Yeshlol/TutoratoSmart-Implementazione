@@ -59,7 +59,7 @@ public class StudentDAO  {
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.wasNull()) {
-				System.out.println("Errore esecuzione query!");
+				// System.out.println("Errore esecuzione query!");
 	        } else {
 	        	int count = rs.last() ? rs.getRow() : 0;
 	            if (count == 1) {
@@ -79,7 +79,7 @@ public class StudentDAO  {
 	            	//System.out.println("Studente non trovato!");
 	        }
 		} catch (SQLException e) {
-			System.out.println("Eccezione SQL: " + e.getMessage());
+			// System.out.println("Eccezione SQL: " + e.getMessage());
 			return null;
 		} finally {
 			if(preparedStatement != null)
@@ -147,7 +147,7 @@ public class StudentDAO  {
 			preparedStatement.setDate(1, startResearchDate);
 			preparedStatement.setDate(2, finishResearchDate);
 			
-			System.out.println("Student doRetrieveAllByDates: " + preparedStatement.toString());
+			// System.out.println("Student doRetrieveAllByDates: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
 				StudentBean sbean = new StudentBean();

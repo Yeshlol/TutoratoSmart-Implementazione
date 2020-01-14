@@ -57,7 +57,7 @@ public class RegisterDAO  {
 				//System.out.println("Registro Trovato con l'id!");
 			}
 		} catch (SQLException e) {
-			System.out.println("Id non trovato!");
+			// System.out.println("Id non trovato!");
 			return null;
 		} finally {
 			if(preparedStatement != null)
@@ -82,7 +82,7 @@ public class RegisterDAO  {
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setInt(1, totalHours);
 			
-			System.out.println("Register doSave: "+ preparedStatement.toString());
+			// System.out.println("Register doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			
@@ -93,7 +93,7 @@ public class RegisterDAO  {
 				idRegister = rs.getInt("IdRegister");
 			}
 			
-			System.out.println("IdRegister added: " + idRegister);
+			// System.out.println("IdRegister added: " + idRegister);
 		} finally {
 			if(preparedStatement != null)
 				preparedStatement.close();
@@ -118,7 +118,7 @@ public class RegisterDAO  {
 			preparedStatement.setFloat(3, bean.getPercentageComplete());
 			preparedStatement.setInt(4, bean.getIdRegister());
 			
-			System.out.println("Register doUpdate: " + preparedStatement.toString());
+			// System.out.println("Register doUpdate: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 			
 			connection.commit();

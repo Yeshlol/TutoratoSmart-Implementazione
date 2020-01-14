@@ -24,7 +24,7 @@ public class DatabaseHelper {
 		DBConnection.setTest(true);
 		Connection conn = DBConnection.getInstance().getConn();
 		ScriptRunner sr = new ScriptRunner(conn);
-		java.io.Reader reader = new BufferedReader(new FileReader("resetDatiTest.sql"));
+		java.io.Reader reader = new BufferedReader(new FileReader("resetDatabaseTest.sql"));
 		sr.runScript(reader);
 	}
 }

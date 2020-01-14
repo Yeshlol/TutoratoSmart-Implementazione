@@ -52,12 +52,17 @@ public class RequestDAO  {
 		return bean;
 	}
 	
-	public synchronized void doSave(RequestBean bean) throws SQLException {
+	@SuppressWarnings("resource")
+	public synchronized int doSave(RequestBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
 		String insertSql = "INSERT INTO REQUEST(StudentComment,RequestDate,RequestTime,Student)"
 						 + " VALUES (?,?,?,?)";
+		
+		int idRequest = -1;
+		
+		String selectSql = "SELECT MAX(IdRequest) AS IdRequest FROM REQUEST";
 		
 		try {
 			connection.setAutoCommit(false);
@@ -67,15 +72,25 @@ public class RequestDAO  {
 			preparedStatement.setInt(3, bean.getRequestTime());		
 			preparedStatement.setString(4, bean.getStudent());
 			
-			//System.out.println("Request doSave: "+ preparedStatement.toString());
+			// System.out.println("Request doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
+			
+			preparedStatement = connection.prepareStatement(selectSql);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				idRequest = rs.getInt("IdRequest");
+			}			
+			// System.out.println("IdRequest added: " + idRequest);
 			
 			connection.commit();
 		} finally {
 			if(preparedStatement != null)
 				preparedStatement.close();
-		}	
+		}
+		
+		return idRequest;
 	}
 		
 	

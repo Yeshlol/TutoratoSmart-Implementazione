@@ -18,7 +18,6 @@ import project.Model.AppointmentBean;
 import project.Model.AppointmentDAO;
 import project.Model.ContainedInBean;
 import project.Model.ContainedInDAO;
-import project.Model.RegisterDAO;
 import project.Model.RequestBean;
 import project.Model.RequestDAO;
 
@@ -27,15 +26,42 @@ class ContainedInDAOTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		DatabaseHelper.resetDatabase();
 		DatabaseHelper.initializeDatabase();
 	}
 
 	@AfterEach
-	void tearDown() throws Exception {
-		DatabaseHelper.resetDatabase();
+	void tearDown() throws Exception {		
 		DBConnection.setTest(false);
 	}
 
+	@Test
+	void testDoSaveContained() throws SQLException {
+		String activityDate1 = "2020-01-21";
+		Date date1 = Date.valueOf(activityDate1);
+		RequestDAO requestDAO = new RequestDAO();
+		RequestBean requestBean = new RequestBean(4,720,60,"Accettata","abacavbab","g.luongo@studenti.unicampania.it",date1);
+		int idRequest = requestDAO.doSave(requestBean);
+		
+		AppointmentDAO appointmentDAO = new AppointmentDAO();
+		AppointmentBean appointmentBean = new AppointmentBean(4,"Supporto prenotazione appello",idRequest,"m.pisciotta@studenti.unicampania.it");
+		int idAppointment = appointmentDAO.doSave(appointmentBean);
+		
+		ActivityTutorDAO activityTutorDAO = new ActivityTutorDAO();
+		String activityDate = "2020-01-20";
+		Date date = Date.valueOf(activityDate);
+
+		ActivityTutorBean activityTutorBean = new ActivityTutorBean(4,720,780,1,"Sportello Tutorato","Convalidata","L'attivita riguarda il supporto per la prenotazione dell'apello","m.pisciotta@studenti.unicampania.it",date, 1.0f);
+		int idActivity = activityTutorDAO.doSave(activityTutorBean);
+		ContainedInBean bean = new ContainedInBean(idAppointment,idActivity);
+		
+		ArrayList<ContainedInBean> list = containedDAO.doRetrieveAll();
+		assertEquals(3,list.size());
+		containedDAO.doSave(bean);
+		list = containedDAO.doRetrieveAll();
+		assertEquals(4,list.size());
+	}
+	
 	@Test
 	void testDoDeleteByActivityId() throws SQLException {
 		ArrayList<ContainedInBean> containedInList = containedDAO.doRetrieveAll();
@@ -57,34 +83,6 @@ class ContainedInDAOTest {
 		containedInBean = containedDAO.doRetrieveByAppointmentId(3);
 		assertNotNull(containedInBean);
 	}
-
-	
-	@Test
-	void testDoSave() throws SQLException {
-		String activityDate1 = "2019-11-27";
-		Date date1 = Date.valueOf(activityDate1);
-		RequestDAO requestDAO = new RequestDAO();
-		RequestBean requestBean = new RequestBean(4,720,60,"Accettata","abacavbab","g.luongo@studenti.unisa.it",date1);
-		requestDAO.doSave(requestBean);
-		AppointmentDAO appointmentDAO = new AppointmentDAO();
-		AppointmentBean appointmentBean = new AppointmentBean(4,"Supporto prenotazione appello",4,"m.pisciotta@studenti.unicampania.it");
-		appointmentDAO.doSave(appointmentBean);
-		ActivityTutorDAO activityTutorDAO = new ActivityTutorDAO();
-		String activityDate = "2019-11-27";
-		Date date = Date.valueOf(activityDate);
-		RegisterDAO registerDAO = new RegisterDAO();
-		int id=registerDAO.doSave(10);
-		ActivityTutorBean activityTutorBean = new ActivityTutorBean(4,720,780,1,"Sportello Tutorato","Convalidata","L'attivit� riguarda il supporto per la prenotazione dell'apello","m.pisciotta@studenti.unicampania.it",date, 1);
-		activityTutorDAO.doSave(activityTutorBean);
-		ContainedInBean bean = new ContainedInBean(4,4);
-		ArrayList<ContainedInBean> list = containedDAO.doRetrieveAll();
-		assertEquals(3,list.size());
-		containedDAO.doSave(bean);
-		list = containedDAO.doRetrieveAll();
-		assertEquals(4,list.size());
-			
-	}
-	
 
 	@Test
 	void testDoDelete() throws SQLException {

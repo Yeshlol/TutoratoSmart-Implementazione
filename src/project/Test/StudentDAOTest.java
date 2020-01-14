@@ -2,9 +2,10 @@ package project.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -44,5 +45,15 @@ class StudentDAOTest {
 		tutorlist = studentDAO.doRetrieveAll();
 		assertEquals(4,tutorlist.size());
 	}
-
+	
+	@Test
+	void testDoRetrieveAllByDates() throws SQLException {
+		String date = "2019-11-24";
+		Date startDate = Date.valueOf(date);
+		String date2 = "2019-11-25";
+		Date finishDate = Date.valueOf(date2);
+		
+		Collection<StudentBean> studentsCollection = studentDAO.doRetrieveAllByDates(null, startDate, finishDate);
+		assertEquals(2,studentsCollection.size());
+	}
 }

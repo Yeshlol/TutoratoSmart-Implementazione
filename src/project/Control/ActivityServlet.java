@@ -347,14 +347,15 @@ public class ActivityServlet extends HttpServlet {
 		}
 		
 		else if (flag == 3) {											// Validazione/Rimozione di un'attività da parte di un membro della Commissione
+			ValidatesDAO validatesDAO = new ValidatesDAO();
+			
 			String activityId = request.getParameter("id");
 			int id = Integer.parseInt(activityId);
 									
 			String validate = request.getParameter("validate");
 			
 			if (validate != null && validate.equals("true")) {			// Validazione attivita'.
-				try {
-					ValidatesDAO validatesDAO = new ValidatesDAO();
+				try {					
 					ValidatesBean bean = new ValidatesBean();
 					bean.setActivityId(id);
 					bean.setCommissionMember(user.getEmail());
@@ -384,8 +385,12 @@ public class ActivityServlet extends HttpServlet {
 				try {
 					ActivityTutorBean activity = activityDAO.doRetrieveById(id);
 					request.getSession(false).setAttribute("Email", activityDAO.doRetrieveById(id).getTutor());
+					
+					validatesDAO.doDelete(id);
+					
 					activityDAO.doDelete(activity);
 					request.removeAttribute("activitiesCollection");
+					
 					request.getSession(false).removeAttribute("activity");
 					request.getSession(false).setAttribute("delete", "true");
 					

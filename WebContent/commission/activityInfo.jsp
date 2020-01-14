@@ -69,11 +69,11 @@
 		</div>
 		
 		<div class="container-fluid" style="margin-top: 25px;">
-			<div class="alert alert-success" id="successDeleteDiv" style="display:none;" role="alert">Attivit&aacute eliminata con successo!</div>
-			<div class="alert alert-danger" id="failureDeleteDiv" style="display:none;" role="alert">Eliminazione fallita!</div>
+			<div class="alert alert-success" id="successDeleteDiv" style="display:none;" role="alert">Attivit&aacute eliminata con successo</div>
+			<div class="alert alert-danger" id="failureDeleteDiv" style="display:none;" role="alert">Eliminazione fallita</div>
 			
-			<div class="alert alert-success" id="successValidateDiv" style="display:none;" role="alert"">Attivit&aacute convalidata con successo!</div>
-			<div class="alert alert-danger" id="failureValidateDiv" style="display:none;" role="alert" >Convalida fallita!</div>
+			<div class="alert alert-success" id="successValidateDiv" style="display:none;" role="alert"">Attivit&aacute convalidata con successo</div>
+			<div class="alert alert-danger" id="failureValidateDiv" style="display:none;" role="alert" >Convalida fallita</div>
 		</div>		
 		<div class="panel"></div>
 		

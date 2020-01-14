@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.jupiter.api.AfterEach;
@@ -44,18 +45,19 @@ class ActivityTutorDAOTest {
 	}
 
 	
-	/* DA CONTROLLARE
+	
 	@Test
 	void testDoSave() throws SQLException{
-		String activityDate="2019-11-27";
+		String activityDate="2020-01-20";		
 		Date activityData=Date.valueOf(activityDate);
-		ActivityTutorBean activityTutor = new ActivityTutorBean(4, 540, 900, 4, "Sportello Tutorato", "In valutazione", "DettagliTestActivity", "c.ferrari@studenti.unicampania.it", activityData, 6);
+		
+		ActivityTutorBean activityTutor = new ActivityTutorBean(4, 540, 900, 3, "Sportello Tutorato", "In valutazione", "DettagliTestActivity", "c.ferrari@studenti.unicampania.it", activityData, 6);
 		ArrayList<ActivityTutorBean> activitytutorlist = activityTutorDAO.doRetrieveAll();
 		assertEquals(3, activitytutorlist.size());		
 		activityTutorDAO.doSave(activityTutor);
 		activitytutorlist = activityTutorDAO.doRetrieveAll();
 		assertEquals(4,activitytutorlist.size());
-	} */
+	}
 
 	@Test
 	void testDoModify() throws SQLException {

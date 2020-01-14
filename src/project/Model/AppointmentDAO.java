@@ -58,7 +58,7 @@ public class AppointmentDAO  {
 				bean.setTutor(rs.getString("Tutor"));
 			}
 		} catch (SQLException e) {
-			System.out.println("Id non trovato!");
+			//System.out.println("Id non trovato!");
 			return null;
 		} finally {
 			if(preparedStatement != null)
@@ -68,12 +68,17 @@ public class AppointmentDAO  {
 	}
 	
 	
-	public synchronized void doSave(AppointmentBean bean) throws SQLException {
+	@SuppressWarnings("resource")
+	public synchronized int doSave(AppointmentBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
 		String insertSql = "INSERT INTO APPOINTMENT(Details,RequestId,Tutor)"
 						 + " VALUES (?,?,?)";
+		
+		int idAppointment = -1;
+		
+		String selectSql = "SELECT MAX(IdAppointment) AS IdAppointment FROM APPOINTMENT";
 		
 		try {
 			connection.setAutoCommit(false);
@@ -82,18 +87,28 @@ public class AppointmentDAO  {
 			preparedStatement.setInt(2, bean.getRequestId());
 			preparedStatement.setString(3, bean.getTutor());
 			
-			System.out.println("Appointment doSave: "+ preparedStatement.toString());
+			//System.out.println("Appointment doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			
 			RequestDAO requestDAO = new RequestDAO();
 			requestDAO.confirmAppointment(bean.getRequestId());
 			
+			preparedStatement = connection.prepareStatement(selectSql);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				idAppointment = rs.getInt("IdAppointment");
+			}			
+			//System.out.println("IdAppointment added: " + idAppointment);
+			
 			connection.commit();
 		} finally {
 			if(preparedStatement != null)
 				preparedStatement.close();
-		}	
+		}
+		
+		return idAppointment;
 	}
 		
 	
@@ -164,7 +179,7 @@ public class AppointmentDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, requestId);
 			
-			System.out.println("Appointment doRetrieveByRequestId: " + preparedStatement.toString());
+			//System.out.println("Appointment doRetrieveByRequestId: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {				
 				bean.setIdAppointment(rs.getInt("IdAppointment"));
@@ -199,7 +214,7 @@ public class AppointmentDAO  {
 			preparedStatement.setInt(3, startTime);
 			preparedStatement.setInt(4, finishTime);
 			
-			System.out.println("Appointment doRetrieveAllByDate: " + preparedStatement.toString());
+			//System.out.println("Appointment doRetrieveAllByDate: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
@@ -230,7 +245,7 @@ public class AppointmentDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, tutorMail);
 			
-			System.out.println("Appointment doRetrieveAllByTutor: " + preparedStatement.toString());
+			//System.out.println("Appointment doRetrieveAllByTutor: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {

@@ -1,7 +1,6 @@
 package project.Model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,30 +15,23 @@ public class ValidatesDAO {
 		super();
 	}
 	
-	public synchronized ArrayList<ActivityTutorBean> doRetrieveAll() throws SQLException {
+	public synchronized ArrayList<ValidatesBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
-		ArrayList<ActivityTutorBean> activityList = new ArrayList<ActivityTutorBean>();
-		String sql = "select * from VALIDATES,ACTIVITY_TUTOR WHERE VALIDATES.ActivityId = ACTIVITY_TUTOR.IdActivity";
+		ArrayList<ValidatesBean> validatesList = new ArrayList<ValidatesBean>();
+		
+		String sql = "select * from VALIDATES ";
 		PreparedStatement ps = connection.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {
-			ActivityTutorBean bean = new ActivityTutorBean();
-			int idActivity = rs.getInt("IdActivity");
-			String category = rs.getString("Category");
-			Date activityDate = rs.getDate("ActivityDate");
-			int startTime = rs.getInt("StartTime");
-			int finishTime = rs.getInt("FinishTime");
-			float hours = rs.getFloat("Hours");
-			String state = rs.getString("State");
-			String details = rs.getString("Details");
-			String tutor = rs.getString("Tutor");
-			int registerId = rs.getInt("RegisterId");
+			ValidatesBean bean = new ValidatesBean();
+			String commissionMember = rs.getString("CommissionMember");
+			int activityId = rs.getInt("ActivityId");
 			
+			bean = new ValidatesBean(commissionMember, activityId);
 			
-			bean = new ActivityTutorBean(idActivity, startTime, finishTime, registerId, category, state, details, tutor, activityDate, hours);
-			activityList.add(bean);
+			validatesList.add(bean);
 		}
-		return activityList;
+		return validatesList;
 	}
 
 	public synchronized Collection<ActivityTutorBean> doRetrieveByCommissionMember(String commissionMemberMail) throws SQLException {
@@ -55,7 +47,7 @@ public class ValidatesDAO {
 				preparedStatement = connection.prepareStatement(selectSql);
 				preparedStatement.setString(1, commissionMemberMail);
 				
-				System.out.println("Validates doRetrieveByCommissionMember: " + preparedStatement.toString());
+				// System.out.println("Validates doRetrieveByCommissionMember: " + preparedStatement.toString());
 				
 				ResultSet rs = preparedStatement.executeQuery();
 				while(rs.next()) {
@@ -103,6 +95,7 @@ public class ValidatesDAO {
 		System.out.println("Ore validate: " + register.getValidatedHours() + "\tOre totali: " + register.getTotalHours() + "\tPercentuale: " + register.getPercentageComplete() + "%");
 		
 		if(register.getPercentageComplete() >= 100) {
+			register.setPercentageComplete(100.f);
 			register.setState("Approvato");
 		}
 		
@@ -113,14 +106,14 @@ public class ValidatesDAO {
 			preparedStatement.setString(1,bean.getCommissionMember());
 			preparedStatement.setInt(2,bean.getActivityId());
 									
-			System.out.println("Validates doSave: "+ preparedStatement.toString());
+			// System.out.println("Validates doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setInt(1, bean.getActivityId());
 			
-			System.out.println("Validates doValidateActivity: "+ preparedStatement.toString());
+			// System.out.println("Validates doValidateActivity: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			
@@ -131,5 +124,35 @@ public class ValidatesDAO {
 			if(preparedStatement != null)
 				preparedStatement.close();
 		}		
+	}
+
+	public void doDelete(int idActivity) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		
+		ActivityTutorDAO activityDAO = new ActivityTutorDAO();
+		ActivityTutorBean activity = activityDAO.doRetrieveById(idActivity);
+		
+		RegisterDAO registerDAO = new RegisterDAO();
+		RegisterBean register = registerDAO.doRetrieveById(activity.getRegisterId());
+		
+		if(activity.getState().equals("Convalidata")) {
+			float hours = activity.getHours();
+			register.setValidatedHours(register.getValidatedHours() - hours);
+			register.setPercentageComplete((register.getValidatedHours() / register.getTotalHours()) * 100);
+		}
+		
+		System.out.println("Ore validate: " + register.getValidatedHours() + "\tOre totali: " + register.getTotalHours() + "\tPercentuale: " + register.getPercentageComplete() + "%");
+		
+		if(register.getPercentageComplete() < 100) {
+			register.setState("Non approvato");
+		}
+		
+		try {			
+			registerDAO.doUpdate(register);
+			
+			connection.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

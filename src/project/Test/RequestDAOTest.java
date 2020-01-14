@@ -51,7 +51,7 @@ class RequestDAOTest {
 		Date requestD = Date.valueOf(requestData);
 		
 		RequestBean request1 = requestDAO.doRetrieveById(2);
-		RequestBean request = new RequestBean(3, 840, 30, "Accettata", "Non riesco a prenotarmi per la prova intercorso [PROVA TEST]", "g.luongo@studenti.unicampania.it", requestD);
+		RequestBean request = new RequestBean(2, 840, 30, "Accettata", "Non riesco a prenotarmi per la prova intercorso [PROVA TEST]", "g.luongo@studenti.unicampania.it", requestD);
 		requestDAO.doModify(request);
 		assertNotEquals(request1, request);
 	}
@@ -60,9 +60,9 @@ class RequestDAOTest {
 	void testDoAccept() throws SQLException{
 		String requestData="2019-11-26";
 		Date requestD = Date.valueOf(requestData);
-		   RequestBean bean = new RequestBean(4, 600, 20, "In valutazione", "Supporto prenotazione esame", "e.merola@studenti.unicampania.it", requestD);
-				   requestDAO.doAccept(bean, "m.pisciotta@studenti.unicampania.it");
-				assertNotNull(bean);
+		RequestBean bean = new RequestBean(4, 600, 20, "In valutazione", "Supporto prenotazione esame", "e.merola@studenti.unicampania.it", requestD);
+		requestDAO.doAccept(bean, "m.pisciotta@studenti.unicampania.it");
+		assertNotNull(bean);
 	}
 
 	@Test
@@ -117,15 +117,13 @@ class RequestDAOTest {
 				assertTrue(value);
 	}
 	
-	
-
 	@Test
 	void testConfirmAppointment() throws SQLException{
 		String requestData="2019-11-26";
 		Date requestD = Date.valueOf(requestData);
-		   RequestBean bean = new RequestBean(4, 600, 20, "In valutazione", "Supporto prenotazione esame", "e.merola@studenti.unicampania.it", requestD);
-				   requestDAO.confirmAppointment(1);
-				assertNotNull(bean);
+		RequestBean bean = new RequestBean(4, 600, 20, "In valutazione", "Supporto prenotazione esame", "e.merola@studenti.unicampania.it", requestD);
+		requestDAO.confirmAppointment(1);
+		assertNotNull(bean);
 	}
 
 	@Test

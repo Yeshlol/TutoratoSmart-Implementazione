@@ -83,8 +83,6 @@ class AppointmentDAOTest {
 	@Test
 	void testDoRetrieveAllByTutor() throws SQLException {
 		Collection<AppointmentBean> appointmentCollection = appointmentDAO.doRetrieveAllByTutor("c.ferrari@studenti.unicampania.it");
-		assertNotNull(appointmentCollection);
-		
+		assertNotNull(appointmentCollection);		
 	}
-
 }
