@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import project.Model.RequestBean;
 import project.Model.RequestDAO;
 import project.Model.UserBean;
+import project.Model.UserDAO;
 import project.Utils.Utils;
 
 /**
@@ -55,7 +56,7 @@ public class RequestServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
     
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean ajax = Boolean.parseBoolean(request.getParameter("ajax"));  // Richieste ajax per disponibilitÃ  orario appuntamento
 		
 		RequestDAO requestDAO = new RequestDAO();
@@ -126,8 +127,20 @@ public class RequestServlet extends HttpServlet {
 			String time = request.getParameter("time");					// Dati della richiesta inseriti dallo studente.
 			String comment = request.getParameter("comment");					
 			UserBean user = (UserBean) request.getSession().getAttribute("user");
-						
-			Date date = Date.valueOf(request.getParameter("date"));			
+			
+			String stringDate = request.getParameter("date");
+			if(stringDate.length()==0) {
+				throw new IllegalArgumentException("Non è stato selezionato il giorno");
+			}
+			Date date = Date.valueOf(stringDate);
+			if(comment.length()>240) {
+				throw new IllegalArgumentException("Lunghezza Commento troppo grande");
+			}
+			
+			if(time.length()==0) {
+				throw new IllegalArgumentException("Non è stato selezionato l'orario");
+			}
+			
 			
 			RequestBean bean = new RequestBean();
 			bean.setRequestDate(date);
@@ -206,8 +219,20 @@ public class RequestServlet extends HttpServlet {
 											
 			String time = request.getParameter("time");					// Dati della richiesta inseriti dallo studente.
 			String comment = request.getParameter("comment");
-						
-			Date date = Date.valueOf(request.getParameter("date"));			
+			
+							
+			String stringDate = request.getParameter("date");
+			if(stringDate.length()==0) {
+				throw new IllegalArgumentException("Non è stato selezionato il giorno");
+			}
+			Date date = Date.valueOf(stringDate);
+			if(comment.length()>240) {
+				throw new IllegalArgumentException("Lunghezza Commento troppo grande");
+			}
+			
+			if(time.length()==0) {
+				throw new IllegalArgumentException("Non è stato selezionato l'orario");
+			}
 			
 			try {
 				RequestBean bean = new RequestBean();					// Recupero dati della richiesta registrati nel DB
@@ -221,7 +246,7 @@ public class RequestServlet extends HttpServlet {
 				
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
-				
+			
 				request.getSession(false).removeAttribute("request");
 				request.getSession(false).setAttribute("request",bean);
 				request.removeAttribute("requestsCollection");
