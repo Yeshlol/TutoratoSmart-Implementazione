@@ -89,12 +89,79 @@ public class RegistrationServlet extends HttpServlet {
 		}
 				
 		String email = request.getParameter("Email");				// Dati Utente
-		String pwd = request.getParameter("Password");			
+		String pwd = request.getParameter("Password");
+		String verifypwd = request.getParameter("VerifyPassword");
 		String firstname = request.getParameter("FirstName");
 		String lastname = request.getParameter("LastName");
 		String telephoneNumber = request.getParameter("TelephoneNumber");
 		String sex = request.getParameter("Sex");
 		String registrationNumber = request.getParameter("RegistrationNumber");
+		
+		if (lastname.length() < 3 || lastname.length() > 30) {
+			throw new IllegalArgumentException("Lunghezza cognome non valida");
+	    }
+		
+		String lastNameFormat = "[A-Z]{1}[a-zA-Z\\s]{2,29}";
+		
+		if (!lastname.matches(lastNameFormat)) {
+			throw new IllegalArgumentException("Formato cognome non valido");
+		}
+		
+		if (firstname.length() < 3 || firstname.length() > 30) {
+			throw new IllegalArgumentException("Lunghezza nome non valida");
+	    }		
+		
+		String firstNameFormat = "[A-Z]{1}[a-zA-Z\\s]{2,29}";
+		
+		if (!firstname.matches(firstNameFormat)) {
+			throw new IllegalArgumentException("Formato nome non valido");
+		}
+		
+		if (email.length() == 0 || email.length() > 45) {
+			throw new IllegalArgumentException("Lunghezza email non valida");
+	    }
+		
+		String mailFormat1 = "\\w+([\\.-]?\\w+)*@studenti.unicampania.it";
+		String mailFormat2 = "\\w+([\\.-]?\\w+)*@commissione.unicampania.it";
+		String mailFormat3 = "\\w+([\\.-]?\\w+)*@unicampania.it";
+		
+		if (!(email.matches(mailFormat1) || email.matches(mailFormat2) || email.matches(mailFormat3))) {
+			throw new IllegalArgumentException("Formato email non valido");
+		}
+		
+		if (pwd.length() < 8 || pwd.length() > 10) {
+			throw new IllegalArgumentException("Lunghezza password non valida");
+	    }
+		
+		String passwordFormat = "(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,10}";
+		
+		if (!pwd.matches(passwordFormat)) {
+			throw new IllegalArgumentException("Formato password non valido");
+		}
+		
+		if(!pwd.equals(verifypwd)) {
+			throw new IllegalArgumentException("Le due password inserite non corrispondono");			
+		}
+		
+		if (registrationNumber.length() < 6 || registrationNumber.length() > 10) {
+			throw new IllegalArgumentException("Lunghezza matricola non valida");
+	    }
+		
+		String registrationNumberFormat = "[AB]\\d{5,9}";
+		
+		if (!registrationNumber.matches(registrationNumberFormat)) {
+			throw new IllegalArgumentException("Formato matricola non valido");
+		}
+		
+		if (telephoneNumber.length() < 9 || telephoneNumber.length() > 10) {
+			throw new IllegalArgumentException("Lunghezza numero di telefono non valida");
+		}
+		
+		String telephoneNumberFormat = "\\d{9,10}";
+		
+		if (!telephoneNumber.matches(telephoneNumberFormat)) {
+			throw new IllegalArgumentException("Formato numero di telefono non valido");
+		}
 		
 		int flag = Integer.parseInt(request.getParameter("flag"));	// Flag passato nello script ajax: 1 = registrazione studente, 2 = registrazione tutor.
 		JSONObject obj = new JSONObject();
@@ -115,9 +182,7 @@ public class RegistrationServlet extends HttpServlet {
 			student.setRegistrationNumber(registrationNumber);
 			student.setAcademicYear(Integer.parseInt(academicYear));
 			
-			
 			try {
-				//if(valida(email, pwd, firstname, lastname, telephoneNumber, sex, registrationNumber, academicYear)) {}
 				studentDAO.doSave(student);
 				
 				response.setContentType("application/json");
@@ -142,7 +207,16 @@ public class RegistrationServlet extends HttpServlet {
 			TutorDAO tutorDAO = new TutorDAO();
 							
 			String startDate = request.getParameter("StartDate");	// Dati Tutor
-			int totalHours = Integer.parseInt(request.getParameter("TotalHours"));
+			int totalHours = -1;
+			
+			try {
+				totalHours = Integer.parseInt(request.getParameter("TotalHours"));
+			} catch(NumberFormatException e) {
+				throw new IllegalArgumentException("Formato ore contrattuali non valido");
+			}
+			if (totalHours < 30 || totalHours > 150) {
+				throw new IllegalArgumentException("Numero di ore contrattuali non valido");
+			}
 			
 			UserBean commissionMember = (UserBean) request.getSession().getAttribute("user");
 			

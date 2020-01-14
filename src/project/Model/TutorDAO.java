@@ -13,7 +13,7 @@ import project.Control.DBConnection;
 import project.Utils.Utils;
 
 /**
- * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Tutor
+ * Questa classe ï¿½ un manager che si occupa di interagire con il database. Gestisce le query riguardanti Tutor
  */
 public class TutorDAO  {		
 	public TutorDAO() {
@@ -210,7 +210,7 @@ public class TutorDAO  {
 	
 	/** 
 	 * @param order
-	 * @return una Collection di tutor, tramite le attività, registrati nel database
+	 * @return una Collection di tutor, tramite le attivitï¿½, registrati nel database
 	 * @throws SQLException
 	 */
 	public synchronized Collection<TutorBean> doRetrieveAllActive(String order) throws SQLException {

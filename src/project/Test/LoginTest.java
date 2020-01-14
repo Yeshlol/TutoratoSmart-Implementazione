@@ -46,7 +46,6 @@ public class LoginTest {
 		
 		final String message = "Lunghezza email non valida";
 		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
-
 			servlet.doPost(request, response);
 		});
 		assertEquals(message, exceptionThrown.getMessage());
@@ -60,7 +59,6 @@ public class LoginTest {
 		
 		final String message = "Lunghezza email non valida";
 		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
-
 			servlet.doPost(request, response);
 		});
 		assertEquals(message, exceptionThrown.getMessage());
@@ -74,7 +72,6 @@ public class LoginTest {
 
 		final String message = "Formato email non valido";
 		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
-
 			servlet.doPost(request, response);
 		});
 		assertEquals(message, exceptionThrown.getMessage());
@@ -102,7 +99,6 @@ public class LoginTest {
 
 		final String message = "Lunghezza password non valida";
 		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
-
 			servlet.doPost(request, response);
 		});
 		assertEquals(message, exceptionThrown.getMessage());
@@ -117,7 +113,6 @@ public class LoginTest {
 
 		final String message = "Formato password non valido";
 		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
-
 			servlet.doPost(request, response);
 		});
 		assertEquals(message, exceptionThrown.getMessage());

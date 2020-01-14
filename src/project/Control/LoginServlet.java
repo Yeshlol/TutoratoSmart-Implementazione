@@ -46,12 +46,7 @@ public class LoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("password");
-		
-		JSONObject obj = new JSONObject();
-		
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-				
+								
 		if (email.length() == 0 || email.length() > 45) {
 			throw new IllegalArgumentException("Lunghezza email non valida");
 	    }
@@ -80,6 +75,10 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 						
 		synchronized (session) {
+			JSONObject obj = new JSONObject();
+			
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
 			try {
 				user = userDAO.doRetrieveByMail(email);
 				if (user != null) {

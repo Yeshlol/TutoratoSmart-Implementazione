@@ -28,7 +28,7 @@ function validateEmail(email) {
 }
 
 function validateFirstName(firstName) {
-	var firstNameFormat = /^[A-Z]{1}[a-zA-Z\s]{2,30}$/;
+	var firstNameFormat = /^[A-Z]{1}[a-zA-Z\s]{2,29}$/;
 	
 	if (firstName.val().match(firstNameFormat))
 		return true;
@@ -37,7 +37,7 @@ function validateFirstName(firstName) {
 }
 
 function validateLastName(lastName) {
-	var lastNameFormat = /^[A-Z]{1}[a-zA-Z\s]{2,30}$/;
+	var lastNameFormat = /^[A-Z]{1}[a-zA-Z\s]{2,29}$/;
 	
 	if (lastName.val().match(lastNameFormat))
 		return true;
