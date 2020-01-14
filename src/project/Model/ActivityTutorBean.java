@@ -75,8 +75,8 @@ public class ActivityTutorBean implements Serializable {
 		return startTime;
 	}
 
-	/**
-	 * @param startTime startTIme tempo di inizio da assegnare all'attività
+	/** 
+	 * @param startTime startTime tempo di inizio da assegnare all'attività
 	 * @return
 	 */
 	public void setStartTime(int startTime) {
@@ -166,7 +166,7 @@ public class ActivityTutorBean implements Serializable {
 	}
 
 	/**
-	 * @param tutor tutor tutor da assegnare all'attività
+	 * @param tutor tutor da assegnare all'attività
 	 * @return
 	 */
 	public void setTutor(String tutor) {
