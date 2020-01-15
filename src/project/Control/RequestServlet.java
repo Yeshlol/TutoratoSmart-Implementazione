@@ -308,11 +308,6 @@ public class RequestServlet extends HttpServlet {
 			
 			String requestDuration = request.getParameter("duration");
 			
-			int durata=Integer.parseInt(requestDuration);
-			if(durata < 10 || durata > 120) {
-				throw new IllegalArgumentException("Numero di ore inserite non corretto");
-			}
-			
 			int duration;
 			
 			if (requestDuration != null && requestDuration != "") {		// recupero durata stimata.
@@ -322,6 +317,10 @@ public class RequestServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
 				dispatcher.forward(request, response);
 				return;
+			}
+			
+			if(duration < 10 || duration > 120) {
+				throw new IllegalArgumentException("Durata inserita non valida");
 			}
 			
 			UserBean user = (UserBean) request.getSession().getAttribute("user");
