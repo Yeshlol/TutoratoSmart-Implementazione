@@ -93,12 +93,8 @@ public class LoginServlet extends HttpServlet {
 					throw new IllegalArgumentException("Utente non trovato");
 				}
 			} catch (SQLException e) {
-				try {
-					obj.put("result", 2);
-					e.printStackTrace();
-				} catch (JSONException e1) {
-					e1.printStackTrace();
-				}				
+				
+								
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}

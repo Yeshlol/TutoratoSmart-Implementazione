@@ -85,6 +85,7 @@ public class UserDAO  {
 	            }
 	            else {
 	            	// System.out.println("Utente non trovato!");
+	            	return null;
 	            }
 	        }
 		} catch (SQLException e) {

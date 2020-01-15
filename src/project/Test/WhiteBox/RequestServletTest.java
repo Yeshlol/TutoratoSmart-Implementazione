@@ -46,7 +46,7 @@ class RequestServletTest {
 		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
-
+	//caso di testing con parametro ajax settato a true 
 	@Test
 	void testflagajaxsucces() throws ServletException, IOException, SQLException, JSONException {
 		request.addParameter("ajax","true");
@@ -62,6 +62,7 @@ class RequestServletTest {
 		
 		assertEquals(result, true);
 	}
+	//caso di testing con parametro ajax settato a true e parametro data non settato 
 	@Test
 	void testflagajaxfail() throws ServletException, IOException, SQLException, JSONException {
 		request.addParameter("ajax","true");
@@ -77,6 +78,7 @@ class RequestServletTest {
 		
 		assertEquals(result, false);
 	}
+	//caso di testing con parametro ajax settato a true e parametro modify settato a false 
 	@Test
 	void testflagmodify() throws ServletException, IOException, SQLException, JSONException {
 		request.addParameter("ajax","true");
@@ -91,7 +93,7 @@ class RequestServletTest {
 		
 		assertEquals(result, true);
 	}
-
+	//Registrazione nuova prenotazione
 	@Test
 	void testflag1succes() throws ServletException, IOException, SQLException, JSONException {
 		UserDAO userDAO = new UserDAO();
@@ -109,7 +111,7 @@ class RequestServletTest {
 		
 		assertEquals(result, 1);
 	}
-	//cancellazione ok flag=2
+	//Cancellazione prenotazione
 	@Test
 	void testflag2succes() throws ServletException, IOException, SQLException, JSONException {
 		RequestDAO requestDAO = new RequestDAO();
@@ -126,77 +128,58 @@ class RequestServletTest {
 		
 		assertEquals(result, 1);
 	}
-	/*//cancellazione non ok flag=2
+	//Modifica prenotazione 
+		@Test		
+		void testflag3succes() throws ServletException, IOException, SQLException, JSONException {
+		UserDAO userDAO = new UserDAO();
+	    UserBean user = userDAO.doRetrieveByMail("e.merola@studenti.unicampania.it");
+		request.getSession().setAttribute("user", user);
+	    request.addParameter("flag","3");
+	    request.addParameter("time","10:00");
+	    request.addParameter("comment","Mi serve aiuto per l'immatricolazione");
+	    request.addParameter("date","2020-01-15"); 
+	    request.addParameter("id", "4");
+							
+	    servlet.doPost(request, response);
+					
+	    String content = response.getContentAsString();
+	    JSONObject jsonObj = new JSONObject(content);
+	    int result = (int) jsonObj.get("result");
+					
+	    assertEquals(result, 1);
+	    }
+		//Accettazione richiesta da parte del tutor
 		@Test
-		void test2flag2fail() throws ServletException, IOException, SQLException, JSONException {
-			RequestDAO requestDAO = new RequestDAO();
-			RequestBean requestbean =requestDAO.doRetrieveById(6);
-			request.getSession().setAttribute("request", requestbean);
-			request.addParameter("flag","2");
-			request.addParameter("id","6");
-			
+		void testflag4succes() throws ServletException, IOException, SQLException, JSONException {
+			UserDAO user = new UserDAO();
+			UserBean bean = user.doRetrieveByMail("m.pisciotta@studenti.unicampania.it");
+			request.getSession().setAttribute("user", bean);
+			request.addParameter("flag", "4");
+			request.addParameter("id","4");
+			request.addParameter("duration","60");
+							
 			servlet.doPost(request, response);
+					
 			String content = response.getContentAsString();
 			JSONObject jsonObj = new JSONObject(content);
 			int result = (int) jsonObj.get("result");
-			
-			assertEquals(result, 2);
-			
-		}*/
-		//modifica prenotazione ok flag=3
-				@Test
-				void testflag3succes() throws ServletException, IOException, SQLException, JSONException {
-					UserDAO userDAO = new UserDAO();
-					UserBean user = userDAO.doRetrieveByMail("e.merola@studenti.unicampania.it");
-					request.getSession().setAttribute("user", user);
-					request.addParameter("flag","3");
-					request.addParameter("time","10:00");
-					request.addParameter("comment","Mi serve aiuto per l'immatricolazione");
-					request.addParameter("date","2020-01-15");
-					request.addParameter("id", "4");
+					
+			assertEquals(result, 1);
+		 }
+		//Studente assente
+		@Test
+		void testflag5succes() throws ServletException, IOException, SQLException, JSONException {
+			RequestDAO requestDAO = new RequestDAO();
+			RequestBean bean = requestDAO.doRetrieveById(4);
+			request.getSession().setAttribute("request", bean);
+			request.addParameter("flag", "5");
 							
-					servlet.doPost(request, response);
+			servlet.doPost(request, response);
 					
-					String content = response.getContentAsString();
-					JSONObject jsonObj = new JSONObject(content);
-					int result = (int) jsonObj.get("result");
+			String content = response.getContentAsString();
+			JSONObject jsonObj = new JSONObject(content);
+			int result = (int) jsonObj.get("result");
 					
-					assertEquals(result, 1);
-				}
-				//accettazione richiesta ok flag=4
-				@Test
-				void testflag4succes() throws ServletException, IOException, SQLException, JSONException {
-					UserDAO user = new UserDAO();
-					UserBean bean = user.doRetrieveByMail("m.pisciotta@studenti.unicampania.it");
-					request.getSession().setAttribute("user", bean);
-					request.addParameter("flag", "4");
-					request.addParameter("id","4");
-					request.addParameter("duration","60");
-							
-					servlet.doPost(request, response);
-					
-					String content = response.getContentAsString();
-					JSONObject jsonObj = new JSONObject(content);
-					int result = (int) jsonObj.get("result");
-					
-					assertEquals(result, 1);
-				}
-				//accettazione richiesta ok flag=5
-				@Test
-				void testflag5succes() throws ServletException, IOException, SQLException, JSONException {
-					RequestDAO requestDAO = new RequestDAO();
-					RequestBean bean = requestDAO.doRetrieveById(4);
-					request.getSession().setAttribute("request", bean);
-					request.addParameter("flag", "5");
-							
-					servlet.doPost(request, response);
-					
-					String content = response.getContentAsString();
-					JSONObject jsonObj = new JSONObject(content);
-					int result = (int) jsonObj.get("result");
-					
-					assertEquals(result, 1);
-				}
-				
-
+			assertEquals(result, 1);
+			}				
 }
