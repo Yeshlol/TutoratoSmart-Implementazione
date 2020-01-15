@@ -94,14 +94,14 @@ class RegistrationServletTest {
 		@Test
 		public void testflagajaxsucces() throws ServletException, IOException, JSONException, SQLException {
 			request.addParameter("ajax", "true");
-			request.addParameter("mail", "f.pagano@studenti.unicampania.it");			
+			request.addParameter("mail", "m.pisciotta@studenti.unicampania.it");			
 			servlet.doPost(request, response);
 			
 			String content = response.getContentAsString();
 			JSONObject jsonObj = new JSONObject(content);
 			boolean result =  (boolean) jsonObj.get("disponibile");
 			
-			assertEquals(result, true);
+			assertEquals(result, false);
 		}
 		//caso di testing con flag settato a 1 
 		@Test
