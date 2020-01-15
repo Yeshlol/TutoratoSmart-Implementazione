@@ -66,4 +66,22 @@ class TutorDAOTest {
 		LinkedList<TutorBean> tutorList= (LinkedList<TutorBean>) tutorDAO.doRetrieveAllActive(null);
 		assertNotNull(tutorList);
 	}
+	
+	@Test
+	void doRetrieveByRegisterId() throws SQLException {
+		TutorBean tutor = tutorDAO.doRetrieveByRegisterId(1);
+		assertNotNull(tutor);
+	}
+	
+	@Test
+	void doUpdateState() throws SQLException {
+		TutorBean tutor = tutorDAO.doRetrieveByRegisterId(1);
+		String previousState = tutor.getState();
+		
+		tutorDAO.doUpdateState(tutor);
+		
+		tutor = tutorDAO.doRetrieveByRegisterId(1);
+		
+		assertNotEquals(previousState, tutor.getState());
+	}
 }

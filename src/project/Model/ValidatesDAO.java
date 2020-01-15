@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import project.Control.DBConnection;
 
 /**
- * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Valida.
+ * Questa classe ï¿½ un manager che si occupa di interagire con il database. Gestisce le query riguardanti Valida.
  */
 public class ValidatesDAO {
 	public ValidatesDAO() {
@@ -44,7 +44,7 @@ public class ValidatesDAO {
 
 	/** 
 	 * @param commissionMemberMail
-	 * @return una Collection di attività, tramite mail del membro della commissione, registrate nel database
+	 * @return una Collection di attivita, tramite mail del membro della commissione, registrate nel database
 	 * @throws SQLException
 	 */
 	public synchronized Collection<ActivityTutorBean> doRetrieveByCommissionMember(String commissionMemberMail) throws SQLException {
@@ -109,12 +109,7 @@ public class ValidatesDAO {
 		register.setValidatedHours(register.getValidatedHours() + hours);
 		register.setPercentageComplete((register.getValidatedHours() / register.getTotalHours()) * 100);
 		
-		System.out.println("Ore validate: " + register.getValidatedHours() + "\tOre totali: " + register.getTotalHours() + "\tPercentuale: " + register.getPercentageComplete() + "%");
-		
-		if(register.getPercentageComplete() >= 100) {
-			register.setPercentageComplete(100.f);
-			register.setState("Approvato");
-		}
+		// System.out.println("Ore validate: " + register.getValidatedHours() + "\tOre totali: " + register.getTotalHours() + "\tPercentuale: " + register.getPercentageComplete() + "%");
 		
 		try {			
 			connection.setAutoCommit(false);
@@ -134,6 +129,15 @@ public class ValidatesDAO {
 			
 			preparedStatement.executeUpdate();
 			
+			if(register.getPercentageComplete() >= 100) {
+				register.setPercentageComplete(100.f);
+				register.setState("Approvato");
+				
+				TutorDAO tutorDAO = new TutorDAO();
+				TutorBean tutor = tutorDAO.doRetrieveByRegisterId(register.getIdRegister());
+				tutorDAO.doUpdateState(tutor);
+			}
+			
 			registerDAO.doUpdate(register);
 			
 			connection.commit();
@@ -141,40 +145,5 @@ public class ValidatesDAO {
 			if(preparedStatement != null)
 				preparedStatement.close();
 		}		
-	}
-
-	/** 
-	 * @param idActivity
-	 * @return
-	 * @throws SQLException
-	 */
-	public void doDelete(int idActivity) throws SQLException {
-		Connection connection = DBConnection.getInstance().getConn();
-		
-		ActivityTutorDAO activityDAO = new ActivityTutorDAO();
-		ActivityTutorBean activity = activityDAO.doRetrieveById(idActivity);
-		
-		RegisterDAO registerDAO = new RegisterDAO();
-		RegisterBean register = registerDAO.doRetrieveById(activity.getRegisterId());
-		
-		if(activity.getState().equals("Convalidata")) {
-			float hours = activity.getHours();
-			register.setValidatedHours(register.getValidatedHours() - hours);
-			register.setPercentageComplete((register.getValidatedHours() / register.getTotalHours()) * 100);
-		}
-		
-		System.out.println("Ore validate: " + register.getValidatedHours() + "\tOre totali: " + register.getTotalHours() + "\tPercentuale: " + register.getPercentageComplete() + "%");
-		
-		if(register.getPercentageComplete() < 100) {
-			register.setState("Non approvato");
-		}
-		
-		try {			
-			registerDAO.doUpdate(register);
-			
-			connection.commit();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 }

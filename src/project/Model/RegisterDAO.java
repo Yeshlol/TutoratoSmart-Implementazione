@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import project.Control.DBConnection;
 
 /**
- * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Registro.
+ * Questa classe ï¿½ un manager che si occupa di interagire con il database. Gestisce le query riguardanti Registro.
  */
 public class RegisterDAO  {		
 	public RegisterDAO() {

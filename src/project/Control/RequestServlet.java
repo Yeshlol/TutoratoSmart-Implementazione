@@ -58,7 +58,6 @@ public class RequestServlet extends HttpServlet {
     
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean ajax = Boolean.parseBoolean(request.getParameter("ajax"));// Richieste ajax per disponibilità orario appuntamento
-		String content="";
 		
 		RequestDAO requestDAO = new RequestDAO();
 		JSONObject obj = new JSONObject();
