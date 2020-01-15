@@ -56,8 +56,7 @@ public class AppointmentServlet extends HttpServlet {
     
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserBean tutor = (UserBean) request.getSession(false).getAttribute("user");
-		RequestBean req = (RequestBean) request.getSession(false).getAttribute("request");
-		
+				
 		AppointmentDAO appointmentDAO = new AppointmentDAO();
 		RequestDAO requestDAO = new RequestDAO();
 		
@@ -69,20 +68,21 @@ public class AppointmentServlet extends HttpServlet {
 																		// 3 = cancellazione appuntamento
 																		
 		if (flag == 1) {												// Registrazione nuovo appuntamento
-			String comment = request.getParameter("comment");		// Dati appuntamento
-			
-			
-			if (comment.length() > 240) {
-				throw new IllegalArgumentException("Commento troppo lungo");
+			String comment = request.getParameter("comment");			// Dati appuntamento
+						
+			if (comment.length() == 0 || comment.length() > 240) {
+				throw new IllegalArgumentException("Lunghezza commento non valida");
 		    }
 			
 			String tutorMail = tutor.getEmail();
+			
+			RequestBean req = (RequestBean) request.getSession(false).getAttribute("request");
+			
 			AppointmentBean appointmentBean = new AppointmentBean();
 			
 			appointmentBean.setDetails(comment);
 			appointmentBean.setTutor(tutorMail);
 			appointmentBean.setRequestId(req.getIdRequest());
-
 			
 			try {
 				appointmentDAO.doSave(appointmentBean);
@@ -115,8 +115,8 @@ public class AppointmentServlet extends HttpServlet {
 			String comment = request.getParameter("comment");		// Dati appuntamento
 					
 			
-			if (comment.length() > 240) {
-				throw new IllegalArgumentException("Commento troppo lungo");
+			if (comment.length() == 0 || comment.length() > 240) {
+				throw new IllegalArgumentException("Lunghezza commento non valida");
 		    }
 			
 			AppointmentBean appointmentBean = (AppointmentBean) request.getSession(false).getAttribute("appointment");
