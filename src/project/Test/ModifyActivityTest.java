@@ -40,38 +40,246 @@ class ModifyActivityTest {
 		DBConnection.setTest(false);
 	}
 
-	// TC_9.0_1 Lunghezza commento non valida = 0
+	// TC_9.0_1 Categoria non selezionata
 	@Test
 	public void testCase_9_0_1() throws ServletException, IOException, SQLException {
 		request.addParameter("flag", "2");
-		request.addParameter("description", "");
-		request.addParameter("category", "Sportello Tutorato");
+		request.addParameter("category", "");
 		request.addParameter("date", "2020-01-20");
-		request.addParameter("startTime", "10:00");
+		request.addParameter("startTime", "09:00");
 		request.addParameter("finishTime", "11:00");
+		request.addParameter("description", "Giornata open-day");
+		
+		request.addParameter("delete", "false");
+		request.addParameter("id", "1");		
+		
 		UserDAO userDAO = new UserDAO();
-		UserBean userBean = userDAO.doRetrieveByMail("m.pisciotta@studenti.unicampania.it");
+		UserBean userBean = userDAO.doRetrieveByMail("m.lombardo@studenti.unicampania.it");
 		
 		request.getSession().setAttribute("user", userBean);
 		
-		final String message = "Lunghezza commento non valida";
+		final String message = "Selezionare la categoria";
 		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
 			servlet.doPost(request, response);
 		});
 		assertEquals(message, exceptionThrown.getMessage());
 	}
 	
-	// TC_9.0_2 Lunghezza commento non valida > 240 
+	// TC_9.0_2 Data non selezionata
 	@Test
 	public void testCase_9_0_2() throws ServletException, IOException, SQLException {
 		request.addParameter("flag", "2");
-		request.addParameter("description", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		request.addParameter("category", "Sportello Tutorato");
-		request.addParameter("date", "2020-01-20");
-		request.addParameter("startTime", "10:00");
+		request.addParameter("category", "Evento");
+		request.addParameter("date", "");
+		request.addParameter("startTime", "09:00");
 		request.addParameter("finishTime", "11:00");
+		request.addParameter("description", "Giornata open-day");
+
+		request.addParameter("delete", "false");
+		request.addParameter("id", "1");
+		
 		UserDAO userDAO = new UserDAO();
-		UserBean userBean = userDAO.doRetrieveByMail("m.pisciotta@studenti.unicampania.it");
+		UserBean userBean = userDAO.doRetrieveByMail("m.lombardo@studenti.unicampania.it");
+		
+		request.getSession().setAttribute("user", userBean);
+		
+		final String message = "Selezionare la data";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
+	}
+	
+	// TC_9.0_3 Orario di inizio attivita non selezionato
+	@Test
+	public void testCase_9_0_3() throws ServletException, IOException, SQLException {
+		request.addParameter("flag", "2");
+		request.addParameter("category", "Evento");
+		request.addParameter("date", "2020-01-20");
+		request.addParameter("startTime", "");
+		request.addParameter("finishTime", "11:00");
+		request.addParameter("description", "Giornata open-day");
+
+		request.addParameter("delete", "false");
+		request.addParameter("id", "1");
+		
+		UserDAO userDAO = new UserDAO();
+		UserBean userBean = userDAO.doRetrieveByMail("m.lombardo@studenti.unicampania.it");
+		
+		request.getSession().setAttribute("user", userBean);
+		
+		final String message = "Inserire l’orario di inizio attivita";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
+	}
+	
+	// TC_9.0_4 Orario di inizio attivita non valido precedente 7:30
+	@Test
+	public void testCase_9_0_4() throws ServletException, IOException, SQLException {
+		request.addParameter("flag", "2");
+		request.addParameter("category", "Evento");
+		request.addParameter("date", "2020-01-20");
+		request.addParameter("startTime", "06:00");
+		request.addParameter("finishTime", "11:00");
+		request.addParameter("description", "Giornata open-day");
+
+		request.addParameter("delete", "false");
+		request.addParameter("id", "1");
+		
+		UserDAO userDAO = new UserDAO();
+		UserBean userBean = userDAO.doRetrieveByMail("m.lombardo@studenti.unicampania.it");
+		
+		request.getSession().setAttribute("user", userBean);
+		
+		final String message = "Orario di inizio attivita non valido";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
+	}
+	
+	// TC_9.0_5 Orario di inizio attivita non valido successivo alle 22:00
+	@Test
+	public void testCase_9_0_5() throws ServletException, IOException, SQLException {
+		request.addParameter("flag", "2");
+		request.addParameter("category", "Evento");
+		request.addParameter("date", "2020-01-20");
+		request.addParameter("startTime", "23:00");
+		request.addParameter("finishTime", "24:00");
+		request.addParameter("description", "Giornata open-day");
+
+		request.addParameter("delete", "false");
+		request.addParameter("id", "1");
+		
+		UserDAO userDAO = new UserDAO();
+		UserBean userBean = userDAO.doRetrieveByMail("m.lombardo@studenti.unicampania.it");
+		
+		request.getSession().setAttribute("user", userBean);
+		
+		final String message = "Orario di inizio attivita non valido";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
+	}
+	
+	// TC_9.0_6 Orario di fine attivita non selezionato
+	@Test
+	public void testCase_9_0_6() throws ServletException, IOException, SQLException {
+		request.addParameter("flag", "2");
+		request.addParameter("category", "Evento");
+		request.addParameter("date", "2020-01-20");
+		request.addParameter("startTime", "09:00");
+		request.addParameter("finishTime", "");
+		request.addParameter("description", "Giornata open-day");
+
+		request.addParameter("delete", "false");
+		request.addParameter("id", "1");
+		
+		UserDAO userDAO = new UserDAO();
+		UserBean userBean = userDAO.doRetrieveByMail("m.lombardo@studenti.unicampania.it");
+		
+		request.getSession().setAttribute("user", userBean);
+		
+		final String message = "Inserire l’orario di fine attivita";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
+	}
+	
+	// TC_9.0_7 Orario di fine attivita non valido precedente 7:30
+	@Test
+	public void testCase_9_0_7() throws ServletException, IOException, SQLException {
+		request.addParameter("flag", "2");
+		request.addParameter("category", "Evento");
+		request.addParameter("date", "2020-01-20");
+		request.addParameter("startTime", "09:00");
+		request.addParameter("finishTime", "06:00");
+		request.addParameter("description", "Giornata open-day");
+		
+		request.addParameter("delete", "false");
+		request.addParameter("id", "1");
+		
+		UserDAO userDAO = new UserDAO();
+		UserBean userBean = userDAO.doRetrieveByMail("m.lombardo@studenti.unicampania.it");
+		
+		request.getSession().setAttribute("user", userBean);
+		
+		final String message = "Orario di fine attivita non valido";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
+	}
+		
+	// TC_9.0_8 Orario di fine attivita non valido successivo alle 22:00
+	@Test
+	public void testCase_9_0_8() throws ServletException, IOException, SQLException {
+		request.addParameter("flag", "2");
+		request.addParameter("category", "Evento");
+		request.addParameter("date", "2020-01-20");
+		request.addParameter("startTime", "09:00");
+		request.addParameter("finishTime", "23:00");
+		request.addParameter("description", "Giornata open-day");
+
+		request.addParameter("delete", "false");
+		request.addParameter("id", "1");
+		
+		UserDAO userDAO = new UserDAO();
+		UserBean userBean = userDAO.doRetrieveByMail("m.lombardo@studenti.unicampania.it");
+		
+		request.getSession().setAttribute("user", userBean);
+		
+		final String message = "Orario di fine attivita non valido";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
+	}
+	
+	// TC_9.0_9 Orari inseriti non validi (Orario di fine precedente a orario di inizio)
+	@Test
+	public void testCase_9_0_9() throws ServletException, IOException, SQLException {
+		request.addParameter("flag", "2");
+		request.addParameter("category", "Evento");
+		request.addParameter("date", "2020-01-20");
+		request.addParameter("startTime", "11:00");
+		request.addParameter("finishTime", "09:00");
+		request.addParameter("description", "Giornata open-day");
+
+		request.addParameter("delete", "false");
+		request.addParameter("id", "1");
+		
+		UserDAO userDAO = new UserDAO();
+		UserBean userBean = userDAO.doRetrieveByMail("m.lombardo@studenti.unicampania.it");
+		
+		request.getSession().setAttribute("user", userBean);
+		
+		final String message = "Orari inseriti non validi";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
+			servlet.doPost(request, response);
+		});
+		assertEquals(message, exceptionThrown.getMessage());
+	}
+	
+	// TC_9.0_10 Orari inseriti non validi (Orario di fine precedente a orario di inizio)
+	@Test
+	public void testCase_9_0_10() throws ServletException, IOException, SQLException {
+		request.addParameter("flag", "2");
+		request.addParameter("category", "Evento");
+		request.addParameter("date", "2020-01-20");
+		request.addParameter("startTime", "09:00");
+		request.addParameter("finishTime", "11:00");
+		request.addParameter("description", "");
+
+		request.addParameter("delete", "false");
+		request.addParameter("id", "1");
+		
+		UserDAO userDAO = new UserDAO();
+		UserBean userBean = userDAO.doRetrieveByMail("m.lombardo@studenti.unicampania.it");
 		
 		request.getSession().setAttribute("user", userBean);
 		
@@ -82,26 +290,61 @@ class ModifyActivityTest {
 		assertEquals(message, exceptionThrown.getMessage());
 	}
 	
-	// TC_9.0_3 Successo
-		@Test
-		public void testCase_9_0_3() throws ServletException, IOException, SQLException, JSONException {
-			request.addParameter("flag", "2");
-			request.addParameter("description", "Svolto sportello di tutorato");
-			request.addParameter("category", "Sportello Tutorato");
-			request.addParameter("date", "2020-01-20");
-			request.addParameter("startTime", "10:00");
-			request.addParameter("finishTime", "11:00");
-			UserDAO userDAO = new UserDAO();
-			UserBean userBean = userDAO.doRetrieveByMail("m.pisciotta@studenti.unicampania.it");
-			
-			request.getSession().setAttribute("user", userBean);
-			
+	// TC_9.0_11 Orari inseriti non validi (Orario di fine precedente a orario di inizio)
+	@Test
+	public void testCase_9_0_11() throws ServletException, IOException, SQLException {
+		request.addParameter("flag", "2");
+		request.addParameter("category", "Evento");
+		request.addParameter("date", "2020-01-20");
+		request.addParameter("startTime", "09:00");
+		request.addParameter("finishTime", "11:00");
+		request.addParameter("description", "Ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
+							"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
+							"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
+							"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
+							"ppppppppppppppppppppppppppppppppppppppppppppppp\r\n" + 
+							"ppppppppppppppppppppppppppppppppppppp\r\n" + 
+							"");
+
+		request.addParameter("delete", "false");
+		request.addParameter("id", "1");
+		
+		UserDAO userDAO = new UserDAO();
+		UserBean userBean = userDAO.doRetrieveByMail("m.lombardo@studenti.unicampania.it");
+		
+		request.getSession().setAttribute("user", userBean);
+		
+		final String message = "Lunghezza commento non valida";
+		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
 			servlet.doPost(request, response);
-			
-			String content = response.getContentAsString();
-			JSONObject jsonObj = new JSONObject(content);
-			int result = (int) jsonObj.get("result");
-			
-			assertEquals(result, 1);
-		}
+		});
+		assertEquals(message, exceptionThrown.getMessage());
+	}
+	
+	// TC_9.0_12 Successo
+	@Test
+	public void testCase_9_0_12() throws ServletException, IOException, SQLException, JSONException {
+		request.addParameter("flag", "2");
+		request.addParameter("category", "Evento");
+		request.addParameter("date", "2020-01-20");
+		request.addParameter("startTime", "09:00");
+		request.addParameter("finishTime", "11:00");
+		request.addParameter("description", "Giornata open-day");
+
+		request.addParameter("delete", "false");
+		request.addParameter("id", "1");
+		
+		UserDAO userDAO = new UserDAO();
+		UserBean userBean = userDAO.doRetrieveByMail("m.pisciotta@studenti.unicampania.it");
+		
+		request.getSession().setAttribute("user", userBean);
+		
+		servlet.doPost(request, response);
+		
+		String content = response.getContentAsString();
+		JSONObject jsonObj = new JSONObject(content);
+		int result = (int) jsonObj.get("result");
+		
+		assertEquals(result, 1);
+	}
 }

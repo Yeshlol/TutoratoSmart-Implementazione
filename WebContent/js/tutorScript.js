@@ -195,6 +195,11 @@ function validateInputsActivity() {
 		valid = false;
 	}
 	
+	if (description.val().lenght > 240) {
+		errorMessage += "<strong>Descrizione inserita eccessiva</strong><br/>";	
+		valid = false;
+	}
+	
 	if(valid) {
 		$.post("/TutoratoSmart/Activity", {
 			"flag":"1",

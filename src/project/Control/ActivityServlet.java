@@ -178,20 +178,50 @@ public class ActivityServlet extends HttpServlet {
 					
 		if (flag == 1) {												// Registrazione nuova attività
 			String category = request.getParameter("category");			// Dati Attività
-			Date date = Date.valueOf(request.getParameter("date"));
+			String dateString = request.getParameter("date");
 			String startTime = request.getParameter("startTime");
 			String finishTime = request.getParameter("finishTime");
 			String description = request.getParameter("description");
 			String tutorMail = user.getEmail();
 			
-			System.out.println("startTime = " + startTime);
+			if(category.length() == 0) {
+				throw new IllegalArgumentException("Selezionare la categoria");
+			}
 			
-			if(description.length() == 0 || description.length() > 240) {
-				throw new IllegalArgumentException("Lunghezza commento non valida");
+			if(dateString.length() == 0) {
+				throw new IllegalArgumentException("Selezionare la data");
+			}
+			
+			Date date = Date.valueOf(dateString);
+			
+			if(startTime.length() == 0) {
+				throw new IllegalArgumentException("Inserire l’orario di inizio attivita");
 			}
 			
 			int start = Utils.getTimeAsInt(startTime);
+			
+			if(start < 450 || start > 1320) {
+				throw new IllegalArgumentException("Orario di inizio attivita non valido");
+			}
+			
+			if(finishTime.length() == 0) {
+				throw new IllegalArgumentException("Inserire l’orario di fine attivita");
+			}
+			
 			int finish = Utils.getTimeAsInt(finishTime);
+			
+			if(finish < 450 || finish > 1320) {
+				throw new IllegalArgumentException("Orario di fine attivita non valido");
+			}
+			
+			if(finish < start) {
+				throw new IllegalArgumentException("Orari inseriti non validi");
+			}
+			
+			if(description.length() == 0 || description.length() > 240) {
+				throw new IllegalArgumentException("Lunghezza commento non valida");
+			}			
+		
 			float hours = (finish - start) / 60.f;
 									
 			ActivityTutorBean activityBean = new ActivityTutorBean();
@@ -254,19 +284,51 @@ public class ActivityServlet extends HttpServlet {
 			
 			if (delete.equals("false")) {								// Modifica attività
 				String category = request.getParameter("category");		// Dati Attività
-				Date date = Date.valueOf(request.getParameter("date"));
+				String dateString = request.getParameter("date");
 				String startTime = request.getParameter("startTime");
 				String finishTime = request.getParameter("finishTime");
 				String description = request.getParameter("description");
 				int id = Integer.parseInt(request.getParameter("id"));
 				String tutorMail = user.getEmail();
 				
+				if(category.length() == 0) {
+					throw new IllegalArgumentException("Selezionare la categoria");
+				}
+				
+				if(dateString.length() == 0) {
+					throw new IllegalArgumentException("Selezionare la data");
+				}
+				
+				Date date = Date.valueOf(dateString);
+				
+				if(startTime.length() == 0) {
+					throw new IllegalArgumentException("Inserire l’orario di inizio attivita");
+				}
+				
+				int start = Utils.getTimeAsInt(startTime);
+				
+				if(start < 450 || start > 1320) {
+					throw new IllegalArgumentException("Orario di inizio attivita non valido");
+				}
+				
+				if(finishTime.length() == 0) {
+					throw new IllegalArgumentException("Inserire l’orario di fine attivita");
+				}
+				
+				int finish = Utils.getTimeAsInt(finishTime);
+				
+				if(finish < 450 || finish > 1320) {
+					throw new IllegalArgumentException("Orario di fine attivita non valido");
+				}
+				
+				if(finish < start) {
+					throw new IllegalArgumentException("Orari inseriti non validi");
+				}
+				
 				if(description.length() == 0 || description.length() > 240) {
 					throw new IllegalArgumentException("Lunghezza commento non valida");
 				}
 										
-				int start = Utils.getTimeAsInt(startTime);
-				int finish = Utils.getTimeAsInt(finishTime);
 				float hours = (finish - start) / 60.f;
 							
 				ActivityTutorBean activityBean = new ActivityTutorBean();

@@ -90,7 +90,7 @@
 		<div class="alert alert-danger" id="failureDeleteDiv" role="alert" style="display:none;margin-top: 25px;">Rimozione attivit&aacute fallita!</div>
 				
 		<div class="panel"></div>
-		<% if (activity.getState() != "Convalidata" ) {%>
+		<% if (!activity.getState().equals("Convalidata")) {%>
 			<div class="row text-center" style="margin-bottom: 25px;">
 				<div class="column">
 					<a href="/TutoratoSmart/tutor/activityModify.jsp"><input class="btn btn-warning" id="modifyActivity" type="button" value="Modifica attivit&aacute"></a>
