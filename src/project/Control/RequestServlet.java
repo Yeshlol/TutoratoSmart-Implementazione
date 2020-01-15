@@ -154,7 +154,7 @@ public class RequestServlet extends HttpServlet {
 	        
 			if(comment.length() > 240 || comment.length() == 0) {
 				throw new IllegalArgumentException("Lunghezza commento non valida");
-			}			
+			}
 							
 			RequestBean bean = new RequestBean();
 			bean.setRequestDate(date);
@@ -233,28 +233,34 @@ public class RequestServlet extends HttpServlet {
 											
 			String time = request.getParameter("time");					// Dati della richiesta inseriti dallo studente.
 			String comment = request.getParameter("comment");
-			
-							
 			String stringDate = request.getParameter("date");
-			if(time.length()==0) {
-				throw new IllegalArgumentException("Non � stato selezionato l'orario");
-			}
-			int tempo=Integer.parseInt(time);
-			if(tempo<540 || ((tempo==765 || tempo > 765) && (tempo==870 || tempo < 870)) || tempo > 1000){
-				throw new IllegalArgumentException("Minuti selezionati errati");
-			}
 			
 			if(stringDate.length()==0) {
-				throw new IllegalArgumentException("Non � stato selezionato il giorno");
+				throw new IllegalArgumentException("Selezionare la data");
 			}
 			
-			if(comment.length()>240 || comment.length()<=0) {
-				throw new IllegalArgumentException("Lunghezza commento errata");
-			}
 			Date date = Date.valueOf(stringDate);
-			/*if(date.getDay()!=3 && date.getDay()!=4) {
-				throw new IllegalArgumentException("Il giorno selezionato non � corretto");
-			}*/
+			Calendar calendar = Calendar.getInstance();
+	        calendar.setTime(date);
+	        System.out.println(calendar.get(Calendar.DAY_OF_WEEK));
+			
+	        if(calendar.get(Calendar.DAY_OF_WEEK)!=3 && calendar.get(Calendar.DAY_OF_WEEK)!=4) {
+				throw new IllegalArgumentException("Giorno selezionato non valido");
+			}
+	        
+	        if(time.length() == 0) {
+				throw new IllegalArgumentException("Selezionare l’orario");
+			}
+			
+			int tempo = Utils.getTimeAsInt(time);
+			
+			if(tempo < 540 || ((tempo >= 765) && (tempo <= 870)) || tempo > 1000){
+				throw new IllegalArgumentException("Orario selezionato non valido");
+			}
+	        
+			if(comment.length() > 240 || comment.length() == 0) {
+				throw new IllegalArgumentException("Lunghezza commento non valida");
+			}
 			
 			try {
 				RequestBean bean = new RequestBean();					// Recupero dati della richiesta registrati nel DB
