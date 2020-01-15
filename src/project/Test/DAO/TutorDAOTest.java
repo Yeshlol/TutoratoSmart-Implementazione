@@ -1,4 +1,4 @@
-package project.Test;
+package project.Test.DAO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import project.Control.DBConnection;
 import project.Model.TutorBean;
 import project.Model.TutorDAO;
+import project.Test.DatabaseHelper;
 
 class TutorDAOTest {
 	TutorDAO tutorDAO = new TutorDAO();
@@ -36,7 +37,6 @@ class TutorDAOTest {
 		assertNotNull(tutor);
 	}
  
-	
 	@Test
 	void testDoSave() throws SQLException {
 		String startDate="2019-10-24";

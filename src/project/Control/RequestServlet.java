@@ -3,6 +3,7 @@ package project.Control;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -126,33 +127,35 @@ public class RequestServlet extends HttpServlet {
 			String time = request.getParameter("time");					// Dati della richiesta inseriti dallo studente.
 			String comment = request.getParameter("comment");					
 			UserBean user = (UserBean) request.getSession().getAttribute("user");
-			
 			String stringDate = request.getParameter("date");
-			
-			if(time.length()==0) {
-				throw new IllegalArgumentException("Non è stato selezionato l'orario");
-			}
-			int tempo=Integer.parseInt(time);
-			if(tempo<540 || ((tempo==765 || tempo > 765) && (tempo==870 || tempo < 870)) || tempo > 1000){
-				throw new IllegalArgumentException("Minuti selezionati errati");
-			}
-			
+									
 			if(stringDate.length()==0) {
-				throw new IllegalArgumentException("Non è stato selezionato il giorno");
+				throw new IllegalArgumentException("Selezionare la data");
 			}
 			
-			if(comment.length()>240 || comment.length()<=0) {
-				throw new IllegalArgumentException("Lunghezza commento errata");
-			}
 			Date date = Date.valueOf(stringDate);
-			/*if(date.getDay()!=3 && date.getDay()!=4) {
-				throw new IllegalArgumentException("Il giorno selezionato non è corretto");
-			}*/
+			Calendar calendar = Calendar.getInstance();
+	        calendar.setTime(date);
+	        System.out.println(calendar.get(Calendar.DAY_OF_WEEK));
 			
+	        if(calendar.get(Calendar.DAY_OF_WEEK)!=3 && calendar.get(Calendar.DAY_OF_WEEK)!=4) {
+				throw new IllegalArgumentException("Giorno selezionato non valido");
+			}
+	        
+	        if(time.length() == 0) {
+				throw new IllegalArgumentException("Selezionare lâ€™orario");
+			}
 			
+			int tempo = Utils.getTimeAsInt(time);
 			
-			
-			
+			if(tempo < 540 || ((tempo >= 765) && (tempo <= 870)) || tempo > 1000){
+				throw new IllegalArgumentException("Orario selezionato non valido");
+			}
+	        
+			if(comment.length() > 240 || comment.length() == 0) {
+				throw new IllegalArgumentException("Lunghezza commento non valida");
+			}			
+							
 			RequestBean bean = new RequestBean();
 			bean.setRequestDate(date);
 			bean.setRequestTime(Utils.getTimeAsInt(time));
@@ -234,7 +237,7 @@ public class RequestServlet extends HttpServlet {
 							
 			String stringDate = request.getParameter("date");
 			if(time.length()==0) {
-				throw new IllegalArgumentException("Non è stato selezionato l'orario");
+				throw new IllegalArgumentException("Non ï¿½ stato selezionato l'orario");
 			}
 			int tempo=Integer.parseInt(time);
 			if(tempo<540 || ((tempo==765 || tempo > 765) && (tempo==870 || tempo < 870)) || tempo > 1000){
@@ -242,7 +245,7 @@ public class RequestServlet extends HttpServlet {
 			}
 			
 			if(stringDate.length()==0) {
-				throw new IllegalArgumentException("Non è stato selezionato il giorno");
+				throw new IllegalArgumentException("Non ï¿½ stato selezionato il giorno");
 			}
 			
 			if(comment.length()>240 || comment.length()<=0) {
@@ -250,7 +253,7 @@ public class RequestServlet extends HttpServlet {
 			}
 			Date date = Date.valueOf(stringDate);
 			/*if(date.getDay()!=3 && date.getDay()!=4) {
-				throw new IllegalArgumentException("Il giorno selezionato non è corretto");
+				throw new IllegalArgumentException("Il giorno selezionato non ï¿½ corretto");
 			}*/
 			
 			try {

@@ -1,4 +1,4 @@
-package project.Test;
+package project.Test.DAO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import project.Control.DBConnection;
 import project.Model.AppointmentBean;
 import project.Model.AppointmentDAO;
+import project.Test.DatabaseHelper;
 
 
 
@@ -30,7 +31,6 @@ class AppointmentDAOTest {
 		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
-
 
 	@Test
 	void testDoRetrieveById() throws SQLException {

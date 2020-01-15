@@ -1,4 +1,4 @@
-package project.Test;
+package project.Test.DAO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import project.Control.DBConnection;
 import project.Model.*;
+import project.Test.DatabaseHelper;
 
 class ValidatesDAOTest {
 	ActivityTutorDAO activityTutorDAO = new ActivityTutorDAO();
@@ -39,7 +40,6 @@ class ValidatesDAOTest {
 		Collection<ActivityTutorBean> validateList = (Collection<ActivityTutorBean>) validatesDAO.doRetrieveByCommissionMember("d.molinaro@commissione.unicampania.it");
 		assertNotNull(validateList);
 	}
-
 		
 	@Test 
 	void testDoSaveValidates() throws SQLException {	

@@ -1,4 +1,4 @@
-package project.Test;
+package project.Test.DAO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,6 +20,7 @@ import project.Model.ContainedInBean;
 import project.Model.ContainedInDAO;
 import project.Model.RequestBean;
 import project.Model.RequestDAO;
+import project.Test.DatabaseHelper;
 
 class ContainedInDAOTest {
 	ContainedInDAO containedDAO = new ContainedInDAO();

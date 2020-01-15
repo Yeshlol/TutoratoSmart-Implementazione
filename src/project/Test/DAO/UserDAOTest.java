@@ -1,4 +1,4 @@
-package project.Test;
+package project.Test.DAO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import project.Control.*;
 import project.Model.*;
+import project.Test.DatabaseHelper;
 
 class UserDAOTest {
 	UserDAO userDAO = new UserDAO();
@@ -25,7 +26,6 @@ class UserDAOTest {
 		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
-
 
 	@Test
 	void testDoRetrieveByMail() throws SQLException{

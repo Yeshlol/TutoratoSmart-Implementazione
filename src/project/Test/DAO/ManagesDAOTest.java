@@ -1,4 +1,4 @@
-package project.Test;
+package project.Test.DAO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import project.Control.DBConnection;
 import project.Model.ManagesBean;
 import project.Model.ManagesDAO;
+import project.Test.DatabaseHelper;
 
 class ManagesDAOTest {
 	ManagesDAO managesDAO = new ManagesDAO();

@@ -1,4 +1,4 @@
-package project.Test;
+package project.Test.DAO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import project.Control.DBConnection;
 import project.Model.*;
+import project.Test.DatabaseHelper;
 
 class RequestDAOTest {
 	RequestDAO requestDAO = new RequestDAO();
