@@ -46,7 +46,7 @@
 			</div>
 											
 	  		<label for="appointmentComment" class="control-label">Inserire un commento all'appuntamento</label>
-	  		<textarea class="form-control" id="appointmentComment" rows="3"></textarea>
+	  		<textarea class="form-control" id="appointmentComment" rows="3"><%= appointment.getDetails() %></textarea>
 	  		<br>
 						
 			<div style="margin-top: 25px;">

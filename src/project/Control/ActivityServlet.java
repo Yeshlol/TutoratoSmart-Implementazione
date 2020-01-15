@@ -457,9 +457,7 @@ public class ActivityServlet extends HttpServlet {
 				try {
 					ActivityTutorBean activity = activityDAO.doRetrieveById(id);
 					request.getSession(false).setAttribute("Email", activityDAO.doRetrieveById(id).getTutor());
-					
-					validatesDAO.doDelete(id);
-					
+										
 					activityDAO.doDelete(activity);
 					request.removeAttribute("activitiesCollection");
 					

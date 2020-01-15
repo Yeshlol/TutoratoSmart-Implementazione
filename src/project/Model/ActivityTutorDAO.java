@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import project.Control.DBConnection;
 
 /**
- * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Attività.
+ * Questa classe ï¿½ un manager che si occupa di interagire con il database. Gestisce le query riguardanti Attivitï¿½.
  */
 public class ActivityTutorDAO  {		
 	public ActivityTutorDAO() {
@@ -21,7 +21,7 @@ public class ActivityTutorDAO  {
 
 	/** 
 	 * @param
-	 * @return un ArrayList di tutte le attività registrate nel database
+	 * @return un ArrayList di tutte le attivitï¿½ registrate nel database
 	 * @throws SQLException
 	 */
 	public synchronized ArrayList<ActivityTutorBean> doRetrieveAll() throws SQLException {
@@ -52,7 +52,7 @@ public class ActivityTutorDAO  {
 
 	/**
 	 * @param id
-	 * @return un'attività, tramite id, registrata nel database
+	 * @return un'attivitï¿½, tramite id, registrata nel database
 	 * @throws SQLException
 	 */
 	public ActivityTutorBean doRetrieveById(int id) throws SQLException {
@@ -99,7 +99,7 @@ public class ActivityTutorDAO  {
 	 * @param activityDate
 	 * @param start
 	 * @param finish
-	 * @return un booleano per controllare la presenza di un'attività registrata nel database
+	 * @return un booleano per controllare la presenza di un'attivitï¿½ registrata nel database
 	 * @throws SQLException
 	 */
 	public boolean anyActivityRegistered(String tutorMail, Date activityDate, int start, int finish) throws SQLException {
@@ -149,7 +149,7 @@ public class ActivityTutorDAO  {
 	
 	/** 
 	 * @param activity
-	 * @return un intero per il salvataggio di un'attività nel database
+	 * @return un intero per il salvataggio di un'attivitï¿½ nel database
 	 * @throws SQLException
 	 */
 	@SuppressWarnings("resource")
@@ -233,7 +233,7 @@ public class ActivityTutorDAO  {
 
 	/** 
 	 * @param activity
-	 * @return un booleano per controllare la cancellazione di un'attività nel database
+	 * @return un booleano per controllare la cancellazione di un'attivitï¿½ nel database
 	 * @throws SQLException
 	 */
 	public synchronized boolean doDelete(ActivityTutorBean activity) throws SQLException {
@@ -246,7 +246,8 @@ public class ActivityTutorDAO  {
 		if(activity.getState().equals("Convalidata")) {
 			float hours = activity.getHours();
 			register.setValidatedHours(register.getValidatedHours() - hours);
-			register.setPercentageComplete(register.getValidatedHours() / register.getTotalHours());
+			register.setPercentageComplete((register.getValidatedHours() / register.getTotalHours()) * 100);
+			register.setState("Non approvato");
 		}
 		
 		if(activity.getCategory().equals("Sportello Tutorato")) {
@@ -279,7 +280,7 @@ public class ActivityTutorDAO  {
 	/** 
 	 * @param order
 	 * @param tutorMail
-	 * @return una Collection di attività, tramite mail, registrate nel database
+	 * @return una Collection di attivitï¿½, tramite mail, registrate nel database
 	 * @throws SQLException
 	 */
 	public Collection<ActivityTutorBean> doRetrieveAllByMail(String order, String tutorMail) throws SQLException {
@@ -328,7 +329,7 @@ public class ActivityTutorDAO  {
 	 * @param activityDate
 	 * @param start
 	 * @param finish
-	 * @return un booleano per controllare differenti attività registrate nel database
+	 * @return un booleano per controllare differenti attivitï¿½ registrate nel database
 	 * @throws SQLException
 	 */
 	public boolean differentActivityRegistered(String tutorMail, int activityId, Date activityDate, int start, int finish) throws SQLException {

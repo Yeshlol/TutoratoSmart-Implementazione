@@ -182,7 +182,7 @@ public class TutorDAO  {
 			preparedStatement.setDate(1, startResearchDate);
 			preparedStatement.setDate(2, finishResearchDate);
 			
-			System.out.println("Tutor doRetrieveAllByDates: " + preparedStatement.toString());
+			// System.out.println("Tutor doRetrieveAllByDates: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
 				TutorBean bean = new TutorBean();
@@ -210,7 +210,7 @@ public class TutorDAO  {
 	
 	/** 
 	 * @param order
-	 * @return una Collection di tutor, tramite le attivit�, registrati nel database
+	 * @return una Collection di tutor, tramite le attivita, registrati nel database
 	 * @throws SQLException
 	 */
 	public synchronized Collection<TutorBean> doRetrieveAllActive(String order) throws SQLException {
@@ -252,5 +252,80 @@ public class TutorDAO  {
 				preparedStatement.close();
 		}
 		return list;
+	}
+
+	public TutorBean doRetrieveByRegisterId(int idRegister) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		TutorBean bean = new TutorBean();
+		
+		String selectSql = "SELECT SQL_NO_CACHE * FROM TUTOR WHERE TUTOR.RegisterId = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setInt(1, idRegister);
+			
+			// System.out.println("Tutor doRetrieveByRegisterId: " + preparedStatement.toString());
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			if (rs.wasNull()) {
+				System.out.println("Errore esecuzione query!");
+	        } else {
+	        	int count = rs.last() ? rs.getRow() : 0;
+	            if (count == 1) {
+	            	bean.setEmail(rs.getString("Email"));
+					bean.setState(rs.getString("State"));
+					bean.setStartDate(rs.getDate("StartDate"));
+					bean.setFinishDate(rs.getDate("FinishDate"));
+					bean.setCommissionMember(rs.getString("CommissionMember"));
+					bean.setRegisterId(rs.getInt("RegisterId"));
+					
+					// System.out.println("Tutor Trovato con l'id del registro!");
+	            }
+	        }
+		} catch (SQLException e) {
+			// System.out.println(e.getMessage());
+			return null;
+		} finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}
+		return bean;
+	}
+
+	@SuppressWarnings("resource")
+	public void doUpdateState(TutorBean tutor) throws SQLException {
+		Connection connection = DBConnection.getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		String selectDate = "SELECT MAX(ActivityDate) AS ActivityDate FROM ACTIVITY_TUTOR WHERE RegisterId = ? AND State = 'Convalidata'";
+		String updateSql = "UPDATE TUTOR SET State='Non Attivo',FinishDate = ? WHERE Email = ?";		
+		
+		try {
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(selectDate);
+			preparedStatement.setInt(1, tutor.getRegisterId());
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			Date maxDate = null;
+			
+			while(rs.next()) {
+				maxDate = rs.getDate("ActivityDate");				
+			}
+			
+			preparedStatement = connection.prepareStatement(updateSql);
+			preparedStatement.setDate(1, maxDate);
+			preparedStatement.setString(2, tutor.getEmail());
+			
+			// System.out.println("Tutor doUpdate: " + preparedStatement.toString());
+			preparedStatement.executeUpdate();
+			
+			connection.commit();
+		}
+		finally {
+			if(preparedStatement != null)
+				preparedStatement.close();
+		}		
 	}
 }

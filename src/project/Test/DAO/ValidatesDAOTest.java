@@ -51,16 +51,4 @@ class ValidatesDAOTest {
 		validatesList = validatesDAO.doRetrieveAll();
 		assertEquals(3,validatesList.size());
 	}
-	
-	@Test 
-	void testDoDelete() throws SQLException {	
-		RegisterDAO registerDAO = new RegisterDAO();
-		RegisterBean register = registerDAO.doRetrieveById(3);
-		float previousValidatedHours = register.getValidatedHours();
-		
-		validatesDAO.doDelete(3);
-		register = registerDAO.doRetrieveById(3);
-		
-		assertNotEquals(register.getValidatedHours(), previousValidatedHours);
-	}
 }

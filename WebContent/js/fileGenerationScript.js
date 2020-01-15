@@ -28,7 +28,7 @@ function generateRegister(){
     margins = {
         top: 265,
         bottom: 60,
-        left: 10,
+        left: 30,
         width: 900
     };
             
