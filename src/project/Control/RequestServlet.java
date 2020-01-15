@@ -57,7 +57,8 @@ public class RequestServlet extends HttpServlet {
 	 */
     
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean ajax = Boolean.parseBoolean(request.getParameter("ajax"));  // Richieste ajax per disponibilità orario appuntamento
+		boolean ajax = Boolean.parseBoolean(request.getParameter("ajax"));// Richieste ajax per disponibilità orario appuntamento
+		String content="";
 		
 		RequestDAO requestDAO = new RequestDAO();
 		JSONObject obj = new JSONObject();
@@ -163,8 +164,7 @@ public class RequestServlet extends HttpServlet {
 			bean.setStudent(user.getEmail());
 			
 			try {
-				requestDAO.doSave(bean);
-				
+			    requestDAO.doSave(bean);
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 			
@@ -198,13 +198,13 @@ public class RequestServlet extends HttpServlet {
 			RequestBean bean;											// cancellazione prenotazione da parte dello studente.
 			try {
 				bean = requestDAO.doRetrieveById(id);
-				requestDAO.doDelete(bean);
+			    requestDAO.doDelete(bean);			    
 				request.getSession(false).removeAttribute("request");
 				request.removeAttribute("requestsCollection");
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				
-				obj.put("result", 1);
+				obj.put("result", 1);				
 			} catch (SQLException e) {									// Errore nella convalida dell'attivita'.
 				try {
 					obj.put("result", 2);			
@@ -270,7 +270,8 @@ public class RequestServlet extends HttpServlet {
 				bean.setRequestTime(Utils.getTimeAsInt(time));
 				bean.setStudentComment(comment);
 				
-				requestDAO.doModify(bean);								// Modifica dati della richiesta nel DB
+				requestDAO.doModify(bean);                        // Modifica dati della richiesta nel DB
+				
 				
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
