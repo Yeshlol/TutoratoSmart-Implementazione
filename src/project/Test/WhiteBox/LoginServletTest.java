@@ -18,8 +18,7 @@ import project.Control.DBConnection;
 import project.Control.LoginServlet;
 import project.Test.DatabaseHelper;
 
-class LoginServletTest {
-   
+class LoginServletTest {   
 	static MockHttpServletRequest request;
 	static MockHttpServletResponse response;
 	static LoginServlet servlet;
@@ -39,6 +38,7 @@ class LoginServletTest {
 		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
+	
 	//Login (successo)
 	@Test
 	public void testsuccess() throws ServletException, IOException, JSONException {
@@ -53,6 +53,7 @@ class LoginServletTest {
 		
 		assertEquals(result, 1);
 	}
+	
 	//Login (fallimento)
 	@Test
 	public void testunssuccess() throws ServletException, IOException, JSONException {
@@ -63,7 +64,6 @@ class LoginServletTest {
 		IllegalArgumentException exceptionThrown = assertThrows(IllegalArgumentException.class, () -> {
 			servlet.doPost(request, response);
 		});
-		assertEquals(message, exceptionThrown.getMessage());
-		
+		assertEquals(message, exceptionThrown.getMessage());		
 	}
 }

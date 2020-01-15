@@ -45,6 +45,7 @@ class AppointmentServletTest {
 		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
+	
     //Registrazione nuovo appuntamento
 	@Test
 	public void testflag1success() throws ServletException, IOException, JSONException, SQLException{
@@ -67,6 +68,7 @@ class AppointmentServletTest {
 		
 		assertEquals(result, 1);
 	}
+	
 	//Modifica appuntamento
 	@Test
 	public void testflag2success() throws ServletException, IOException, JSONException, SQLException{
@@ -89,6 +91,7 @@ class AppointmentServletTest {
 		
 		assertEquals(result, 1);
 	}
+	
 	//Cancellazione appuntamento
 	@Test
 	public void testflag3success() throws ServletException, IOException, JSONException, SQLException{
@@ -106,5 +109,4 @@ class AppointmentServletTest {
 		
 		assertEquals(result, 1);
 	}
-
 }

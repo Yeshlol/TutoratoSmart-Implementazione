@@ -138,7 +138,7 @@ public class RequestServlet extends HttpServlet {
 	        calendar.setTime(date);
 	        System.out.println(calendar.get(Calendar.DAY_OF_WEEK));
 			
-	        if(calendar.get(Calendar.DAY_OF_WEEK)!=3 && calendar.get(Calendar.DAY_OF_WEEK)!=4) {
+	        if(calendar.get(Calendar.DAY_OF_WEEK)!=4 && calendar.get(Calendar.DAY_OF_WEEK)!=5) {
 				throw new IllegalArgumentException("Giorno selezionato non valido");
 			}
 	        

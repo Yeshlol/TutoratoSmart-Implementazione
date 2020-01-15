@@ -1,4 +1,4 @@
-$("#Email").on('keyup', function() {
+$("#Email").on('keyup', function() {	
 	$.post("/TutoratoSmart/Registration", { 
 		"mail":$(this).val(),
 		"ajax":"true"

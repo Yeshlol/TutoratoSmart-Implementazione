@@ -75,7 +75,7 @@ public class RegistrationServlet extends HttpServlet {
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				
-				obj.put("disponibile", beanAjax.getEmail().equals(""));
+				obj.put("disponibile", beanAjax == null);
 				
 				response.getWriter().write(obj.toString());
 				return;
