@@ -32,7 +32,7 @@ INSERT INTO TUTOR(Email,StartDate,FinishDate,CommissionMember,RegisterId) VALUES
 
 
 -- Activity
-INSERT INTO ACTIVITY_TUTOR(IdActivity,Category,ActivityDate,StartTime,FinishTime,Hours,State,Details,Tutor,RegisterId) VALUES (1,'Sportello Tutorato', '2019-11-24', 540, 900, 6, 'In valutazione', 'L'' attività riguarda informazioni relative all''immatricolazione dello studente', 'm.pisciotta@studenti.unicampania.it', 1);
+INSERT INTO ACTIVITY_TUTOR(IdActivity,Category,ActivityDate,StartTime,FinishTime,Hours,State,Details,Tutor,RegisterId) VALUES (1,'Sportello Tutorato', '2019-11-24', 540, 900, 6, 'Convalidata', 'L'' attività riguarda informazioni relative all''immatricolazione dello studente', 'm.pisciotta@studenti.unicampania.it', 1);
 INSERT INTO ACTIVITY_TUTOR(IdActivity,Category,ActivityDate,StartTime,FinishTime,Hours,State,Details,Tutor,RegisterId) VALUES (2,'Assistenza Esame', '2019-11-25', 720, 780, 1, 'In valutazione', 'L''attività riguarda il supporto allo studente per l''esame di matematica discreta', 'c.ferrari@studenti.unicampania.it', 2);
 INSERT INTO ACTIVITY_TUTOR(IdActivity,Category,ActivityDate,StartTime,FinishTime,Hours,State,Details,Tutor,RegisterId) VALUES (3, 'Organizzazione Seminario', '2019-10-26', 540, 780, 4, 'Convalidata', 'L''attività riguarda l''organizzazione di un seminario di orientamento al lavoro', 'm.lombardo@studenti.unicampania.it', 3);
 
@@ -65,4 +65,4 @@ INSERT INTO MANAGES(Tutor,RequestId) VALUES ('m.lombardo@studenti.unicampania.it
 
 -- Validates
 INSERT INTO VALIDATES(CommissionMember,ActivityId) VALUES('d.molinaro@commissione.unicampania.it', 1);
-INSERT INTO VALIDATES(CommissionMember,ActivityId) VALUES('d.molinaro@commissione.unicampania.it', 2);
+INSERT INTO VALIDATES(CommissionMember,ActivityId) VALUES('d.molinaro@commissione.unicampania.it', 3);

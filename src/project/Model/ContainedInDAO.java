@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import project.Control.DBConnection;
 
 /**
- * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti ContainedIn.
+ * Questa classe ï¿½ un manager che si occupa di interagire con il database. Gestisce le query riguardanti ContainedIn.
  */
 public class ContainedInDAO {
 	public ContainedInDAO() {
@@ -154,7 +154,7 @@ public class ContainedInDAO {
 			preparedStatement.setInt(1,bean.getAppointmentId());
 			preparedStatement.setInt(2,bean.getActivityId());
 						
-			System.out.println("Contained_In doSave: "+ preparedStatement.toString());
+			// System.out.println("Contained_In doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			

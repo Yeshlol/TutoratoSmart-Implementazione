@@ -101,7 +101,7 @@ public class ActivityServlet extends HttpServlet {
 					
 					boolean modify = Boolean.parseBoolean(request.getParameter("modify"));
 					
-					if(modify) {														// Controllo altre attività registrate, diverse da quella in modifica
+					if(modify) {														// Controllo altre attività registrate diverse da quella in modifica, disponibilità orario
 						int activityId = Integer.parseInt(request.getParameter("activityId"));
 						
 						try {
@@ -118,7 +118,7 @@ public class ActivityServlet extends HttpServlet {
 						response.getWriter().write(obj.toString());
 						return;
 					}
-					else {																// Controllo altre attività registrate
+					else {																// Controllo altre attività registrate, disponibilità orario
 						try {
 							available = activityDAO.anyActivityRegistered(user.getEmail(), activityDate, start, finish);
 							obj.put("available", available);
@@ -152,7 +152,7 @@ public class ActivityServlet extends HttpServlet {
 								obj.put("firstName", student.getFirstName());
 								obj.put("lastName", student.getLastName());
 								ja.put(obj);
-							}					
+							}				
 						}
 						request.getSession().removeAttribute("appointmentsList");
 						request.getSession().setAttribute("appointmentsList", appointmentsList);
@@ -391,7 +391,6 @@ public class ActivityServlet extends HttpServlet {
 				}
 				request.getSession().removeAttribute("appointmentsList");
 			}
-			
 			else {														// Cancellazione attività
 				try {
 					ActivityTutorBean activity = (ActivityTutorBean) request.getSession().getAttribute("activity");

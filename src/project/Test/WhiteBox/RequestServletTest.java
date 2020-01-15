@@ -43,12 +43,8 @@ class RequestServletTest {
 		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
-
-	//caso di testing con parametro ajax settato a true 
-
 	
 	// Controllo altre richieste registrate, diverse da quella in modifica, non trovate
-
 	@Test
 	void testFlagAjaxAvailable() throws ServletException, IOException, SQLException, JSONException {
 		request.addParameter("ajax","true");
@@ -64,12 +60,8 @@ class RequestServletTest {
 		
 		assertEquals(result, true);
 	}
-
-	//caso di testing con parametro ajax settato a true e parametro data non settato 
-
 	
 	// Controllo altre richieste registrate, diverse da quella in modifica, trovate
-
 	@Test
 	void testFlagAjaxNotAvailable() throws ServletException, IOException, SQLException, JSONException {
 		request.addParameter("ajax","true");
@@ -85,12 +77,8 @@ class RequestServletTest {
 		
 		assertEquals(result, false);
 	}
-
-	//caso di testing con parametro ajax settato a true e parametro modify settato a false 
-
 	
 	// Controllo altre richieste registrate, non trovate
-
 	@Test
 	void testFlagAjaxModifyAvailable() throws ServletException, IOException, SQLException, JSONException {
 		request.addParameter("ajax","true");
@@ -105,12 +93,8 @@ class RequestServletTest {
 		
 		assertEquals(result, true);
 	}
-
-	//Registrazione nuova prenotazione
-
 	
 	// Registrazione nuova prenotazione da parte dello studente
-
 	@Test
 	void testFlag1Success() throws ServletException, IOException, SQLException, JSONException {
 		UserDAO userDAO = new UserDAO();
@@ -128,12 +112,8 @@ class RequestServletTest {
 		
 		assertEquals(result, 1);
 	}
-
-	//Cancellazione prenotazione
-
 	
 	// Cancellazione prenotazione da parte dello studente
-
 	@Test
 	void testFlag2Success() throws ServletException, IOException, SQLException, JSONException {
 		RequestDAO requestDAO = new RequestDAO();
@@ -150,72 +130,7 @@ class RequestServletTest {
 		
 		assertEquals(result, 1);
 	}
-
-	//Modifica prenotazione 
-		@Test		
-		void testflag3succes() throws ServletException, IOException, SQLException, JSONException {
-		UserDAO userDAO = new UserDAO();
-	    UserBean user = userDAO.doRetrieveByMail("e.merola@studenti.unicampania.it");
-		request.getSession().setAttribute("user", user);
-	    request.addParameter("flag","3");
-	    request.addParameter("time","10:00");
-	    request.addParameter("comment","Mi serve aiuto per l'immatricolazione");
-	    request.addParameter("date","2020-01-15"); 
-	    request.addParameter("id", "4");
-							
-	    servlet.doPost(request, response);
-					
-	    String content = response.getContentAsString();
-	    JSONObject jsonObj = new JSONObject(content);
-	    int result = (int) jsonObj.get("result");
-					
-	    assertEquals(result, 1);
-	    }
-		//Accettazione richiesta da parte del tutor
-
-	
-	/*//cancellazione non ok flag=2
->>>>>>> branch 'master' of https://github.com/Yeshlol/TutoratoSmart-Implementazione.git
-		@Test
-		void testflag4succes() throws ServletException, IOException, SQLException, JSONException {
-			UserDAO user = new UserDAO();
-			UserBean bean = user.doRetrieveByMail("m.pisciotta@studenti.unicampania.it");
-			request.getSession().setAttribute("user", bean);
-			request.addParameter("flag", "4");
-			request.addParameter("id","4");
-			request.addParameter("duration","60");
-							
-			servlet.doPost(request, response);
-					
-			String content = response.getContentAsString();
-			JSONObject jsonObj = new JSONObject(content);
-			int result = (int) jsonObj.get("result");
-<<<<<<< HEAD
-					
-			assertEquals(result, 1);
-		 }
-		//Studente assente
-		@Test
-		void testflag5succes() throws ServletException, IOException, SQLException, JSONException {
-			RequestDAO requestDAO = new RequestDAO();
-			RequestBean bean = requestDAO.doRetrieveById(4);
-			request.getSession().setAttribute("request", bean);
-			request.addParameter("flag", "5");
-							
-			servlet.doPost(request, response);
-					
-			String content = response.getContentAsString();
-			JSONObject jsonObj = new JSONObject(content);
-			int result = (int) jsonObj.get("result");
-					
-			assertEquals(result, 1);
-			}				
-=======
-			
-			assertEquals(result, 2);
-			
-		}*/
-
+		
 	// Modifica prenotazione da parte dello studente.
 	@Test
 	void testFlag3Success() throws ServletException, IOException, SQLException, JSONException {
@@ -272,5 +187,4 @@ class RequestServletTest {
 		
 		assertEquals(result, 1);
 	}
-
 }
