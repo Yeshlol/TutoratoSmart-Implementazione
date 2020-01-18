@@ -9,12 +9,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<style type="text/css">
-		.column {
-		  float: left;
-		  width: 76%;
-		}
-	</style>
+	<link rel="shortcut icon" href="<%=request.getContextPath() %>/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="<%=request.getContextPath() %>/img/favicon.ico" type="image/x-icon">
 </head>
 
 <body>

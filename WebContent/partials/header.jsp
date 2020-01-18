@@ -85,21 +85,22 @@
 			          	 	<a href="/TutoratoSmart/student/requestsList.jsp" style="font-weight:bold;">Storico Prenotazioni</a>
 			          	 </li>
 			        <% } %>
-				</ul>
-			    <ul class="nav navbar-nav navbar-right">
-			       	<li>
-			       		<form method="POST" action="/TutoratoSmart/LogoutServlet">
-							<button type="submit" class="btn btn-default btn-sm navbar-right" style="margin-right:30px; margin-top:8px;"><span class="glyphicon glyphicon-log-out"></span>Log out</button>   		
-				       	</form>
-			       	</li>
-			    </ul>
-			  <% } else { %>	      
-			      <ul class="nav navbar-nav navbar-right" style="float:right;">
-			        <li><a href="/TutoratoSmart/registration.jsp"><span class="glyphicon glyphicon-user"></span> Registrati</a></li>
-			        <li><a href="/TutoratoSmart/login.jsp"><span class="glyphicon glyphicon-log-in"></span>  Accedi</a></li>
-			      </ul>
-		      <% } %>
-		  </div>
+			</ul>
+			
+		    <ul class="nav navbar-nav navbar-right">
+		       	<li>
+		       		<form method="POST" action="/TutoratoSmart/LogoutServlet">
+						<button type="submit" class="btn btn-default btn-sm navbar-right" style="margin-right:30px; margin-top:8px;"><span class="glyphicon glyphicon-log-out"></span>Log out</button>   		
+			       	</form>
+		       	</li>
+		    </ul>
+		  <% } else { %>
+		  	</ul>	      
+				<ul class="nav navbar-nav navbar-right" style="float:right;">
+		        	<li><a href="/TutoratoSmart/registration.jsp" style="border-right:1px solid #bbb; float:left;"><span class="glyphicon glyphicon-user"></span> Registrati</a></li>
+		        	<li><a href="/TutoratoSmart/login.jsp"><span class="glyphicon glyphicon-log-in"></span>  Accedi</a></li>
+		      	</ul>
+	      <% } %>		  
 	  </div>
 	</nav>
 </body>

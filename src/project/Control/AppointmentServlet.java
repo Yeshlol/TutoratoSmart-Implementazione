@@ -93,6 +93,7 @@ public class AppointmentServlet extends HttpServlet {
 				request.getSession(false).setAttribute("request", req);
 				request.getSession(false).removeAttribute("appointment");
 				request.getSession(false).setAttribute("appointment", appointmentBean);
+				request.getSession(false).setAttribute("appointmentRegistered", "true");
 				
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");

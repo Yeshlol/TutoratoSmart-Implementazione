@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import project.Control.DBConnection;
 
 /**
- * Questa classe Ë un manager che si occupa di interagire con il database. Gestisce le query riguardanti Richiesta.
+ * Questa classe ÔøΩ un manager che si occupa di interagire con il database. Gestisce le query riguardanti Richiesta.
  */
 public class RequestDAO  {		
 	public RequestDAO() {
@@ -126,7 +126,7 @@ public class RequestDAO  {
 			preparedStatement.setInt(4, bean.getRequestTime());
 			preparedStatement.setInt(5, bean.getIdRequest());
 			
-			//System.out.println("Request doModify: " + preparedStatement.toString());
+			// System.out.println("Request doModify: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 			
 			connection.commit();
@@ -156,7 +156,7 @@ public class RequestDAO  {
 			preparedStatement.setInt(1, bean.getDuration());
 			preparedStatement.setInt(2, bean.getIdRequest());
 			
-			//System.out.println("Request doAccept: " + preparedStatement.toString());
+			// System.out.println("Request doAccept: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 			
 			ManagesDAO managesDAO = new ManagesDAO();
@@ -175,7 +175,7 @@ public class RequestDAO  {
 
 	/** 
 	 * @param bean
-	 * @return un booleano per controllare la cancellazione di un'attivit‡ nel database
+	 * @return un booleano per controllare la cancellazione di un'attivitÔøΩ nel database
 	 * @throws SQLException
 	*/
 	public synchronized boolean doDelete(RequestBean bean) throws SQLException {
@@ -189,7 +189,7 @@ public class RequestDAO  {
 			preparedStatement = connection.prepareStatement(deleteSql);
 			preparedStatement.setInt(1, bean.getIdRequest());
 			
-			//System.out.println("Request doDelete: " + preparedStatement.toString());
+			// System.out.println("Request doDelete: " + preparedStatement.toString());
 			result = preparedStatement.executeUpdate();
 			
 			connection.commit();
@@ -224,7 +224,7 @@ public class RequestDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, studentMail);
 			
-			//System.out.println("Request doRetrieveAllByMail: " + preparedStatement.toString());
+			// System.out.println("Request doRetrieveAllByMail: " + preparedStatement.toString());
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
@@ -263,7 +263,7 @@ public class RequestDAO  {
 		try {
 			preparedStatement = connection.prepareStatement(selectSql);
 			
-			//System.out.println("Request doRetrieveAll: " + preparedStatement.toString());
+			// System.out.println("Request doRetrieveAll: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
 				RequestBean bean = new RequestBean();
@@ -310,7 +310,7 @@ public class RequestDAO  {
 			preparedStatement.setDate(2, finishResearchDate);
 			preparedStatement.setString(3, studentMail);
 			
-			//System.out.println("Request doRetrieveAllByDates: " + preparedStatement.toString());
+			// System.out.println("Request doRetrieveAllByDates: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
 				RequestBean bean = new RequestBean();
@@ -352,7 +352,7 @@ public class RequestDAO  {
 		try {
 			preparedStatement = connection.prepareStatement(selectSql);
 			
-			//System.out.println("Request doRetrieveAllPending: " + preparedStatement.toString());
+			// System.out.println("Request doRetrieveAllPending: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
 				RequestBean bean = new RequestBean();
@@ -376,7 +376,7 @@ public class RequestDAO  {
 	/** 
 	 * @param requestDate
 	 * @param requestTime
-	 * @return un booleano per controllare se la richiesta Ë disponibile e registrata nel database
+	 * @return un booleano per controllare se la richiesta ÔøΩ disponibile e registrata nel database
 	 * @throws SQLException
 	 */
 	public boolean isAvailable(Date requestDate, int requestTime) throws SQLException {
@@ -401,7 +401,7 @@ public class RequestDAO  {
 	        	int count = rs.last() ? rs.getRow() : 0;
 	        	
 	        	if (count > 0) {
-	            	//System.out.println("Orario non disponibile! Esiste gi√† una prenotazione!");
+	            	// System.out.println("Orario non disponibile! Esiste gi√† una prenotazione!");
 	        		return false;
 	            }
 	            else {
@@ -483,7 +483,7 @@ public class RequestDAO  {
 	
 			preparedStatement.setInt(1, idRequest);
 			
-			System.out.println("Request doConfirmAppointment: " + preparedStatement.toString());
+			// System.out.println("Request doConfirmAppointment: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 						
 			connection.commit();
@@ -514,7 +514,7 @@ public class RequestDAO  {
 		try {
 			preparedStatement = connection.prepareStatement(selectSql);
 			
-			//System.out.println("Request doRetrieveAllAccepted: " + preparedStatement.toString());
+			// System.out.println("Request doRetrieveAllAccepted: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
 				RequestBean bean = new RequestBean();

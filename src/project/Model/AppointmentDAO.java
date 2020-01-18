@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import project.Control.DBConnection;
 
 /**
- * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Appuntamento.
+ * Questa classe e' un manager che si occupa di interagire con il database. Gestisce le query riguardanti Appuntamento.
  *
  */
 public class AppointmentDAO  {		
@@ -168,11 +168,14 @@ public class AppointmentDAO  {
 	 * @return un booleano per controllare la cancellazione di un appuntamento nel database
 	 * @throws SQLException
 	 */
+	@SuppressWarnings("resource")
 	public synchronized boolean doDelete(AppointmentBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 		
 		String deleteSql = "DELETE FROM APPOINTMENT WHERE IdAppointment = ?";
+		String updateSql = "UPDATE REQUEST SET State = 'Accettata' WHERE IdRequest = ?";
+		
 		int result;
 		try {
 			connection.setAutoCommit(false);
@@ -181,6 +184,13 @@ public class AppointmentDAO  {
 			
 			// System.out.println("Appointment doDelete: " + preparedStatement.toString());
 			result = preparedStatement.executeUpdate();
+			
+			preparedStatement = connection.prepareStatement(updateSql);
+			
+			preparedStatement.setInt(1, bean.getRequestId());
+			
+			// System.out.println("Request doModify: " + preparedStatement.toString());
+			preparedStatement.executeUpdate();
 			
 			connection.commit();
 		}

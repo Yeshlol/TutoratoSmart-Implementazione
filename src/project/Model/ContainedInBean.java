@@ -3,7 +3,7 @@ package project.Model;
 import java.io.Serializable;
 
 /**
- * Questa classe rappresenta l'associazione tra l'entita Attività e l'entita Appuntamento.
+ * Questa classe rappresenta l'associazione tra l'entita Attivita' e l'entita Appuntamento.
  */
 public class ContainedInBean implements Serializable {
 	private static final long serialVersionUID = 1487359154874662002L;
@@ -17,7 +17,7 @@ public class ContainedInBean implements Serializable {
 	
 	/**
 	 * @param appointmentId identificativo dell'appuntamento
-	 * @param activityId identificativo dell'attività
+	 * @param activityId identificativo dell'attivita'
 	 */
 	public ContainedInBean(int appointmentId,int activityId) {
 		this.appointmentId=appointmentId;
@@ -40,14 +40,14 @@ public class ContainedInBean implements Serializable {
 	}
 
 	/**
-	 * @return activityId identificativo dell'attività
+	 * @return activityId identificativo dell'attivita'
 	 */
 	public int getActivityId() {
 		return activityId;
 	}
 
 	/**
-	 * @param activityId activityId identificativo dell'attività da assegnare all'associazione ContainedIn
+	 * @param activityId activityId identificativo dell'attivita' da assegnare all'associazione ContainedIn
 	 * @return
 	 */
 	public void setActivityId(int activityId) {

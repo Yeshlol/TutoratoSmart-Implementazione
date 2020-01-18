@@ -3,7 +3,7 @@ package project.Model;
 import java.io.Serializable;
 
 /**
- * Questa classe rappresenta l'entità Appuntamento.
+ * Questa classe rappresenta l'entita' Appuntamento.
  */
 public class AppointmentBean implements Serializable {
 	private static final long serialVersionUID = -680124132381248316L;

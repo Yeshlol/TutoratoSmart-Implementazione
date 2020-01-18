@@ -196,6 +196,7 @@ function validateInputs(){
 			"LastName":$("#LastName").val(),
 			"Sex":$("input:radio[name='Sex']:checked").val(),
 			"TelephoneNumber":$("#TelephoneNumber").val(),
+			"VerifyPassword":$("#VerifyPassword").val(),
 			},
 			function(data){	  
 				if (data.result == 1) {
@@ -319,6 +320,7 @@ function validateInputsTutor(){
 			"TelephoneNumber":$("#TelephoneNumber").val(),
 			"TotalHours":$("#TotalHours").val(),
 			"StartDate":$("#StartDate").val(),
+			"VerifyPassword":$("#VerifyPassword").val(),
 			},
 			function(data){	  
 				if (data.result == 1) {

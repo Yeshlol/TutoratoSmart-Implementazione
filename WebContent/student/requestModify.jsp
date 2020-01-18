@@ -11,6 +11,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Modifica Prenotazione</title>
+	<link rel="shortcut icon" href="<%=request.getContextPath() %>/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="<%=request.getContextPath() %>/img/favicon.ico" type="image/x-icon">
 </head>
 
 <body>

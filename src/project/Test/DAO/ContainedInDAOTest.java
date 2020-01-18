@@ -27,12 +27,12 @@ class ContainedInDAOTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		DatabaseHelper.resetDatabase();
 		DatabaseHelper.initializeDatabase();
 	}
 
 	@AfterEach
-	void tearDown() throws Exception {		
+	void tearDown() throws Exception {
+		DatabaseHelper.resetDatabase();
 		DBConnection.setTest(false);
 	}
 

@@ -12,7 +12,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Dettagli appuntamento</title>
-    
+    <link rel="shortcut icon" href="<%=request.getContextPath() %>/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="<%=request.getContextPath() %>/img/favicon.ico" type="image/x-icon">
+	
     <style>
 	    table,th,td{
 	    	border: 1px solid black;

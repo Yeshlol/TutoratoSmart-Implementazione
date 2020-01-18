@@ -16,7 +16,7 @@ $(document).ready( function() {
 	today = yyyy+'-'+mm+'-'+dd;
 	
 	document.getElementById("startDate").valueAsDate = new Date("2019-01-01");
-	document.getElementById("finishDate").valueAsDate = new Date("2019-12-31");
+	document.getElementById("finishDate").valueAsDate = new Date();
 	document.getElementById("startDate").setAttribute("max", today);
 	document.getElementById("finishDate").setAttribute("max", today);
 });

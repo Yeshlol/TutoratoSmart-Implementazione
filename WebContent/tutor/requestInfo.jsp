@@ -6,6 +6,7 @@
 	AppointmentBean appointment = (AppointmentBean) session.getAttribute("appointment");
 	String accept = (String) session.getAttribute("accept");
 	String absent = (String) session.getAttribute("absent");
+	String appointmentRegistered = (String) session.getAttribute("appointmentRegistered");
 %>
 
 <!DOCTYPE html>
@@ -16,6 +17,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Dettagli Richiesta di Appuntamento del <%= req.getRequestDate() %> </title>
+	<link rel="shortcut icon" href="<%=request.getContextPath() %>/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="<%=request.getContextPath() %>/img/favicon.ico" type="image/x-icon">
 	
 	<style>
 	    table,th,td{
@@ -142,11 +145,12 @@
 		<% } else { %>	
 			<div class="row text-center" style="margin-bottom: 25px;">
 				<div class="column" style="width: 100%;">
-					<% if((accept != null && accept.equals("true")) || (absent != null && absent.equals("true"))) {
+					<% if((appointmentRegistered != null && appointmentRegistered.equals("true")) || (accept != null && accept.equals("true")) || (absent != null && absent.equals("true"))) {
 						session.removeAttribute("accept");
 						session.removeAttribute("absent");
+						session.removeAttribute("appointmentRegistered");
 					%>
-						<input class="btn btn-primary" type="button" id="back" value="Indietro" onclick="location.href='calendar.jsp';">
+						<input class="btn btn-primary" type="button" id="back" value="Indietro" onclick="location.href='/TutoratoSmart/tutor/calendar.jsp';">
 					<% } else { %>	
 						<input class="btn btn-primary" type="button" id="back" value="Indietro" onClick="history.go(-1);return true;">
 					<% } %>

@@ -21,6 +21,9 @@
     <script src='/TutoratoSmart/fullcalendar/timegrid/main.js'></script>
     <script src='/TutoratoSmart/fullcalendar/list/main.js'></script>
     
+    <link rel="shortcut icon" href="<%=request.getContextPath() %>/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="<%=request.getContextPath() %>/img/favicon.ico" type="image/x-icon">
+	
     <style type="text/css">
     	.fc-event {
     		min-height: 12px !important;
