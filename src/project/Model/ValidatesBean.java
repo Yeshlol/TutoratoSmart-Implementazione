@@ -3,7 +3,7 @@ package project.Model;
 import java.io.Serializable;
 
 /**
- * Questa classe rappresenta l'associazione Valida tra l'entita Attività e l'entita Utente.
+ * Questa classe rappresenta l'associazione Valida tra l'entita' Attivita' e l'entita' Utente.
  */
 public class ValidatesBean implements Serializable {
 	private static final long serialVersionUID = -8762723026814198860L;
@@ -19,7 +19,7 @@ public class ValidatesBean implements Serializable {
 	
 	/**
 	 * @param commissionMember membro della commissione
-	 * @param activityId identificativo dell'attività
+	 * @param activityId identificativo dell'attivita'
 	 */
 	public ValidatesBean(String commissionMember, int activityId) {
 		this.commissionMember=commissionMember;
@@ -43,14 +43,14 @@ public class ValidatesBean implements Serializable {
 	}
 
 	/**
-	 * @return activityId identificativo dell'attività
+	 * @return activityId identificativo dell'attivita'
 	 */
 	public int getActivityId() {
 		return activityId;
 	}
 
 	/**
-	 * @param activityId activityId identificativo dell'attività da assegnare all'associazione Valida
+	 * @param activityId activityId identificativo dell'attivita' da assegnare all'associazione Valida
 	 * @return
 	 */
 	public void setActivityId(int activityId) {

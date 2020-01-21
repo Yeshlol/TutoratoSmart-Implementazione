@@ -10,7 +10,7 @@ import project.Control.DBConnection;
 import project.Utils.Utils;
 
 /**
- * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Utente.
+ * Questa classe e' un manager che si occupa di interagire con il database. Gestisce le query riguardanti Utente.
  */
 public class UserDAO  {
 

@@ -3,7 +3,7 @@ package project.Model;
 import java.io.Serializable;
 
 /**
- * Questa classe rappresenta l'entità Registro.
+ * Questa classe rappresenta l'entita' Registro.
  */
 public class RegisterBean implements Serializable {
 	private static final long serialVersionUID = -479570144818932080L;

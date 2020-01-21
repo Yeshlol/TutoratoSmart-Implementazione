@@ -13,7 +13,7 @@ import project.Control.DBConnection;
 import project.Utils.Utils;
 
 /**
- * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Studenti.
+ * Questa classe e' un manager che si occupa di interagire con il database. Gestisce le query riguardanti Studenti.
  */
 public class StudentDAO  {		
 	public StudentDAO() {

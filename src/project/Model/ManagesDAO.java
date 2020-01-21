@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import project.Control.DBConnection;
 
 /**
- * Questa classe è un manager che si occupa di interagire con il database. Gestisce le query riguardanti Gestione.
+ * Questa classe e' un manager che si occupa di interagire con il database. Gestisce le query riguardanti Gestione.
  */
 public class ManagesDAO {
 	public ManagesDAO() {

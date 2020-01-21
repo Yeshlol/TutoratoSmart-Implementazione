@@ -3,7 +3,7 @@ package project.Model;
 import java.io.Serializable;
 
 /**
- * Questa classe rappresenta l'entità Studente.
+ * Questa classe rappresenta l'entita' Studente.
  */
 public class StudentBean extends UserBean implements Serializable {
 	private static final long serialVersionUID = -5444780590893227019L;
