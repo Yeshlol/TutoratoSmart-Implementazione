@@ -3,3 +3,5 @@ jdk:
   - openjdk8
 
 script: ant build
+
+os: windows
