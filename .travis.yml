@@ -1,7 +1,3 @@
-language: shell
-jdk:
-  - openjdk8
-
-script: ant build
+language: java
 
 os: windows
