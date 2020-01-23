@@ -1,1 +1,7 @@
 language: java
+
+services:
+  - mysql
+  
+before_install:
+  - mysql -u root --password="root" < travis.sql
