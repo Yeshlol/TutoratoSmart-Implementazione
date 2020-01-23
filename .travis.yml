@@ -4,4 +4,4 @@ services:
   - mysql
   
 before_install:
-  - mysql -u root < travis.sql
+  - mysql -u root --password="" < travis.sql
