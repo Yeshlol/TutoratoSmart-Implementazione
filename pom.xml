@@ -16,68 +16,74 @@
   </properties>
   
   <dependencies>
-  	<!-- JSON/Gson -->
-    <dependency>
-      	<groupId>com.google.code.gson</groupId>
-      	<artifactId>gson</artifactId>
-      	<version>2.6.2</version>
-	</dependency>
-	<dependency>
-      	<groupId>org.json</groupId>
-     	<artifactId>json</artifactId>
-     	<version>20090211</version>
-	</dependency>
-	<dependency>
-      	<groupId>com.googlecode.json-simple</groupId>
-      	<artifactId>json-simple</artifactId>
-      	<version>1.1.1</version>
-	</dependency>
-	
-	<!-- JUnit -->
-	<dependency>
-	  	<groupId>org.junit.jupiter</groupId>
-	  	<artifactId>junit-jupiter</artifactId>
-	  	<version>5.5.2</version>
-	</dependency>
-	
-	<!-- MySQL -->
-    <dependency>
-      	<groupId>mysql</groupId>
-      	<artifactId>mysql-connector-java</artifactId>
-      	<version>5.1.46</version>
-	</dependency>
-	
-	<!-- ScriptRunner -->
-  	<dependency>
-  	  	<groupId>org.mybatis</groupId>
-      	<artifactId>mybatis</artifactId>
-      	<version>3.5.3</version>
-    </dependency>
-    
-    <!-- Servlet, JSP & Jasper -->
-	<dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>javax.servlet-api</artifactId>
-		<version>3.1.0</version>
-		<scope>provided</scope>
-	</dependency>
-	<dependency>
-		<groupId>javax.servlet.jsp</groupId>
-		<artifactId>javax.servlet.jsp-api</artifactId>
-		<version>2.3.1</version>
-		<scope>provided</scope>
-	</dependency>
-    
-    <!-- Spring spring-mock -->
-	<dependency>
-	   <groupId>org.springframework</groupId>
-	   <artifactId>spring-mock</artifactId>
-	   <version>2.0.8</version>
-	</dependency>    
+	  	<!-- JSON/Gson -->
+	    <dependency>
+	      	<groupId>com.google.code.gson</groupId>
+	      	<artifactId>gson</artifactId>
+	      	<version>2.6.2</version>
+		</dependency>
+		<dependency>
+	      	<groupId>org.json</groupId>
+	     	<artifactId>json</artifactId>
+	     	<version>20090211</version>
+		</dependency>
+		
+		<!-- JUnit -->
+		<dependency>
+		  	<groupId>org.junit.jupiter</groupId>
+		  	<artifactId>junit-jupiter</artifactId>
+		  	<version>5.5.2</version>
+		</dependency>
+		
+		<!-- MySQL -->
+	    <dependency>
+	      	<groupId>mysql</groupId>
+	      	<artifactId>mysql-connector-java</artifactId>
+	      	<version>5.1.46</version>
+		</dependency>
+		
+		<!-- ScriptRunner -->
+	  	<dependency>
+	  	  	<groupId>org.mybatis</groupId>
+	      	<artifactId>mybatis</artifactId>
+	      	<version>3.5.3</version>
+	    </dependency>
+	    
+	    <!-- Servlet, JSP & Jasper -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+			<scope>provided</scope>
+		</dependency>
+	    
+	    <!-- Mockito spring-context spring-mock -->
+	    <dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-all</artifactId>
+		    <version>1.9.5</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <version>3.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+		   <groupId>org.springframework</groupId>
+		   <artifactId>spring-mock</artifactId>
+		   <version>2.0.8</version>
+		</dependency>	
   </dependencies>
   
   <build>
     <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>src/project/Test</testSourceDirectory>
     <plugins>
       	<plugin>
        		<artifactId>maven-compiler-plugin</artifactId>
@@ -98,21 +104,8 @@
       
       	<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-failsafe-plugin</artifactId>
-			<executions>
-				<execution>
-					<id>integration-test</id>
-					<goals>
-						<goal>integration-test</goal>
-					</goals>
-				</execution>
-				<execution>
-					<id>verify</id>
-					<goals>
-						<goal>verify</goal>
-					</goals>
-				</execution>
-			</executions>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>3.0.0-M4</version>
 		</plugin>
     </plugins>    
   </build>
