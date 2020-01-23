@@ -17,8 +17,6 @@ $(document).ready( function() {
 	
 	document.getElementById("startDate").valueAsDate = new Date("2019-01-01");
 	document.getElementById("finishDate").valueAsDate = new Date();
-	document.getElementById("startDate").setAttribute("max", today);
-	document.getElementById("finishDate").setAttribute("max", today);
 });
 
 $("#startDate").on("change", function () {

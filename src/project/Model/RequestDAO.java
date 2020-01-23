@@ -35,7 +35,7 @@ public class RequestDAO  {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			
-			//System.out.println("Request doRetrieveById: " + preparedStatement.toString());
+			// System.out.println("Request doRetrieveById: " + preparedStatement.toString());
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
@@ -47,10 +47,10 @@ public class RequestDAO  {
 				bean.setDuration(rs.getInt("Duration"));
 				bean.setStudent(rs.getString("Student"));
 				
-				//System.out.println("Richiesta Trovata con l'id!");
+				// System.out.println("Richiesta Trovata con l'id!");
 			}
 		} catch (SQLException e) {
-			//System.out.println("Id non trovato!");
+			// System.out.println("Id non trovato!");
 			return null;
 		} finally {
 			if(preparedStatement != null)
@@ -438,7 +438,7 @@ public class RequestDAO  {
 			preparedStatement.setInt(2, requestTime);
 			preparedStatement.setInt(3, requestId);
 			
-			System.out.println("Request isAvailableModify: " + preparedStatement.toString());
+			// System.out.println("Request isAvailableModify: " + preparedStatement.toString());
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			
@@ -448,11 +448,11 @@ public class RequestDAO  {
 	        } else {
 	        	int count = rs.last() ? rs.getRow() : 0;
 	            if (count != 0) {
-	            	System.out.println("Orario non disponibile! Esiste già una prenotazione!");
+	            	// System.out.println("Orario non disponibile! Esiste già una prenotazione!");
 	            	return false;
 	            }
 	            else {
-	            	System.out.println("Orario disponibile!");
+	            	// System.out.println("Orario disponibile!");
 	            	return true;
 	            }
 	        }

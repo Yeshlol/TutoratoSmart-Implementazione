@@ -57,7 +57,7 @@ public class ContainedInDAO {
 			preparedStatement = connection.prepareStatement(deleteSql);
 			preparedStatement.setInt(1, id);
 			
-			System.out.println("ContainedIn doDeleteByActivityId: " + preparedStatement.toString());
+			// System.out.println("ContainedIn doDeleteByActivityId: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 			
 			connection.commit();
@@ -191,7 +191,7 @@ public class ContainedInDAO {
 			connection.commit();
 		} finally {
 			if(preparedStatement != null)
-				preparedStatement.close();connection.close();
+				preparedStatement.close();
 		}
 		
 		return (result!=0);		

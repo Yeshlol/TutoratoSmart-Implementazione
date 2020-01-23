@@ -86,8 +86,8 @@
 			</table>
 		</div>
 		
-		<div class="alert alert-success" id="successDeleteDiv" role="alert" style="display:none;margin-top: 25px;">Appuntamento rimosso con successo</div>
-		<div class="alert alert-danger" id="failureDeleteDiv" role="alert" style="display:none;margin-top: 25px;">Rimozione appuntamento fallita</div>
+		<div class="alert alert-success" id="successDeleteDiv" role="alert" style="display:none;margin: 25px;">Appuntamento rimosso con successo</div>
+		<div class="alert alert-danger" id="failureDeleteDiv" role="alert" style="display:none;margin: 25px;">Rimozione appuntamento fallita</div>
 				
 		<div class="panel"></div>
 			<div class="row text-center" style="margin-bottom: 25px;">

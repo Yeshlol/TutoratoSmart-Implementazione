@@ -24,7 +24,6 @@ public class DBConnection {
 	 */
 	public DBConnection() {
 	    this.conn = null;
-	    //this.databaseName = "TutoratoSmart";
 	    this.userName = "root";
 	    this.password = "root";
 	    this.hostPort = 3306;
@@ -38,9 +37,9 @@ public class DBConnection {
 	    	}
 	      Class.forName("com.mysql.jdbc.Driver");
 	      String url = "jdbc:mysql://" + this.hostName + ":" + this.hostPort + "/" + this.databaseName
-	          + "?useSSL=false";
+	          + "?useSSL=false&serverTimezone=UTC";
 	      this.conn = DriverManager.getConnection(url, this.userName, this.password);
-	      //this.conn.setAutoCommit(false);
+	      this.conn.setAutoCommit(false);
 	    } catch (Exception exc) {
 	      System.out.println(exc.getMessage());
 	    }

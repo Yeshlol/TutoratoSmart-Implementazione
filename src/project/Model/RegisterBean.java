@@ -29,7 +29,7 @@ public class RegisterBean implements Serializable {
 	 */
 	public RegisterBean(int idRegister,String state, float validateHours,float percentageComplete) {
 		this.idRegister=idRegister;
-		this.totalHours=totalHours;
+		this.totalHours = totalHours;
 		this.percentageComplete=percentageComplete;
 		this.validatedHours=validateHours;
 		this.state=state;

@@ -1,3 +1,11 @@
+
+$(document).keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        $("#register").click();
+    }
+});
+
 $("#Email").on('keyup', function() {	
 	$.post("/TutoratoSmart/Registration", { 
 		"mail":$(this).val(),
@@ -327,7 +335,7 @@ function validateInputsTutor(){
 					$("#successDiv").fadeIn(500, function() {
 						$("#successDiv").fadeOut(5000);
 						setTimeout(function() {
-							  window.location.href = "/TutoratoSmart/tutorRegistration.jsp";
+							  window.location.href = "/TutoratoSmart/commission/tutorRegistration.jsp";
 						}, 5000);
 					})
 				}

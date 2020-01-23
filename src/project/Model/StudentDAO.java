@@ -157,7 +157,7 @@ public class StudentDAO  {
 		
 		Collection<StudentBean> studentsList = new LinkedList<StudentBean>();
 		
-		String selectSql = "SELECT * FROM STUDENT AS S, REQUEST AS R, TS_USER AS T "
+		String selectSql = "SELECT DISTINCT T.Email, FirstName, LastName, RegistrationNumber, Sex FROM STUDENT AS S, REQUEST AS R, TS_USER AS T "
 				+ "WHERE R.RequestDate >= ? AND R.RequestDate <= ? AND R.Student = S.Email AND S.Email = T.Email";
 		
 		if(order!=null && !order.equals("")) {
@@ -174,14 +174,10 @@ public class StudentDAO  {
 			while(rs.next()) {
 				StudentBean sbean = new StudentBean();
 				sbean.setEmail(rs.getString("Email"));
-				sbean.setPwd(rs.getString("Pwd"));
-				sbean.setRole(rs.getInt("UserRole"));
 				sbean.setFirstName(rs.getString("FirstName"));
 				sbean.setLastName(rs.getString("LastName"));
-				sbean.setTelephoneNumber(rs.getString("TelephoneNumber"));
-				sbean.setSex(rs.getString("Sex"));
 				sbean.setRegistrationNumber(rs.getString("RegistrationNumber"));
-				sbean.setAcademicYear(rs.getInt("AcademicYear"));
+				sbean.setSex(rs.getString("Sex"));
 				
 				studentsList.add(sbean);
 			}			

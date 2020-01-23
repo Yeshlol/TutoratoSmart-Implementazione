@@ -42,7 +42,7 @@ class ActivityTutorDAOTest {
 		boolean value;
 		
 		value = activityTutorDAO.anyActivityRegistered("m.pisciotta@studenti.unicampania.it", activityD, 540, 900);
-				assertTrue(value);
+		assertTrue(value);
 	}
 
 	@Test
@@ -60,7 +60,7 @@ class ActivityTutorDAOTest {
 
 	@Test
 	void testDoModify() throws SQLException {
-		String activityData="2019-11-24";
+		String activityData = "2019-11-24";
 		Date activityD = Date.valueOf(activityData);
 		
 		ActivityTutorBean activity1 = activityTutorDAO.doRetrieveById(2);
@@ -71,11 +71,10 @@ class ActivityTutorDAOTest {
 
 	@Test
 	void testDoDelete() throws SQLException{
-		String activityData="2019-11-24";
-		Date activityD = Date.valueOf(activityData);
-		ActivityTutorBean bean = new ActivityTutorBean(1, 540, 900, 1, "Sportello Tutorato", "In valutazione", "L' attività riguarda informazioni relative all'immatricolazione dello studente", "m.pisciotta@studenti.unicampania.it", activityD, 6);
+		ActivityTutorDAO activityDAO = new ActivityTutorDAO();
+		ActivityTutorBean bean = activityDAO.doRetrieveById(1);
 		boolean value;
-		value=activityTutorDAO.doDelete(bean);
+		value = activityTutorDAO.doDelete(bean);
 		assertTrue(value);
 	}
 
@@ -87,11 +86,11 @@ class ActivityTutorDAOTest {
 
 	@Test
 	void testDifferentActivityRegistered() throws SQLException{	
-		String activityData="2019-11-24";
+		String activityData = "2019-11-24";
 		Date activityD = Date.valueOf(activityData);
 		boolean value;
 		
 		value = activityTutorDAO.differentActivityRegistered("m.pisciotta@studenti.unicampania.it", 1, activityD, 540, 900);
-				assertFalse(value);	
+		assertFalse(value);	
 	}
 }

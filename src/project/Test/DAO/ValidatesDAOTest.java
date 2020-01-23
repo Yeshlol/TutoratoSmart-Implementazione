@@ -43,7 +43,7 @@ class ValidatesDAOTest {
 		
 	@Test 
 	void testDoSaveValidates() throws SQLException {	
-		ValidatesBean validates = new ValidatesBean("d.molinaro@commissione.unicampania.it", 3);
+		ValidatesBean validates = new ValidatesBean("d.molinaro@commissione.unicampania.it", 2);
 		ArrayList<ValidatesBean> validatesList = validatesDAO.doRetrieveAll();
 		
 		assertEquals(2, validatesList.size());

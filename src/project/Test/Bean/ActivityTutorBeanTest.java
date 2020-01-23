@@ -15,8 +15,7 @@ class ActivityTutorBeanTest {
 	@Test
 	void testActivityTutorBeanEmpty() {
 		ActivityTutorBean activity = new ActivityTutorBean();
-		assertNotNull(activity);
-		
+		assertNotNull(activity);		
 	}
 	
 	@Test
@@ -29,8 +28,7 @@ class ActivityTutorBeanTest {
 	void testSetIdActivity() {
 		ActivityTutorBean activity = new ActivityTutorBean(4,10,20,3,"Sportello","In valutazione","abc","m.pisciotta@studenti.unicampania.it",date,5);
 	    activity.setIdActivity(5);
-	    assertEquals(5,activity.getIdActivity());
-		
+	    assertEquals(5,activity.getIdActivity());		
 	}
 
 	@Test

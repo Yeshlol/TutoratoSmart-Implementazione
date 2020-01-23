@@ -57,6 +57,13 @@
 	
 	<script src="<%= request.getContextPath() %>/js/validationScript.js"></script>
 	<script>
+		$(document).keypress(function(event){
+		    var keycode = (event.keyCode ? event.keyCode : event.which);
+		    if(keycode == '13'){
+		        $("#login").click();
+		    }
+		});
+		
 		function validateInputs() {
 			$("#errorDiv").hide();
 			$("#errorDiv").html("");

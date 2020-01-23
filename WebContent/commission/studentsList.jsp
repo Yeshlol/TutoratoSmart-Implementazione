@@ -58,14 +58,14 @@
 				 			<th class="text-center">Nome</th>
 			    			<th class="text-center">Cognome</th>
 			    			<th class="text-center">Matricola</th>
-			    			<th class="text-center">Anno accademico</th>
+			    			<th class="text-center">Sesso</th>
 			    			<th class="text-center">Email</th>
 		    			</tr>
 			 			<tr>
 				 			<td><%= student.getFirstName() %></td>
 				 			<td><%= student.getLastName() %></td>
 				 			<td><%= student.getRegistrationNumber() %></td>
-				 			<td><%= student.getAcademicYear() %></td>
+				 			<td><%= student.getSex() %></td>
 				 			<td><%= student.getEmail() %></td>
 				 		</tr>
 				 	</table>

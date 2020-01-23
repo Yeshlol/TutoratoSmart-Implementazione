@@ -68,7 +68,7 @@ public class UserDAO  {
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.wasNull()) {
-				// System.out.println("Errore esecuzione query!");
+				System.out.println("Errore esecuzione query!");
 	        } else {
 	        	int count = rs.last() ? rs.getRow() : 0;
 	            if (count == 1) {
