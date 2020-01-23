@@ -38,14 +38,13 @@
 	  	<groupId>org.junit.jupiter</groupId>
 	  	<artifactId>junit-jupiter</artifactId>
 	  	<version>5.5.2</version>
-	  	<scope>Test</scope>
 	</dependency>
 	
-	<!-- Spring spring-mock -->
-	<dependency>
-	   <groupId>org.springframework</groupId>
-	   <artifactId>spring-mock</artifactId>
-	   <version>2.0.8</version>
+	<!-- MySQL -->
+    <dependency>
+      	<groupId>mysql</groupId>
+      	<artifactId>mysql-connector-java</artifactId>
+      	<version>5.1.46</version>
 	</dependency>
 	
 	<!-- ScriptRunner -->
@@ -69,12 +68,12 @@
 		<scope>provided</scope>
 	</dependency>
     
-    <!-- MySQL -->
-    <dependency>
-      	<groupId>mysql</groupId>
-      	<artifactId>mysql-connector-java</artifactId>
-      	<version>5.1.46</version>
-	</dependency>
+    <!-- Spring spring-mock -->
+	<dependency>
+	   <groupId>org.springframework</groupId>
+	   <artifactId>spring-mock</artifactId>
+	   <version>2.0.8</version>
+	</dependency>    
   </dependencies>
   
   <build>
