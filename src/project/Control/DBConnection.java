@@ -30,12 +30,12 @@ public class DBConnection {
 	    try {
 	    	if(!isTest) {
 	    		this.databaseName="TutoratoSmart";
-	    		this.userName = "tester";
-	    		this.password = "test";
-	    	}else {
-	    		this.databaseName="TutoratoSmartTest";
 	    		this.userName = "root";
 	    		this.password = "root";
+	    	} else {
+	    		this.databaseName="TutoratoSmartTest";
+	    		this.userName = "tester";
+	    		this.password = "test";
 	    	}
 	      Class.forName("com.mysql.jdbc.Driver");
 	      String url = "jdbc:mysql://" + this.hostName + ":" + this.hostPort + "/" + this.databaseName
