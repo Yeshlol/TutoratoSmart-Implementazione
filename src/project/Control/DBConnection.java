@@ -25,7 +25,7 @@ public class DBConnection {
 	public DBConnection() {
 	    this.conn = null;
 	    this.userName = "root";
-	    this.password = "root";
+	    this.password = "";
 	    this.hostPort = 3306;
 	    this.hostName = "localhost";
 
