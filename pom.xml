@@ -10,41 +10,70 @@
   <description>Applicazione web per la gestione dell'attività di tutorato, sviluppata per il Dipartimento di Psicologia dell'Università degli Studi della Campania Luigi Vanvitelli per il corso di Ingegneria del Software 2019/2020</description>
   
   <properties>
-	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
   </properties>
   
   <dependencies>
   	<!-- JSON/Gson -->
     <dependency>
-      <groupId>com.google.code.gson</groupId>
-      <artifactId>gson</artifactId>
-      <version>2.6.2</version>
+      	<groupId>com.google.code.gson</groupId>
+      	<artifactId>gson</artifactId>
+      	<version>2.6.2</version>
 	</dependency>
 	<dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <version>20090211</version>
+      	<groupId>org.json</groupId>
+     	<artifactId>json</artifactId>
+     	<version>20090211</version>
 	</dependency>
 	<dependency>
-      <groupId>com.googlecode.json-simple</groupId>
-      <artifactId>json-simple</artifactId>
-      <version>1.1.1</version>
+      	<groupId>com.googlecode.json-simple</groupId>
+      	<artifactId>json-simple</artifactId>
+      	<version>1.1.1</version>
+	</dependency>
+	
+	<!-- JUnit -->
+	<dependency>
+	  	<groupId>org.junit.jupiter</groupId>
+	  	<artifactId>junit-jupiter</artifactId>
+	  	<version>5.5.2</version>
+	  	<scope>Test</scope>
+	</dependency>
+	
+	<!-- Spring spring-mock -->
+	<dependency>
+	   <groupId>org.springframework</groupId>
+	   <artifactId>spring-mock</artifactId>
+	   <version>2.0.8</version>
 	</dependency>
 	
 	<!-- ScriptRunner -->
   	<dependency>
-  	  <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-      <version>3.5.3</version>
+  	  	<groupId>org.mybatis</groupId>
+      	<artifactId>mybatis</artifactId>
+      	<version>3.5.3</version>
     </dependency>
+    
+    <!-- Servlet, JSP & Jasper -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>3.1.0</version>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet.jsp</groupId>
+		<artifactId>javax.servlet.jsp-api</artifactId>
+		<version>2.3.1</version>
+		<scope>provided</scope>
+	</dependency>
     
     <!-- MySQL -->
     <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.46</version>
+      	<groupId>mysql</groupId>
+      	<artifactId>mysql-connector-java</artifactId>
+      	<version>5.1.46</version>
 	</dependency>
   </dependencies>
   
