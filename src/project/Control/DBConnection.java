@@ -24,16 +24,18 @@ public class DBConnection {
 	 */
 	public DBConnection() {
 	    this.conn = null;
-	    this.userName = "root";
-	    this.password = "";
 	    this.hostPort = 3306;
 	    this.hostName = "localhost";
 
 	    try {
 	    	if(!isTest) {
 	    		this.databaseName="TutoratoSmart";
+	    		this.userName = "tester";
+	    		this.password = "test";
 	    	}else {
 	    		this.databaseName="TutoratoSmartTest";
+	    		this.userName = "root";
+	    		this.password = "root";
 	    	}
 	      Class.forName("com.mysql.jdbc.Driver");
 	      String url = "jdbc:mysql://" + this.hostName + ":" + this.hostPort + "/" + this.databaseName

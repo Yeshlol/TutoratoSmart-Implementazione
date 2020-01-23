@@ -1,5 +1,5 @@
-CREATE USER 'root'@'localhost' IDENTIFIED BY '';
-GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON *.* TO 'root'@'localhost';
+CREATE USER 'tester'@'localhost' IDENTIFIED BY 'test';
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON *.* TO 'tester'@'localhost';
 
 CREATE SCHEMA TutoratoSmartTest;
 	
