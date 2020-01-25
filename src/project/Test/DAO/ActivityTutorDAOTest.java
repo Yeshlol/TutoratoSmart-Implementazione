@@ -12,8 +12,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import project.Control.DBConnection;
-import project.Model.*;
 import project.Test.DatabaseHelper;
+import project.Model.ActivityTutorBean;
+import project.Model.ActivityTutorDAO;
 
 class ActivityTutorDAOTest {
 	ActivityTutorDAO activityTutorDAO = new ActivityTutorDAO();

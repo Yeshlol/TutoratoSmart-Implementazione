@@ -82,8 +82,8 @@
 		</div>
 		
 		<div style="margin-top: 25px;">
-			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;">Attivit&aacute aggiunta con successo!</div>
-			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;">Aggiunta attivit&aacute fallita!</div>
+			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;">Attivit&aacute aggiunta con successo</div>
+			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;">Aggiunta attivit&aacute fallita</div>
 		</div>
 							
 		<div class="panel"></div>

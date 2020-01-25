@@ -50,9 +50,9 @@
 	  		<textarea class="form-control" id="appointmentComment" rows="3"></textarea>
 	  		<br>
 			
-			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Appuntamento registrato con successo!</div>
-									
-			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Registrazione appuntamento fallita!</div>
+			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Appuntamento registrato con successo</div>
+
+			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Registrazione appuntamento fallita</div>
 									
 			<div class="panel"></div>
 			<div>

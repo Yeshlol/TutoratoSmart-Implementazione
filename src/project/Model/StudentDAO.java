@@ -125,7 +125,7 @@ public class StudentDAO  {
 			preparedStatement.setString(7, bean.getSex());
 			preparedStatement.setString(8, bean.getRegistrationNumber());
 			
-			System.out.println("User doSave: "+ preparedStatement.toString());
+			// System.out.println("User doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			
@@ -133,7 +133,7 @@ public class StudentDAO  {
 			preparedStatement.setString(1, bean.getEmail());
 			preparedStatement.setInt(2, bean.getAcademicYear());
 			
-			System.out.println("Student doSave: "+ preparedStatement.toString());
+			// System.out.println("Student doSave: "+ preparedStatement.toString());
 			
 			preparedStatement.executeUpdate();
 			

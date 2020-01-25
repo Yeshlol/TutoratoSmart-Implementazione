@@ -87,8 +87,8 @@
 				
 				
 				<div class="row">
-					<div class="alert alert-success text-center" id="successDiv" role="alert" style="display:none;margin:25px;margin-top:0px;">Autenticazione riuscita</div>
-					<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin:25px;margin-top:0px;">Autenticazione fallita</div>		
+					<div class="alert alert-success text-center" id="successDiv" role="alert" style="display:none;margin:25px;margin-top:0px;">Registrazione completata con successo</div>
+					<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin:25px;margin-top:0px;">Registrazione fallita</div>		
 				</div>
 				<div class="panel"></div>
 				<div style="margin-top: 25px;">

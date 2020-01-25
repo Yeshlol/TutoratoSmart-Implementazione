@@ -376,7 +376,7 @@ public class RequestDAO  {
 	/** 
 	 * @param requestDate
 	 * @param requestTime
-	 * @return un booleano per controllare se la richiesta � disponibile e registrata nel database
+	 * @return un booleano per controllare se la richiesta e' disponibile e registrata nel database
 	 * @throws SQLException
 	 */
 	public boolean isAvailable(Date requestDate, int requestTime) throws SQLException {
@@ -390,7 +390,7 @@ public class RequestDAO  {
 			preparedStatement.setDate(1, requestDate);
 			preparedStatement.setInt(2, requestTime);
 			
-			System.out.println("Request isAvailable: " + preparedStatement.toString());
+			// System.out.println("Request isAvailable: " + preparedStatement.toString());
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			
@@ -405,7 +405,7 @@ public class RequestDAO  {
 	        		return false;
 	            }
 	            else {
-	            	System.out.println("Orario disponibile!");
+	            	// System.out.println("Orario disponibile!");
 	            	return true;
 	            }
 	        }

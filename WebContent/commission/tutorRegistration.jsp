@@ -92,8 +92,8 @@
 			</form>
 			
 			<div style="margin-top: 25px;">
-				<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Registrazione completata con successo!</div>
-				<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Registrazione fallita!</div>
+				<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Registrazione completata con successo</div>
+				<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Registrazione fallita</div>
 			</div>
 		</div>
 	</div>					 				

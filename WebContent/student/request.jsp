@@ -42,8 +42,8 @@
         	<div class="modal-dialog vertical-align-center">
             	<div class="modal-content">
 		      		<div class="modal-body">
-			        	<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Prenotazione completata con successo!</div>
-			        	<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Prenotazione fallita!</div>
+			        	<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Prenotazione completata con successo</div>
+			        	<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Prenotazione fallita</div>
 			      	</div>
 		    	</div>
 		  	</div>

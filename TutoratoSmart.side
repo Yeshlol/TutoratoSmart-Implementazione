@@ -1,0 +1,4007 @@
+{
+  "id": "c0c411f3-aeaa-4b02-a67d-add3d6ac0a0e",
+  "version": "2.0",
+  "name": "TutoratoSmart",
+  "url": "http://localhost:8080/TutoratoSmart/",
+  "tests": [{
+    "id": "0a6478f4-ace3-4f5f-82ef-807c07424acd",
+    "name": "LoginSuccessCommission",
+    "commands": [{
+      "id": "e4f4b6e2-fe6d-4408-be69-d3db53620415",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5d54fcb8-85d1-4b82-a0b8-38ed7218e75d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "516x563",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac9424bb-b41e-421e-b3bd-16c53115ada7",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb49acc3-eb7d-481a-ad40-66a114ba8cd5",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c87d6552-111f-4374-801a-80c628f02027",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "d.molinaro@commissione.unicampania.it"
+    }, {
+      "id": "ff27fae8-24aa-4f2c-88d4-db64a84d8052",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7710672-3ed4-44a9-ad97-af2fd45b2de8",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "D12345678"
+    }, {
+      "id": "9dc5dbff-078f-4e7d-bdbb-87a3728fc39e",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8798bffa-9654-4ece-9a80-7f1e2cb69be6",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//div[@id='prova']/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Benvenuto in TutoratoSmart')]", "xpath:innerText"]
+      ],
+      "value": "Benvenuto in TutoratoSmart"
+    }, {
+      "id": "40207bab-bb01-4a54-9e2a-171267cff738",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "edf4f2cc-83f7-4323-a21f-f11c720a9aac",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "74238721-8668-47dc-96a6-32f64e7b349a",
+    "name": "LoginSuccessTutor",
+    "commands": [{
+      "id": "863007da-173d-45b0-96b2-f4aa8de10ee4",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e82b5803-ad6a-4eda-9666-58dc307018f2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "516x563",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "372bad7a-1739-4a04-b4ed-780ef928d6db",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc6b58ae-ec71-4399-888f-12579009fec7",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9cf33f86-330a-4c3a-8bf9-7c88da0796ed",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.pisciotta@studenti.unicampania.it"
+    }, {
+      "id": "288c02f1-926b-4b50-8bb7-47a0853b5ab7",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8d5811e1-fa13-4f68-bbb4-2cb7684d5997",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "aab1281b-8106-499d-aab3-3d1605e75d66",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7ce575a1-fc69-4d45-b94a-5a5d9648e374",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//div[@id='prova']/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Benvenuto in TutoratoSmart')]", "xpath:innerText"]
+      ],
+      "value": "Benvenuto in TutoratoSmart"
+    }, {
+      "id": "64e387af-8d04-403d-b7d6-34216c681f0f",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2a6dbb69-bf0a-446b-a737-51f9065cae1b",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "f201d750-a616-46b1-9315-d6d891a0536c",
+    "name": "LoginSuccessStudent",
+    "commands": [{
+      "id": "64c9f472-65dd-48bb-b203-24f5f3007a8e",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8504801a-aabe-485c-a094-43630992d56b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "516x563",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b0e3ea74-528c-4bbb-8244-b7de70570419",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fbdeff5e-e9b9-47d8-ba88-eec5646843e6",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "32e3e6c7-273d-47bd-9c33-3db17b208f96",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "e.merola@studenti.unicampania.it"
+    }, {
+      "id": "a8219816-9fff-4e65-ac30-f85db9314113",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7891fa78-b2b4-424f-a075-44ce7f95fad8",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "36a1e76c-1420-4a70-bb03-65fb0ac8368a",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "29e9d95a-3750-4794-a2f8-02002bd8dcdf",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//div[@id='prova']/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Benvenuto in TutoratoSmart')]", "xpath:innerText"]
+      ],
+      "value": "Benvenuto in TutoratoSmart"
+    }, {
+      "id": "1059e200-ba31-4c5e-b261-d7fa14f215d0",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "be97989a-a0c5-4aea-8bba-23d50fbba27d",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "13c4377f-09f5-452a-82fd-028b0a0e6b30",
+    "name": "LoginEmailFormatError",
+    "commands": [{
+      "id": "2b50af49-cf71-42fd-98c7-52e17cf53dbe",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c3f9bd89-095a-435d-a2ee-907a12c2a6b0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "516x563",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "389bffb5-e90a-455e-920a-1870aefbd9a3",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8ea8d4ec-673b-4686-b8a2-af8ebcc9fbdb",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "28caeae7-c5ec-4072-ba8f-16ef837f5c45",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.pisciotta@studenti.unisa.it"
+    }, {
+      "id": "d4a31aab-fef6-4a84-b89c-965a4657c2b5",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a2432a65-6c0d-4ac3-8fc8-2153ed0894c1",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "daa82730-8a7f-47cc-8a2a-33234699ad29",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5919c677-1bcf-4bfd-89e5-1085bb2d2084",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=strong",
+      "targets": [
+        ["css=strong", "css:finder"],
+        ["xpath=//div[@id='errorDiv']/strong", "xpath:idRelative"],
+        ["xpath=//strong", "xpath:position"],
+        ["xpath=//strong[contains(.,'Formato email non valido')]", "xpath:innerText"]
+      ],
+      "value": "Formato email non valido"
+    }, {
+      "id": "fa5dbb89-55c4-4297-a2f3-abc994cde108",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ebb9a845-a0a7-482b-a818-12c617bef0db",
+    "name": "LoginEmailEmpty",
+    "commands": [{
+      "id": "07b9ec8e-bcf4-4f04-b88b-5fbeceff2a98",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0d60672f-16f6-4124-bcba-ee9742981465",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "516x563",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d76e095a-d078-4027-a961-c7416fb4c6ea",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cdd82d71-83c9-4514-b7a6-c07857cc9944",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "88fdda71-a945-4368-984d-5027bf44a670",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "dc5ca507-d6c1-4a97-9797-ac2b0299a0e4",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "09827845-2ab5-4cf8-9d81-51830cd22b1f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=strong",
+      "targets": [
+        ["css=strong", "css:finder"],
+        ["xpath=//div[@id='errorDiv']/strong", "xpath:idRelative"],
+        ["xpath=//strong", "xpath:position"],
+        ["xpath=//strong[contains(.,'Formato email non valido')]", "xpath:innerText"]
+      ],
+      "value": "Inserire l'email"
+    }, {
+      "id": "92fed573-b0e8-4497-940b-9971f1c64391",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "fe76d2bb-efbb-400e-a856-c6fba3cc792e",
+    "name": "LoginPasswordFormatError",
+    "commands": [{
+      "id": "7df46e5b-55e3-4703-9fd5-80fd305afb42",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ebac9be-bded-452f-871e-fe4ca7da5f81",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "516x563",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "98ebe2e6-6cf5-4f24-846d-e028ef1afb41",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9ffc57ae-9d2c-48c0-8796-418d8c18002b",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "50f68cd8-fdb7-4256-8056-9e8ed8e02df8",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.pisciotta@studenti.unicampania.it"
+    }, {
+      "id": "9b34ec4f-25b5-48e9-b8d3-026603e5ff91",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a8a70aaa-af6e-4ec8-b026-bdeef8cff1ca",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345"
+    }, {
+      "id": "a2c53548-0b3d-4a3d-a16f-a48e20d3b67c",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "00774e63-c846-4129-8b54-6474b2a2db12",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=strong",
+      "targets": [
+        ["css=strong", "css:finder"],
+        ["xpath=//div[@id='errorDiv']/strong", "xpath:idRelative"],
+        ["xpath=//strong", "xpath:position"],
+        ["xpath=//strong[contains(.,'Formato email non valido')]", "xpath:innerText"]
+      ],
+      "value": "Formato password non valido"
+    }, {
+      "id": "63accee0-fb30-4e71-8aba-b5cc0da5b205",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ddf53d88-f64e-4213-98b1-131930ec9099",
+    "name": "LoginPasswordEmpty",
+    "commands": [{
+      "id": "621210ac-3184-42f6-b517-d4b51e2cd560",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dbad0b56-8c3e-486e-b77e-bce49253e9df",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "516x563",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ef8c445e-83be-4444-8ac8-b86ffea6cda9",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d725ad8c-b090-4959-8ab6-418efc764a5c",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b42938d7-0c85-4246-bd87-40effcdedcd7",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "01e51dd4-3163-4929-8459-38ade1e4781c",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3b14a545-d388-413a-b00c-b769ec55beec",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=strong",
+      "targets": [
+        ["css=strong", "css:finder"],
+        ["xpath=//div[@id='errorDiv']/strong", "xpath:idRelative"],
+        ["xpath=//strong", "xpath:position"],
+        ["xpath=//strong[contains(.,'Formato email non valido')]", "xpath:innerText"]
+      ],
+      "value": "Inserire la password"
+    }, {
+      "id": "5661ae18-7cbc-48b1-a176-bff99ce3ee8c",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "e3100f1a-202b-41e5-a06b-3aff5bfc062c",
+    "name": "RegistrationNameFormatError",
+    "commands": [{
+      "id": "2b454431-2335-4931-b946-a78b230c244b",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a3afe08b-64f8-47e0-8a06-34362437d264",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1051x731",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ee9be29-b0e3-416e-80b1-041ede50b4f4",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati",
+      "targets": [
+        ["linkText=Registrati", "linkText"],
+        ["css=div:nth-child(2) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'registration.jsp')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b11491f0-ebff-4dee-b676-d80d84ac9b45",
+      "comment": "",
+      "command": "type",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "f.pagano@studenti.unicampania.it"
+    }, {
+      "id": "d02e427e-5da8-46fc-a9d6-3aa3dfeb241c",
+      "comment": "",
+      "command": "type",
+      "target": "id=RegistrationNumber",
+      "targets": [
+        ["id=RegistrationNumber", "id"],
+        ["name=RegistrationNumber", "name"],
+        ["css=#RegistrationNumber", "css:finder"],
+        ["xpath=//input[@id='RegistrationNumber']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "A12345"
+    }, {
+      "id": "7e2fac12-ed3b-49e7-9f14-b4bf61d122bf",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "0c52fac6-2429-407d-a730-e2a4906265f0",
+      "comment": "",
+      "command": "type",
+      "target": "id=VerifyPassword",
+      "targets": [
+        ["id=VerifyPassword", "id"],
+        ["name=VerifyPassword", "name"],
+        ["css=#VerifyPassword", "css:finder"],
+        ["xpath=//input[@id='VerifyPassword']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "5323cfa6-aee7-4376-96e0-2548c059fb38",
+      "comment": "",
+      "command": "type",
+      "target": "id=FirstName",
+      "targets": [
+        ["id=FirstName", "id"],
+        ["name=FirstName", "name"],
+        ["css=#FirstName", "css:finder"],
+        ["xpath=//input[@id='FirstName']", "xpath:attributes"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": "Francesco1"
+    }, {
+      "id": "4374c32f-626c-468f-81e2-8d526a5df159",
+      "comment": "",
+      "command": "type",
+      "target": "id=LastName",
+      "targets": [
+        ["id=LastName", "id"],
+        ["name=LastName", "name"],
+        ["css=#LastName", "css:finder"],
+        ["xpath=//input[@id='LastName']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Pagano"
+    }, {
+      "id": "08a8fb0f-970d-4dbe-b4e9-2b61e9b1f8a2",
+      "comment": "",
+      "command": "type",
+      "target": "id=TelephoneNumber",
+      "targets": [
+        ["id=TelephoneNumber", "id"],
+        ["name=TelephoneNumber", "name"],
+        ["css=#TelephoneNumber", "css:finder"],
+        ["xpath=//input[@id='TelephoneNumber']", "xpath:attributes"],
+        ["xpath=//div[5]/div/input", "xpath:position"]
+      ],
+      "value": "3373252987"
+    }, {
+      "id": "4cedbdd2-66dd-452b-b781-1e052c4e703a",
+      "comment": "",
+      "command": "click",
+      "target": "id=M",
+      "targets": [
+        ["id=M", "id"],
+        ["name=Sex", "name"],
+        ["css=#M", "css:finder"],
+        ["xpath=//input[@id='M']", "xpath:attributes"],
+        ["xpath=//label[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cd1f4497-3f3b-40af-8812-d6ba749c90c5",
+      "comment": "",
+      "command": "select",
+      "target": "id=AcademicYear",
+      "targets": [],
+      "value": "label=Terzo Anno - Triennale"
+    }, {
+      "id": "5e1374c2-c3e9-41a9-91d7-9dc691f4014f",
+      "comment": "",
+      "command": "click",
+      "target": "id=register",
+      "targets": [
+        ["id=register", "id"],
+        ["name=registraButton", "name"],
+        ["css=#register", "css:finder"],
+        ["xpath=//input[@id='register']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "00f24b82-416a-4e53-8177-9ccf0976abac",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorDiv",
+      "targets": [
+        ["css=i", "css:finder"],
+        ["xpath=//div[@id='errorDiv']/i", "xpath:idRelative"],
+        ["xpath=//i", "xpath:position"],
+        ["xpath=//i[contains(.,'2-30 caratteri con iniziale maiuscola')]", "xpath:innerText"]
+      ],
+      "value": "Errore! Nome non consentito! (2-30 caratteri con iniziale maiuscola)"
+    }, {
+      "id": "3330c374-8ad0-4404-b33f-e5360b6ef8e9",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "03778da6-151f-4076-9b9b-46733b184f8f",
+    "name": "RegistrationPasswordsDifferentError",
+    "commands": [{
+      "id": "62b4fbb0-eb9b-4340-9f92-f0a81e7d246a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d7865fe6-c9d1-4080-a4ed-067a07e1afe3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1051x731",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f0261c24-ab61-45a7-a363-28eda855a51e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati",
+      "targets": [
+        ["linkText=Registrati", "linkText"],
+        ["css=div:nth-child(2) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'registration.jsp')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d2a3ffd2-6ed4-43e2-898b-774de8cfb9fd",
+      "comment": "",
+      "command": "type",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "f.pagano@studenti.unicampania.it"
+    }, {
+      "id": "c1e1e54f-f281-459a-b732-22176e37b62b",
+      "comment": "",
+      "command": "type",
+      "target": "id=RegistrationNumber",
+      "targets": [
+        ["id=RegistrationNumber", "id"],
+        ["name=RegistrationNumber", "name"],
+        ["css=#RegistrationNumber", "css:finder"],
+        ["xpath=//input[@id='RegistrationNumber']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "A12345"
+    }, {
+      "id": "e90de00e-8c0b-4aa4-999b-f35170f3fbe9",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "eaa093f8-b7f7-4481-8861-3dc0cc97d4f4",
+      "comment": "",
+      "command": "type",
+      "target": "id=VerifyPassword",
+      "targets": [
+        ["id=VerifyPassword", "id"],
+        ["name=VerifyPassword", "name"],
+        ["css=#VerifyPassword", "css:finder"],
+        ["xpath=//input[@id='VerifyPassword']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "M123456789"
+    }, {
+      "id": "20142abc-4198-41b3-86b9-7b2e19a352eb",
+      "comment": "",
+      "command": "type",
+      "target": "id=FirstName",
+      "targets": [
+        ["id=FirstName", "id"],
+        ["name=FirstName", "name"],
+        ["css=#FirstName", "css:finder"],
+        ["xpath=//input[@id='FirstName']", "xpath:attributes"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": "Francesco"
+    }, {
+      "id": "892bdf44-a2b4-444e-9e44-a1e15cdf8f07",
+      "comment": "",
+      "command": "type",
+      "target": "id=LastName",
+      "targets": [
+        ["id=LastName", "id"],
+        ["name=LastName", "name"],
+        ["css=#LastName", "css:finder"],
+        ["xpath=//input[@id='LastName']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Pagano"
+    }, {
+      "id": "5f7136cf-701f-4e4a-aca0-454643e7cbb1",
+      "comment": "",
+      "command": "type",
+      "target": "id=TelephoneNumber",
+      "targets": [
+        ["id=TelephoneNumber", "id"],
+        ["name=TelephoneNumber", "name"],
+        ["css=#TelephoneNumber", "css:finder"],
+        ["xpath=//input[@id='TelephoneNumber']", "xpath:attributes"],
+        ["xpath=//div[5]/div/input", "xpath:position"]
+      ],
+      "value": "3373252987"
+    }, {
+      "id": "5bef03ef-6a13-4451-9571-f5f037d438c2",
+      "comment": "",
+      "command": "click",
+      "target": "id=M",
+      "targets": [
+        ["id=M", "id"],
+        ["name=Sex", "name"],
+        ["css=#M", "css:finder"],
+        ["xpath=//input[@id='M']", "xpath:attributes"],
+        ["xpath=//label[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2812d074-55a9-4339-930d-04ffd70249d0",
+      "comment": "",
+      "command": "select",
+      "target": "id=AcademicYear",
+      "targets": [],
+      "value": "label=Terzo Anno - Triennale"
+    }, {
+      "id": "7bc1b871-83b1-4fd3-a6c6-56b2a76c529f",
+      "comment": "",
+      "command": "click",
+      "target": "id=register",
+      "targets": [
+        ["id=register", "id"],
+        ["name=registraButton", "name"],
+        ["css=#register", "css:finder"],
+        ["xpath=//input[@id='register']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a34d7786-a75f-4fd0-8c0d-e22cccdc0a2f",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorDiv",
+      "targets": [
+        ["css=i", "css:finder"],
+        ["xpath=//div[@id='errorDiv']/i", "xpath:idRelative"],
+        ["xpath=//i", "xpath:position"],
+        ["xpath=//i[contains(.,'Le due password inserite non coincidono!')]", "xpath:innerText"]
+      ],
+      "value": "Errore! Le due password inserite non coincidono!"
+    }, {
+      "id": "f666cb07-0103-47b1-aed5-efc597062971",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "06c892c1-7f36-41aa-aaa7-365175567724",
+    "name": "RegistrationStudentSuccess",
+    "commands": [{
+      "id": "0ecfa8ea-4069-4196-9699-b1dae7a87ec7",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "43cf1ce3-637d-4a16-a43e-05fefc302d27",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dc34f0df-a233-4873-85db-5f4f46970b91",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registrati",
+      "targets": [
+        ["linkText=Registrati", "linkText"],
+        ["css=div:nth-child(2) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Registrati')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'registration.jsp')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registrati')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "53b0cb61-2507-413b-8cf7-8ca6d1994b0a",
+      "comment": "",
+      "command": "type",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "f.pagano@studenti.unicampania.it"
+    }, {
+      "id": "a868477e-a0c8-428b-a45b-51d2a316ce68",
+      "comment": "",
+      "command": "type",
+      "target": "id=RegistrationNumber",
+      "targets": [
+        ["id=RegistrationNumber", "id"],
+        ["name=RegistrationNumber", "name"],
+        ["css=#RegistrationNumber", "css:finder"],
+        ["xpath=//input[@id='RegistrationNumber']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "A12345"
+    }, {
+      "id": "7896871c-abba-4793-aa5a-8e2172c7a59c",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "b89f09ca-bcfb-454c-9dfc-bfe422ec3839",
+      "comment": "",
+      "command": "type",
+      "target": "id=VerifyPassword",
+      "targets": [
+        ["id=VerifyPassword", "id"],
+        ["name=VerifyPassword", "name"],
+        ["css=#VerifyPassword", "css:finder"],
+        ["xpath=//input[@id='VerifyPassword']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "c33bc95c-bed2-4bf1-b6fb-87b66bd4c342",
+      "comment": "",
+      "command": "type",
+      "target": "id=FirstName",
+      "targets": [
+        ["id=FirstName", "id"],
+        ["name=FirstName", "name"],
+        ["css=#FirstName", "css:finder"],
+        ["xpath=//input[@id='FirstName']", "xpath:attributes"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": "Francesco"
+    }, {
+      "id": "d642441d-8239-4c96-9992-cba629ef71e8",
+      "comment": "",
+      "command": "type",
+      "target": "id=LastName",
+      "targets": [
+        ["id=LastName", "id"],
+        ["name=LastName", "name"],
+        ["css=#LastName", "css:finder"],
+        ["xpath=//input[@id='LastName']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Pagano"
+    }, {
+      "id": "00b38b86-5784-44f2-be67-7c5970983a9a",
+      "comment": "",
+      "command": "type",
+      "target": "id=TelephoneNumber",
+      "targets": [
+        ["id=TelephoneNumber", "id"],
+        ["name=TelephoneNumber", "name"],
+        ["css=#TelephoneNumber", "css:finder"],
+        ["xpath=//input[@id='TelephoneNumber']", "xpath:attributes"],
+        ["xpath=//div[5]/div/input", "xpath:position"]
+      ],
+      "value": "3373252987"
+    }, {
+      "id": "14ac5cfe-f8e0-4241-a83a-130c576f1119",
+      "comment": "",
+      "command": "click",
+      "target": "id=M",
+      "targets": [
+        ["id=M", "id"],
+        ["name=Sex", "name"],
+        ["css=#M", "css:finder"],
+        ["xpath=//input[@id='M']", "xpath:attributes"],
+        ["xpath=//label[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0ce8f34d-8498-4e6f-9ac0-63aed1a5c1da",
+      "comment": "",
+      "command": "select",
+      "target": "id=AcademicYear",
+      "targets": [],
+      "value": "label=Terzo Anno - Triennale"
+    }, {
+      "id": "073ca8b6-162b-410f-a6f9-219fe2394baf",
+      "comment": "",
+      "command": "click",
+      "target": "id=register",
+      "targets": [
+        ["id=register", "id"],
+        ["name=registraButton", "name"],
+        ["css=#register", "css:finder"],
+        ["xpath=//input[@id='register']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "52608986-8490-47ba-830c-5c361a22a485",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=successDiv",
+      "targets": [
+        ["css=.panel > .text-center:nth-child(1)", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": "Registrazione completata con successo"
+    }]
+  }, {
+    "id": "7343b300-8169-4bfc-8900-90ff81be833b",
+    "name": "RegistrationTutorSuccess",
+    "commands": [{
+      "id": "4f1d53b2-63e9-4c3f-89c4-037cb8c89c17",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0ce934e0-c1d8-43c9-a165-bebb99de9894",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "768c989a-00cb-4cc8-a71e-2108bcfc7540",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "639abae1-b5fe-4fb1-a959-ebb6982a2a4d",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7d6cb988-b081-4739-8b37-46ac79e89c92",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "d.molinaro@commissione.unicampania.it"
+    }, {
+      "id": "2cfc81e1-28b4-4a8c-9e44-ad5e4fdfd90e",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c23ab9e6-078d-4c13-b27f-38901653c31f",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "D12345678"
+    }, {
+      "id": "6fdd2e7a-ab64-4678-bb55-094bafe8d7b7",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "79e766e3-a568-46c7-97f8-e87f6d4aa56d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registra Tutor",
+      "targets": [
+        ["linkText=Registra Tutor", "linkText"],
+        ["css=.nav-item:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Registra Tutor')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/commission/tutorRegistration.jsp')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registra Tutor')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "54ef30e6-7e97-4106-a306-2b57de4b3f2d",
+      "comment": "",
+      "command": "type",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.dellecave@studenti.unicampania.it"
+    }, {
+      "id": "ad23e2e6-025f-4364-9189-87de8d5af601",
+      "comment": "",
+      "command": "type",
+      "target": "id=RegistrationNumber",
+      "targets": [
+        ["id=RegistrationNumber", "id"],
+        ["name=RegistrationNumber", "name"],
+        ["css=#RegistrationNumber", "css:finder"],
+        ["xpath=//input[@id='RegistrationNumber']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "B12345"
+    }, {
+      "id": "83a8589e-0e30-483a-b00e-55e5f23c8ab6",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "9f1e6d89-bf05-40eb-a38a-3837ae5d1608",
+      "comment": "",
+      "command": "type",
+      "target": "id=VerifyPassword",
+      "targets": [
+        ["id=VerifyPassword", "id"],
+        ["name=VerifyPassword", "name"],
+        ["css=#VerifyPassword", "css:finder"],
+        ["xpath=//input[@id='VerifyPassword']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "ceba4df8-6eda-4809-9cac-1234ed54170e",
+      "comment": "",
+      "command": "type",
+      "target": "id=FirstName",
+      "targets": [
+        ["id=FirstName", "id"],
+        ["name=FirstName", "name"],
+        ["css=#FirstName", "css:finder"],
+        ["xpath=//input[@id='FirstName']", "xpath:attributes"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": "Marco"
+    }, {
+      "id": "56f3e9dc-519b-4a30-a437-79dc0a2daea9",
+      "comment": "",
+      "command": "type",
+      "target": "id=LastName",
+      "targets": [
+        ["id=LastName", "id"],
+        ["name=LastName", "name"],
+        ["css=#LastName", "css:finder"],
+        ["xpath=//input[@id='LastName']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Delle Cave"
+    }, {
+      "id": "180ca4f2-e06f-4d29-b530-2ed23245b574",
+      "comment": "",
+      "command": "type",
+      "target": "id=TelephoneNumber",
+      "targets": [
+        ["id=TelephoneNumber", "id"],
+        ["name=TelephoneNumber", "name"],
+        ["css=#TelephoneNumber", "css:finder"],
+        ["xpath=//input[@id='TelephoneNumber']", "xpath:attributes"],
+        ["xpath=//div[5]/div/input", "xpath:position"]
+      ],
+      "value": "3386512487"
+    }, {
+      "id": "00dce57f-0243-4d68-bd16-476ebd4b7a1f",
+      "comment": "",
+      "command": "click",
+      "target": "id=M",
+      "targets": [
+        ["id=M", "id"],
+        ["name=Sex", "name"],
+        ["css=#M", "css:finder"],
+        ["xpath=//input[@id='M']", "xpath:attributes"],
+        ["xpath=//label[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "49864b12-2263-47af-94ec-e35aaab98ae7",
+      "comment": "",
+      "command": "type",
+      "target": "id=StartDate",
+      "targets": [
+        ["id=StartDate", "id"],
+        ["name=StartDate", "name"],
+        ["css=#StartDate", "css:finder"],
+        ["xpath=//input[@id='StartDate']", "xpath:attributes"],
+        ["xpath=//div[6]/div[2]/input", "xpath:position"]
+      ],
+      "value": "2020-01-28"
+    }, {
+      "id": "b8cad56a-b6fd-424f-b62b-8ba630f9675f",
+      "comment": "",
+      "command": "click",
+      "target": "id=register",
+      "targets": [
+        ["id=register", "id"],
+        ["name=registraButton", "name"],
+        ["css=#register", "css:finder"],
+        ["xpath=//input[@id='register']", "xpath:attributes"],
+        ["xpath=//form/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a4f4e9a-d3bf-456d-afff-792ff2b0e606",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=successDiv",
+      "targets": [
+        ["id=successDiv", "id"],
+        ["css=#successDiv", "css:finder"],
+        ["xpath=//div[@id='successDiv']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/div/div", "xpath:position"]
+      ],
+      "value": "Registrazione completata con successo"
+    }, {
+      "id": "8142ceff-5e67-4cd1-8a31-d7b13359c014",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "0c4f7001-7ea8-43a0-92e9-bb30c4e44005",
+    "name": "AddActivitySuccess",
+    "commands": [{
+      "id": "e73b364d-eda0-4187-9772-f1364aa6e6cb",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3cd5d134-3bf4-423d-87e7-83c5c2ea8fb6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "22a62752-da03-48da-a449-ca3fa49e3f18",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "511c7034-bdde-493b-9866-6eab10bfe981",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.lombardo@studenti.unicampania.it"
+    }, {
+      "id": "b20331f4-f798-4bac-aaa2-17a24c01c263",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "566da700-bc80-44ed-b92a-6c3086236d40",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "50e98362-5f48-4f1d-8c6a-6a0f144a0419",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registro Tutorato",
+      "targets": [
+        ["linkText=Registro Tutorato", "linkText"],
+        ["css=.nav > li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Registro Tutorato')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/tutor/register.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registro Tutorato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b585e717-108a-48ff-b743-481ebffc0abc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-success",
+      "targets": [
+        ["css=.btn-success", "css:finder"],
+        ["xpath=//input[@value='Aggiungi attivitá']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d962870-9be8-4445-a133-71d8fc6d4972",
+      "comment": "",
+      "command": "select",
+      "target": "id=category",
+      "targets": [],
+      "value": "label=Assistenza Esame"
+    }, {
+      "id": "2b07b592-5287-4fb9-ae4f-e8436be05c5d",
+      "comment": "",
+      "command": "type",
+      "target": "id=date",
+      "targets": [
+        ["id=date", "id"],
+        ["name=date", "name"],
+        ["css=#date", "css:finder"],
+        ["xpath=//input[@id='date']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "2020-01-20"
+    }, {
+      "id": "8a5f5ff6-83e2-48fa-8beb-6971faa948be",
+      "comment": "",
+      "command": "type",
+      "target": "id=startTime",
+      "targets": [
+        ["id=startTime", "id"],
+        ["css=#startTime", "css:finder"],
+        ["xpath=//input[@id='startTime']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "09:30"
+    }, {
+      "id": "693243ac-1012-46c2-8d70-7e82f55bcc20",
+      "comment": "",
+      "command": "type",
+      "target": "id=finishTime",
+      "targets": [
+        ["id=finishTime", "id"],
+        ["css=#finishTime", "css:finder"],
+        ["xpath=//input[@id='finishTime']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "12:00"
+    }, {
+      "id": "39833f41-d0f5-4efc-9246-f710270983bd",
+      "comment": "",
+      "command": "type",
+      "target": "id=description",
+      "targets": [
+        ["id=description", "id"],
+        ["name=description", "name"],
+        ["css=#description", "css:finder"],
+        ["xpath=//textarea[@id='description']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Assistenza Esame"
+    }, {
+      "id": "fe2dd424-e42a-46d7-901a-306440f284b4",
+      "comment": "",
+      "command": "click",
+      "target": "id=addActivity",
+      "targets": [
+        ["id=addActivity", "id"],
+        ["css=#addActivity", "css:finder"],
+        ["xpath=//input[@id='addActivity']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d6d082e-d304-4fd6-a210-dd707b4361dc",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=successDiv",
+      "targets": [],
+      "value": "Attivitá aggiunta con successo"
+    }, {
+      "id": "812bcf95-27e2-4fbd-80d8-ad12bd5ee0ee",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "4337926f-eda3-47e4-a58c-e7f6283081c8",
+    "name": "AddActivityError",
+    "commands": [{
+      "id": "33cc0af5-29db-4077-a028-5aa1c54788c8",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ee5b8865-e3a3-4445-aaff-0bb93ede95c2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a5271556-4214-40b1-bc72-78c55cb21638",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fd0649b8-38ac-4f2c-b84a-18bcf74ab4ea",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.lombardo@studenti.unicampania.it"
+    }, {
+      "id": "9ab2c27f-fd4d-4c6a-b467-74dc9adcaad5",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "a8521e2d-b8ff-487e-a8f7-7881db68487c",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d89b2822-e844-4e26-bc0c-1140f1a3a3b6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registro Tutorato",
+      "targets": [
+        ["linkText=Registro Tutorato", "linkText"],
+        ["css=.nav > li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Registro Tutorato')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/tutor/register.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registro Tutorato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6e6625fc-3512-46c0-b5bb-70ea6c31dfd0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-success",
+      "targets": [
+        ["css=.btn-success", "css:finder"],
+        ["xpath=//input[@value='Aggiungi attivitá']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8f5e71b-751b-4b52-9ee0-693376cfd5ac",
+      "comment": "",
+      "command": "select",
+      "target": "id=category",
+      "targets": [],
+      "value": "label=Assistenza Esame"
+    }, {
+      "id": "f97cf930-5e24-494e-9ffa-e9de3dbea07f",
+      "comment": "",
+      "command": "type",
+      "target": "id=date",
+      "targets": [
+        ["id=date", "id"],
+        ["name=date", "name"],
+        ["css=#date", "css:finder"],
+        ["xpath=//input[@id='date']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "2020-01-18"
+    }, {
+      "id": "36b39140-a0f2-4308-937c-27a6f04f08ae",
+      "comment": "",
+      "command": "type",
+      "target": "id=startTime",
+      "targets": [
+        ["id=startTime", "id"],
+        ["css=#startTime", "css:finder"],
+        ["xpath=//input[@id='startTime']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "09:30"
+    }, {
+      "id": "023e3cb1-82a7-4282-a0ba-d5608efd5896",
+      "comment": "",
+      "command": "type",
+      "target": "id=finishTime",
+      "targets": [
+        ["id=finishTime", "id"],
+        ["css=#finishTime", "css:finder"],
+        ["xpath=//input[@id='finishTime']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "12:00"
+    }, {
+      "id": "f1266fb6-e629-4a67-9649-bb2285778b85",
+      "comment": "",
+      "command": "type",
+      "target": "id=description",
+      "targets": [
+        ["id=description", "id"],
+        ["name=description", "name"],
+        ["css=#description", "css:finder"],
+        ["xpath=//textarea[@id='description']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Attività"
+    }, {
+      "id": "01166f29-d3c1-431d-85b4-8112a7a448c9",
+      "comment": "",
+      "command": "click",
+      "target": "id=addActivity",
+      "targets": [
+        ["id=addActivity", "id"],
+        ["css=#addActivity", "css:finder"],
+        ["xpath=//input[@id='addActivity']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6db621d7-a12e-4abb-9052-0810c8d821db",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorDiv",
+      "targets": [
+        ["id=errorDiv", "id"],
+        ["css=#errorDiv", "css:finder"],
+        ["xpath=//div[@id='errorDiv']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/div/div/div", "xpath:position"]
+      ],
+      "value": "Hai registrato un'altra attivitá in quelle ore"
+    }, {
+      "id": "4e47b4ee-a002-4862-adcf-12bbda40e2db",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "39b6cd24-f0f3-4c21-a298-2c7ef70b682c",
+    "name": "AddAppointmentSuccess",
+    "commands": [{
+      "id": "f5542b77-d9a3-4ea7-a6a8-342fe08a7ddc",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2d00b5a9-f920-4920-840e-bb531351a800",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "80d04070-db96-45f6-8e3d-248d92579cac",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2fb273e2-7fd2-4bae-ad34-70bbd6d075d6",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.lombardo@studenti.unicampania.it"
+    }, {
+      "id": "86b3af35-4ac3-447f-99fe-6bc5a93cd478",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "ab3ddd58-b4c0-444a-96ee-a36b86f9a062",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9d24064e-2085-42bf-9476-c516cfb5f413",
+      "comment": "",
+      "command": "click",
+      "target": "css=body",
+      "targets": [
+        ["css=body", "css:finder"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1f6821a7-7fd4-414c-91bc-3abd0e72a943",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Gestione Sportello",
+      "targets": [
+        ["linkText=Gestione Sportello", "linkText"],
+        ["css=.dropdown-toggle", "css:finder"],
+        ["xpath=//a[contains(text(),'Gestione Sportello')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Gestione Sportello')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4dab55fc-a27a-46c5-bfa2-625964e29212",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Richieste Accettate",
+      "targets": [
+        ["linkText=Richieste Accettate", "linkText"],
+        ["css=.dropdown-menu > li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Richieste Accettate')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[4]/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/tutor/acceptedRequestsList.jsp')]", "xpath:href"],
+        ["xpath=//li[4]/ul/li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Richieste Accettate')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3dfa1bae-b693-42e8-8065-945410bb882a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Mostra",
+      "targets": [
+        ["linkText=Mostra", "linkText"],
+        ["css=td > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Mostra')]", "xpath:link"],
+        ["xpath=//div[@id='registerDiv']/table/tbody/tr[2]/td[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/ShowRequest?id=5&flag=3')]", "xpath:href"],
+        ["xpath=//td[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Mostra')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d2318b8-9b6e-4baa-a0a5-c460f1b05424",
+      "comment": "",
+      "command": "click",
+      "target": "id=confirmAppointment",
+      "targets": [
+        ["id=confirmAppointment", "id"],
+        ["css=#confirmAppointment", "css:finder"],
+        ["xpath=//input[@id='confirmAppointment']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a80573a2-0e83-4eef-b87b-be2d8ca85a16",
+      "comment": "",
+      "command": "type",
+      "target": "id=appointmentComment",
+      "targets": [
+        ["id=appointmentComment", "id"],
+        ["css=#appointmentComment", "css:finder"],
+        ["xpath=//textarea[@id='appointmentComment']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Appuntamento svolto"
+    }, {
+      "id": "0fae17fd-5f1c-4a38-ba10-5edd77876354",
+      "comment": "",
+      "command": "click",
+      "target": "id=addAppointment",
+      "targets": [
+        ["id=addAppointment", "id"],
+        ["css=#addAppointment", "css:finder"],
+        ["xpath=//input[@id='addAppointment']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dfd4f341-12d6-4b24-aef5-fd5b027d0ef7",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=successDiv",
+      "targets": [
+        ["id=successDiv", "id"],
+        ["css=#successDiv", "css:finder"],
+        ["xpath=//div[@id='successDiv']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/div[2]", "xpath:position"]
+      ],
+      "value": "Appuntamento registrato con successo"
+    }, {
+      "id": "b343432c-9030-4763-8a25-e196bcf15075",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "f86ca1b3-c48f-46d4-bb2f-37db8ff3f4b0",
+    "name": "AddAppointmentError",
+    "commands": [{
+      "id": "d23ddc6d-1db3-4735-88ff-7483407604c1",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f48f1684-843d-4d44-becd-1d5f99085c5a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9ae5c416-0a40-462e-91df-5f7bcafab972",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0572f29d-24cc-400a-bc1b-5a402bd1591e",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.lombardo@studenti.unicampania.it"
+    }, {
+      "id": "e2484e86-effa-4109-bf6c-fe559effaa50",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "ee511460-180a-454c-a610-c1b12d2f4190",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "efbd9043-f1a6-474f-bb58-f8f304426bed",
+      "comment": "",
+      "command": "click",
+      "target": "css=body",
+      "targets": [
+        ["css=body", "css:finder"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "46ada196-2f0d-4ab1-9372-79669071efd6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Gestione Sportello",
+      "targets": [
+        ["linkText=Gestione Sportello", "linkText"],
+        ["css=.dropdown-toggle", "css:finder"],
+        ["xpath=//a[contains(text(),'Gestione Sportello')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Gestione Sportello')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f465011d-b972-4279-9719-6d9c86433579",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Richieste Accettate",
+      "targets": [
+        ["linkText=Richieste Accettate", "linkText"],
+        ["css=.dropdown-menu > li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Richieste Accettate')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[4]/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/tutor/acceptedRequestsList.jsp')]", "xpath:href"],
+        ["xpath=//li[4]/ul/li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Richieste Accettate')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6316479a-6b6d-401c-8114-6b01086adfde",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Mostra",
+      "targets": [
+        ["linkText=Mostra", "linkText"],
+        ["css=td > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Mostra')]", "xpath:link"],
+        ["xpath=//div[@id='registerDiv']/table/tbody/tr[2]/td[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/ShowRequest?id=5&flag=3')]", "xpath:href"],
+        ["xpath=//td[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Mostra')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d2a13997-33f2-4d7c-8200-37a419addaa8",
+      "comment": "",
+      "command": "click",
+      "target": "id=confirmAppointment",
+      "targets": [
+        ["id=confirmAppointment", "id"],
+        ["css=#confirmAppointment", "css:finder"],
+        ["xpath=//input[@id='confirmAppointment']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d40377b-67be-4d4a-9e1c-271e6bc2b120",
+      "comment": "",
+      "command": "click",
+      "target": "id=addAppointment",
+      "targets": [
+        ["id=addAppointment", "id"],
+        ["css=#addAppointment", "css:finder"],
+        ["xpath=//input[@id='addAppointment']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "60794779-fd21-4819-bd5e-6ce4decc0928",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=strong",
+      "targets": [
+        ["css=strong", "css:finder"],
+        ["xpath=//div[@id='errorDiv']/strong", "xpath:idRelative"],
+        ["xpath=//strong", "xpath:position"]
+      ],
+      "value": "Inserire un commento riguardante l'appuntamento svolto"
+    }, {
+      "id": "e4a044a7-0f35-4ae7-b490-1ea98591a631",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "b7181f07-ada5-404a-b85c-46eb51f04745",
+    "name": "AddRequestError",
+    "commands": [{
+      "id": "1475d774-49a9-4087-b52b-681fb4c58512",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1e03c71a-8a86-494b-bc06-6c912c86f81e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1b25363d-0c5a-4237-8cad-fa92ad9cff04",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "42295006-c220-4d8e-9ccd-0bacee7effd4",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8e35ecca-7fde-4133-9f48-7ea6421a63b2",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "e.merola@studenti.unicampania.it"
+    }, {
+      "id": "35d3e65c-f59b-44b6-bbc5-a3b643e80d37",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f1585eea-eb7f-49b6-a3fa-a95823c81425",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "2b4a3a46-e69f-49b8-b5dd-97c295bd6992",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8096262f-65e6-41b1-8ffc-27033cd14a88",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Prenota Appuntamento",
+      "targets": [
+        ["linkText=Prenota Appuntamento", "linkText"],
+        ["css=.nav-item:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Prenota Appuntamento')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/student/request.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Prenota Appuntamento')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7aaee3cb-1939-41e1-b785-8ca6131e6d24",
+      "comment": "",
+      "command": "type",
+      "target": "id=requestDate",
+      "targets": [
+        ["id=requestDate", "id"],
+        ["css=#requestDate", "css:finder"],
+        ["xpath=//input[@id='requestDate']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "2020-02-26"
+    }, {
+      "id": "f0f5c8ad-e3f6-4433-a81a-6ad790d13df2",
+      "comment": "",
+      "command": "click",
+      "target": "id=create",
+      "targets": [
+        ["id=create", "id"],
+        ["css=#create", "css:finder"],
+        ["xpath=//input[@id='create']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3e086002-62fe-44d6-a24b-673a7bf356ff",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=strong",
+      "targets": [
+        ["css=strong", "css:finder"],
+        ["xpath=//div[@id='errorDiv']/strong", "xpath:idRelative"],
+        ["xpath=//strong", "xpath:position"],
+        ["xpath=//strong[contains(.,'Inserire un commento riguardante la richiesta di appuntamento')]", "xpath:innerText"]
+      ],
+      "value": "Inserire un commento riguardante la richiesta di appuntamento"
+    }]
+  }, {
+    "id": "5ddad327-4af3-4d5d-b6b7-b8479bd7d648",
+    "name": "AddRequestSuccess",
+    "commands": [{
+      "id": "3b62fd70-5816-4faa-8464-3e3e66ab617c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "87fcde06-2c28-4576-bc17-27daca4d42f8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "73f4d569-e15f-4e5a-8de8-7814bc305821",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7e01de06-10f5-4ec3-96bb-40d14c66d467",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "80e41797-da3f-475f-aa16-cc0502612702",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "e.merola@studenti.unicampania.it"
+    }, {
+      "id": "26894535-317b-4b93-9fc7-fb21e791cd89",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1f2fe6e1-13ba-4c5e-8b28-3f4a43a5084c",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "d38267bc-7832-4875-9544-fa00fbd1a9db",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1a71f1d0-0e4d-4ea3-821a-a088a1981301",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Prenota Appuntamento",
+      "targets": [
+        ["linkText=Prenota Appuntamento", "linkText"],
+        ["css=.nav-item:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Prenota Appuntamento')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/student/request.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Prenota Appuntamento')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "561a6fc5-5a2c-4d9b-8c1d-df9a7d16dd2b",
+      "comment": "",
+      "command": "type",
+      "target": "id=requestDate",
+      "targets": [
+        ["id=requestDate", "id"],
+        ["css=#requestDate", "css:finder"],
+        ["xpath=//input[@id='requestDate']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "2020-02-26"
+    }, {
+      "id": "5a30f06d-c658-4204-9e4e-5111a769a3b1",
+      "comment": "",
+      "command": "type",
+      "target": "id=comment",
+      "targets": [],
+      "value": "Difficoltà nello studio dell'esame Metodi e Tecniche di Analisi dei Dati."
+    }, {
+      "id": "316dfccc-e2cf-48c9-93ce-48e08cbae1da",
+      "comment": "",
+      "command": "click",
+      "target": "id=create",
+      "targets": [
+        ["id=create", "id"],
+        ["css=#create", "css:finder"],
+        ["xpath=//input[@id='create']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8ded19e8-e9c8-4503-a07a-a4c1744fe787",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=successDiv",
+      "targets": [],
+      "value": "Prenotazione completata con successo"
+    }]
+  }, {
+    "id": "4b9d3db7-10d1-424d-97a2-a8218d36c07b",
+    "name": "ManageRequestSuccess",
+    "commands": [{
+      "id": "f21caca2-1372-4886-ba4b-388151608d59",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2b5dc546-30a0-408c-8aa3-7d88e1793846",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "238f38dd-2465-413b-8503-ba7a48f53b6b",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "01a7a302-fd08-4e02-b89e-9d617d14851e",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eeff7f95-3cbf-4915-9a33-8f00ac7e8c37",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.pisciotta@studenti.unicampania.it"
+    }, {
+      "id": "bdb018b1-8bfc-4515-9474-23da3f9f6102",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dd11513a-1aef-4f28-a500-66c6d0cebe19",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "49b9161c-aba3-4f3d-80ae-6239a26f634a",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8a3cb6d-7301-4b1d-8fba-66148fd57e6b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Gestione Sportello",
+      "targets": [
+        ["linkText=Gestione Sportello", "linkText"],
+        ["css=.dropdown-toggle", "css:finder"],
+        ["xpath=//a[contains(text(),'Gestione Sportello')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Gestione Sportello')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca4e0a72-20e3-486c-b640-d3831305c12c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Nuove Prenotazioni",
+      "targets": [
+        ["linkText=Nuove Prenotazioni", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Nuove Prenotazioni')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[4]/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/tutor/requestsList.jsp')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Nuove Prenotazioni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a92dc75-6fe1-4658-823e-f4c847cc1f87",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Mostra",
+      "targets": [
+        ["linkText=Mostra", "linkText"],
+        ["css=tr:nth-child(2) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Mostra')]", "xpath:link"],
+        ["xpath=//div[@id='registerDiv']/table/tbody/tr[2]/td[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/ShowRequest?id=6&flag=3')]", "xpath:href"],
+        ["xpath=//td[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Mostra')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f337ca92-56f9-46a4-930a-9637e39f69fc",
+      "comment": "",
+      "command": "click",
+      "target": "id=acceptRequest",
+      "targets": [
+        ["id=acceptRequest", "id"],
+        ["css=#acceptRequest", "css:finder"],
+        ["xpath=//input[@id='acceptRequest']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8bf21574-7bfd-4c76-a6fe-5786399b9452",
+      "comment": "",
+      "command": "type",
+      "target": "id=requestDuration",
+      "targets": [
+        ["id=requestDuration", "id"],
+        ["css=#requestDuration", "css:finder"],
+        ["xpath=//input[@id='requestDuration']", "xpath:attributes"],
+        ["xpath=//div[@id='acceptModal']/div/div/div/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div/input", "xpath:position"]
+      ],
+      "value": "20"
+    }, {
+      "id": "411be72a-15b1-469d-9f82-5beb1928e50c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(1) .btn-success",
+      "targets": [
+        ["css=.row:nth-child(1) .btn-success", "css:finder"],
+        ["xpath=//input[@value='Conferma prenotazione']", "xpath:attributes"],
+        ["xpath=//div[@id='acceptModal']/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "34203650-ec6c-4252-a2d6-444fb5e6b9ef",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=successDeleteDiv",
+      "targets": [
+        ["id=successDeleteDiv", "id"],
+        ["css=#successDeleteDiv", "css:finder"],
+        ["xpath=//div[@id='successDeleteDiv']", "xpath:attributes"],
+        ["xpath=//div[3]/div", "xpath:position"]
+      ],
+      "value": "Prenotazione accettata con successo"
+    }, {
+      "id": "939c1249-1f2a-4ce0-ab2a-075825085b2d",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "376d0fae-ad13-4e9f-a888-f2b1651850d9",
+    "name": "ManageRequestError",
+    "commands": [{
+      "id": "b32d42a0-8e99-4e36-a592-301db0f0dc52",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c90ae425-f0f1-4810-9965-6dac46c433dc",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "698f2973-6c2e-4d67-b4fc-586f5cbbf187",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ec7cd1ab-aa3b-4584-af12-d0c71112b84a",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "23c5e65c-26ae-4c1a-848e-2feb4d073a7f",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.pisciotta@studenti.unicampania.it"
+    }, {
+      "id": "14c1eb0b-5c6d-47af-a0ed-a0764dec75cb",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4f7124a9-808a-4e80-9d19-846055f12af3",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "e2f646e8-7658-4b55-a20e-f548f7f2b8b5",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ee5367ac-5dd4-4907-9af6-6d40ca288ee9",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Gestione Sportello",
+      "targets": [
+        ["linkText=Gestione Sportello", "linkText"],
+        ["css=.dropdown-toggle", "css:finder"],
+        ["xpath=//a[contains(text(),'Gestione Sportello')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Gestione Sportello')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c268cb1a-ced5-49bd-a6b0-9f92391f0872",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Nuove Prenotazioni",
+      "targets": [
+        ["linkText=Nuove Prenotazioni", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Nuove Prenotazioni')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[4]/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/tutor/requestsList.jsp')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Nuove Prenotazioni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8c376436-8180-494c-b5c3-32d63db81d97",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Mostra",
+      "targets": [
+        ["linkText=Mostra", "linkText"],
+        ["css=tr:nth-child(2) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Mostra')]", "xpath:link"],
+        ["xpath=//div[@id='registerDiv']/table/tbody/tr[2]/td[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/ShowRequest?id=6&flag=3')]", "xpath:href"],
+        ["xpath=//td[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Mostra')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f4df2c7c-056c-4d72-bbb6-1a85a9ecbef8",
+      "comment": "",
+      "command": "click",
+      "target": "id=acceptRequest",
+      "targets": [
+        ["id=acceptRequest", "id"],
+        ["css=#acceptRequest", "css:finder"],
+        ["xpath=//input[@id='acceptRequest']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a80c3ba0-953b-4f5a-9923-281ee3103acc",
+      "comment": "",
+      "command": "type",
+      "target": "id=requestDuration",
+      "targets": [
+        ["id=requestDuration", "id"],
+        ["css=#requestDuration", "css:finder"],
+        ["xpath=//input[@id='requestDuration']", "xpath:attributes"],
+        ["xpath=//div[@id='acceptModal']/div/div/div/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div/input", "xpath:position"]
+      ],
+      "value": "150"
+    }, {
+      "id": "dfe2a924-f844-4fac-a164-1dae5e942edd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(1) .btn-success",
+      "targets": [
+        ["css=.row:nth-child(1) .btn-success", "css:finder"],
+        ["xpath=//input[@value='Conferma prenotazione']", "xpath:attributes"],
+        ["xpath=//div[@id='acceptModal']/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "52552553-20a8-4070-92c2-b465110c5b86",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorDiv",
+      "targets": [
+        ["id=errorDiv", "id"],
+        ["css=#errorDiv", "css:finder"],
+        ["xpath=//div[@id='errorDiv']", "xpath:attributes"],
+        ["xpath=//div[@id='acceptModal']/div/div/div/div/div/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//div/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": "Inserire una durata valida (10-120 minuti)"
+    }, {
+      "id": "ffc90dd0-5805-42a5-aa36-e5583badf3b6",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "cbcbe23e-1356-4909-a183-273322380019",
+    "name": "ModifyActivityError",
+    "commands": [{
+      "id": "09ad0725-acb1-4cc3-a19f-5fcae8b0e3f4",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "96649b30-106f-465c-9666-a9e60b192ba9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ad7f551e-f360-4093-9c20-b4e58f41a780",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d6c9e17-4ff1-4bb7-9da6-69096f35b8c5",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.lombardo@studenti.unicampania.it"
+    }, {
+      "id": "006fd3e0-1dcd-4deb-86c7-867b8b3ed106",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "e2d3a50b-6e1f-4046-8359-1427b5d16cbf",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "57cd87db-9468-417b-a187-d6d187d942c4",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registro Tutorato",
+      "targets": [
+        ["linkText=Registro Tutorato", "linkText"],
+        ["css=.nav > li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Registro Tutorato')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/tutor/register.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registro Tutorato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b5c433f8-da6a-4204-b57e-c1603da6d43f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Mostra",
+      "targets": [
+        ["linkText=Mostra", "linkText"],
+        ["css=tr:nth-child(2) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Mostra')]", "xpath:link"],
+        ["xpath=//div[@id='registerDiv']/table/tbody/tr[2]/td[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/ShowActivity?id=6&flag=1')]", "xpath:href"],
+        ["xpath=//td[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Mostra')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b50df13d-9b6c-4784-a785-aa03ff00ad09",
+      "comment": "",
+      "command": "click",
+      "target": "id=modifyActivity",
+      "targets": [
+        ["id=modifyActivity", "id"],
+        ["css=#modifyActivity", "css:finder"],
+        ["xpath=//input[@id='modifyActivity']", "xpath:attributes"],
+        ["xpath=//div[@id='content text-center']/div[6]/div/a/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7d082c6b-71b4-4631-86c5-d5e478d9659a",
+      "comment": "",
+      "command": "type",
+      "target": "id=description",
+      "targets": [
+        ["id=description", "id"],
+        ["name=description", "name"],
+        ["css=#description", "css:finder"],
+        ["xpath=//textarea[@id='description']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b06e8ee3-0a23-40a7-83dd-9e0f87ca7be5",
+      "comment": "",
+      "command": "click",
+      "target": "id=modifyActivity",
+      "targets": [
+        ["id=modifyActivity", "id"],
+        ["css=#modifyActivity", "css:finder"],
+        ["xpath=//input[@id='modifyActivity']", "xpath:attributes"],
+        ["xpath=//div[6]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "433280ab-bda5-4dfd-b494-30e7bea29855",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=strong",
+      "targets": [
+        ["css=strong", "css:finder"],
+        ["xpath=//div[@id='errorDiv']/strong", "xpath:idRelative"],
+        ["xpath=//strong", "xpath:position"]
+      ],
+      "value": "Inserire una descrizione riguardante l'attivitá svolta"
+    }, {
+      "id": "19c73e07-71f8-4429-90e7-02acec474c02",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "4a4bec17-a874-48f3-b834-9ef38c54db3b",
+    "name": "ModifyActivitySuccess",
+    "commands": [{
+      "id": "fd958bd9-3a9a-4201-8a95-8b8aeefd160e",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f438ffea-3d41-40b8-bc42-44338cd0dfdd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4204e439-c8d5-469d-af22-437ee7827539",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "86daa66d-9d20-413c-b390-7ca50212040b",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.lombardo@studenti.unicampania.it"
+    }, {
+      "id": "b801ee9e-1e61-4d64-830f-d4b1965e05db",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "8773c926-4d13-4107-a820-34fbfee5fda5",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f7d6cd13-7701-4b1c-b0d7-23feaca6695f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Registro Tutorato",
+      "targets": [
+        ["linkText=Registro Tutorato", "linkText"],
+        ["css=.nav > li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Registro Tutorato')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/tutor/register.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Registro Tutorato')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a9d1661c-527f-42ab-be74-582367157b85",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Mostra",
+      "targets": [
+        ["linkText=Mostra", "linkText"],
+        ["css=tr:nth-child(2) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Mostra')]", "xpath:link"],
+        ["xpath=//div[@id='registerDiv']/table/tbody/tr[2]/td[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/ShowActivity?id=6&flag=1')]", "xpath:href"],
+        ["xpath=//td[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Mostra')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "79851938-55c3-4a9e-a06d-f44525443d7f",
+      "comment": "",
+      "command": "click",
+      "target": "id=modifyActivity",
+      "targets": [
+        ["id=modifyActivity", "id"],
+        ["css=#modifyActivity", "css:finder"],
+        ["xpath=//input[@id='modifyActivity']", "xpath:attributes"],
+        ["xpath=//div[@id='content text-center']/div[6]/div/a/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3765f93b-24d5-400e-8420-64bbedc1097c",
+      "comment": "",
+      "command": "type",
+      "target": "id=description",
+      "targets": [
+        ["id=description", "id"],
+        ["name=description", "name"],
+        ["css=#description", "css:finder"],
+        ["xpath=//textarea[@id='description']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Assistenza Esame metodi e tecniche di analisi dei dati"
+    }, {
+      "id": "1a28fc98-d688-4ece-be2a-eb905d58501f",
+      "comment": "",
+      "command": "click",
+      "target": "id=modifyActivity",
+      "targets": [
+        ["id=modifyActivity", "id"],
+        ["css=#modifyActivity", "css:finder"],
+        ["xpath=//input[@id='modifyActivity']", "xpath:attributes"],
+        ["xpath=//div[6]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e2d3486a-2dad-423d-97ec-7aff9b817ccf",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=successDiv",
+      "targets": [
+        ["id=successDiv", "id"],
+        ["css=#successDiv", "css:finder"],
+        ["xpath=//div[@id='successDiv']", "xpath:attributes"],
+        ["xpath=//div[4]/div", "xpath:position"]
+      ],
+      "value": "Attivitá modificata con successo"
+    }, {
+      "id": "9c8727a8-c25f-4aba-9c76-16a2d7307a3f",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "7f3bae24-a5a3-4c2c-8f02-fca3a1c14b0b",
+    "name": "ModifyAppointmentError",
+    "commands": [{
+      "id": "f7dde7cc-3c69-4a2b-88f9-f930043f11e5",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ac926bb-f16f-43a9-add8-cf26e523308c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2eb69b5c-68f8-4b36-9ae4-9f4f7a1d7b18",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4a8543cf-3e33-444d-b9ad-3ebf0471e6ae",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.lombardo@studenti.unicampania.it"
+    }, {
+      "id": "9436d5e9-b01a-423c-aed2-ca3df6bf0684",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "666a7a7b-629e-48d4-afb0-0847764464a3",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "305341c0-1711-4b97-8b0f-0335bce3d557",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Storico Appuntamenti",
+      "targets": [
+        ["linkText=Storico Appuntamenti", "linkText"],
+        ["css=li:nth-child(5) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Storico Appuntamenti')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/tutor/appointmentsList.jsp')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Storico Appuntamenti')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "45019e61-78db-4efe-9641-ea9e9d9f9463",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Mostra",
+      "targets": [
+        ["linkText=Mostra", "linkText"],
+        ["css=td > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Mostra')]", "xpath:link"],
+        ["xpath=//div[@id='registerDiv']/table/tbody/tr[2]/td[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/ShowAppointment?id=4&flag=2')]", "xpath:href"],
+        ["xpath=//td[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Mostra')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5dcf6732-c08e-4d41-8c08-e70c443e8d4c",
+      "comment": "",
+      "command": "click",
+      "target": "id=modifyAppointment",
+      "targets": [
+        ["id=modifyAppointment", "id"],
+        ["css=#modifyAppointment", "css:finder"],
+        ["xpath=//input[@id='modifyAppointment']", "xpath:attributes"],
+        ["xpath=//div[@id='content text-center']/div[6]/div/a/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4af0ecb8-796e-4ffa-8886-eae3901eb79e",
+      "comment": "",
+      "command": "type",
+      "target": "id=appointmentComment",
+      "targets": [
+        ["id=appointmentComment", "id"],
+        ["css=#appointmentComment", "css:finder"],
+        ["xpath=//textarea[@id='appointmentComment']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "caeb293b-bb9d-4826-ac1f-27c50947b3b4",
+      "comment": "",
+      "command": "click",
+      "target": "id=modifyAppointment",
+      "targets": [
+        ["id=modifyAppointment", "id"],
+        ["css=#modifyAppointment", "css:finder"],
+        ["xpath=//input[@id='modifyAppointment']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "19e99b16-d569-4f6f-99bd-1bf4c752eaf7",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=strong",
+      "targets": [
+        ["css=strong", "css:finder"],
+        ["xpath=//div[@id='errorDiv']/strong", "xpath:idRelative"],
+        ["xpath=//strong", "xpath:position"]
+      ],
+      "value": "Inserire un commento riguardante l'appuntamento svolto"
+    }, {
+      "id": "88f927ef-b45a-42bf-8e8e-ebea480b1483",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "3a81ad5d-7922-42a8-afa1-2514bb98b1b0",
+    "name": "ModifyAppointmentSuccess",
+    "commands": [{
+      "id": "c1bcebfc-5607-40ff-9f78-ccceefee4d38",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ccec1bd4-a5b5-4be0-8a2e-027157aec272",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a3bb5410-02e4-4c3c-8b41-d537d42ba8d6",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5a805eb5-f5c8-4eb1-b64a-b96b9320bd63",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "m.lombardo@studenti.unicampania.it"
+    }, {
+      "id": "9a88adfb-3d8f-4dac-bd6e-be6e27d55e7c",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "713e222a-d823-4ee0-8daf-cea16e1eb5a7",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e5eff1dc-aee7-4a4b-a5e7-389959a8705b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Storico Appuntamenti",
+      "targets": [
+        ["linkText=Storico Appuntamenti", "linkText"],
+        ["css=li:nth-child(5) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Storico Appuntamenti')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/tutor/appointmentsList.jsp')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Storico Appuntamenti')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fa2c1cd1-1aa1-42b5-a67a-ad026f24d00f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Mostra",
+      "targets": [
+        ["linkText=Mostra", "linkText"],
+        ["css=td > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Mostra')]", "xpath:link"],
+        ["xpath=//div[@id='registerDiv']/table/tbody/tr[2]/td[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/ShowAppointment?id=4&flag=2')]", "xpath:href"],
+        ["xpath=//td[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Mostra')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "be8749d6-dca7-4e2e-8fe6-1837e3461a0f",
+      "comment": "",
+      "command": "click",
+      "target": "id=modifyAppointment",
+      "targets": [
+        ["id=modifyAppointment", "id"],
+        ["css=#modifyAppointment", "css:finder"],
+        ["xpath=//input[@id='modifyAppointment']", "xpath:attributes"],
+        ["xpath=//div[@id='content text-center']/div[6]/div/a/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98958633-c59d-401d-b002-efcf55dc6aaf",
+      "comment": "",
+      "command": "type",
+      "target": "id=appointmentComment",
+      "targets": [
+        ["id=appointmentComment", "id"],
+        ["css=#appointmentComment", "css:finder"],
+        ["xpath=//textarea[@id='appointmentComment']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Lo studente si è presentato"
+    }, {
+      "id": "5c9bb53e-c166-4af7-b415-db8f1477f28e",
+      "comment": "",
+      "command": "click",
+      "target": "id=modifyAppointment",
+      "targets": [
+        ["id=modifyAppointment", "id"],
+        ["css=#modifyAppointment", "css:finder"],
+        ["xpath=//input[@id='modifyAppointment']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6696edfe-8a88-442a-ad96-7cfe1e43f9c7",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=successDiv",
+      "targets": [],
+      "value": "Appuntamento modificato con successo"
+    }, {
+      "id": "01480bd9-b89f-42ca-8e39-cbc696d58af4",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "11f87423-c843-4cd1-b85b-dcaf37e88cb6",
+    "name": "ModifyRequestError",
+    "commands": [{
+      "id": "7356574a-ce51-48cc-b2ce-9b8fda3308e5",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "df083904-a36d-4877-b896-4b1006d3eb7d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b25d3450-ecb9-4090-8a64-2421cd7a4927",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fef3f13a-7408-40e0-a1ab-1268858940a4",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a4c5109-adb2-49df-a067-50f15a3396ca",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "e.merola@studenti.unicampania.it"
+    }, {
+      "id": "804481ad-bc39-4e11-a6ad-25c7f77a7c2d",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7e71932d-e48b-44ab-8c53-8a8355e4f12d",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "4168a17c-ea67-479b-8fc5-120bb33531d8",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1c2437c7-9883-44e8-a8d1-f146d383816a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Storico Prenotazioni",
+      "targets": [
+        ["linkText=Storico Prenotazioni", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Storico Prenotazioni')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/student/requestsList.jsp')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Storico Prenotazioni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2f0088b3-1353-4699-8adb-ec74d2395145",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Mostra",
+      "targets": [
+        ["linkText=Mostra", "linkText"],
+        ["css=tr:nth-child(2) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Mostra')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/ShowRequest?Id=9&flag=2')]", "xpath:href"],
+        ["xpath=//td[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Mostra')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4f34973a-5175-46c8-94e6-844859188537",
+      "comment": "",
+      "command": "click",
+      "target": "id=modifyRequest",
+      "targets": [
+        ["id=modifyRequest", "id"],
+        ["css=#modifyRequest", "css:finder"],
+        ["xpath=//input[@id='modifyRequest']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "908bb8d6-e684-43e3-8ffe-d9487fc1213c",
+      "comment": "",
+      "command": "type",
+      "target": "id=comment",
+      "targets": [
+        ["id=comment", "id"],
+        ["css=#comment", "css:finder"],
+        ["xpath=//textarea[@id='comment']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6b6c4950-dd94-4ab8-b1e1-7555736c81e4",
+      "comment": "",
+      "command": "click",
+      "target": "id=modifyRequest",
+      "targets": [
+        ["id=modifyRequest", "id"],
+        ["css=#modifyRequest", "css:finder"],
+        ["xpath=//input[@id='modifyRequest']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "85f22395-c040-42cc-b78e-9d49826ea7d5",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errorDiv",
+      "targets": [
+        ["id=errorDiv", "id"],
+        ["css=#errorDiv", "css:finder"],
+        ["xpath=//div[@id='errorDiv']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/div/div/div", "xpath:position"]
+      ],
+      "value": "Inserire un commento riguardante la richiesta di appuntamento"
+    }, {
+      "id": "e7331b13-0252-4128-9fac-b790ef9bb3b5",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "2ab645ca-5b3d-4f4f-9bd9-a848e78fcc04",
+    "name": "ModifyRequestSuccess",
+    "commands": [{
+      "id": "adb63d16-574f-4a53-a58c-e7579e6229f9",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/TutoratoSmart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5279d573-f08c-4a41-85f8-d56eaabe1f2e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1024x768",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "03894e24-6d99-4a5b-966f-427d20e2ac25",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .btn",
+      "targets": [
+        ["css=div:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Accedi')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.jsp')]", "xpath:href"],
+        ["xpath=//div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "994cbe2b-a30f-4dcb-ac43-7b450f7ef735",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a966ef02-667d-4ea4-aad9-f22c5a8c0803",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "e.merola@studenti.unicampania.it"
+    }, {
+      "id": "db0a890a-1e1a-4054-9ef0-175689942f5c",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "407a4830-47be-4e66-b5ab-f3c4e321e31f",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginForm']/form/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "M12345678"
+    }, {
+      "id": "04a545f3-86ec-4e8b-b067-148454e168b9",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//div[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Accedi')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6369d636-77b6-48a0-8c35-71d333568a08",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Storico Prenotazioni",
+      "targets": [
+        ["linkText=Storico Prenotazioni", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Storico Prenotazioni')]", "xpath:link"],
+        ["xpath=//div[@id='myNavbar']/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/student/requestsList.jsp')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Storico Prenotazioni')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b31cb532-7331-4088-83dc-ff4722ceb457",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Mostra",
+      "targets": [
+        ["linkText=Mostra", "linkText"],
+        ["css=tr:nth-child(2) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Mostra')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/TutoratoSmart/ShowRequest?Id=9&flag=2')]", "xpath:href"],
+        ["xpath=//td[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Mostra')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d800042a-8e48-4849-b566-60b1a5d2ac74",
+      "comment": "",
+      "command": "click",
+      "target": "id=modifyRequest",
+      "targets": [
+        ["id=modifyRequest", "id"],
+        ["css=#modifyRequest", "css:finder"],
+        ["xpath=//input[@id='modifyRequest']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c590753d-b6e6-4095-a505-5aa8ad511def",
+      "comment": "",
+      "command": "type",
+      "target": "id=comment",
+      "targets": [
+        ["id=comment", "id"],
+        ["css=#comment", "css:finder"],
+        ["xpath=//textarea[@id='comment']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Difficoltà nello studio dell'esame Metodi e Tecniche di Analisi dei Dati"
+    }, {
+      "id": "edca62bf-2e9e-4941-9711-b8716cbd9042",
+      "comment": "",
+      "command": "click",
+      "target": "id=modifyRequest",
+      "targets": [
+        ["id=modifyRequest", "id"],
+        ["css=#modifyRequest", "css:finder"],
+        ["xpath=//input[@id='modifyRequest']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "581ba3d9-ad28-43bf-b661-7d1e0bdb3578",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=successDiv",
+      "targets": [],
+      "value": "Modifica prenotazione completata con successo"
+    }, {
+      "id": "e79ec9c5-9621-46da-b5fa-b4c8451f4478",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "e4d8ad03-36ce-4f19-84f4-ec80ab70e08a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["0a6478f4-ace3-4f5f-82ef-807c07424acd"]
+  }],
+  "urls": ["http://localhost:8080/TutoratoSmart/login.jsp", "http://localhost:8080/TutoratoSmart/"],
+  "plugins": []
+}

@@ -47,8 +47,8 @@
 	  		<br>
 							
 			<div class="panel"></div>
-			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Modifica prenotazione completata con successo!</div>
-			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Modifica prenotazione fallita!</div>
+			<div class="alert alert-success" id="successDiv" role="alert" style="display:none;margin-top: 25px;">Modifica prenotazione completata con successo</div>
+			<div class="alert alert-danger" id="failureDiv" role="alert" style="display:none;margin-top: 25px;">Modifica prenotazione fallita</div>
 			      	
 			<div>
 				<input class="btn btn-primary" id="modifyRequest" type="button" onclick="validateInputsModifyRequest()" value="Modifica">		        	
