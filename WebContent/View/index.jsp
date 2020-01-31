@@ -21,18 +21,16 @@
 		</div>
 		
 		<div class="container-fluid" style="margin: 25px;">
-			<form method="POST" action="<%= response.encodeURL("/TutoratoSmart/Registration") %>">
-				<div class="row row-space">
-					<div class="row">
-						<div style="margin-bottom: 25px;">	
-							<a href="login.jsp" class="btn btn-primary btn-md btn-block" role="button" aria-pressed="true">Accedi</a>
-						</div>
-						<div>	
-							<a href="registration.jsp" class="btn btn-primary btn-md btn-block" role="button" aria-pressed="true">Registrati</a>
-						</div>
+			<div class="row row-space">
+				<div class="row">
+					<div style="margin-bottom: 25px;">	
+						<a href="/TutoratoSmart/View/login.jsp" class="btn btn-primary btn-md btn-block" role="button" aria-pressed="true">Accedi</a>
+					</div>
+					<div>	
+						<a href="/TutoratoSmart/View/registration.jsp" class="btn btn-primary btn-md btn-block" role="button" aria-pressed="true">Registrati</a>
 					</div>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 	
