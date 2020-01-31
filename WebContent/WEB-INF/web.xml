@@ -1,43 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>TutoratoSmart</display-name>
-  <absolute-ordering />
+  <absolute-ordering/>
   <welcome-file-list>
-    <welcome-file>/index.jsp</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>/View/index.jsp</welcome-file>
   </welcome-file-list>
-  
   <filter>
     <filter-name>AuthFilter</filter-name>
-    <filter-class>project.Security.AuthFilter</filter-class>
+    <filter-class>project.Control.Security.AuthFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>AuthFilter</filter-name>
-    <url-pattern>/commission/*</url-pattern>
-    <url-pattern>/tutor/*</url-pattern>
-    <url-pattern>/student/*</url-pattern>
+    <url-pattern>/View/commission/*</url-pattern>
+    <url-pattern>/View/tutor/*</url-pattern>
+    <url-pattern>/View/student/*</url-pattern>
     <url-pattern>/partials/header.jsp</url-pattern>
     <url-pattern>/LogoutServlet</url-pattern>
   </filter-mapping>
-  
   <filter>
     <filter-name>AdminFilter</filter-name>
-    <filter-class>project.Security.AdminFilter</filter-class>
+    <filter-class>project.Control.Security.AdminFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>AdminFilter</filter-name>
-    <url-pattern>/commission/*</url-pattern>
+    <url-pattern>/View/commission/*</url-pattern>
   </filter-mapping>
-  
   <filter>
     <filter-name>TutorFilter</filter-name>
-    <filter-class>project.Security.TutorFilter</filter-class>
+    <filter-class>project.Control.Security.TutorFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>TutorFilter</filter-name>
-    <url-pattern>/tutor/*</url-pattern>
+    <url-pattern>/View/tutor/*</url-pattern>
   </filter-mapping>
-  
+  <filter>
+    <filter-name>StudentFilter</filter-name>
+    <filter-class>project.Control.Security.StudentFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>StudentFilter</filter-name>
+    <url-pattern>/View/student/*</url-pattern>
+  </filter-mapping>
   <filter>
     <filter-name>httpHeaderSecurity</filter-name>
     <filter-class>org.apache.catalina.filters.HttpHeaderSecurityFilter</filter-class>

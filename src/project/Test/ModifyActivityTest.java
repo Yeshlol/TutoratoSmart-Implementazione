@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import project.Control.ActivityServlet;
+import project.Control.Tutoring_Activity_Management.ActivityServlet;
 import project.Control.DBConnection;
 import project.Model.UserBean;
 import project.Model.UserDAO;

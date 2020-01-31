@@ -16,7 +16,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import project.Control.DBConnection;
-import project.Control.RegistrationServlet;
+import project.Control.User.RegistrationServlet;
 
 public class RegistrationTest {
 	private RegistrationServlet servlet;
@@ -40,7 +40,6 @@ public class RegistrationTest {
 	//TC_2.0_1 Lunghezza cognome non valida < 3
 	@Test
 	public void testCase_2_0_1() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "a");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -59,7 +58,6 @@ public class RegistrationTest {
 	//TC_2.0_2 Lunghezza cognome non valida > 30
 	@Test
 	public void testCase_2_0_2() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -78,7 +76,6 @@ public class RegistrationTest {
 	//TC_2.0_3 Formato cognome non valido
 	@Test
 	public void testCase_2_0_3() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "olivieri1");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -97,7 +94,6 @@ public class RegistrationTest {
 	//TC_2.0_4 Lunghezza nome < 3
 	@Test
 	public void testCase_2_0_4() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "a");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -116,7 +112,6 @@ public class RegistrationTest {
 	//TC_2.0_5 Lunghezza nome non valida > 30
 	@Test
 	public void testCase_2_0_5() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -135,7 +130,6 @@ public class RegistrationTest {
 	//TC_2.0_6 Formato nome non valido
 	@Test
 	public void testCase_2_0_6() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "alessia1");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -154,7 +148,6 @@ public class RegistrationTest {
 	//TC_2.0_7 Lunghezza email non valida = 0
 	@Test
 	public void testCase_2_0_7() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "");
@@ -173,7 +166,6 @@ public class RegistrationTest {
 	//TC_2.0_8 Lunghezza email non valida > 45
 	@Test
 	public void testCase_2_0_8() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieriaaaaaaaaaaaa@studenti.unicampania.it");
@@ -192,7 +184,6 @@ public class RegistrationTest {
 	//TC_2.0_9 Formato email non valido
 	@Test
 	public void testCase_2_0_9() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unisa.it");
@@ -211,7 +202,6 @@ public class RegistrationTest {
 	//TC_2.0_10 Lunghezza password non valida < 8
 	@Test
 	public void testCase_2_0_10() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -230,7 +220,6 @@ public class RegistrationTest {
 	//TC_2.0_11 Lunghezza password non valida > 10
 	@Test
 	public void testCase_2_0_11() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -249,7 +238,6 @@ public class RegistrationTest {
 	//TC_2.0_12 Formato password non valido
 	@Test
 	public void testCase_2_0_12() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -268,7 +256,6 @@ public class RegistrationTest {
 	//TC_2.0_13 Le due password inserite non corrispondono
 	@Test
 	public void testCase_2_0_13() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -287,7 +274,6 @@ public class RegistrationTest {
 	//TC_2.0_14 Lunghezza matricola non valida < 6
 	@Test
 	public void testCase_2_0_14() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -306,7 +292,6 @@ public class RegistrationTest {
 	//TC_2.0_15 Lunghezza matricola non valida > 10
 	@Test
 	public void testCase_2_0_15() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -325,7 +310,6 @@ public class RegistrationTest {
 	//TC_2.0_16 Formato matricola non valido
 	@Test
 	public void testCase_2_0_16() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -344,7 +328,6 @@ public class RegistrationTest {
 	//TC_2.0_17 Lunghezza numero di telefono non valida < 9
 	@Test
 	public void testCase_2_0_17() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -363,7 +346,6 @@ public class RegistrationTest {
 	//TC_2.0_18 Lunghezza numero di telefono non valida > 10
 	@Test
 	public void testCase_2_0_18() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -382,7 +364,6 @@ public class RegistrationTest {
 	//TC_2.0_19 Formato numero di telefono non valido
 	@Test
 	public void testCase_2_0_19() throws ServletException, IOException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");
@@ -401,7 +382,6 @@ public class RegistrationTest {
 	//TC_2.0.20 Successo
 	@Test
 	public void testCase_2_0_20() throws ServletException, IOException, JSONException {
-		request.addParameter("flag", "1");
 		request.addParameter("LastName", "Olivieri");
 		request.addParameter("FirstName", "Alessia");
 		request.addParameter("Email", "a.olivieri@studenti.unicampania.it");

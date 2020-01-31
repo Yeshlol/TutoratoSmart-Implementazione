@@ -1,4 +1,4 @@
-
+// Alla presisone del tasto 'enter' il tasto 'Registra' viene premuto.
 $(document).keypress(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if(keycode == '13'){
@@ -6,6 +6,7 @@ $(document).keypress(function(event){
     }
 });
 
+// Quando viene digitato un carattere nella email controlla se l'email e' disponibile nel DB.
 $("#Email").on('keyup', function() {	
 	$.post("/TutoratoSmart/Registration", { 
 		"mail":$(this).val(),
@@ -24,7 +25,7 @@ $("#Email").on('keyup', function() {
 		});
 });
 
-
+// Controlla che la password immessa sia valida.
 $("#Password").on('keyup',function(){
 	var color;
 	
@@ -39,7 +40,7 @@ $("#Password").on('keyup',function(){
 	$(this).css("border", color);
 });
 
-
+// Controlla che la password di conferma immessa sia valida.
 $("#VerifyPassword").on('keyup',function(){
 	var color;
 	
@@ -55,7 +56,7 @@ $("#VerifyPassword").on('keyup',function(){
 	$(this).css("border",color);
 });
 
-
+// Controlla che il nome immesso sia valido.
 $("#FirstName").on('keyup',function(){
 	var color;
 	if (validateFirstName($(this)))
@@ -69,6 +70,7 @@ $("#FirstName").on('keyup',function(){
 	$(this).css("border",color);
 });
 
+// Controlla che il cognome immesso sia valido.
 $("#LastName").on('keyup ',function(){
 	var color;
 	if (validateLastName($(this)))
@@ -82,7 +84,7 @@ $("#LastName").on('keyup ',function(){
 	$(this).css("border",color);
 });
 
-
+// Controlla che il numero di telefono immesso sia valido.
 $("#TelephoneNumber").on('keyup',function(){
 	var color;
 	if (validateTelephoneNumber($(this)))
@@ -96,7 +98,7 @@ $("#TelephoneNumber").on('keyup',function(){
 	$(this).css("border",color);
 });
 
-
+//Controlla che la matricola immessa sia valida.
 $("#RegistrationNumber").on('keyup',function(){
 	var color;
 	if (validateRegistrationNumber($(this)))
@@ -195,7 +197,6 @@ function validateInputs(){
 	
 	if (valid) {		
 		$.post("/TutoratoSmart/Registration", {
-			"flag":"1",
 			"AcademicYear":$("#AcademicYear").val(),
 			"Email":$("#Email").val(),
 			"RegistrationNumber":$("#RegistrationNumber").val(),
@@ -211,7 +212,7 @@ function validateInputs(){
 					$("#successDiv").fadeIn(500, function() {
 						$("#successDiv").fadeOut(5000);
 						setTimeout(function() {
-							  window.location.href = "/TutoratoSmart/login.jsp";
+							  window.location.href = "/TutoratoSmart/View/login.jsp";
 						}, 5000);
 					})
 				}
@@ -277,8 +278,7 @@ function validateInputsTutor(){
 	if (registrationNumber.val() == '') {
 		errorMessage += "<strong>Inserire la matricola</strong><br/>"
 		valid = false;
-	}
-	
+	}	
 	if (email.val() != '' && !validateEmail(email)){
 		errorMessage += "<strong>Errore!</strong> Formato email non valido! (<i>Es: mariorossi@studenti.unicampania.it</i>)<br/>";
 		valid = false;
@@ -316,9 +316,8 @@ function validateInputsTutor(){
 		valid = false;
 	}
 	
-	if (valid) {		
-		$.post("/TutoratoSmart/Registration", {
-			"flag":"2",
+	if (valid) {													// Se i dati sono validi esegue il post
+		$.post("/TutoratoSmart/RegistrationTutoringSupervision", {
 			"Email":$("#Email").val(),
 			"RegistrationNumber":$("#RegistrationNumber").val(),
 			"Password":$("#Password").val(),
@@ -335,7 +334,7 @@ function validateInputsTutor(){
 					$("#successDiv").fadeIn(500, function() {
 						$("#successDiv").fadeOut(5000);
 						setTimeout(function() {
-							  window.location.href = "/TutoratoSmart/commission/tutorRegistration.jsp";
+							  window.location.href = "/TutoratoSmart/View/commission/tutorRegistration.jsp";
 						}, 5000);
 					})
 				}
@@ -351,6 +350,7 @@ function validateInputsTutor(){
 	else {
 		$("#errorDiv").append(errorMessage);
 		$("#errorDiv").fadeIn(500, function() {
+			$('#register').prop("disabled", false);
 			$("#errorDiv").fadeOut(5000)
 		})
 	}

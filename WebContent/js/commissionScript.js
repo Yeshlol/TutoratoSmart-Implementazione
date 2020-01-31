@@ -1,13 +1,12 @@
-//Funzioni di convalida e rimozione di un'attività da un registro.
+//Funzione di rimozione di un'attività da un registro di tutorato.
 function deleteActivity(){
 	$('#deleteButton').attr('disabled','disabled');
 	$('#validateButton').attr('disabled','disabled');
 	$('#back').attr('disabled','disabled');
 	
-	$.post("/TutoratoSmart/Activity", {
-		"flag":"3",
+	$.post("/TutoratoSmart/ActivityTutoringSupervision", {
+		"flag":"2",
 		"id":$("#activityId").val(),
-		"validate":"false",
 		},
 		function(data){
 			$('#deleteModal').modal('hide');
@@ -15,7 +14,7 @@ function deleteActivity(){
 				$("#successDeleteDiv").fadeIn(500, function() {
 					$("#successDeleteDiv").fadeOut(3000);
 					setTimeout(function() {
-						  window.location.href = "/TutoratoSmart/commission/register.jsp";
+						  window.location.href = "/TutoratoSmart/View/commission/register.jsp";
 					}, 3000);
 				})
 			}
@@ -30,22 +29,22 @@ function deleteActivity(){
 		});
 }
 
+// Funzione di convalida di un'attività di tutorato svolta da un tutor.
 function validateActivity(){
 	$('#deleteButton').attr('disabled','disabled');
 	$('#validateButton').attr('disabled','disabled');
 	$('#back').attr('disabled','disabled');
 	
-	$.post("/TutoratoSmart/Activity", {
-		"flag":"3",
+	$.post("/TutoratoSmart/ActivityTutoringSupervision", {
+		"flag":"1",
 		"id":$("#activityId").val(),
-		"validate":"true",
 		},
 		function(data){	  
 			if (data.result == 1) {
 				$("#successValidateDiv").fadeIn(500, function() {
 					$("#successValidateDiv").fadeOut(3000);
 					setTimeout(function() {
-						  window.location.href = "/TutoratoSmart/commission/register.jsp";
+						  window.location.href = "/TutoratoSmart/View/commission/register.jsp";
 					}, 3000);
 				})
 			}

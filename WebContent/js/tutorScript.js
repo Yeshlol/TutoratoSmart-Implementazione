@@ -97,7 +97,7 @@ $("#date").on("change", function () {
 
 // Controlla se nel DB il tutor ha già registrato un'attività in quella giornata, tra le ore indicate.
 function checkActivityPresent() {
-	$.post("/TutoratoSmart/Activity", { 
+	$.post("/TutoratoSmart/ActivityTutoringActivityManagement", { 
 		"ajax": "true",
 		"check": "true",
 		"date": $("#date").val(),
@@ -120,7 +120,7 @@ $('#category').change(function () {
     var valueSelected = this.value;
     
     if(valueSelected == "Sportello Tutorato") {    	
-    	$.post("/TutoratoSmart/Activity", {
+    	$.post("/TutoratoSmart/ActivityTutoringActivityManagement", {
 			"ajax":"true",
 			"date":$("#date").val(),
 			"startTime":$("#startTime").val(),
@@ -201,7 +201,7 @@ function validateInputsActivity() {
 	}
 	
 	if(valid) {
-		$.post("/TutoratoSmart/Activity", {
+		$.post("/TutoratoSmart/ActivityTutoringActivityManagement", {
 			"flag":"1",
 			"category": $( "#category option:selected" ).text(),
 			"date": date.val(),
@@ -214,7 +214,7 @@ function validateInputsActivity() {
 					$("#successDiv").fadeIn(500, function() {
 						$("#successDiv").fadeOut(3000);
 						setTimeout(function() {
-							  window.location.href = "/TutoratoSmart/tutor/register.jsp";
+							  window.location.href = "/TutoratoSmart/View/tutor/register.jsp";
 						}, 3000);
 					})
 				}
@@ -234,7 +234,7 @@ function validateInputsActivity() {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Controlla se esiste già un'attività registrata, diversa da quella che si vuole modificare.
 function checkDifferentActivity() {
-	$.post("/TutoratoSmart/Activity", { 
+	$.post("/TutoratoSmart/ActivityTutoringActivityManagement", { 
 		"ajax": "true",
 		"check": "true",
 		"date": $("#dateM").val(),
@@ -335,7 +335,7 @@ $('#categoryM').change(function () {
     var valueSelected = this.value;
     
     if(valueSelected == "Sportello Tutorato") {    	
-    	$.post("/TutoratoSmart/Activity", {
+    	$.post("/TutoratoSmart/ActivityTutoringActivityManagement", {
 			"ajax":"true",
 			"date":$("#dateM").val(),
 			"startTime":$("#startTimeM").val(),
@@ -411,9 +411,8 @@ function modifyActivity() {
 	}
 	
 	if(valid) {
-		$.post("/TutoratoSmart/Activity", {
-			"flag":"2",
-			"delete": "false",
+		$.post("/TutoratoSmart/ActivityTutoringActivityManagement", {
+			"flag":"3",
 			"category": $( "#categoryM option:selected" ).text(),
 			"date": date.val(),
 			"startTime": startTime.val(),
@@ -428,7 +427,7 @@ function modifyActivity() {
 					$("#successDiv").fadeIn(500, function() {
 						$("#successDiv").fadeOut(3000);
 						setTimeout(function() {
-							  window.location.href = "/TutoratoSmart/tutor/register.jsp";
+							  window.location.href = "/TutoratoSmart/View/tutor/register.jsp";
 						}, 3000);
 					})
 				}
@@ -450,9 +449,8 @@ function modifyActivity() {
 //Script cancellazione attività
 //Funzione di cancellazione attività da parte di un tutor
 function deleteActivity(){
-	$.post("/TutoratoSmart/Activity", {
+	$.post("/TutoratoSmart/ActivityTutoringActivityManagement", {
 		"flag":"2",
-		"delete":"true",
 		},
 		function(data){
 			$('#deleteModal').modal('hide');
@@ -464,7 +462,7 @@ function deleteActivity(){
 				$("#successDeleteDiv").fadeIn(500, function() {
 					$("#successDeleteDiv").fadeOut(3000);
 					setTimeout(function() {
-						  window.location.href = "/TutoratoSmart/tutor/register.jsp";
+						  window.location.href = "/TutoratoSmart/View/tutor/register.jsp";
 					}, 3000);
 				})
 			}
@@ -513,8 +511,8 @@ function acceptRequest() {
 	}
 	
 	if(valid) {
-		$.post("/TutoratoSmart/Request", {
-			"flag":"4",
+		$.post("/TutoratoSmart/RequestRequestManagement", {
+			"flag":"1",
 			"id":$("#requestId").val(),
 			"duration":$("#requestDuration").val(),
 			},
@@ -524,7 +522,7 @@ function acceptRequest() {
 					$("#successDeleteDiv").fadeIn(500, function() {
 						$("#successDeleteDiv").fadeOut(3000);
 						setTimeout(function() {
-							  window.location.href = "/TutoratoSmart/tutor/requestInfo.jsp";
+							  window.location.href = "/TutoratoSmart/View/tutor/requestInfo.jsp";
 						}, 3000);
 					})
 				}
@@ -553,8 +551,8 @@ function absentStudent() {
 	var errorMessage = "";
 	
 	if(valid) {
-		$.post("/TutoratoSmart/Request", {
-			"flag":"5",
+		$.post("/TutoratoSmart/RequestRequestManagement", {
+			"flag":"2",
 			},
 			function(data){
 				$('#absentModal').modal('hide');
@@ -565,7 +563,7 @@ function absentStudent() {
 					$("#successAbsentDiv").fadeIn(500, function() {
 						$("#successAbsentDiv").fadeOut(3000);
 						setTimeout(function() {
-							  window.location.href = "/TutoratoSmart/tutor/requestInfo.jsp";
+							  window.location.href = "/TutoratoSmart/View/tutor/requestInfo.jsp";
 						}, 3000);
 					})
 				}
@@ -601,7 +599,7 @@ function validateInputsAppointment() {
 	}
 	
 	if(valid) {
-		$.post("/TutoratoSmart/Appointment", {
+		$.post("/TutoratoSmart/AppointmentRequestManagement", {
 			"flag":"1",
 			"comment":$(comment).val(),
 			},
@@ -611,7 +609,7 @@ function validateInputsAppointment() {
 					$("#successDiv").fadeIn(500, function() {
 						$("#successDiv").fadeOut(3000);
 						setTimeout(function() {
-							  window.location.href = "/TutoratoSmart/tutor/requestInfo.jsp";
+							  window.location.href = "/TutoratoSmart/View/tutor/requestInfo.jsp";
 						}, 3000);
 					})
 				}
@@ -633,8 +631,8 @@ function validateInputsAppointment() {
 //Script cancellazione appuntamento
 //Funzione di cancellazione appuntamento da parte di un tutor
 function deleteAppointment(){
-	$.post("/TutoratoSmart/Appointment", {
-		"flag":"3",
+	$.post("/TutoratoSmart/AppointmentRequestManagement", {
+		"flag":"2",
 		},
 		function(data){
 			$('#deleteModal').modal('hide');
@@ -646,7 +644,7 @@ function deleteAppointment(){
 				$("#successDeleteDiv").fadeIn(500, function() {
 					$("#successDeleteDiv").fadeOut(3000);
 					setTimeout(function() {
-						  window.location.href = "/TutoratoSmart/tutor/appointmentsList.jsp";
+						  window.location.href = "/TutoratoSmart/View/tutor/appointmentsList.jsp";
 					}, 3000);
 				})
 			}
@@ -679,8 +677,8 @@ function validateModifyAppointment() {
 	}
 	
 	if(valid) {
-		$.post("/TutoratoSmart/Appointment", {
-			"flag":"2",
+		$.post("/TutoratoSmart/AppointmentRequestManagement", {
+			"flag":"3",
 			"comment":$(comment).val(),
 			},
 			function(data){
@@ -689,7 +687,7 @@ function validateModifyAppointment() {
 					$("#successDiv").fadeIn(500, function() {
 						$("#successDiv").fadeOut(3000);
 						setTimeout(function() {
-							window.location.href = "/TutoratoSmart/tutor/appointmentsList.jsp";
+							window.location.href = "/TutoratoSmart/View/tutor/appointmentsList.jsp";
 						}, 3000);
 					})
 				}

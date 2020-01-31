@@ -69,11 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	    	eventClickInfo.jsEvent.preventDefault();
 	    },
 	    events: {
-		    url: '/TutoratoSmart/Calendar',
+		    url: '/TutoratoSmart/CalendarTutoringRequest',
 		    method: 'POST',
-		    extraParams: {
-		        flag: '2',
-		    },
 		    data: {
                 start: 'start',
                 end: 'end',
@@ -97,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function createRequest() {
 	$('#confirm').attr('disabled','disabled');
 	
-	$.post("/TutoratoSmart/Request", {
+	$.post("/TutoratoSmart/RequestTutoringRequest", {
 		"flag":"1",
 		"comment":$("#comment").val(),
 		"date":$("#date").val(),

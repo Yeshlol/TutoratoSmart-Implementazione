@@ -1,6 +1,6 @@
 //Funzione di cancellazione prenotazione da parte di uno studente
 function deleteRequest(){
-	$.post("/TutoratoSmart/Request", {
+	$.post("/TutoratoSmart/RequestTutoringRequest", {
 		"flag":"2",
 		"id":$("#requestId").val(),
 		},
@@ -13,7 +13,7 @@ function deleteRequest(){
 				$("#successDeleteDiv").fadeIn(500, function() {
 					$("#successDeleteDiv").fadeOut(3000);
 					setTimeout(function() {
-						  window.location.href = "/TutoratoSmart/student/requestsList.jsp";
+						  window.location.href = "/TutoratoSmart/View/student/requestsList.jsp";
 					}, 3000);
 				})
 			}
@@ -31,16 +31,16 @@ function deleteRequest(){
 
 // Funzioni di validazione dati per creazione nuova prenotazione
 // Controllo data inserita antecedente ad oggi
-function isValidDate(date) {
+function isValidDate(date, time) {
 	if(date.val() == '') {
 		return false;
 	}
 	
-	var d = new Date(date.val());
+	var d = new Date(date.val() + "T" + time.val());
 	var today = new Date();
 		
 	if (d < today)
-		return false
+		return false;
 	else 
 		return true;
 }
@@ -50,11 +50,10 @@ function isValidDate(date) {
 function validateDate(date) {
 	var d = new Date(date.val());
 	
-	if(d.getDay() === 3 || d.getDay() === 4) {
+	if(d.getDay() === 3 || d.getDay() === 4)
 		return true;
-    } else {
-    	return false;
-    }
+    else
+		return false;
 }
 
 
@@ -78,27 +77,33 @@ function isValidTime(time) {
 $("#requestDate").on("change",function(){
 	var color = "1px solid red";
 	
-	if (isValidDate($(this)) && validateDate($(this))) 
+	
+	if (isValidDate($(this), $("#requestTime")) && validateDate($(this)))
 		color = "1px solid green";
 	
 	$(this).css("border", color);
-		
+	
 	$("#requestTime").val("09:00");
 	$("#requestTime").change();
 });
 
 
 // Controllo disponibilità appuntamento presso lo sportello
-$("#requestTime").on("change",function(){	
+$("#requestTime").on("change",function(){
 	var time = $("#requestTime");
 	var date = $("#requestDate");
 	
+	if (isValidDate(date, time) && validateDate(date)) {
+		color = "1px solid green";
+		$(date).css("border", color);
+	}
+	
 	var color = "1px solid red";
 	
-	$(this).css("border",color);
+	$(time).css("border",color);
 	
-	if (isValidDate(date) && validateDate(date) && isValidTime(time)) {
-		$.post("/TutoratoSmart/Request", {
+	if (isValidDate(date, time) && validateDate(date) && isValidTime(time)) {
+		$.post("/TutoratoSmart/RequestTutoringRequest", {
 			"date":$(date).val(),
 			"time":$(time).val(),
 			"ajax":"true",
@@ -129,7 +134,7 @@ function validateInputsNewRequest() {
 	var time = $("#requestTime");
 	var comment = $("#comment");
 	
-	if (!isValidDate(date)) {
+	if (!isValidDate(date, time)) {
 		errorMessage += "<strong>Selezionare una data valida</strong><br/>"
 		valid = false;
 	}	
@@ -156,7 +161,7 @@ function validateInputsNewRequest() {
 	}
 	
 	if (valid) {		
-		$.post("/TutoratoSmart/Request", {
+		$.post("/TutoratoSmart/RequestTutoringRequest", {
 			"flag":"1",
 			"comment":$("#comment").val(),
 			"date":$("#requestDate").val(),
@@ -170,7 +175,7 @@ function validateInputsNewRequest() {
 					
 					setTimeout(function() {
 						$('#resultModal').modal('hide');
-						window.location.href = "/TutoratoSmart/student/calendar.jsp";
+						window.location.href = "/TutoratoSmart/View/student/calendar.jsp";
 					}, 3000);
 				}				
 				else {
@@ -197,7 +202,7 @@ function validateInputsNewRequest() {
 $("#requestDateM").on("change",function(){
 	var color = "1px solid red";
 	
-	if (isValidDate($(this)) && validateDate($(this))) 
+	if (isValidDate($(this), $("#requestTimeM")) && validateDate($(this))) 
 		color = "1px solid green";
 	
 	$(this).css("border", color);
@@ -212,12 +217,17 @@ $("#requestTimeM").on("change",function(){
 	var time = $("#requestTimeM");
 	var date = $("#requestDateM");
 	
+	if (isValidDate(date, time) && validateDate(date)) {
+		color = "1px solid green";
+		$(date).css("border", color);
+	}
+	
 	var color = "1px solid red";
 	
 	$(this).css("border",color);
 	
-	if (isValidDate(date) && validateDate(date) && isValidTime(time)) {
-		$.post("/TutoratoSmart/Request", {
+	if (isValidDate(date, time) && validateDate(date) && isValidTime(time)) {
+		$.post("/TutoratoSmart/RequestTutoringRequest", {
 			"date":$(date).val(),
 			"time":$(time).val(),
 			"ajax":"true",
@@ -237,9 +247,11 @@ $("#requestTimeM").on("change",function(){
 
 // Verifica campi input prima della modifica prenotazione
 function validateInputsModifyRequest() {
+	$('#modifyRequest').attr('disabled','disabled');
+	
 	$("#errorDiv").html("");
 	$('#errorDiv').hide();
-	$('#modifyRequest').attr('disabled','disabled');
+	
 	var valid = true;
 	var errorMessage = "";
 	
@@ -247,7 +259,7 @@ function validateInputsModifyRequest() {
 	var time = $("#requestTimeM");
 	var comment = $("#comment");
 	
-	if (!isValidDate(date)) {
+	if (!isValidDate(date, time)) {
 		errorMessage += "<strong>Selezionare una data valida</strong><br/>"
 		valid = false;
 	}	
@@ -274,7 +286,7 @@ function validateInputsModifyRequest() {
 	}
 	
 	if (valid) {
-		$.post("/TutoratoSmart/Request", {
+		$.post("/TutoratoSmart/RequestTutoringRequest", {
 			"flag":"3",
 			"id":$("#requestId").val(),
 			"comment":$("#comment").val(),
@@ -289,7 +301,7 @@ function validateInputsModifyRequest() {
 					
 					setTimeout(function() {
 						$('#resultModal').modal('hide');
-						window.location.href = "/TutoratoSmart/student/requestInfo.jsp";
+						window.location.href = "/TutoratoSmart/View/student/requestInfo.jsp";
 					}, 3000);
 				}				
 				else {

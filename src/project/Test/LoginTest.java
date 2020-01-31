@@ -16,7 +16,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import project.Control.DBConnection;
-import project.Control.LoginServlet;
+import project.Control.User.LoginServlet;
 
 public class LoginTest {
 	private LoginServlet servlet;

@@ -86,7 +86,7 @@ public class ContainedInDAO {
 				preparedStatement = connection.prepareStatement(selectSql);
 				preparedStatement.setInt(1, id);
 				
-				System.out.println("Contained_In doRetrieveByActivityId: " + preparedStatement.toString());
+				// System.out.println("Contained_In doRetrieveByActivityId: " + preparedStatement.toString());
 				
 				ResultSet rs = preparedStatement.executeQuery();
 				while(rs.next()) {
@@ -123,7 +123,7 @@ public class ContainedInDAO {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, appointmentId);
 			
-			System.out.println("Contained_In doRetrieveByAppointmentId: " + preparedStatement.toString());
+			// System.out.println("Contained_In doRetrieveByAppointmentId: " + preparedStatement.toString());
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
@@ -184,7 +184,7 @@ public class ContainedInDAO {
 			preparedStatement.setInt(1,bean.getAppointmentId());
 			preparedStatement.setInt(2, bean.getActivityId());
 			
-			System.out.println("Contained_In doDelete: " + preparedStatement.toString());
+			// System.out.println("Contained_In doDelete: " + preparedStatement.toString());
 			
 			result = preparedStatement.executeUpdate();
 			

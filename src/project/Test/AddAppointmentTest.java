@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import project.Control.AppointmentServlet;
+import project.Control.Request_Management.AppointmentServlet;
 import project.Control.DBConnection;
 import project.Model.*;
 

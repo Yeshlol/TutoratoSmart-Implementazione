@@ -16,7 +16,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import project.Control.DBConnection;
-import project.Control.RequestServlet;
+import project.Control.Request_Management.RequestServlet;
 import project.Model.UserBean;
 import project.Model.UserDAO;
 
