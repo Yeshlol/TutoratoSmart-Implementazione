@@ -42,7 +42,7 @@ class ManageRequestTest {
 	//TC_5.0_1 Ore inserite <10
 	@Test
 	public void testCase_5_0_1() throws ServletException, IOException {
-		request.addParameter("flag", "4");
+		request.addParameter("flag", "1");
 		request.addParameter("id","4");
 		request.addParameter("duration","6");
 		
@@ -58,7 +58,7 @@ class ManageRequestTest {
 	//TC_5.0_2 Ore inserite > 120
 	@Test
 	public void testCase_5_0_2() throws ServletException, IOException {
-		request.addParameter("flag", "4");
+		request.addParameter("flag", "1");
 		request.addParameter("id","4");
 		request.addParameter("duration","150");
 		
@@ -77,7 +77,7 @@ class ManageRequestTest {
 		UserDAO user = new UserDAO();
 		UserBean bean = user.doRetrieveByMail("m.pisciotta@studenti.unicampania.it");
 		request.getSession().setAttribute("user", bean);
-		request.addParameter("flag", "4");
+		request.addParameter("flag", "1");
 		request.addParameter("id","4");
 		request.addParameter("duration","60");
 				

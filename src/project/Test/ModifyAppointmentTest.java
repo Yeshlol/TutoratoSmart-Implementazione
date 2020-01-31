@@ -43,7 +43,7 @@ class ModifyAppointmentTest {
 	//TC_7.0_1 Lunghezza commento non valida = 0
 	@Test
 	public void testCase_7_0_1() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("comment", "");
 		
 		UserDAO userDAO = new UserDAO();
@@ -65,7 +65,7 @@ class ModifyAppointmentTest {
 	//TC_7.0_1 Lunghezza commento non valida > 240
 	@Test
 	public void testCase_7_0_2() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("comment", "Ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp");
 		
 		UserDAO userDAO = new UserDAO();
@@ -87,7 +87,7 @@ class ModifyAppointmentTest {
 	//TC_7.0_3 Successo
 	@Test
 	public void testCase_7_0_3() throws ServletException, IOException, JSONException, SQLException{
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("comment", "Appuntamento effettuato con lo studente");
 		
 		UserDAO userDAO = new UserDAO();

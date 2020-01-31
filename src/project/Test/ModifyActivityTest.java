@@ -43,7 +43,7 @@ class ModifyActivityTest {
 	// TC_9.0_1 Categoria non selezionata
 	@Test
 	public void testCase_9_0_1() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("category", "");
 		request.addParameter("date", "2020-01-20");
 		request.addParameter("startTime", "09:00");
@@ -68,7 +68,7 @@ class ModifyActivityTest {
 	// TC_9.0_2 Data non selezionata
 	@Test
 	public void testCase_9_0_2() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("category", "Evento");
 		request.addParameter("date", "");
 		request.addParameter("startTime", "09:00");
@@ -93,7 +93,7 @@ class ModifyActivityTest {
 	// TC_9.0_3 Orario di inizio attivita non selezionato
 	@Test
 	public void testCase_9_0_3() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("category", "Evento");
 		request.addParameter("date", "2020-01-20");
 		request.addParameter("startTime", "");
@@ -118,7 +118,7 @@ class ModifyActivityTest {
 	// TC_9.0_4 Orario di inizio attivita non valido precedente 7:30
 	@Test
 	public void testCase_9_0_4() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("category", "Evento");
 		request.addParameter("date", "2020-01-20");
 		request.addParameter("startTime", "06:00");
@@ -143,7 +143,7 @@ class ModifyActivityTest {
 	// TC_9.0_5 Orario di inizio attivita non valido successivo alle 22:00
 	@Test
 	public void testCase_9_0_5() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("category", "Evento");
 		request.addParameter("date", "2020-01-20");
 		request.addParameter("startTime", "23:00");
@@ -168,7 +168,7 @@ class ModifyActivityTest {
 	// TC_9.0_6 Orario di fine attivita non selezionato
 	@Test
 	public void testCase_9_0_6() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("category", "Evento");
 		request.addParameter("date", "2020-01-20");
 		request.addParameter("startTime", "09:00");
@@ -193,7 +193,7 @@ class ModifyActivityTest {
 	// TC_9.0_7 Orario di fine attivita non valido precedente 7:30
 	@Test
 	public void testCase_9_0_7() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("category", "Evento");
 		request.addParameter("date", "2020-01-20");
 		request.addParameter("startTime", "09:00");
@@ -218,7 +218,7 @@ class ModifyActivityTest {
 	// TC_9.0_8 Orario di fine attivita non valido successivo alle 22:00
 	@Test
 	public void testCase_9_0_8() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("category", "Evento");
 		request.addParameter("date", "2020-01-20");
 		request.addParameter("startTime", "09:00");
@@ -243,7 +243,7 @@ class ModifyActivityTest {
 	// TC_9.0_9 Orari inseriti non validi (Orario di fine precedente a orario di inizio)
 	@Test
 	public void testCase_9_0_9() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("category", "Evento");
 		request.addParameter("date", "2020-01-20");
 		request.addParameter("startTime", "11:00");
@@ -268,7 +268,7 @@ class ModifyActivityTest {
 	// TC_9.0_10 Orari inseriti non validi (Orario di fine precedente a orario di inizio)
 	@Test
 	public void testCase_9_0_10() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("category", "Evento");
 		request.addParameter("date", "2020-01-20");
 		request.addParameter("startTime", "09:00");
@@ -293,7 +293,7 @@ class ModifyActivityTest {
 	// TC_9.0_11 Orari inseriti non validi (Orario di fine precedente a orario di inizio)
 	@Test
 	public void testCase_9_0_11() throws ServletException, IOException, SQLException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("category", "Evento");
 		request.addParameter("date", "2020-01-20");
 		request.addParameter("startTime", "09:00");
@@ -324,7 +324,7 @@ class ModifyActivityTest {
 	// TC_9.0_12 Successo
 	@Test
 	public void testCase_9_0_12() throws ServletException, IOException, SQLException, JSONException {
-		request.addParameter("flag", "2");
+		request.addParameter("flag", "3");
 		request.addParameter("category", "Evento");
 		request.addParameter("date", "2020-01-20");
 		request.addParameter("startTime", "09:00");
