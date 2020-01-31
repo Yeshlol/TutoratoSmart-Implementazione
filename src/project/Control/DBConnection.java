@@ -73,17 +73,6 @@ public class DBConnection {
 	}
 
 	/**
-	 * Set the connection with the database.
-	 * 
-	 * @param conn is the variable that contains the object that allows you to connect the database to
-	 * the code.
-	 */
-	
-	/*public void setConn(Connection conn) {
-	  this.conn = conn;
-	}*/
-
-	/**
 	 * Get the name of the database.
 	 */
 	public String getDatabaseName() {

@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import project.Control.DBConnection;
 
 /**
- * Questa classe � un manager che si occupa di interagire con il database. Gestisce le query riguardanti ContainedIn.
+ * Questa classe e' un manager che si occupa di interagire con il database. Gestisce le query riguardanti ContainedIn.
  */
 public class ContainedInDAO {
 	public ContainedInDAO() {
