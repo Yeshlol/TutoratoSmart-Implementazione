@@ -2,7 +2,6 @@ package project.Control;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class DBConnection {
 	
@@ -57,6 +56,7 @@ public class DBConnection {
 	
 	/**
 	 * Get the instance of the database.
+	 * @return Returns the instance that allows DB connection.
 	 */
 	public static DBConnection getInstance() {
 	    if (instance == null) {
@@ -67,13 +67,15 @@ public class DBConnection {
 
 	/**
 	 * Returns the Connection type object.
+	 * @return Returns the Connection type object.
 	 */
-	public synchronized Connection getConn() throws SQLException{
+	public synchronized Connection getConn() {
 		return this.conn;
 	}
 
 	/**
 	 * Get the name of the database.
+	 * @return Return the DB Name.
 	 */
 	public String getDatabaseName() {
 		return this.databaseName;
@@ -90,6 +92,7 @@ public class DBConnection {
 
 	/**
 	 * Get the name of the user.
+	 * @return Returns the user name.
 	 */
 	public String getUserName() {
 		return this.userName;
@@ -106,6 +109,7 @@ public class DBConnection {
 
 	/**
 	 * Get the password.
+	 * @return Returns the password used to connect to DB.
 	 */
 	public String getPassword() {
 		return this.password;
@@ -122,6 +126,7 @@ public class DBConnection {
 
 	/**
 	 * Get the number of the host port.
+	 * @return Returns the connection port.
 	 */
 	public int getHostPort() {
 		return this.hostPort;
@@ -138,6 +143,7 @@ public class DBConnection {
 
 	/**
 	 * Get the name of the host port.
+	 * @return Returns the host port.
 	 */
 	public String getHostName() {
 		return this.hostName;

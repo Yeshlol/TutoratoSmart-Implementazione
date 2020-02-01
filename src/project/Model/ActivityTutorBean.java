@@ -60,8 +60,8 @@ public class ActivityTutorBean implements Serializable {
 	}
 
 	/**
-	 * @param idActivity idActivity identificativo dell'attivit� da assegnare all'attivita'
-	 * @return
+	 * Imposta l'id dell'attivita'
+	 * @param idActivity idActivity identificativo dell'attivita' da assegnare all'attivita'
 	 */
 	public void setIdActivity(int idActivity) {
 		this.idActivity = idActivity;
@@ -75,8 +75,8 @@ public class ActivityTutorBean implements Serializable {
 	}
 
 	/** 
-	 * @param startTime startTime tempo di inizio da assegnare all'attivita'
-	 * @return
+	 * Imposta il tempo di inizio dell'attività.
+	 * @param startTime startTime tempo di inizio da assegnare all'attivita'.
 	 */
 	public void setStartTime(int startTime) {
 		this.startTime = startTime;
@@ -90,23 +90,23 @@ public class ActivityTutorBean implements Serializable {
 	}
 
 	/**
-	 * @param finishTime finishTime tempo di fine da assegnare all'attivita'
-	 * @return
+	 * Imposta il tempo di fine attivita'.
+	 * @param finishTime finishTime tempo di fine da assegnare all'attivita'.
 	 */
 	public void setFinishTime(int finishTime) {
 		this.finishTime = finishTime;
 	}
 
 	/**
-	 * @return registerId identificativo del registro dell'attivita'
+	 * @return registerId identificativo del registro dell'attivita'.
 	 */
 	public int getRegisterId() {
 		return registerId;
 	}
 
 	/**
-	 * @param registerId registerId identificativo del registro da assegnare all'attivita'
-	 * @return
+	 * Imposta l'id del registro a cui è associata l'attivita'.
+	 * @param registerId registerId identificativo del registro da assegnare all'attivita'.
 	 */
 	public void setRegisterId(int registerId) {
 		this.registerId = registerId;
@@ -120,8 +120,8 @@ public class ActivityTutorBean implements Serializable {
 	}
 
 	/**
-	 * @param category category categoria da assegnare all'attivita'
-	 * @return
+	 * Imposta la categoria dell'attivita'.
+	 * @param category Categoria da assegnare all'attivita'.
 	 */
 	public void setCategory(String category) {
 		this.category = category;
@@ -135,8 +135,8 @@ public class ActivityTutorBean implements Serializable {
 	}
 
 	/**
-	 * @param state state stato da assegnare all'attivita'
-	 * @return
+	 * Imposta lo stato dell'attivita'.
+	 * @param state Stato da assegnare all'attivita'.
 	 */
 	public void setState(String state) {
 		this.state = state;
@@ -150,8 +150,8 @@ public class ActivityTutorBean implements Serializable {
 	}
 
 	/**
-	 * @param details details dettagli da assegnare all'attivita'
-	 * @return
+	 * Imposta i dettagli dell'attivita'.
+	 * @param details Dettagli da assegnare all'attivita'.
 	 */
 	public void setDetails(String details) {
 		this.details = details;
@@ -165,8 +165,8 @@ public class ActivityTutorBean implements Serializable {
 	}
 
 	/**
-	 * @param tutor tutor da assegnare all'attivita'
-	 * @return
+	 * Imposta il tutor dell'attivita'.
+	 * @param tutor Tutor da assegnare all'attivita'.
 	 */
 	public void setTutor(String tutor) {
 		this.tutor = tutor;
@@ -180,8 +180,8 @@ public class ActivityTutorBean implements Serializable {
 	}
 	
 	/**
-	 * @param activityDate activityDate data da assegnare all'attivita'
-	 * @return
+	 * Imposta la data dell'attivita'.
+	 * @param activityDate activityDate data da assegnare all'attivita'.
 	 */
 	public void setActivityDate(Date activityDate) {
 		this.activityDate = activityDate;
@@ -195,8 +195,8 @@ public class ActivityTutorBean implements Serializable {
 	}
 
 	/**
-	 * @param hours hours ore da assegnare all'attivita'
-	 * @return
+	 * Imposta le ore di attivita' svolte.
+	 * @param hours hours ore da assegnare all'attivita'.
 	 */
 	public void setHours(float hours) {
 		this.hours = hours;

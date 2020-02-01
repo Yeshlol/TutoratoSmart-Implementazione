@@ -21,7 +21,6 @@ public class StudentDAO  {
 	}
 	
 	/** 
-	 * @param
 	 * @return un ArrayList di tutti gli studenti registrati nel database
 	 * @throws SQLException
 	 */

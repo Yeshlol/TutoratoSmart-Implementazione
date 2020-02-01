@@ -12,8 +12,8 @@ public class Calendar {
 	private Collection<RequestBean> requests;
 
 	/**
-	 * Constructor.
-	 * @throws SQLException 
+	 * Crea il calendario.
+	 * @throws SQLException Eccezione lanciata nel ritrovare le richieste di appuntamento dal DB.
 	 */
 	public Calendar() throws SQLException {	    
 	    RequestDAO activityTutorDAO = new RequestDAO();
@@ -23,7 +23,8 @@ public class Calendar {
 	
 	/**
 	 * Get the instance of the calendar.
-	 * @throws SQLException 
+	 * @throws SQLException Eccezione lanciata nel ritrovare le richieste di appuntamento dal DB.
+	 * @return Ritorna l'istanza del Calendario, usata per la visualizzazione tramite FullCalendar.
 	 */
 	public static Calendar getInstance() throws SQLException {
 	    if (instance == null) {
@@ -33,7 +34,8 @@ public class Calendar {
 	}
 	
 	/**
-	 * Returns the Collection<WorkDayBean> type object.
+	 * Returns the Collection<RequestBean> type object.
+	 * @return Ritorna la collezione di RequestBean, le richieste di appuntamento presenti nel DB.
 	 */
 	public Collection<RequestBean> getRequests() {
 		return this.requests;
