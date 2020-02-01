@@ -16,7 +16,7 @@
 <body>
     <%@ include file="/partials/header.jsp" %>
      
-	<div id="home" class="content" style="margin: 10%">
+	<div id="home" class="content" style="margin: 8%">
 		<h1 align="center">Benvenuto in TutoratoSmart</h1>
 	</div>   
                  

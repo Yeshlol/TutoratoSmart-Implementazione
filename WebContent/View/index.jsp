@@ -14,7 +14,7 @@
 <body>
 	<%@ include file="/partials/header.jsp" %>
 		
-	<div class="content text-center" style="width: 40%;margin: 0 auto; margin-top: 50px; border: 2px solid #232F3E; border-radius:8px;">
+	<div class="content text-center" style="width: 40%;margin: 0 auto; margin-top: 25px; border: 2px solid #232F3E; border-radius:8px;">
 		<div class="panel">
 			<h2>Benvenuto in TutoratoSmart</h2>
 			<p>Effettua l'accesso oppure registrati alla piattaforma</p>
