@@ -57,10 +57,4 @@ public class ManagesBean implements Serializable {
 	public void setRequestId(int requestId) {
 		this.requestId = requestId;
 	}
-
-	
-	@Override
-	public String toString() {
-		return "Il tutor " + tutor + " ha gestito la richiesta n " + requestId + ".\n";
-	}
 }

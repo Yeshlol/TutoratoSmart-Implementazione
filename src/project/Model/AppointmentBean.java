@@ -90,10 +90,4 @@ public class AppointmentBean implements Serializable {
 	public void setTutor(String tutor) {
 		this.tutor = tutor;
 	}
-	
-	
-	@Override
-	public String toString() {
-		return "Appuntamento n " + idAppointment + "\nDescrizione: " + details + "\nAssociato alla richiesta n° "+ requestId + " e al tutor " + tutor + "\n";
-	}
 }

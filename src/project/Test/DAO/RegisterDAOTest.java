@@ -49,7 +49,7 @@ class RegisterDAOTest {
 	@Test
 	void testDoUpdate() throws SQLException {
 		RegisterBean register1= registerDAO.doRetrieveById(3);
-		RegisterBean register = new RegisterBean(2,"Approvato",4,40);
+		RegisterBean register = new RegisterBean(2,"Approvato",4,40, 10);
 		registerDAO.doUpdate(register);
 		assertNotEquals(register1,register);		
 	}

@@ -26,5 +26,4 @@ class StudentBeanTest {
 		student.setAcademicYear(2020);
 		assertEquals(2020 , student.getAcademicYear());
 	}
-
 }

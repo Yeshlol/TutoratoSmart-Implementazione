@@ -26,8 +26,9 @@ public class RegisterBean implements Serializable {
 	 * @param state stato del registro
 	 * @param validateHours ore validate del registro
 	 * @param percentageComplete percentuale di completamento del registro
+	 * @param totalHours ore totali del contratto
 	 */
-	public RegisterBean(int idRegister,String state, float validateHours,float percentageComplete) {
+	public RegisterBean(int idRegister,String state, float validateHours,float percentageComplete, int totalHours) {
 		this.idRegister=idRegister;
 		this.totalHours = totalHours;
 		this.percentageComplete=percentageComplete;
@@ -108,11 +109,5 @@ public class RegisterBean implements Serializable {
 	 */
 	public void setState(String state) {
 		this.state = state;
-	}
-	
-	@Override
-	public String toString() {
-		return "Registro n " + idRegister + ", Ore totali: " + totalHours + ", Ore convalidate: " 
-				+ validatedHours + ", Completo al " + percentageComplete + "%, Stato: " + state + "\n";
 	}
 }

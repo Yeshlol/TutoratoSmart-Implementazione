@@ -201,12 +201,4 @@ public class ActivityTutorBean implements Serializable {
 	public void setHours(float hours) {
 		this.hours = hours;
 	}
-	
-	
-	@Override
-	public String toString() {
-		return "Attivita' n " + idActivity + ", email tutor: " + tutor + ", giorno: " + activityDate + ", orario inizio: " + 
-				startTime/60 + ":" + startTime%60 + ", orario termine: " + finishTime/60 + ":" + finishTime%60 + 
-				", durata: " + hours + "h, categoria: " + category + ", " + state + ".\nDescrizione: " + details + "\n";
-	}
 }

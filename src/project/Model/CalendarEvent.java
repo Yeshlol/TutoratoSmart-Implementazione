@@ -68,9 +68,4 @@ public class CalendarEvent {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	@Override
-	public String toString() {
-		return "Evento: " + title + ", Start: " + start + "; End: " + end + "; URL: " + url + "; Descrizione: " + description;
-	}
 }

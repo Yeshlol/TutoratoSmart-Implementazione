@@ -1,4 +1,4 @@
-package project.Test;
+package project.Test.BlackBox;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -17,6 +17,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
 
 import project.Control.DBConnection;
 import project.Control.User.LoginServlet;
+import project.Test.DatabaseHelper;
+
 
 public class LoginTest {
 	private LoginServlet servlet;

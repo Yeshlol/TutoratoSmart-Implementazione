@@ -1,4 +1,4 @@
-package project.Test;
+package project.Test.BlackBox;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,6 +19,8 @@ import project.Control.DBConnection;
 import project.Control.Request_Management.RequestServlet;
 import project.Model.UserBean;
 import project.Model.UserDAO;
+import project.Test.DatabaseHelper;
+
 
 class ManageRequestTest {
 	private RequestServlet servlet;

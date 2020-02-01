@@ -120,11 +120,4 @@ public class TutorBean extends UserBean implements Serializable {
 	public void setRegisterId(int registerId) {
 		this.registerId = registerId;
 	}
-	
-	
-	@Override
-	public String toString() {
-		return firstName + " " + lastName + ", " + sex + ", Tutor " + state + ", Matricola: " + registrationNumber + 
-				", E-mail: " + email + ", Tel: " + telephoneNumber + "Attivo dal " + startDate + " al " + finishDate + ".\n";
-	}
 }

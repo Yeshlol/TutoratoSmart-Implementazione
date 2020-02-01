@@ -163,11 +163,4 @@ public class UserBean implements Serializable {
 	public void setRegistrationNumber(String registrationNumber) {
 		this.registrationNumber = registrationNumber;
 	}
-
-
-	@Override
-	public String toString() {
-		return firstName + " " + lastName + ", " + sex + ", Matricola: " + registrationNumber + 
-				", E-mail: " + email + ", Tel: " + telephoneNumber + "\n";
-	}
 }

@@ -1,4 +1,4 @@
-package project.Test;
+package project.Test.BlackBox;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +18,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import project.Control.Request_Management.AppointmentServlet;
 import project.Control.DBConnection;
 import project.Model.*;
+import project.Test.DatabaseHelper;
 
 
 class ModifyAppointmentTest {

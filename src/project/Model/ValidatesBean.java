@@ -56,9 +56,4 @@ public class ValidatesBean implements Serializable {
 	public void setActivityId(int activityId) {
 		this.activityId = activityId;
 	}
-	
-	@Override
-	public String toString() {
-		return "Il membro della Commissione di Tutorato (" + commissionMember + "), ha convalidato l'attivita' n " + activityId + ".\n";
-	}
 }

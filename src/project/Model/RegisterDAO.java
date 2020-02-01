@@ -33,8 +33,9 @@ public class RegisterDAO  {
 			String state=rs.getString("State");
 			float validateHours=rs.getFloat("ValidatedHours");
 			float percentageComplete=rs.getInt("PercentageComplete");
+			int totalHours = rs.getInt("TotalHours");
 			
-			bean = new RegisterBean(id,state,validateHours,percentageComplete);
+			bean = new RegisterBean(id,state,validateHours,percentageComplete,totalHours);
 			registerList.add(bean);
 		}
 		return registerList;

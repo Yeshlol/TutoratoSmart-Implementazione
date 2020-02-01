@@ -53,10 +53,4 @@ public class ContainedInBean implements Serializable {
 	public void setActivityId(int activityId) {
 		this.activityId = activityId;
 	}
-	
-	
-	@Override
-	public String toString() {
-		return "Appuntamento n " + appointmentId + " contenuto nell'attivita' n " + activityId + ".\n";
-	}
 }
