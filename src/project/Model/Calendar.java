@@ -34,8 +34,8 @@ public class Calendar {
 	}
 	
 	/**
-	 * Returns the Collection<RequestBean> type object.
-	 * @return Ritorna la collezione di RequestBean, le richieste di appuntamento presenti nel DB.
+	 * Ritorna una collezione di RequestBean.
+	 * @return Collection Ritorna la collezione di RequestBean, le richieste di appuntamento presenti nel DB.
 	 */
 	public Collection<RequestBean> getRequests() {
 		return this.requests;

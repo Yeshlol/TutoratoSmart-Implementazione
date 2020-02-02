@@ -36,7 +36,6 @@ public class ValidatesBean implements Serializable {
 
 	/**
 	 * @param commissionMember commissionMember membro della commissione da assegnare all'associazione Valida
-	 * @return
 	 */
 	public void setCommissionMember(String commissionMember) {
 		this.commissionMember = commissionMember;
@@ -51,7 +50,6 @@ public class ValidatesBean implements Serializable {
 
 	/**
 	 * @param activityId activityId identificativo dell'attivita' da assegnare all'associazione Valida
-	 * @return
 	 */
 	public void setActivityId(int activityId) {
 		this.activityId = activityId;

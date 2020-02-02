@@ -21,9 +21,8 @@ public class AppointmentDAO  {
 	}
 	
 	/** 
-	 * @param
 	 * @return un ArrayList di tutti gli appuntamenti registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized ArrayList<AppointmentBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -45,9 +44,9 @@ public class AppointmentDAO  {
 	}
 
 	/** 
-	 * @param id
+	 * @param id identificativo appuntamento
 	 * @return un appuntamento, tramite id, registrato nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public AppointmentBean doRetrieveById(int id) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -81,9 +80,9 @@ public class AppointmentDAO  {
 	}
 	
 	/** 
-	 * @param bean
-	 * @return  un intero per il salvataggio di un appuntamento nel database
-	 * @throws SQLException
+	 * @param bean bean
+	 * @return un intero per il salvataggio di un appuntamento nel database
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	@SuppressWarnings("resource")
 	public synchronized int doSave(AppointmentBean bean) throws SQLException {
@@ -129,9 +128,8 @@ public class AppointmentDAO  {
 	}
 		
 	/** 
-	 * @param bean
-	 * @return
-	 * @throws SQLException
+	 * @param bean bean
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized void doModify(AppointmentBean bean) throws SQLException {		
 		Connection connection = DBConnection.getInstance().getConn();
@@ -164,9 +162,9 @@ public class AppointmentDAO  {
 	}
 
 	/** 
-	 * @param bean
+	 * @param bean bean
 	 * @return un booleano per controllare la cancellazione di un appuntamento nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	@SuppressWarnings("resource")
 	public synchronized boolean doDelete(AppointmentBean bean) throws SQLException {
@@ -202,9 +200,9 @@ public class AppointmentDAO  {
 	}
 
 	/** 
-	 * @param requestId
+	 * @param requestId identificativo della richiesta
 	 * @return un appuntamento, tramite requestId, registrato nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public AppointmentBean doRetrieveByRequestId(int requestId) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -234,13 +232,13 @@ public class AppointmentDAO  {
 	}
 
 	/** 
-	 * @param order
-	 * @param tutorMail
-	 * @param requestDate
-	 * @param startTime
-	 * @param finishTime
+	 * @param order order
+	 * @param tutorMail email del tutor
+	 * @param requestDate data della richiesta
+	 * @param startTime orario di inizio
+	 * @param finishTime orario di fine
 	 * @return una Collection di appuntamenti, tramite la data, registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public Collection<AppointmentBean> doRetrieveAllByDate (String order, String tutorMail, Date requestDate, int startTime, int finishTime) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -282,9 +280,9 @@ public class AppointmentDAO  {
 	}
 	
 	/** 
-	 * @param tutorMail
+	 * @param tutorMail email del tutor
 	 * @return una Collection di appuntamenti, tramite mail del tutor, registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public Collection<AppointmentBean> doRetrieveAllByTutor (String tutorMail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();

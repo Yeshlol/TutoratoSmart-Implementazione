@@ -40,7 +40,6 @@ public class StudentBean extends UserBean implements Serializable {
 
 	/**
 	 * @param academicYear academicYear anno accademico dello studente da assegnare allo studente
-	 * @return
 	 */
 	public void setAcademicYear(int academicYear) {
 		this.academicYear = academicYear;

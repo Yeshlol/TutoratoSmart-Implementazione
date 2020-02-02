@@ -17,9 +17,8 @@ public class ManagesDAO {
 	}
 	
 	/** 
-	 * @param
 	 * @return un ArrayList di tutte le gestioni registrate nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized ArrayList<ManagesBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -40,9 +39,8 @@ public class ManagesDAO {
 	}
 	
 	/** 
-	 * @param bean
-	 * @return 
-	 * @throws SQLException
+	 * @param bean bean
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized void doSave(ManagesBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();

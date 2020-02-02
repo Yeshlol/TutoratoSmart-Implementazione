@@ -37,7 +37,6 @@ public class ManagesBean implements Serializable {
 
 	/**
 	 * @param tutor tutor che si occupa della richiesta da assegnare all'associazione Gestione
-	 * @return
 	 */
 	public void setTutor(String tutor) {
 		this.tutor = tutor;
@@ -52,7 +51,6 @@ public class ManagesBean implements Serializable {
 
 	/**
 	 * @param requestId requestId identificativo della richiesta da assegnare all'associazione Gestione
-	 * @return
 	 */
 	public void setRequestId(int requestId) {
 		this.requestId = requestId;

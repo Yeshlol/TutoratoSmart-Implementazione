@@ -21,9 +21,8 @@ public class TutorDAO  {
 	}
 
 	/** 
-	 * @param 
 	 * @return un ArrayList di tutti i tutor registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized ArrayList<TutorBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -55,9 +54,9 @@ public class TutorDAO  {
 	}
 	
 	/** 
-	 * @param mail
+	 * @param mail email del tutor
 	 * @return un tutor, tramite mail, registrato nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized TutorBean doRetrieveByMail(String mail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -107,10 +106,9 @@ public class TutorDAO  {
 	}
 	
 	/** 
-	 * @param bean
-	 * @param totalHours
-	 * @return
-	 * @throws SQLException
+	 * @param bean bean
+	 * @param totalHours ore totali
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	@SuppressWarnings("resource")
 	public synchronized void doSave(TutorBean bean, int totalHours) throws SQLException {
@@ -159,11 +157,11 @@ public class TutorDAO  {
 	}
 	
 	/** 
-	 * @param order
-	 * @param startResearchDate
-	 * @param finishResearchDate
+	 * @param order order
+	 * @param startResearchDate data di inizio della ricerca
+	 * @param finishResearchDate data di fine della ricerca
 	 * @return una Collection di tutor, tramite date di inizio e di fine, registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized Collection<TutorBean> doRetrieveAllByDates(String order, Date startResearchDate, Date finishResearchDate) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -209,9 +207,9 @@ public class TutorDAO  {
 	}
 	
 	/** 
-	 * @param order
+	 * @param order order
 	 * @return una Collection di tutor, tramite le attivita, registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized Collection<TutorBean> doRetrieveAllActive(String order) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();

@@ -19,9 +19,8 @@ public class ValidatesDAO {
 	}
 	
 	/** 
-	 * @param tutorMail
 	 * @return un ArrayList di tutte le validazioni registrate nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized ArrayList<ValidatesBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -43,9 +42,9 @@ public class ValidatesDAO {
 	}
 
 	/** 
-	 * @param commissionMemberMail
+	 * @param commissionMemberMail email del membro della commissione
 	 * @return una Collection di attivita, tramite mail del membro della commissione, registrate nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized Collection<ActivityTutorBean> doRetrieveByCommissionMember(String commissionMemberMail) throws SQLException {
 		Collection<ActivityTutorBean> list = new LinkedList<ActivityTutorBean>();
@@ -87,9 +86,8 @@ public class ValidatesDAO {
 	}
 	
 	/** 
-	 * @param bean
-	 * @return
-	 * @throws SQLException
+	 * @param bean bean
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	@SuppressWarnings("resource")
 	public synchronized void doSave(ValidatesBean bean) throws SQLException {

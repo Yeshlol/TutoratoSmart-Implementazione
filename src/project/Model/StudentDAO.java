@@ -22,7 +22,7 @@ public class StudentDAO  {
 	
 	/** 
 	 * @return un ArrayList di tutti gli studenti registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized ArrayList<StudentBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -50,9 +50,9 @@ public class StudentDAO  {
 	}
 
 	/** 
-	 * @param mail
+	 * @param mail email dello studente
 	 * @return uno studente, tramite mail, registrato nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized StudentBean doRetrieveByMail(String mail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -100,9 +100,8 @@ public class StudentDAO  {
 	}
 	
 	/** 
-	 * @param bean
-	 * @return
-	 * @throws SQLException
+	 * @param bean bean
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	@SuppressWarnings("resource")
 	public synchronized void doSave(StudentBean bean) throws SQLException {
@@ -144,11 +143,11 @@ public class StudentDAO  {
 	}
 	
 	/** 
-	 * @param order
-	 * @param startResearchDate
-	 * @param finishReasearchDate
+	 * @param order order
+	 * @param startResearchDate data di inizio della ricerca
+	 * @param finishResearchDate data di fine della ricerca
 	 * @return una Collection di studenti, tramite date di inizio e di fine, registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized Collection<StudentBean> doRetrieveAllByDates(String order, Date startResearchDate, Date finishResearchDate) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();

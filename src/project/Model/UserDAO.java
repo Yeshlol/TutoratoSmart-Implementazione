@@ -19,9 +19,8 @@ public class UserDAO  {
 	}
 	
 	/** 
-	 * @param
 	 * @return un ArrayList di tutti gli utente registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized ArrayList<UserBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -47,10 +46,10 @@ public class UserDAO  {
 	}
 	
 
-	/** 
-	 * @param mail
+	/**  
+	 * @param mail email dell'utente
 	 * @return un utente, tramite mail, registrato nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized UserBean doRetrieveByMail(String mail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -99,9 +98,8 @@ public class UserDAO  {
 	}
 	
 	/** 
-	 * @param bean
-	 * @return
-	 * @throws SQLException
+	 * @param bean bean
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized void doSave(UserBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();

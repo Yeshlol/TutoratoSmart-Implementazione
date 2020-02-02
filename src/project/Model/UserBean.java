@@ -53,7 +53,6 @@ public class UserBean implements Serializable {
 
 	/**
 	 * @param email email dell'utente da assegnare all'utente
-	 * @return
 	 */
 	public void setEmail(String email) {
 		this.email = email;
@@ -67,8 +66,7 @@ public class UserBean implements Serializable {
 	}
 
 	/**
-	 * @param pwd pwd password dell'utente da assegnare all'utente
-	 * @return
+	 * @param password pwd password dell'utente da assegnare all'utente
 	 */
 	public void setPwd(String password) {
 		this.pwd = password;
@@ -83,7 +81,6 @@ public class UserBean implements Serializable {
 	
 	/**
 	 * @param role role ruolo dell'utente da assegnare all'utente
-	 * @return
 	 */
 	public void setRole(int role) {
 		this.role = role;
@@ -98,7 +95,6 @@ public class UserBean implements Serializable {
 
 	/**
 	 * @param firstName firstName nome dell'utente da assegnare all'utente
-	 * @return
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -113,7 +109,6 @@ public class UserBean implements Serializable {
 
 	/**
 	 * @param lastName lastName cognome dell'utente da assegnare all'utente
-	 * @return
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -128,7 +123,6 @@ public class UserBean implements Serializable {
 
 	/**
 	 * @param sex sex sesso dell'utente da assegnare all'utente
-	 * @return
 	 */
 	public void setSex(String sex) {
 		this.sex = sex;
@@ -143,7 +137,6 @@ public class UserBean implements Serializable {
 
 	/**
 	 * @param telephoneNumber telephoneNumber numero di telefono dell'utente da assegnare all'utente
-	 * @return
 	 */
 	public void setTelephoneNumber(String telephoneNumber) {
 		this.telephoneNumber = telephoneNumber;
@@ -158,7 +151,6 @@ public class UserBean implements Serializable {
 
 	/**
 	 * @param registrationNumber registrationNumber matricola dell'utente da assegnare all'utente
-	 * @return
 	 */
 	public void setRegistrationNumber(String registrationNumber) {
 		this.registrationNumber = registrationNumber;

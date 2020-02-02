@@ -17,9 +17,8 @@ public class RegisterDAO  {
 	}
 
 	/** 
-	 * @param
 	 * @return un ArrayList di tutti i registri registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized ArrayList<RegisterBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -42,9 +41,9 @@ public class RegisterDAO  {
 	}
 	
 	/** 
-	 * @param id
+	 * @param id identificativo registro
 	 * @return un registro, tramite id, registrato nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized RegisterBean doRetrieveById(int id) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -81,9 +80,9 @@ public class RegisterDAO  {
 	}
 	
 	/** 
-	 * @param totalHours
+	 * @param totalHours ore totali
 	 * @return un intero per il salvataggio di un registro nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	@SuppressWarnings("resource")
 	public synchronized int doSave(int totalHours) throws SQLException {
@@ -121,9 +120,8 @@ public class RegisterDAO  {
 	}
 		
 	/** 
-	 * @param bean
-	 * @return
-	 * @throws SQLException
+	 * @param bean bean
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized void doUpdate(RegisterBean bean) throws SQLException {		
 		Connection connection = DBConnection.getInstance().getConn();

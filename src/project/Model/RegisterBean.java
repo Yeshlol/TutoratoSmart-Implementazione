@@ -45,7 +45,6 @@ public class RegisterBean implements Serializable {
 
 	/**
 	 * @param idRegister idRegister identificativo del registro da assegnare al registro
-	 * @return
 	 */
 	public void setIdRegister(int idRegister) {
 		this.idRegister = idRegister;
@@ -59,8 +58,7 @@ public class RegisterBean implements Serializable {
 	}
 
 	/**
-	 * @param validateHours validateHours ore del registro da assegnare al registro
-	 * @return
+	 * @param validatedHours validateHours ore del registro da assegnare al registro
 	 */
 	public void setValidatedHours(float validatedHours) {
 		this.validatedHours = validatedHours;
@@ -75,7 +73,6 @@ public class RegisterBean implements Serializable {
 
 	/**
 	 * @param totalHours totalHours ore totali del registro da assegnare al registro
-	 * @return
 	 */
 	public void setTotalHours(int totalHours) {
 		this.totalHours = totalHours;
@@ -90,7 +87,6 @@ public class RegisterBean implements Serializable {
 
 	/**
 	 * @param percentageComplete percentuale di completamento del registro da assegnare al registro
-	 * @return
 	 */
 	public void setPercentageComplete(float percentageComplete) {
 		this.percentageComplete = percentageComplete;
@@ -105,7 +101,6 @@ public class RegisterBean implements Serializable {
 
 	/**
 	 * @param state state del registro da assegnare al registro
-	 * @return
 	 */
 	public void setState(String state) {
 		this.state = state;

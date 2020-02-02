@@ -55,7 +55,6 @@ public class TutorBean extends UserBean implements Serializable {
 
 	/**
 	 * @param state state stato del tutor da assegnare al tutor
-	 * @return
 	 */
 	public void setState(String state) {
 		this.state = state;
@@ -70,7 +69,6 @@ public class TutorBean extends UserBean implements Serializable {
 
 	/**
 	 * @param startDate startDate data di inizio del tutor da assegnare al tutor
-	 * @return
 	 */
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
@@ -85,7 +83,6 @@ public class TutorBean extends UserBean implements Serializable {
 
 	/**
 	 * @param finishDate finishDate data di fine del tutor da assegnare al tutor
-	 * @return
 	 */
 	public void setFinishDate(Date finishDate) {
 		this.finishDate = finishDate;
@@ -100,7 +97,6 @@ public class TutorBean extends UserBean implements Serializable {
 
 	/**
 	 * @param commissionMember commissionMember membro della commissione associato al tutor da assegnare al tutor
-	 * @return
 	 */
 	public void setCommissionMember(String commissionMember) {
 		this.commissionMember = commissionMember;
@@ -115,7 +111,6 @@ public class TutorBean extends UserBean implements Serializable {
 
 	/**
 	 * @param registerId registerId identificativo del registro da assegnare al tutor
-	 * @return
 	 */
 	public void setRegisterId(int registerId) {
 		this.registerId = registerId;

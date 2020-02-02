@@ -19,9 +19,9 @@ public class RequestDAO  {
 	}
 
 	/** 
-	 * @param id
+	 * @param id identificativo della richiesta
 	 * @return una richiesta, tramite id, registrata nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized RequestBean doRetrieveById(int id) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -60,9 +60,9 @@ public class RequestDAO  {
 	}
 	
 	/** 
-	 * @param bean
+	 * @param bean bean
 	 * @return un intero per il salvataggio di una richiesta nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	*/
 	@SuppressWarnings("resource")
 	public synchronized int doSave(RequestBean bean) throws SQLException {
@@ -106,9 +106,8 @@ public class RequestDAO  {
 	}
 		
 	/** 
-	 * @param bean
-	 * @return
-	 * @throws SQLException
+	 * @param bean bean
+	 * @throws SQLException lancia un'eccezione SQL
 	*/
 	public synchronized void doModify(RequestBean bean) throws SQLException {		
 		Connection connection = DBConnection.getInstance().getConn();
@@ -138,10 +137,9 @@ public class RequestDAO  {
 	}
 	
 	/** 
-	 * @param bean
-	 * @param tutorMail
-	 * @return
-	 * @throws SQLException
+	 * @param bean bean
+	 * @param tutorMail email del tutor
+	 * @throws SQLException lancia un'eccezione SQL
 	*/
 	public synchronized void doAccept(RequestBean bean, String tutorMail) throws SQLException {		
 		Connection connection = DBConnection.getInstance().getConn();
@@ -174,9 +172,9 @@ public class RequestDAO  {
 	}
 
 	/** 
-	 * @param bean
+	 * @param bean bean
 	 * @return un booleano per controllare la cancellazione di un'attivit� nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	*/
 	public synchronized boolean doDelete(RequestBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -203,10 +201,10 @@ public class RequestDAO  {
 	}
 
 	/** 
-	 * @param order
-	 * @param studentMail
+	 * @param order order
+	 * @param studentMail email dello studente
 	 * @return una Collection di richieste, tramite mail dello studente, registrate nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public Collection<RequestBean> doRetrieveAllByMail(String order, String studentMail) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -248,9 +246,8 @@ public class RequestDAO  {
 	}
 	
 	/** 
-	 * @param 
 	 * @return una Collection di tutte le richieste registrate nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public Collection<RequestBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -286,12 +283,13 @@ public class RequestDAO  {
 	}
 
 	/** 
-	 * @param order
-	 * @param startResearchDate
-	 * @param finishResearchDate
+	 * @param order order
+	 * @param studentMail email dello studente
+	 * @param startResearchDate data di inizio per la ricerca
+	 * @param finishResearchDate data di fine per la ricerca
 	 * @return una Collection di richieste, tramite date di inizio e di fine, registrate nel database
-	 * @throws SQLException
-	 */
+	 * @throws SQLException lancia un'eccezione SQL
+	 */ 
 	public Collection<RequestBean> doRetrieveAllByDates(String order, String studentMail, Date startResearchDate, Date finishResearchDate) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
 		PreparedStatement preparedStatement = null;
@@ -333,9 +331,9 @@ public class RequestDAO  {
 	}
 	
 	/** 
-	 * @param order
+	 * @param order order
 	 * @return una Collection di richieste, tramite order, registrate nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public Collection<RequestBean> doRetrieveAllPending(String order) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -374,10 +372,10 @@ public class RequestDAO  {
 	}
 	
 	/** 
-	 * @param requestDate
-	 * @param requestTime
+	 * @param requestDate data della richiesta
+	 * @param requestTime durata della richiesta
 	 * @return un booleano per controllare se la richiesta e' disponibile e registrata nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public boolean isAvailable(Date requestDate, int requestTime) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -420,11 +418,11 @@ public class RequestDAO  {
 	}
 
 	/** 
-	 * @param requestDate
-	 * @param requestTime
-	 * @param requestId
+	 * @param requestDate data della richiesta
+ 	 * @param requestTime durata della richiesta
+	 * @param requestId identificativo della richiesta
 	 * @return un booleano per controllare se vi sono differenti richieste registrate nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public boolean differentRequestRegistered(Date requestDate, int requestTime, int requestId) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -467,9 +465,8 @@ public class RequestDAO  {
 	}
 	
 	/** 
-	 * @param idRequest
-	 * @return 
-	 * @throws SQLException
+	 * @param idRequest identificativo della richiesta
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public void confirmAppointment(int idRequest) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -495,9 +492,9 @@ public class RequestDAO  {
 	}
 
 	/** 
-	 * @param order
+	 * @param order order
 	 * @return una Collection di richieste accettate, tramite order, registrate nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public Collection<RequestBean> doRetrieveAllAccepted(String order) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();

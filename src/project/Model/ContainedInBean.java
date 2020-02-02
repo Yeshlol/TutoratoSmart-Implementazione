@@ -33,7 +33,6 @@ public class ContainedInBean implements Serializable {
 
 	/**
 	 * @param appointmentId appointmentId identificativo dell'appuntamento da assegnare all'associazione ContainedIn
-	 * @return
 	 */
 	public void setAppointmentId(int appointmentId) {
 		this.appointmentId = appointmentId;
@@ -48,7 +47,6 @@ public class ContainedInBean implements Serializable {
 
 	/**
 	 * @param activityId activityId identificativo dell'attivita' da assegnare all'associazione ContainedIn
-	 * @return
 	 */
 	public void setActivityId(int activityId) {
 		this.activityId = activityId;

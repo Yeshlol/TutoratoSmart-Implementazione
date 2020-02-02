@@ -32,7 +32,7 @@ public class RequestBean implements Serializable {
 	 * @param state stato della richiesta
 	 * @param studentComment commento dello studente per una richiesta
 	 * @param student studente che effettua la richiesta
-	 * @param requestData data della richiesta
+	 * @param requestDate data della richiesta
 	 */
 	public RequestBean(int idRequest, int requestTime, int duration, String state, String studentComment, String student, Date requestDate) {
 		this.idRequest=idRequest;
@@ -53,7 +53,6 @@ public class RequestBean implements Serializable {
 
 	/**
 	 * @param idRequest idRequest identificativo della richiesta da assegnare alla richiesta
-	 * @return
 	 */
 	public void setIdRequest(int idRequest) {
 		this.idRequest = idRequest;
@@ -68,7 +67,6 @@ public class RequestBean implements Serializable {
 
 	/**
 	 * @param requestTime requestTime tempo della richiesta da assegnare alla richiesta
-	 * @return
 	 */
 	public void setRequestTime(int requestTime) {
 		this.requestTime = requestTime;
@@ -83,7 +81,6 @@ public class RequestBean implements Serializable {
 
 	/**
 	 * @param  duration duration durata della richiesta da assegnare alla richiesta
-	 * @return
 	 */
 	public void setDuration(int duration) {
 		this.duration = duration;
@@ -98,7 +95,6 @@ public class RequestBean implements Serializable {
 
 	/**
 	 * @param state state stato della richiesta da assegnare alla richiesta
-	 * @return
 	 */
 	public void setState(String state) {
 		this.state = state;
@@ -113,7 +109,6 @@ public class RequestBean implements Serializable {
 
 	/**
 	 * @param studentComment studentComment commento dello studente per una richesta da assegnare alla richiesta
-	 * @return
 	 */
 	public void setStudentComment(String studentComment) {
 		this.studentComment = studentComment;
@@ -128,7 +123,6 @@ public class RequestBean implements Serializable {
 
 	/**
 	 * @param student student studente che effettua la richiesta da assegnare alla richiesta
-	 * @return
 	 */
 	public void setStudent(String student) {
 		this.student = student;
@@ -143,7 +137,6 @@ public class RequestBean implements Serializable {
 
 	/**
 	 * @param requestDate requestDate data della richiesta da assegnare alla richiesta
-	 * @return
 	 */
 	public void setRequestDate(Date requestDate) {
 		this.requestDate = requestDate;

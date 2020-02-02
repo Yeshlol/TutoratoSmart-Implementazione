@@ -19,9 +19,8 @@ public class ContainedInDAO {
 	}
 
 	/** 
-	 * @param
 	 * @return un ArrayList di tutti i ContainedIn registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized ArrayList<ContainedInBean> doRetrieveAll() throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -42,9 +41,8 @@ public class ContainedInDAO {
 	}
 	
 	/** 
-	 * @param id
-	 * @return
-	 * @throws SQLException
+	 * @param id identificativo dell'attività
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized void doDeleteByActivityId(int id) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -69,9 +67,9 @@ public class ContainedInDAO {
 	}
 	
 	/** 
-	 * @param id
+	 * @param id identificativo dell'appuntamento
 	 * @return una Collection di appuntamenti, tramite l'id, registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized Collection<AppointmentBean> doRetrieveByActivityId(int id) throws SQLException {
 		Collection<AppointmentBean> list = new LinkedList<AppointmentBean>();
@@ -107,9 +105,9 @@ public class ContainedInDAO {
 	}
 		
 	/** 
-	 * @param appointmentId
+	 * @param appointmentId id dell'appuntamento
 	 * @return un ContainedIn, tramite id, registrati nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized ContainedInBean doRetrieveByAppointmentId (int appointmentId) throws SQLException {
 		ContainedInBean bean = new ContainedInBean();
@@ -138,9 +136,8 @@ public class ContainedInDAO {
 	}
 	
 	/** 
-	 * @param bean
-	 * @return
-	 * @throws SQLException
+	 * @param bean bean
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public synchronized void doSave(ContainedInBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();
@@ -166,9 +163,9 @@ public class ContainedInDAO {
 	}
 	
 	/** 
-	 * @param bean
+	 * @param bean bean
 	 * @return un booleano per controllare la cancellazione di un ContainedIn nel database
-	 * @throws SQLException
+	 * @throws SQLException lancia un'eccezione SQL
 	 */
 	public boolean doDelete(ContainedInBean bean) throws SQLException {
 		Connection connection = DBConnection.getInstance().getConn();

@@ -40,7 +40,6 @@ public class AppointmentBean implements Serializable {
 
 	/**
 	 * @param idAppointment idAppointment identificativo dell'appuntamento da assegnare all'appuntamento
-	 * @return
 	 */
 	public void setIdAppointment(int idAppointment) {
 		this.idAppointment = idAppointment;
@@ -55,7 +54,6 @@ public class AppointmentBean implements Serializable {
 
 	/**
 	 * @param  requestId requestId identificativo della richiesta da assegnare all'appuntamento
-	 * @return
 	 */
 	public void setRequestId(int requestId) {
 		this.requestId = requestId;
@@ -70,7 +68,6 @@ public class AppointmentBean implements Serializable {
 
 	/**
 	 * @param details details dettagli dell'appuntamento da assegnare all'appuntamento
-	 * @return
 	 */
 	public void setDetails(String details) {
 		this.details = details;
@@ -85,7 +82,6 @@ public class AppointmentBean implements Serializable {
 
 	/**
 	 * @param tutor tutor da assegnare all'appuntamento
-	 * @return
 	 */
 	public void setTutor(String tutor) {
 		this.tutor = tutor;
