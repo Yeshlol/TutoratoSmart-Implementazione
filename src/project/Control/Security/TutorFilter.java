@@ -16,9 +16,9 @@ import javax.servlet.http.HttpSession;
 import project.Model.UserBean;
 
 /**
- * Servlet Filter implementation class AdminFilter
+ * Servlet Filter implementation class TutorFilter
  */
-@WebFilter("/AdminFilter")
+@WebFilter("/TutorFilter")
 public class TutorFilter implements Filter {
     /**
      * Default constructor. 
