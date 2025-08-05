@@ -1,4 +1,4 @@
-##TutoratoSmart 🎓🖥️
+## TutoratoSmart 🎓🖥️
 
 **TutoratoSmart** è una piattaforma web realizzata per la gestione dello sportello di tutorato universitario, sviluppata come progetto per il corso di Ingegneria del Software.
 
